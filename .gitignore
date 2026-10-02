@@ -1,12 +1,12 @@
 .venv
 CLAUDE.md
-reference-thesis-images
 reference-thesis.pdf
-Active_caustics_paper
-Inertial_caustics
-JPO_resubmission_upload
-polydisperse
-Thermalization
+reference-thesis-images/*
+Active_caustics_paper/*
+Inertial_caustics/*
+JPO_resubmission_upload/*
+polydisperse/*
+Thermalization/*
 
 # LaTeX build output. Overleaf compiles the document itself, so none of this
 # needs to be tracked. Figures under chapters/figures/ are source and stay.
