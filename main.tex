@@ -1,14 +1,53 @@
-\documentclass{article}
-\usepackage{graphicx} % Required for inserting images
+\documentclass[11pt,a4paper,twoside]{book}
+\input{preamble.tex}
 
-\title{phd-thesis}
-\author{Rajarshi }
-\date{October 2026}
+\title{PhD Thesis}
+\author{Rajarshi Chattopadhyay}
+\date{\today}
 
 \begin{document}
 
+\frontmatter
 \maketitle
 
-\section{Introduction}
+\begingroup
+\renewcommand{\chaptermark}[1]{}
+\chapter*{Abstract}
+% TODO: thesis-level abstract summarizing all chapters.
+\endgroup
+
+\tableofcontents
+
+% Both lists are rebuilt from the .lof and .lot files on every run, so adding
+% or removing a figure or table updates them on the next compile.
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{\listfigurename}
+\listoffigures
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{\listtablename}
+\listoftables
+
+\mainmatter
+
+\part{Behaviour of turbulent flows}
+\subfile{chapters/internal_tide_eddy.tex}
+\subfile{chapters/thermalization.tex}
+\part{Behaviour of particles in turbulent flows}
+\subfile{chapters/inertial_caustics.tex}
+\subfile{chapters/active_caustics.tex}
+\subfile{chapters/polydisperse_lucky_drops.tex}
+
+\part*{Appendices}
+\phantomsection
+\addcontentsline{toc}{part}{Appendices}
+
+
+\subfile{chapters/appendix.tex}
+
+\backmatter
+\printbibliography[heading=bibintoc,title={References}]
 
 \end{document}

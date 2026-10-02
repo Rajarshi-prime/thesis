@@ -1,0 +1,38 @@
+% Paper-specific macros for the Internal Tide-Eddy chapter and its appendix.
+% Always \input inside a \begingroup..\endgroup so they cannot leak into other
+% chapters' math, since several of these names are also used with different
+% meanings elsewhere, e.g. \grad, \div, \hat, \bar, \Re.
+\renewcommand{\hat}{\widehat}
+\newcommand{\Sc}[1]{Section \ref{edwv-#1}}
+\newcommand{\p}{\partial}
+\newcommand{\bs}[1]{\boldsymbol{#1}}
+\renewcommand{\del}{\nabla}
+\newcommand{\bsh}[1]{\boldsymbol{\hat{#1}}}
+\newcommand{\ol}{\overline}
+\newcommand{\pp}[2]{\frac{\p{#1}}{\p{#2}}}
+\newcommand{\dd}[2]{\frac{d{#1}}{d{#2}}}
+\newcommand{\lam}[1]{{#1}^{\tiny{\lambda}}}
+\newcommand{\conj}[1]{{#1}^*}
+\newcommand{\mods}[1]{ \vert {#1} \vert ^2}
+\newcommand{\magn}[1]{ \vert {#1} \vert}
+\providecommand\bnabla{\boldsymbol{\nabla}}
+\providecommand\bcdot{\boldsymbol{\cdot}}
+\newcommand{\cw}[1]{ { {#1}_{\scriptscriptstyle {CW} } } }
+\newcommand{\sw}[1]{ { {#1}_{\scriptscriptstyle {SW} } } }
+\newcommand{\bt}[1]{ { {#1}_{\scriptscriptstyle {T} } } }
+\newcommand{\bc}[1]{ { {#1}_{\scriptscriptstyle {C} } } }
+\newcommand{\btb}[1]{ { {\bs{#1}}_{\scriptscriptstyle {T} } } }
+\newcommand{\bcb}[1]{ { {\bs{#1}}_{\scriptscriptstyle {C} } } }
+\newcommand{\balb}[1]{ { {\bs{#1}}_{\scriptscriptstyle {G} } } }
+\newcommand{\bal}[1]{ { {{#1}}_{\scriptscriptstyle {G} } } }
+\newcommand{\wavb}[1]{ { {\bs{#1}}_{\scriptscriptstyle {W} } } }
+\newcommand{\wav}[1]{ { {{#1}}_{\scriptscriptstyle {W} } } }
+\newcommand{\w}[1]{ { {{#1}}_{\scriptscriptstyle {W} } } }
+\newcommand{\vo}[1]{ { {{#1}}_{\scriptscriptstyle {V} } } }
+\newcommand{\g}[1]{ { {{#1}}_{ {g} } } }
+\newcommand{\ag}[1]{ { {{#1}}_{ {a} } } }
+\renewcommand{\bar}[1]{\overline{#1}}
+\renewcommand{\Re}{\operatorname{Re}}
+\renewcommand{\t}[1]{\widetilde{#1}}
+\renewcommand{\grad}[1]{\del#1}
+\renewcommand{\div}[1]{\del . {#1}}

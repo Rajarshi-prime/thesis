@@ -1,0 +1,217 @@
+% Shared parent preamble for the PhD thesis.
+% Loaded by main.tex, and by every chapters/*.tex subfile via
+% \documentclass[../main.tex]{subfiles}.
+
+% --- Core math ---
+\usepackage{amsmath,amssymb,amsfonts,mathtools,mathrsfs,dsfont,cancel,bm}
+\usepackage{upgreek}
+\usepackage{nicefrac}
+\usepackage{commath}
+\usepackage{braket}
+\usepackage[nointegrals]{wasysym}
+\usepackage{pifont}
+
+% --- Figures, tables ---
+\usepackage{graphicx}
+
+\usepackage[export]{adjustbox}
+\usepackage{subcaption}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{dcolumn}
+\usepackage{tikz,pgf,import}
+\DeclareCaptionJustification{justified}{\justifying}
+\captionsetup{justification=justified,singlelinecheck=false,labelfont=large}
+\captionsetup[subfigure]{position=top,belowskip=0pt,justification=centering}
+
+% --- Colors, highlighting, track changes ---
+\usepackage[dvipsnames]{xcolor}
+\usepackage{soul}
+\usepackage[normalem]{ulem}
+% \usepackage[inline]{trackchanges}
+
+% --- Layout ---
+% Wide text block, as in the reference thesis: the default book-class
+% margins leave the text only ~121mm wide on A4, this widens it to ~160mm.
+% headheight holds two lines, so a long chapter title in the running header
+% cannot run into the rule above the text.
+\usepackage[a4paper,inner=25mm,outer=25mm,top=25mm,bottom=30mm,headheight=26pt,headsep=12pt]{geometry}
+\usepackage{ragged2e}
+% No hyphenation anywhere. 10000 is TeX's infinity, so no word is ever split.
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\sloppy
+\usepackage{parskip}
+\usepackage{setspace}
+\usepackage{microtype}
+\usepackage{enumitem}
+
+% --- Hyperlinks ---
+% Loaded here, before orcidlink, because orcidlink silently \RequirePackages
+% hyperref with no options if it isn't already loaded -- loading it later
+% with options triggers "Option clash for package hyperref".
+\usepackage[
+    colorlinks=true,
+    linkcolor=blue!60!black,
+    citecolor=blue!60!black,
+    urlcolor=blue!60!black
+]{hyperref}
+% \usepackage[nameinlink]{cleveref}
+
+\usepackage{orcidlink}
+\usepackage{subfiles}
+\usepackage{xspace}  % used by the internal_tide_eddy chapter's \lr/\ir/\hr-family macros
+
+% --- Bibliography ---
+% One combined reference list at the end of the thesis. Resources are
+% searched in the order listed, so the shared Zotero file is tried first
+% and each paper's own .bib is the fallback for keys that predate it.
+% APS-style citations: bracketed numbers, numbered in order of first use,
+% consecutive runs compressed to [1-3].
+\usepackage[backend=biber,style=numeric-comp,sorting=none,natbib=true,giveninits=true]{biblatex}
+\addbibresource{global_references_zotero.bib}
+\addbibresource{Active_caustics_paper/active_caustics.bib}
+\addbibresource{JPO_resubmission_upload/ref.bib}
+\addbibresource{Thermalization/references.bib}
+\addbibresource{Inertial_caustics/references.bib}
+\addbibresource{polydisperse/references.bib}
+
+% The entry title carries the link: to the DOI when the entry has one,
+% otherwise to the URL. The DOI, URL and arXiv eprint are never printed
+% as standalone fields.
+\ExecuteBibliographyOptions{doi=false,url=false,eprint=false,isbn=false}
+\newbibmacro*{linkedtitle}[1]{%
+  \iffieldundef{doi}
+    {\iffieldundef{url}
+       {#1}
+       {\href{\thefield{url}}{#1}}}
+    {\href{https://doi.org/\thefield{doi}}{#1}}}
+\DeclareFieldFormat{title}{\usebibmacro{linkedtitle}{\mkbibemph{#1}}}
+\DeclareFieldFormat[article,inbook,incollection,inproceedings,patent,thesis,unpublished]%
+  {title}{\usebibmacro{linkedtitle}{\mkbibquote{#1\isdot}}}
+
+% --- Thesis accent color + chapter/section style ---
+% Matches the grey "Chapter N" numeral with a bold title set below it,
+% used as the visual reference for this thesis.
+\definecolor{thesisaccent}{HTML}{8C3A2E}
+\usepackage{titlesec}
+% Chapter heads are set in TeX Gyre Adventor (family qag), a geometric sans
+% whose round letters are much wider than the default one, at sizes a few
+% steps above \Huge. Everything else keeps the ordinary sans.
+\titleformat{\chapter}[display]
+  {\normalfont\fontfamily{qag}\fontsize{36}{48}\selectfont\color{gray}}
+  {\chaptertitlename\ \thechapter}
+  {10pt}
+  {\raggedleft\normalfont\sffamily\bfseries\Huge\color{black}}
+\titleformat{\section}
+  {\normalfont\sffamily\bfseries\fontsize{18}{20}\selectfont}
+  {\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\sffamily\bfseries\fontsize{14}{16}\selectfont}
+  {\thesubsection}{0.75em}{}
+\titleformat{\subsubsection}
+  {\normalfont\sffamily\bfseries\itshape}
+  {\thesubsubsection}{0.5em}{}
+
+% --- Chapter summary box ---
+% Opens each chapter in place of the paper's abstract. breakable lets a long
+% summary run across a page break.
+\usepackage[most]{tcolorbox}
+\definecolor{clbox}{RGB}{100, 87, 166}
+\tcbset{colframe = clbox} 
+\newtcolorbox{summary}{%
+  breakable,
+  boxrule=0.4pt, arc=2pt,
+  title=Summary, fonttitle=\sffamily\bfseries, coltitle=black
+}
+
+% --- Running headers ---
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LE]{\thepage\quad\nouppercase{\leftmark}}
+\fancyhead[RO]{\nouppercase{\rightmark}\quad\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\setlength{\parskip}{0.8em}
+\setlength{\parindent}{0pt}
+
+% ====================== Shared macros ======================
+% Merged from Inertial_caustics/r_preamble.tex, polydisperse/r_preamble.tex,
+% and the inline preambles of the Active Caustics, JPO and Thermalization
+% manuscripts. Where two papers defined the same name differently, the
+% more common / more recent version was kept.
+
+\newcommand{\Dp}[3]{\frac{\partial^{#3} #1}{\partial #2^{#3}}}
+\newcommand{\Dpc}[3]{\frac{\cancel{\partial}^{#3}#1}{\cancel{\partial} #2^{#3}}}
+\newcommand{\dk}[2]{\frac{d^{#2} #1}{(2\pi)^{#2}}}
+\renewcommand{\bra}[1]{\left<#1\right|}
+\renewcommand{\ket}[1]{\left|#1\right>}
+\renewcommand{\braket}[2]{\left<#1| #2\right>}
+\newcommand{\mc}[1]{\mathcal{#1}}
+\newcommand{\ms}[1]{\mathscr{#1}}
+\renewcommand{\md}[1]{\mathds{#1}}
+\newcommand{\mb}[1]{\mathbb{#1}}
+\newcommand{\tx}[1]{\mbox{#1}}
+\newcommand{\mtx}[1]{\scriptstyle #1 \textstyle}
+\newcommand{\ttx}[1]{\scriptscriptstyle #1 \textstyle}
+\newcommand{\eqn}{equation}
+\newcommand{\soln}{solution}
+\newcommand{\curl}[1]{\vec{\nabla} \times \vec{#1}}
+\newcommand{\grad}[1]{\vec{\nabla}#1}
+\newcommand{\lap}[1]{\nabla^2 #1}
+\newcommand{\mean}[1]{\langle #1\rangle}
+\newcommand{\eref}[1]{Eq.~\eqref{#1}}
+\newcommand{\fref}[1]{Fig.~\ref{#1}}
+\newcommand{\vect}[1]{\mathbf{#1}}
+
+\renewcommand{\d}[3]{\frac{d^{#3} #1}{d #2^{#3}}}
+\renewcommand{\t}[1]{\tilde{#1}}
+\renewcommand{\vec}[1]{\boldsymbol{#1}}
+\renewcommand{\implies}{\Rightarrow}
+\renewcommand{\div}[1]{\vec{\nabla} \cdot{#1}}
+
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\cosech}{cosech}
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccot}{arcCot}
+\DeclareMathOperator{\arccsc}{arcCsc}
+\DeclareMathOperator{\arccosh}{arcCosh}
+\DeclareMathOperator{\arcsinh}{arcsinh}
+\DeclareMathOperator{\arctanh}{arctanh}
+\DeclareMathOperator{\arcsech}{arcsech}
+\DeclareMathOperator{\arccsch}{arcCsch}
+\DeclareMathOperator{\arccoth}{arcCoth}
+\DeclareMathOperator{\Tr}{Tr}
+
+% Margin/inline comment macros used across the original manuscripts.
+% Rendered in color in draft mode; harmless to leave in for the thesis.
+\makeatletter
+\DeclareRobustCommand{\rc}[1]{\textcolor{olive}{#1}}
+\DeclareRobustCommand{\rg}[1]{\textcolor{magenta}{#1}}
+\DeclareRobustCommand{\rgc}[1]{\textcolor{magenta}{{[\bf #1]}}}
+\DeclareRobustCommand{\rcomm}[1]{\textcolor{OliveGreen}{[#1]}}
+\DeclareRobustCommand{\revise}[1]{\textcolor{blue}{#1}}
+\makeatother
+\newcommand{\hjc}[1]{\textcolor{blue}{#1}}
+
+% Chapter-specific macros that appear inside figure or table captions. They
+% have to live here rather than in their chapter, because \listoffigures and
+% \listoftables typeset the .lof and .lot files in the front matter, long
+% before the chapters that define them are read.
+% Internal Tide-Eddy run names:
+\newcommand{\op}[1]{\operatorname{#1}}
+\newcommand{\roeff}{Ro_{\op{eff}}}
+\newcommand{\lr}{\texttt{Ro-L}\xspace}
+\newcommand{\ir}{\texttt{Ro-I}\xspace}
+\newcommand{\hr}{\texttt{Ro-H}\xspace}
+\newcommand{\lre}{\texttt{Ro-L8}\xspace}
+\newcommand{\lro}{\texttt{Ro-L1}\xspace}
+\newcommand{\ire}{\texttt{Ro-I8}\xspace}
+\newcommand{\iro}{\texttt{Ro-I1}\xspace}
+\newcommand{\hre}{\texttt{Ro-H8}\xspace}
+\newcommand{\hro}{\texttt{Ro-H1}\xspace}
+% Inertial Caustics particle labels:
+\newcommand{\cs}{C~}
+\newcommand{\su}{S~}
