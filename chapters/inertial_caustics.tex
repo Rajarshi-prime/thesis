@@ -94,7 +94,7 @@ The gray regions with crossed white hatches in \fref{int-inequality} satisfy \er
 \end{align}
 where caustics may not occur.
 \begin{figure}
-\includegraphics[width = \linewidth]{figures/inertial_caustics/analtcaustics.pdf}
+\includegraphics[width = \linewidth]{./figures/inertial_caustics/analtcaustics.pdf}
 \caption{Number of real roots of \eref{int-root-eq} in the $QR$ plane. The hatched area satisfies \eref{int-caus_cond}, which is a sufficient condition for caustics, while there are some regions with zero roots even outside it. The solid black line is the Vieillefosse line following $Q^3 + 27/4 R^2 = 0$ (see \cite{chong1990} for details). The black dashed lines show $Q - 4R = -1/16$, the caustics condition for $\alpha = 1$.}
 \label{int-inequality}
 \end{figure}
@@ -149,7 +149,7 @@ $\ell^2 = \tau\sqrt{3\alpha -2}$ yields the following parameter-free equation, v
   \end{split}
   \end{align}
   \begin{figure}
-  \includegraphics[width = 0.8\linewidth]{figures/inertial_caustics/pt_vrtx_upd.pdf}
+  \includegraphics[width = 0.8\linewidth]{./figures/inertial_caustics/pt_vrtx_upd.pdf}
   \caption{Caustics time (a) and radius (b) in point-vortex flow as a function of the initial radial location, for particles of different density and of any Stokes number. The dashed line shows the inner solutions $T_c = \mc{R}_0^2$, and $\mc{R}_c = \sqrt2\mc{R}_0$. In this scaling, caustics formation in the inner region is independent of particle density. The vertical dotted line indicates the location at which caustics time diverges for $\alpha=1$, and beyond which caustics are not possible.}
   \label{int-inner-sol}
   \end{figure}
@@ -180,7 +180,7 @@ To keep the particle number constant beyond caustics, we reinitialize the partic
 
 \begin{figure}
 \centering
-\includegraphics[width = \linewidth]{figures/inertial_caustics/snapshot_PDF.pdf}
+\includegraphics[width = \linewidth]{./figures/inertial_caustics/snapshot_PDF.pdf}
 \caption{(a-c) Snapshots of the vorticity field $\omega$ overlaid with caustics \cs particles in cyan, and the remaining ones in black at $t = 333 \ St$. All particles centrifuge out of large vortices and live in strain regions. As expected from prior studies \cite{balkovsky2001,calzavarini2008a, fiabane2012,karchniwy2019, petersen2019, motoori2023}, lowering the particle density weakens centrifugation. (d) PDF of the time-averaged $Q$ experienced by the particles (in color), as well as that of the background field (in black). Progressive emptying of high vorticity regions with increasing particle density is seen. }
 \label{int-pstruc}
 \end{figure}
@@ -193,7 +193,7 @@ Figure \ref{int-pstruc}(a-c) shows the vorticity snapshot of the background flow
 \fref{int-fig: Q-timeseries-2d}(g) shows $\mean{Q}_{min}$ against $\alpha$ for two Stokes numbers. Lower density particles have lower $\mean{Q}_{min}$, indicating that they need to go through regions of more intense strain than their denser counterparts to form caustics. This is also true in point-vortex flow, as seen in the figure, but how different this dependency is from $2$D turbulence is also highlighted.
 \begin{figure}
   \centering
-  \includegraphics[width = \linewidth]{figures/inertial_caustics/caus_q_trz.pdf}
+  \includegraphics[width = \linewidth]{./figures/inertial_caustics/caus_q_trz.pdf}
   \caption{(a-c) PDF of the $Q$ explored by C particles of different density parameter $\alpha$. (d-f) the corresponding PDF of $\delta = \Tr(\mb{Z})$.  (g) Minimum of the average $Q$ explored by particles on their way to caustics as a function of  $\alpha$. (h) The mean of $\delta$ shows similar behaviour across density ratios with an inflection to large negative values around the time of minimum $Q$.}
   \label{int-fig: Q-timeseries-2d}
 \end{figure}
@@ -208,7 +208,7 @@ Apart from the \cs and \es particles seen before in point-vortex flows, another 
  To do this, we now shift the time of individual particles by their respective $t_{m}$ and define {$\mean{Q_m}_c$} as the mean of $Q_m$ experienced by \cs particles. Note that the time-shift makes {$\mean{Q_m}_c$} different from $\mean{Q}_{min}$. We define survivor \su particles as those that sample {$Q \le \mean{Q_m}_c$}, but do not form caustics. {After crossing $Q = \mean{Q_m}_c$, each of the survivor particles also experience a minimum  in $Q$ at time $t=t_m$. Accordingly, we shift their trajectory by $t_m$, and show the $\mean{Q}$ for both \cs and \su particles} as a function of the shifted time in \fref{int-c_nc_Q_trz}(a) for $\alpha = 0.7$, $0.75$ and $1.0$. After encountering the minimum in $Q$, all particles return to lower-strain regions of moderate $Q$. The broad trends are similar for \cs and \su particles, but \su particles explore larger negative $Q$ regions --- a consequence of our requirement that they visit a strain higher than {$\mean{Q_m}_c$} --- and also spend shorter times in them. We examine the differences in the history of \cs and \su particles to explain the difference in their ultimate fate. One clue is obtained from \fref{int-c_nc_Q_trz}(b), where we plot the mean of the $\delta = \Tr(\mb{Z})$ as a function of the shifted time $(t -t_m)/St$. Right before $t = t_m$, the $\mean{\delta}$ of \su particles rises to a maximum before plunging. This maximum is correlated with \su particles visiting low-strain regions (see the maxima in \fref{int-c_nc_Q_trz}(a)), which is not seen in the evolution of \cs particles. Thereafter, \su particles are subjected to a short duration of increasingly negative $\mean{\delta}$ post $t_m$. And unlike \cs particles, their $\delta$ recovers soon afterward, and they avoid caustics.
 \begin{figure}
 \centering
-\includegraphics[width =\linewidth]{figures/inertial_caustics/caus_nc_Q_trz_mean.pdf}
+\includegraphics[width =\linewidth]{./figures/inertial_caustics/caus_nc_Q_trz_mean.pdf}
 \caption{Comparing (a) $\mean{Q}$ and (b) $\langle \delta \rangle$ of caustics \cs (solid lines) and survivor \su (dashed lines) particles around the time they encounter a minimum in $Q$.}
 \label{int-c_nc_Q_trz}
 \end{figure}
@@ -241,7 +241,7 @@ Thus, $\theta_v = 0,\pi$ represents a particle moving along the compressional di
 
 \begin{figure}
   \centering
-  \includegraphics[width = 0.9\linewidth]{figures/inertial_caustics/caus_nc_summary_0.7.pdf}
+  \includegraphics[width = 0.9\linewidth]{./figures/inertial_caustics/caus_nc_summary_0.7.pdf}
   \caption{Comparing $\alpha = 0.7$ caustics and survivor particles using different metrics. Red is for \cs particles and blue for \su ones. (a) PDFs of the alignment angle $\theta_v$ are shown at times indicated by the green rectangles in the $\mean{Q}$ plot. (b,c) Average strain and vorticity experienced by \cs and \su particles during their evolution. (d) Average $\delta = \Tr(\mb{Z})$ for the \cs and \su particles. Despite similar $\mean{Q}$s, their $\mean{\delta}$ is significantly different. (e) RMS velocity of \su particles is higher than the \cs particles, and their curvature (f) is much lower for some time before caustics.}
   \label{int-caus_nc_sum}
 \end{figure}
@@ -254,7 +254,7 @@ Therefore, we conclude that encountering a compressive strain with a moderate pa
 }
 \begin{figure}
 \centering
-\includegraphics[width = \linewidth]{figures/inertial_caustics/caus_nc_summary_1.0.pdf}
+\includegraphics[width = \linewidth]{./figures/inertial_caustics/caus_nc_summary_1.0.pdf}
 \caption{Same as Fig. \ref{int-caus_nc_sum} but for inifinitely dense $\alpha = 1$ particles.}
 \label{int-caus_nc_sum_1}
 \end{figure}
@@ -283,7 +283,7 @@ Therefore, we conclude that encountering a compressive strain with a moderate pa
 \end{minipage}\hfill
 \begin{minipage}{0.475\linewidth}
 \centering
-\includegraphics[width = \linewidth]{figures/inertial_caustics/caus_propensity.pdf}
+\includegraphics[width = \linewidth]{./figures/inertial_caustics/caus_propensity.pdf}
 \caption{Fractions of \cs and \su particles at different density ratios.}
 \label{int-propensity}
 \end{minipage}
@@ -296,7 +296,7 @@ We extend the caustics condition of \citet{meibohm2023} to the case of finitely 
 
 \begin{figure}
   \centering
-  \includegraphics[width = 0.5\linewidth]{figures/inertial_caustics/summary.pdf}
+  \includegraphics[width = 0.5\linewidth]{./figures/inertial_caustics/summary.pdf}
   \caption{Schematic of differences between \cs and \su particles. The colored patch represents a region of high strain, and its horizontal extent the time spent by a particle within it. \su particles pass quickly through this region and follow relatively straight paths, whereas \cs particles spend longer and adopt high-curvature paths. The early alignment with the extensive and compressive eigendirections of strain is the cause for these differences. At later times, both C and S particle-velocities are randomly oriented.}
   \label{int-flchrt}
 \end{figure}

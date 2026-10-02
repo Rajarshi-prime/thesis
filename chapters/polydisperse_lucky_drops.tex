@@ -337,7 +337,7 @@ The nonlinearity of the problem prevents us from drawing any analytic conclusion
 \begin{figure}
     \centering
     % \import{/Users/rajarshi/Library/CloudStorage/GoogleDrive-rajarshi.chattopadhyay@icts.res.in/My Drive/Collab/plots/Re_125000.0,dt_0.005,N_1024/sts_0.005_stb_0.30/time_100.0}{sm-10000big.pgf}
-    \includegraphics[width=\linewidth]{figures/polydisperse/sm_0.02_0.002.pdf}
+    \includegraphics[width=\linewidth]{./figures/polydisperse/sm_0.02_0.002.pdf}
 
     \caption{Instantaneous snapshot showing the vorticity of the $2$D flow (right) along with the small particles's volume fraction (right) normalized by the mean volume fraction. The small white streaks are the places from where the big particle have run through.}w
     \label{lucky-zeta-sm-1big}
@@ -345,7 +345,7 @@ The nonlinearity of the problem prevents us from drawing any analytic conclusion
 
 \begin{figure}
     \centering
-    \includegraphics[width=\linewidth]{figures/polydisperse/sm-nobig.pdf}
+    \includegraphics[width=\linewidth]{./figures/polydisperse/sm-nobig.pdf}
     \caption{Same as in \ref{lucky-zeta-sm-1big} without any big particle. No such small streaks exist in the small particle's number density. }
 \end{figure}
 
@@ -418,7 +418,7 @@ We run our numerical simulation for the following parameters.
 \end{table}
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\linewidth]{figures/polydisperse/pstruc.pdf}
+		\includegraphics[width=\linewidth]{./figures/polydisperse/pstruc.pdf}
 	\end{center}
 \caption{Volume fraction of the small particles evolved in presence of 10000 big particles for runs 1 (middle) and 3 (right). We see larger Stokes small particles get more depleted or eaten up by the big particles.}
 \label{lucky-pstruc}
@@ -426,7 +426,7 @@ We run our numerical simulation for the following parameters.
 For runs 1 and 3, we check the growth rate of particles starting from regions of positive and negative $Q$. Regions of positive $Q$ represents vortical regions while negative $Q$ represents strain regions. We find particles starting out in vortical regions grow larger at later time, Fig. \ref{lucky-grth-diffQ}.
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=0.6\linewidth]{figures/polydisperse/diff-Q-grwth-rate.pdf}
+		\includegraphics[width=0.6\linewidth]{./figures/polydisperse/diff-Q-grwth-rate.pdf}
 	\end{center}
 \caption{Growth rate of big particles starting in positive and negative $Q$ regions for runs $1$ and $3$ with 10000 big particles. Particles starting out in the vortical region experience a larger growth rate. Furthermore, the growth rate increases significantly upon increasing the $St$ of small particles.}
 \label{lucky-grth-diffQ}
@@ -436,7 +436,7 @@ Next, we try to see whether particles start gaining more liquid content if they 
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\linewidth]{figures/polydisperse/pre-post-vort.pdf}
+		\includegraphics[width=\linewidth]{./figures/polydisperse/pre-post-vort.pdf}
 	\end{center}
 \caption{Volume gained by the big particles that went through a region of big vorticity.}
 \label{}
@@ -448,7 +448,7 @@ Next, we want to study the growth rate within the vortical region. To do so, we 
 If we seed the lucky droplets uniformly in the domain, and evolve, the first and the last stage is given below.
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=0.9\linewidth]{figures/polydisperse/rndm_0.002_0.02.pdf}
+		\includegraphics[width=0.9\linewidth]{./figures/polydisperse/rndm_0.002_0.02.pdf}
 	\end{center}
 \caption{Initial and final fate of the small particle concentration along with vorticity when `lucky' particles are initialized randomly over the domain. $St_b = 0.02$, $St_s = 0.002$. }
 % \label{}
@@ -457,7 +457,7 @@ If we seed the lucky droplets uniformly in the domain, and evolve, the first and
 Instead, if we initialize particles from the strongest vortex cores, we get the following,
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=0.9\linewidth]{figures/polydisperse/Qpos_0.002_0.02.pdf}
+		\includegraphics[width=0.9\linewidth]{./figures/polydisperse/Qpos_0.002_0.02.pdf}
 	\end{center}
 \caption{Initial and final fate of the small particle concentration along with vorticity when `lucky' particles are initialized in regions $Q> 3Q_{rms}$. $St_b = 0.02$, $St_s = 0.002$. }
 % \label{}
@@ -485,14 +485,14 @@ And finally, the size distribution captured by the distribution of the $St_b$ wi
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\linewidth]{figures/polydisperse/sts_0.002_stb_0.01,0.02_grwth.png}
+		\includegraphics[width=\linewidth]{./figures/polydisperse/sts_0.002_stb_0.01,0.02_grwth.png}
 	\end{center}
 \caption{Growth rate of big particles (left) and decay rate of small particles (right), as one varies initial condition and Stokes numbers. Solid lines with $St_b(0) = 0.01$ and dashdotted lines with $0.02$. The dotted lines and the dashed lines are extreme Stokes numbered big particles with $St_b(0) = 0.0022$ and $St_b(0) = 0.1$, respectively. $St_s = 0.002$}
 \label{lucky-grwth}
 \end{figure}
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\linewidth]{figures/polydisperse/sts_0.002_stb_0.01,0.02_grwth_loglog.png}
+		\includegraphics[width=\linewidth]{./figures/polydisperse/sts_0.002_stb_0.01,0.02_grwth_loglog.png}
 	\end{center}
 \caption{Same as \ref{lucky-grwth}, but in log-log scale.}
 % \label{}
@@ -500,7 +500,7 @@ And finally, the size distribution captured by the distribution of the $St_b$ wi
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\linewidth]{figures/polydisperse/sts_0.002_stb_0.01-0.02_final_distribution.png}
+		\includegraphics[width=\linewidth]{./figures/polydisperse/sts_0.002_stb_0.01-0.02_final_distribution.png}
 	\end{center}
 \caption{Final distribution of Stokes numbers with $St_b(0) = 0.01$(left), and $0.02$(right).$St_s = 0.002$}
 \label{lucky-grwth-loglog}
@@ -532,7 +532,7 @@ The depletion rate of small droplets is $-\dot{M}_b$. And, if the arguments abov
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\linewidth]{figures/polydisperse/smalltimes-2d.png}
+		\includegraphics[width=\linewidth]{./figures/polydisperse/smalltimes-2d.png}
 	\end{center}
 \caption{Depletion and growth of volume fraction of small droplets (left) and large droplets(right). It shows $t^\frac32$ scaling given by black dashed line at very early times, but takes over as $t^{2}$ given by the blue dashed line immediately after that.}
 \label{lucky-growth-small-times}
@@ -551,7 +551,7 @@ In late stage, situation is different. Lucky droplets contain most of the volume
 where $\gamma$ is the depletion rate. Similarly, as before, the rate of change of mass of the big droplets is $\dot{M}_s$ and lucky droplets grow as $M_b(t) = M_T - M_s(t) = M_T - M_s^*e^{-\gamma(t - t^*)}$. In Fig. \ref{lucky-largetimes-2d}, we show this behavior by plotting the volume fraction of the small droplets, and the growth rate of the large droplets calculated from the local slope of Fig. \ref{lucky-grwth}(right). Both show behavior similar to exponential, but their slopes do not match.
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\linewidth]{figures/polydisperse/largetimes-2d.png}
+		\includegraphics[width=\linewidth]{./figures/polydisperse/largetimes-2d.png}
 	\end{center}
 \caption{(left) Volume fraction of small droplets at late times. It follows exponential decay. (right) Rate of change of volume fraction of large droplets calculated from local slope. As expected, it also follows exponential decay.}
 \label{lucky-largetimes-2d}
@@ -578,7 +578,7 @@ Now, although the growth rate for smaller initial $St_b$ are higher, do they pro
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\linewidth]{figures/polydisperse/threshold-growth.png}
+		\includegraphics[width=\linewidth]{./figures/polydisperse/threshold-growth.png}
 	\end{center}
 \caption{Time taken for 10 particles (left) and 50 particles (right) to grow beyond a certain threshold for different initial $St_b$s}
 
@@ -596,7 +596,7 @@ Now, although the growth rate for smaller initial $St_b$ are higher, do they pro
 \section{3D results}
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\linewidth]{figures/polydisperse/3d-grwth.png}
+		\includegraphics[width=\linewidth]{./figures/polydisperse/3d-grwth.png}
 	\end{center}
 \caption{Growth in volume fraction of lucky droplets in $3$D}
 \label{lucky-3d-grwth}
@@ -623,7 +623,7 @@ At a first glance of Fig. \ref{lucky-3d-grwth}, the results for $2$D still holds
 We can make significant progress if we statistically model the small particles. That is not always easy. Preferential clustering of inertial particles introduce spatial correlations in their number density. This is different from tracers that randomly distribute themselves in an incompressible homogenous isotropic flow, making their number density follow a Poisson distribution. Large Stokes particles also follow this as they are almost ballistic and randomly run around in the flow. Tiny Stokes particles following Eq. \eqref{lucky-3Deqns} are also tracerlike, with perturbations proportional to the flow acceleration. And, if the maximum flow acceleration is much smaller than the Stokes number, the small Stokes particles \emph{almost} distribute themselves like tracer.
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\linewidth]{figures/polydisperse/dist-nbin-256.png}
+		\includegraphics[width=\linewidth]{./figures/polydisperse/dist-nbin-256.png}
 	\end{center}
 \caption{Binned number density if Lagrangian tiny particles following Eq. \eqref{lucky-3Deqns}. A total of $4\times 128^3$ particles are binned in $256^3$ grid.}
 \label{lucky-nbin-dist-256}
@@ -636,7 +636,7 @@ This is evident in Fig. \ref{lucky-nbin-dist-256} where the number density of $4
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\linewidth]{figures/polydisperse/poisson-check.png}
+		\includegraphics[width=\linewidth]{./figures/polydisperse/poisson-check.png}
 	\end{center}
 \caption{Structure of binned number density and the Poisson distribution across different number of bins. The number density (blue) deviates from the Poisson distribution (orange) at large scales due to deviation from tracer trajectories. }
 \label{lucky-poisson-check}
@@ -646,7 +646,7 @@ Note that at larger scales, the number density does not obey a Poisson distribut
 
 This insight allows us to modify Eq. \eqref{lucky-3Deqns}. We do not evolve the number density of the small particles anymore, rather we draw the number of particles each lucky droplet encounters in a given $\delta t$ from a Poisson distribution. We still have to evolve the $\vec{v}_s$ equation, and interpolate at the location of the lucky droplets. The result with this is significantly different from the \begin{figure}
 	\begin{center}
-		\includegraphics[width=\linewidth]{figures/polydisperse/det-v-stoch.png}
+		\includegraphics[width=\linewidth]{./figures/polydisperse/det-v-stoch.png}
 	\end{center}
 \caption{Growth Rate of deterministic v stochastic simulations.}
 % \label{}
@@ -654,7 +654,7 @@ This insight allows us to modify Eq. \eqref{lucky-3Deqns}. We do not evolve the 
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\linewidth]{figures/polydisperse/stoch-v-m.png}
+		\includegraphics[width=\linewidth]{./figures/polydisperse/stoch-v-m.png}
 	\end{center}
 \caption{Comparison of growth rate after varying small particle number density.}
 % \label{}
@@ -663,7 +663,7 @@ This insight allows us to modify Eq. \eqref{lucky-3Deqns}. We do not evolve the 
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\linewidth]{figures/polydisperse/nfield-dits.png}
+		\includegraphics[width=\linewidth]{./figures/polydisperse/nfield-dits.png}
 	\end{center}
 \caption{Snapshot of the number density field evolved from continuum models (left). Its distribution (right) follows a perfect Gaussian with unit mean and standard deviation obtained from the data. }
 \label{}

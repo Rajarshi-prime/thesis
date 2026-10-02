@@ -414,7 +414,7 @@ where $\dot{(.)}\equiv d(.)/dt$.
 
 \begin{figure}[b]
 \begin{center}
-\includegraphics[width = 0.8 \linewidth]{figures/active_caustics/density_fluctuation_measure.jpg}
+\includegraphics[width = 0.8 \linewidth]{./figures/active_caustics/density_fluctuation_measure.jpg}
 %\hspace{0cm}\newline
 \caption{\label{act-fig:3}\textbf{Number-density fluctuations:} The fluctuations saturate as a function of time as the particulate structure evolves from a uniformly random state to exhibiting caustics. Red and blue curves correspond to $\ell^2/w_{0}^{2} = 2 \times 10^{3}$ and $\ell^{2}/w_{0}^{2} = 0$ respectively. The activity $\beta/\kappa = 236$ in both cases. The top and bottom panels on the right correspond to the top and bottom curves on the left respectively. }
 \end{center}
@@ -462,7 +462,7 @@ By calculating the divergence of crossing time, for a fixed $\tilde{\beta} =1.0$
 
 \begin{figure}[t]
 \begin{center}
-\includegraphics[width = 0.7 \linewidth]{figures/active_caustics/collision_schematic.jpeg}
+\includegraphics[width = 0.7 \linewidth]{./figures/active_caustics/collision_schematic.jpeg}
 %\hspace{0cm}\newline
 \caption{\label{act-fig:collision}\textbf{Collisions:} A schematic of (a) colliding (red) and (b) non-colliding (grey) pairs of particles, where the intersection of paths within the numerical time step $\Delta t$ marks the collision event.}
 \end{center}
@@ -526,7 +526,7 @@ where $c_s(r_b) = c_s(0,r_s(0))\left( r_b^8/r_s(0)^8 \right)$, such that $r_s(t)
 Turns out in $3$D, the number density field does not behave as well as in $2$D. Fig. \ref{lucky-n-snp} shows the difference in physical structure, and Fig. \ref{lucky-n-spectra-slope}(right) compares the field spectra with the Lagrangian spectra.
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\linewidth]{figures/polydisperse/n-snapshot-st-0.001.png}
+		\includegraphics[width=\linewidth]{./figures/polydisperse/n-snapshot-st-0.001.png}
 	\end{center}
 \caption{Y-Z snapshot of the number density field for the cases. $St = 0.001$}
 \label{lucky-n-snp}
@@ -535,7 +535,7 @@ Turns out in $3$D, the number density field does not behave as well as in $2$D. 
 There are also differences when one directly bins or smears the distribution using a Dirac-delta function approximated over the grid-points. In Fig. \ref{lucky-n-spectra-slope}(left) are the two spectra for the binned and the Delta-function smeared number density. We see that the small scale large $k$ magnitudes differ. This happens for two reasons. First, the binned version is not inherently periodic, while the Delta-function smeared one is. Secondly, the binned one is much more susceptible to particle position, and does not take into account the position of each particle within the grid causing larger fluctuations between grid points.
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\linewidth]{figures/polydisperse/n-spectra-slope.png}
+		\includegraphics[width=\linewidth]{./figures/polydisperse/n-spectra-slope.png}
 	\end{center}
 \caption{(left) Delta-smeared v binned spectra of the number density. (right) Comparing spectra from lagrangian evolution, then binning v evolving the field equations of the $n$ field.}
 \label{lucky-n-spectra-slope}
@@ -543,7 +543,7 @@ There are also differences when one directly bins or smears the distribution usi
 However, such small difference in large $k$ amplitude considerably changes the structure of the field, which Fig. \ref{lucky-struc-binned-v-smeared} clearly shows in its difference in the limits of the colorbar.
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\linewidth]{figures/polydisperse/binned-v-smeared-comp.png}
+		\includegraphics[width=\linewidth]{./figures/polydisperse/binned-v-smeared-comp.png}
 	\end{center}
 \caption{Physical structure of the $n$ field compared between smearing delta-function and naive binning. The particle follows slow-manifold approximation with $St = 0.001$.}
 \label{lucky-struc-binned-v-smeared}
@@ -553,7 +553,7 @@ However, such small difference in large $k$ amplitude considerably changes the s
 \section{Correlation of the local number density across Stokes number}
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\linewidth]{figures/polydisperse/dist-nbin-128.png}
+		\includegraphics[width=\linewidth]{./figures/polydisperse/dist-nbin-128.png}
 	\end{center}
 \caption{Same as Fig. \ref{lucky-nbin-dist-256} but the number of bins is $128^3$.}
 \label{lucky-nbin-dist-128}
@@ -561,7 +561,7 @@ However, such small difference in large $k$ amplitude considerably changes the s
 
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\linewidth]{figures/polydisperse/grad-corr.png}
+		\includegraphics[width=\linewidth]{./figures/polydisperse/grad-corr.png}
 	\end{center}
 \caption{Binned number density with background gradients. Nbins  = $128^3$ }
 \label{lucky-grad-corr}
@@ -577,7 +577,7 @@ What if the number density was spatially correlated? Well we could investigate w
 where $\bar{\lambda}$ is the average number of particles per unit grid. Such a distribution looks like as given below.
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\linewidth]{figures/polydisperse/gen-corr.png}
+		\includegraphics[width=\linewidth]{./figures/polydisperse/gen-corr.png}
 	\end{center}
 \caption{Comparing correlated distribution generated from Eq. \eqref{lucky-gen-pois} with field gradients and actual distribution of $St = 0.01$ slow manifold particles. }
 \label{}
@@ -613,7 +613,7 @@ where $\varphi$, and $d_s$ are the volume fraction and diameter of the small par
 In the stochastic process, this is how the mass of the large particles are evolved.
 \begin{figure}[h]
 \centering
-\includegraphics[width = \linewidth]{figures/polydisperse/stochastic-collision.pdf}
+\includegraphics[width = \linewidth]{./figures/polydisperse/stochastic-collision.pdf}
 \caption{Flowchart of stochastic collisions of big particles.}
 \end{figure}
 \section{Conversion between number density, number density used in code and number of particles}
@@ -667,7 +667,7 @@ Another alternate, suggested by ChatGPT and Claude, where the  general version i
 \begin{figure}
 \begin{minipage}{0.45\textwidth}
     \begin{center}
-		\includegraphics[width=\linewidth]{figures/polydisperse/log_comp.png}
+		\includegraphics[width=\linewidth]{./figures/polydisperse/log_comp.png}
 	\end{center}
 \caption{Comparing fluctuations in of evolution of $g$ in Eq. \eqref{lucky-log-cont} v continuity equation of Eq. \eqref{lucky-3Deqns} and clipping. The fluctuations differ by orders of magnitude and is mostly incorrect. }
 \label{lucky-log_comp}
@@ -675,7 +675,7 @@ Another alternate, suggested by ChatGPT and Claude, where the  general version i
 \hfill
 \begin{minipage}{0.45\textwidth}
     \begin{center}
-		\includegraphics[width=\linewidth]{figures/polydisperse/comp-cai-v-my-unclipped.png}
+		\includegraphics[width=\linewidth]{./figures/polydisperse/comp-cai-v-my-unclipped.png}
 	\end{center}
     \caption{Comparison of the number density spectra of unclipped (\textcolor{Green}{green}) old clipping mechanism (\textcolor{red}{red}) and that of \cite{cai2024}(\textcolor{blue}{blue}).}
     \label{lucky-comp-cai-v-my-unclipped}
@@ -685,7 +685,7 @@ Another alternate, suggested by ChatGPT and Claude, where the  general version i
 Yet another way, suggested by Rama, is not to clip the number density after it goes to zero, but before that. Once the number-density (which is a continuous variable) dips below the value of $1$ particle in a grid i.e., $n(x) < 1/(\Delta x\Delta y\Delta z)$, impose $n(x)\equiv 0$. This method is rooted in reality, but unfortunately decreases the fluctuations even further, as seen Fig. \ref{lucky-clipping-comp}
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=\linewidth]{figures/polydisperse/clipping-comp.png}
+		\includegraphics[width=\linewidth]{./figures/polydisperse/clipping-comp.png}
 	\end{center}
 \caption{Comparing the effects of different clipping on the fluctuations in the number density. New clipping corresponds to the algorithm of \cite{cai2024}. This makes me happy with the old one. In the `nocap' case, 7\% of the number density field is negative. }
 \label{lucky-clipping-comp}
