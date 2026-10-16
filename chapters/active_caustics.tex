@@ -24,7 +24,7 @@ Biological motility in a fluid medium \cite{Tuval2020} is dynamic, and flows can
  \begin{center}
  \includegraphics[width = 1.0 \textwidth]{./figures/active_caustics/Fig1prx.jpeg}
  %\hspace{0cm}\newline
- \caption{\label{act-Fig1} \textbf{Active dimer model for self-propelled particles in ambient flow} (a) We depict typical values of the ratio of flow time scale $1/\norm{\nabla \vect{U}}$ to swimming time scale $1/\beta$, and Reynolds number $Re$ for a marine bacterium \textit{Vibrio alginolyticus} \cite{%10.7554/eLife.22140, 
+ \caption[Active dimer model for self-propelled particles in an ambient flow]{\label{act-Fig1} \textbf{Active dimer model for self-propelled particles in ambient flow} (a) We depict typical values of the ratio of flow time scale $1/\norm{\nabla \vect{U}}$ to swimming time scale $1/\beta$, and Reynolds number $Re$ for a marine bacterium \textit{Vibrio alginolyticus} \cite{%10.7554/eLife.22140, 
  doi:10.1073/pnas.1602307113}, various dinoflagellates, ciliates \cite{Lauga2019}, invertebrate larvae \cite{FUCHS2016109} and copepods \cite{FUCHS2016109}. For $\norm{\nabla \vect{U}}$ we substitute the Kolmogorov shear rate for the range of previously measured energy dissipation rates in the upper mixed layer of the ocean $10^{-8} - 10^{-6}$ m$^{2}$s$^{-3}$ \cite{StockerARFM2012} [see Appendix B]. (b) Schematic of an active dimer of extension $\vect{w}$ in a flow $\vect{U}$. (c) Caustics based on the inner solution are marked by the intersection of representative trajectories (blue circles) of particles starting at closely separated initial radial distances, with $\alpha = 0.1$. A continuous variation in $\tilde{r}_0$ would give a continuous curve. The inset (Photo credit: R. Chajwa) is an image of optical caustics with a similar cusp on the surface of coffee in a mug.} %\remarkSR{Check source for coffee photo or take a photo yourself.}}  -- This is my own coffee mug :) 
  \label{act-Figure1}
  \end{center}
@@ -164,14 +164,14 @@ For all activity values, the inner solution in dashed lines matches well when $r
 \centering
 \includegraphics[width = 0.8 \textwidth]{./figures/active_caustics/inner_outer.pdf}
 
-\caption{\textbf{Comparison between asymptotic analysis and full numerical solution:}(a,b) Comparing trajectories obtained analytically from the inner solution in \eqref{act-eqn:5.13b} (dashed lines), and from evolving the full system following \eqref{act-eqn:rLeqns} (curves). Both the radial velocity in (a) and angular momentum in (b) follow the analytical solution till particles reach $O(1)$ distance from the vortex origin, where the inner solution is no longer valid. (c,d) The outer solution in black dotted lines following \eqref{act-eqn:osol} also matches well with the numerical solution of the full system at late times. At such times, particles are far away from the vortex origin (c), and their angular momentum saturates to the background fluid angular velocity (d).}\label{act-io}
+\caption[Asymptotic inner and outer solutions of Hookean dimers compared with full numerics]{\textbf{Comparison between asymptotic analysis and full numerical solution:}(a,b) Comparing trajectories obtained analytically from the inner solution in \eqref{act-eqn:5.13b} (dashed lines), and from evolving the full system following \eqref{act-eqn:rLeqns} (curves). Both the radial velocity in (a) and angular momentum in (b) follow the analytical solution till particles reach $O(1)$ distance from the vortex origin, where the inner solution is no longer valid. (c,d) The outer solution in black dotted lines following \eqref{act-eqn:osol} also matches well with the numerical solution of the full system at late times. At such times, particles are far away from the vortex origin (c), and their angular momentum saturates to the background fluid angular velocity (d).}\label{act-io}
 \end{figure}
 
 \begin{figure}[t]
       \begin{center}
       \includegraphics[width = 0.6 \textwidth]{./figures/active_caustics/Figure2mod.jpeg}
       %\hspace{0cm}\newline
-      \caption{\label{act-caustics_regime} \textbf{Centrifugation and caustics of a Hookean dimers in point vortex}:  (a) Time frames showing the positions of the particles (blue dots) around a point vortex at the origin for IP and noiseless AOUP, by numerically solving the GMR \cite{gatignol1983,MR1983} equation, and \eqref{act-eqn:dimerX} \& \eqref{act-eqn:dimerw}, respectively [see Appendix \ref{act-videos} Video 1]. $N=10^{5}$ particles were initialised with uniformly random initial positions and orientations/velocities. (b) An initially homogeneous number-density (grey circles) peaks near a critical radial distance (green) in the steady state, compared to unsteady density of IP (purple) at a representative $t \gg 1$. (c) Trajectory (rays) of particles averaged over all initial orientations. The envelope of rays, for particles starting at various initial $r$, gives rise to caustics (red circles). The green curve shows $R = t^{\nu}$, with $\nu =2/3$. In (b), (c) \& (d), $\alpha=1$. (d) 
+      \caption[Centrifugation and caustics of Hookean dimers in a point vortex]{\label{act-caustics_regime} \textbf{Centrifugation and caustics of a Hookean dimers in point vortex}:  (a) Time frames showing the positions of the particles (blue dots) around a point vortex at the origin for IP and noiseless AOUP, by numerically solving the GMR \cite{gatignol1983,MR1983} equation, and \eqref{act-eqn:dimerX} \& \eqref{act-eqn:dimerw}, respectively [see Appendix \ref{act-videos} Video 1]. $N=10^{5}$ particles were initialised with uniformly random initial positions and orientations/velocities. (b) An initially homogeneous number-density (grey circles) peaks near a critical radial distance (green) in the steady state, compared to unsteady density of IP (purple) at a representative $t \gg 1$. (c) Trajectory (rays) of particles averaged over all initial orientations. The envelope of rays, for particles starting at various initial $r$, gives rise to caustics (red circles). The green curve shows $R = t^{\nu}$, with $\nu =2/3$. In (b), (c) \& (d), $\alpha=1$. (d) 
       The crossing time of adjacent rays separated by $\Delta r = 0.001$ starting at various radial distances $r$, averaged over uniformly random initial orientations, diverges at a finite critical radius $r_c$ for an active particle (red) and for an inertial particle (blue) averaged over uniformly random initial velocity of unit magnitude. (e) For various $\alpha$, plotting $r_c$ demarcates the region of caustics, which is the radial distance below which adjacent rays cross each other in a finite time. } 
       %(d) Caustics phase diagram in the $R_0-\alpha$ plane.}
       \end{center}
@@ -251,7 +251,7 @@ Furthermore, $\textbf{Z}$ at a single point quantifies the differences in partic
     \begin{figure}[t]
         \centering
         \includegraphics[width = 0.9 \linewidth]{./figures/active_caustics/pt_vrtx_results.pdf}
-        \caption{ \textbf{Caustics in continuum limit:} (a) Caustics times for particles starting from different initial radii as obtained from trajectories obeying equations \eqref{act-nd_prtclEvol} (triangles), and from blowup of Tr$(\textbf{Z})$ by evolving \eqref{act-nd_ZEvol} (squares). The two definitions of caustics give the same answer. (b) Average final radius for a range of initial radius, for different activity levels $\alpha$, of particles starting near a point vortex. }\label{act-pt_vortex}
+        \caption[Caustics of Hookean dimers in the continuum limit near a point vortex]{ \textbf{Caustics in continuum limit:} (a) Caustics times for particles starting from different initial radii as obtained from trajectories obeying equations \eqref{act-nd_prtclEvol} (triangles), and from blowup of Tr$(\textbf{Z})$ by evolving \eqref{act-nd_ZEvol} (squares). The two definitions of caustics give the same answer. (b) Average final radius for a range of initial radius, for different activity levels $\alpha$, of particles starting near a point vortex. }\label{act-pt_vortex}
     \end{figure}
 In the following, we show caustics formation by active Hookean Dimers near a point vortex using both equations \eqref{act-eom_act} and \eqref{act-zevol_act} and confirm that they both yield the same result. We consider fore-aft symmetric particles without external forcing i.e., $\ell = \textbf{F}_{\textnormal{eff}} = 0$, just as in Section \ref{act-sbp}. Using the characteristic length and timescale of $\sqrt{\tilde{\Gamma \tau}}$ and $\tau$, respectively, equation \eqref{act-eom_act} reduces to the non-dimensional form
     \begin{align}
@@ -309,7 +309,7 @@ Equations \eqref{act-eqn:dimerX5} and \eqref{act-eqn:dimerX6} describe an active
       \begin{center}
       \includegraphics[width = 0.6 \textwidth]{./figures/active_caustics/ABP1.jpg}
       %\hspace{0cm}\newline
-      \caption{\label{act-fig:abp1}\textbf{Centrifugation and caustics of active preferred-length dimers in a point vortex}: (a) \& (b) show time frames of particle positions around a point vortex for inertial particles and preferred-length dimers (or ABP without noise) respectively, shown for $\tilde{\beta} = 0.5$ and $\alpha=1.0$ in \eqref{act-eqn:dimerX5} - \eqref{act-eqn:dimerX6}. (c) radial number-density of active particles (green) compared with inertial particles (purple) shown for time $10\tau$, and the number-density at $t=0$ (grey). Arrows schematically depict the radial drift of the unsteady state. (d) Intersections of adjacent trajectories marking the caustics curve (red circles) obtained for $\tilde{\beta} = 0.5$, $\alpha = 1.0$ and $\Delta r = 0.01$.} 
+      \caption[Centrifugation and caustics of preferred-length active dimers]{\label{act-fig:abp1}\textbf{Centrifugation and caustics of active preferred-length dimers in a point vortex}: (a) \& (b) show time frames of particle positions around a point vortex for inertial particles and preferred-length dimers (or ABP without noise) respectively, shown for $\tilde{\beta} = 0.5$ and $\alpha=1.0$ in \eqref{act-eqn:dimerX5} - \eqref{act-eqn:dimerX6}. (c) radial number-density of active particles (green) compared with inertial particles (purple) shown for time $10\tau$, and the number-density at $t=0$ (grey). Arrows schematically depict the radial drift of the unsteady state. (d) Intersections of adjacent trajectories marking the caustics curve (red circles) obtained for $\tilde{\beta} = 0.5$, $\alpha = 1.0$ and $\Delta r = 0.01$.} 
       %(d) Caustics phase diagram in the $R_0-\alpha$ plane.}
       \end{center}
 \end{figure} 
@@ -347,7 +347,7 @@ To study the dynamics of a collection of ABPs in unsteady vortical flows, we wri
     \bottomrule
     \end{tabular}
     
-    \caption{Spectral parameters for the Direct Numerical Simulations}
+    \caption[Spectral parameters for the direct numerical simulations]{Spectral parameters for the Direct Numerical Simulations}
     \label{act-dns}
     \end{table}
 This gives the flow velocity field $\vect{U}$ that drives the particle dynamics. A one-way coupling is assumed, wherein the ambient flow stirs the particles but particles do not generate flows. We use $w_{0}$ and the inverse of the root-mean-square velocity gradient 
@@ -360,7 +360,7 @@ We fix $\alpha = 1$, which in the geometric interpretation of \cite{Jeffery1922}
           \begin{center}
           \includegraphics[width = 1.0 \textwidth]{./figures/active_caustics/Fig3_nondimensional.jpeg}
           %\hspace{0cm} \newline 
-          \caption{\label{act-Fig3} \textbf{Caustics in turbulent flow.} The blue-yellow colorbar represents the vorticity magnitude in the ambient turbulent flow scaled by the root-mean-square velocity gradient $\kappa = 0.8454$s$^{-1}$ 
+          \caption[Caustics of active dimers in a turbulent flow]{\label{act-Fig3} \textbf{Caustics in turbulent flow.} The blue-yellow colorbar represents the vorticity magnitude in the ambient turbulent flow scaled by the root-mean-square velocity gradient $\kappa = 0.8454$s$^{-1}$ 
           and black speckles are the locations of the geometric centers of $10^{5}$ active dimers with preferred length $w_{0} = 500 \mu m$. (a) $\ell^2/w_{0}^{2} = 2 \times 10^{3}$ with (from left to right) $\beta/\kappa = 23.6$,  $236$, and $2360$.
           (b) $\ell^2/w_{0}^{2} = 0$ with (left to right) $\beta/\kappa = 23.6$,  $236$, and $2360$.  
           For intermediate activity the particles display pronounced caustics [see Appendix \ref{act-videos} Video 3 \& Video 4].(c) heat-map of the number-density fluctuation plotted in $(\beta/\kappa, \ell^{2}/w_{0}^{2})$ plane. For comparison with plankton motility see Fig. \ref{act-Fig1} (a).
@@ -380,7 +380,7 @@ To explore the relevance of our results in marine ecosystems, we plot the typica
 \begin{figure}[t]
         \centering
         \includegraphics[width = 0.8\linewidth]{./figures/active_caustics/FigNoise.jpg}
-        \caption{\textbf{Effect of Orientational Noise.} Dynamics with noise in equation \eqref{act-eqn:dimerX6} for (a) $\sqrt{2D/w_{0}^2\kappa} = 0.91$ and (b) $\sqrt{2D/w_{0}^2\kappa} = 9.19$, shows softening of caustics with the coarse structure retained [see Appendix \ref{act-videos} Video 6]. The color-bar for the background vorticity field is the same as Fig. \ref{act-Fig3} (a)\&(b).}\label{act-caustics_noise}
+        \caption[Effect of orientational noise on caustics]{\textbf{Effect of Orientational Noise.} Dynamics with noise in equation \eqref{act-eqn:dimerX6} for (a) $\sqrt{2D/w_{0}^2\kappa} = 0.91$ and (b) $\sqrt{2D/w_{0}^2\kappa} = 9.19$, shows softening of caustics with the coarse structure retained [see Appendix \ref{act-videos} Video 6]. The color-bar for the background vorticity field is the same as Fig. \ref{act-Fig3} (a)\&(b).}\label{act-caustics_noise}
     \end{figure}
 
 \section{Conclusions}
