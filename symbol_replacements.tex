@@ -1,0 +1,242 @@
+% Reading copy of symbol_replacements.md. Not subfiled into main.tex,
+% compile on its own. The markdown file is the one the agents read. Keep the
+% two the same.
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=2.0cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{bm}
+\usepackage{mathrsfs}
+\usepackage{ar}
+
+\newcommand{\mb}[1]{\mathbb{#1}}
+\renewcommand{\vec}[1]{\boldsymbol{#1}}
+
+\newcommand{\chg}{\textbf{change}}
+\newcommand{\kp}{keep}
+
+\title{Planned symbol replacements}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+Every symbol replacement, grouped by the chapter file that has to be edited.
+A row marked \chg\ needs an edit in that chapter. A row marked \kp\ is listed
+so the reason for leaving it alone is on record.
+
+\begingroup
+\renewcommand{\arraystretch}{1.3}
+
+\section*{\texttt{chapters/internal\_tide\_eddy.tex}}
+
+\begin{longtable}{@{}p{3.1cm} p{3.1cm} p{8.6cm} p{1.6cm}@{}}
+\toprule
+Current & Proposed & Meaning & Status \\
+\midrule
+\endfirsthead
+\toprule
+Current & Proposed & Meaning & Status \\
+\midrule
+\endhead
+$\alpha$ & $\AR$ & Ratio of buoyancy to inertial frequency, $N/f$, fixed at $20$ & \chg \\
+$\ell$ & $\ell$ & Filtering length scale, with $k_\ell = 2\pi/\ell$ & \kp \\
+$L$ & $L$ & Horizontal length scale & \kp \\
+$H$ & $H$ & Vertical length scale & \kp \\
+$\omega$, $\omega_0$, $\omega_c$ & same & Wave frequency, tidal forcing frequency, slow-fast cut-off & \kp \\
+$\Omega$ & $\Omega$ & Rotation rate of the Earth & \kp \\
+$N$ & $N$ & Buoyancy frequency & \kp \\
+$\vec{v}$ & $\vec{v}_{\rm 2D}$ & Horizontal fluid velocity $(u,v)$ & \chg \\
+$\bm{u}$ & $\vec{u}$ & Three-dimensional velocity. Every chapter now writes the fluid velocity $\vec{u}$ & \chg \\
+$U$ & $U$ & Horizontal velocity scale & \kp \\
+$p$ & $\mathcal{P}$ & Pressure & \chg \\
+$D$ & $V$ & Domain of integration & \chg \\
+$D$, $\hat{D}(k_h,t)$ & same & Net flow dissipation. The letter is free once the domain becomes $V$. The $\epsilon$ of the other chapters is dissipation per unit mass, a different quantity & \kp \\
+$T$, $T_i$ & same & Nonlinear energy transfer & \kp \\
+$\varphi$ & $\varphi$ & Cumulative flux fraction & \kp \\
+$\xi$ & $\varXi$ & Placeholder field whose flux fraction is computed & \chg \\
+$\nu$ & $\nu_{\rm hyp}$ & Hyperviscosity multiplying $\Delta^8$ & \chg \\
+$w$ & $w$ & Vertical velocity & \kp \\
+$\theta$, $\theta_{k_h}$ & same & Latitude, azimuthal angle in wavenumber space & \kp \\
+$E$, $\hat{E}(k_h,t)$ & same & Domain-integrated energy and horizontal spectrum & \kp \\
+$\Pi$, $\Pi_\ell$ & same & Spectral flux, physical-space flux at scale $\ell$ & \kp \\
+$\vec{F}_{\vec{v}}$, $F_w$, $F_b$, $\hat{F}$ & same & Forcing terms and power input spectrum & \kp \\
+The hat accent & same & A Fourier amplitude here, as in $\hat{u}$, $\hat{E}(k_h)$. The chapter's own \verb|\widehat| redefinition stays & \kp \\
+The overbar & same & A time average. The other chapters keep angle brackets & \kp \\
+\bottomrule
+\end{longtable}
+
+\section*{\texttt{chapters/thermalization.tex}}
+
+\begin{longtable}{@{}p{3.1cm} p{3.1cm} p{8.6cm} p{1.6cm}@{}}
+\toprule
+Current & Proposed & Meaning & Status \\
+\midrule
+\endfirsthead
+\toprule
+Current & Proposed & Meaning & Status \\
+\midrule
+\endhead
+$H$ & $\mb{H}$ & Hamiltonian & \chg \\
+$\mathcal{H}$ & $\mathcal{H}$ & Helicity & \kp \\
+$\Omega$, $\Omega_\infty$ & $\mathcal{Z}$, $\mathcal{Z}_\infty$ & Enstrophy & \chg \\
+$N$ & $N_g$ & Collocation points per direction & \chg \\
+$N_{\rm G}$ & $N_{\rm G}$ & Number of retained modes. Upright against the italic $N_g$ of the collocation points, so the two are told apart by shape as well as case & \kp \\
+$\mathbf{v}$ & $\mathbf{u}$ & Galerkin-truncated velocity. It becomes a $u$ so that both fields carry the same letter & \chg \\
+$\mathbf{u}$ & $\vec{u}$ & Untruncated Euler velocity. Upright marks the truncated field, italic the untruncated one & \chg \\
+$P$ & $\mathcal{P}$ & Pressure & \chg \\
+$\mathcal{P}_{\mathbf{K}_{\rm G}}$ & $\mb{P}_{\mathbf{K}_{\rm G}}$ & Galerkin projector, moved aside to free $\mathcal{P}$ & \chg \\
+$\mathbf{p}$, $\mathbf{q}$ & same & Wavevectors in the convolution sum. Bold upright, against the bold italic $\vec{p}$ that \texttt{polydisperse\_lucky\_drops} uses for linear momentum. Every spectral quantity here carries a hat, so the bare bold letters read as wavevectors & \kp \\
+$T(k)$ & $T(k)$ & Transfer term & \kp \\
+$t_b$ & $t_b$ & Birth time of the oscillatory structures & \kp \\
+$t_c$ & $t_{\rm cas}$ & Cascade completion time & \chg \\
+$t_*$ & $t_*$ & Preshock time of the inviscid Burgers equation & \kp \\
+$\gamma$ & $\gamma$ & Spectral slope & \kp \\
+$\delta t$, $\Delta_0 E$, $\Delta_0\mathcal{H}$ & same & Time step and relative errors & \kp \\
+$\epsilon$ & $\epsilon$ & Effective dissipation per unit mass, which is why it is not the $D$ of \texttt{internal\_tide\_eddy} & \kp \\
+$\nu$, $\nu_{\rm eff}$ & same & Kinematic and eddy viscosity & \kp \\
+$E$, $E(k)$ & $\mb{E}$, $\mb{E}(k)$ & Kinetic energy per unit mass and its isotropic spectrum. The blackboard letter marks energy per unit mass, as against the domain-integrated $E$ in \texttt{internal\_tide\_eddy} & \chg \\
+$\Pi(k)$ & $\Pi(k)$ & Kinetic energy flux & \kp \\
+The hat accent & same & A Fourier amplitude here, as in $\hat{\mathbf{v}}_{\mathbf{k}}$ & \kp \\
+$\langle\cdot\rangle$ & same & Averaging & \kp \\
+\bottomrule
+\end{longtable}
+
+\section*{\texttt{chapters/inertial\_caustics.tex}}
+
+\begin{longtable}{@{}p{3.1cm} p{3.1cm} p{8.6cm} p{1.6cm}@{}}
+\toprule
+Current & Proposed & Meaning & Status \\
+\midrule
+\endfirsthead
+\toprule
+Current & Proposed & Meaning & Status \\
+\midrule
+\endhead
+$\alpha$ & $\alpha$ & Density parameter, $2\rho/(2\rho+1)$ & \kp \\
+$\ell$ & $\mathfrak{l}$ & Inner region size, $\ell^2 = \tau\sqrt{3\alpha-2}$ & \chg \\
+$L$ & $L$ & Flow length scale & \kp \\
+$\mathscr{L}$ & $\mathscr{L}$ & Angular momentum per unit mass & \kp \\
+$\mb{A}$ & $\mb{A}$ & Fluid velocity gradient tensor, $St\,\nabla\vec{u}$, already \verb|\mathbb|, nothing to do. The plain letter A for avoider particles stands apart, the fonts differ & \kp \\
+$\mb{S}$ & $\mb{S}$ & Strain tensor, already \verb|\mathbb|, nothing to do & \kp \\
+$\mb{Z}$ & $\mb{Z}$ & Particle velocity gradient tensor, already \verb|\mathbb| & \kp \\
+$\omega$ & $\zeta$ & Vorticity & \chg \\
+$\vec{v}$ & $\vec{v}$ & Particle velocity & \kp \\
+$\vec{u}$ & $\vec{u}$ & Background fluid velocity at the particle & \kp \\
+Subscript $p$ & Subscript $p$ & Particle quantities, $\vec{x}_p$, $\rho_p$, $\tau_p$ & \kp \\
+$D/Dt$ & $D/Dt$ & Material derivative & \kp \\
+$T$, $T_c$ & $\mathcal{T}$, $\mathcal{T}_c$ & Rescaled inner time and caustics time in inner units & \chg \\
+$t_b$ & $t_{\rm th}$ & Time when $-\mb{Z}^2$ starts to dominate & \chg \\
+$t_c$ & $t_c$ & Caustics time & \kp \\
+$r_c$ & $r_c$ & Caustics radius & \kp \\
+$\mathcal{R}_{c0}$ & $\mathcal{R}_{c0}$ & Critical initial radius & \kp \\
+$\gamma$ & $\gamma_\epsilon$ & Linear drag coefficient & \chg \\
+$\sigma$, $\sigma_s$, $\sigma_n$ & same & Net, shear, and normal strain & \kp \\
+$\xi$ & $\xi$ & $1-\alpha$ & \kp \\
+$\delta$ & $\delta$ & Trace of $\mb{Z}$ & \kp \\
+$\epsilon$ & $\varepsilon$ & Separation between two particle rings & \chg \\
+$\nu$ & $\nu$ & Kinematic viscosity & \kp \\
+$\theta$, $\theta_v$ & $\vartheta$, $\vartheta_v$ & Polar angle, angle between particle velocity and the strain eigendirections & \chg \\
+$\hat{\theta}$, $\hat{e}_\pm$, $\hat{v}$ & $\vec{e}_\vartheta$, $\vec{e}_\pm$, $\vec{e}_v$ & Unit vectors. Every unit vector takes the $\vec{e}$ form, which frees the hat for Fourier amplitudes alone & \chg \\
+$f_\omega$ & $F_\zeta$ & Flow forcing. The subscript follows the vorticity to $\zeta$ & \chg \\
+$Q$ & $Q$ & Okubo-Weiss parameter, $-\mathrm{Tr}(\mb{A}^2)/2$. \texttt{active\_caustics} keeps its own $\mathcal{W}$ & \kp \\
+$\Gamma$ & $\Gamma$ & Circulation of the point vortex. \texttt{active\_caustics} keeps $\tilde{\Gamma} = \Gamma/2\pi$ & \kp \\
+$k_f$ & $k_f$ & Forcing wavenumber of the two-dimensional flow & \kp \\
+$\langle\cdot\rangle$ & same & Averaging & \kp \\
+\bottomrule
+\end{longtable}
+
+\section*{\texttt{chapters/active\_caustics.tex}}
+
+\begin{longtable}{@{}p{3.1cm} p{3.1cm} p{8.6cm} p{1.6cm}@{}}
+\toprule
+Current & Proposed & Meaning & Status \\
+\midrule
+\endfirsthead
+\toprule
+Current & Proposed & Meaning & Status \\
+\midrule
+\endhead
+$\alpha$ & $\alpha_{\rm act}$ & Jeffery-type response parameter & \chg \\
+$\ell$, and $\lambda$ in one place & $l$ & Polar flow-alignment length & \chg \\
+$L$ & $\mathscr{L}$ & Angular momentum per unit mass & \chg \\
+$\mathcal{H}$ & $\mb{H}$ & Effective Hamiltonian of the inner solution & \chg \\
+\verb|\textbf{A}| & $\mathbf{A}$ & Antisymmetric part of the velocity gradient, font made uniform & \chg \\
+\verb|\textbf{S}|, one \verb|\sf{S}|, $\tilde{S}$ & $\mathbf{S}$, $\tilde{\mathbf{S}}$ & Strain-rate tensor, font made uniform & \chg \\
+\verb|\textbf{Z}| & $\mathbf{Z}$ & Particle gradient tensor, font made uniform & \chg \\
+$\omega$ & $\zeta$ & Vorticity in the Okubo-Weiss parameter & \chg \\
+$N$ & $N_p$ & Number of particles & \chg \\
+$\mathbf{v}$ & $\vec{v}$ & Particle velocity, brought in line with the other chapters & \chg \\
+$\mathbf{U}$ & $\vec{u}$ & Background flow field, brought in line with the other chapters & \chg \\
+$U_0$ & $U_0$ & Scale of the background flow & \kp \\
+$p$ & $p_r$ & Radial momentum per unit mass, $d\tilde{r}/d\tilde{t}$ & \chg \\
+$D$ & $D_\eta$ & Noise strength in $\sqrt{2D}\,\bm{\eta}$ & \chg \\
+$D_t$ & $D_t$ & Fluid material derivative & \kp \\
+$t^*$ & $t^*$ & Matching time for the outer boundary conditions & \kp \\
+$r_c$ & $\mathcal{R}_{c0}$ & Critical initial radius beyond which caustics never form & \chg \\
+$\delta_i$, $\delta_o$ & same & Spatial stretching factors & \kp \\
+$\epsilon_i$, $\epsilon_o$ & $\varepsilon_i$, $\varepsilon_o$ & Temporal stretching factors & \chg \\
+$\nu$ & $\nu$ & Kinematic viscosity & \kp \\
+$\mathbf{w}$, $w_0$ & $\mathbf{w}$, upright $\rm w$ for the scalar & End-to-end extension of the dimer & \chg \\
+$\mu$ & $\mu$ & Stokesian mobility of the particle & \kp \\
+$\mu$ & $\mu_E$ & Ekman friction of the background flow, split off from the mobility & \chg \\
+$\theta$ & $\vartheta$ & Polar angle of the point-vortex coordinates & \chg \\
+$\hat{\theta}$ & $\vec{e}_\vartheta$ & Unit vector. Every unit vector takes the $\vec{e}$ form & \chg \\
+$q$ & $k_f$ & Forcing wavenumber, written $q$ in the text and $k_f$ in the table of spectral parameters & \chg \\
+$\vec{F}$, $\vec{F}_{\rm eff}$, $F_0$ & same & External force, effective force, forcing amplitude & \kp \\
+$\mathcal{W}$ & $\mathcal{W}$ & Okubo-Weiss parameter from dimensional gradients. It differs from the $Q$ of the other chapters by a positive constant and by $St^2$ & \kp \\
+$\tilde{\Gamma}$ & $\tilde{\Gamma}$ & Circulation, $\tilde{\Gamma} = \Gamma/2\pi$ & \kp \\
+$\tilde{O}$ & $\tilde{O}$ & Fluid velocity gradient tensor, $\tau\nabla\vec{u}$, the counterpart of $\mb{A}$ in \texttt{inertial\_caustics} & \kp \\
+$\Delta r$ & $\Delta r$ & Separation between two neighbouring particle rings & \kp \\
+$\langle\cdot\rangle$ & same & Averaging & \kp \\
+\bottomrule
+\end{longtable}
+
+\section*{\texttt{chapters/polydisperse\_lucky\_drops.tex}}
+
+\begin{longtable}{@{}p{3.1cm} p{3.1cm} p{8.6cm} p{1.6cm}@{}}
+\toprule
+Current & Proposed & Meaning & Status \\
+\midrule
+\endfirsthead
+\toprule
+Current & Proposed & Meaning & Status \\
+\midrule
+\endhead
+$\omega$, $\omega_{\rm rms}$ & $\zeta$, $\zeta_{\rm rms}$ & Vorticity, through the threshold $\omega > 2\omega_{\rm rms}$ & \chg \\
+$N$ & $N_g$ & Grid resolution & \chg \\
+$N_b$, $\dot{N}_c$ & same & Number of lucky drops, collision rate & \kp \\
+$\vec{v}$, $\vec{v}_s$, $\vec{v}_b$ & same & Particle velocity, small and big droplets & \kp \\
+$\vec{u}$ & $\vec{u}$ & Background fluid velocity at the particle & \kp \\
+$\vec{p}$, $P(m,t)$, $P_{cc}$ & same & Linear momentum, mass density, collision-coalescence probability & \kp \\
+$D/Dt$ & $D/Dt$ & Material derivative & \kp \\
+$\gamma$ & $\lambda_s$, $\alpha_g$ & Depletion rate of the small droplets, and the fitted growth exponent $t^{\alpha_g}$ & \chg \\
+$m$ & $m$ & Droplet mass & \kp \\
+$m$, $k_m$ & $\mathrm{m}$, $k_{\mathrm{m}}$ & Parameter setting the Kolmogorov length, $\eta_s = \mathrm{m}/k_{\mathrm{m}}$, made upright to part it from the mass & \chg \\
+$\sigma$, $\sigma_2$, $\sigma_3$ & $\varsigma$, $\varsigma_2$, $\varsigma_3$ & Collision cross-section in two and three dimensions. The chapter gives two disagreeing forms, and $\varsigma_3 = \pi(a_s+a_b)^2$ is the correct one & \chg \\
+$\varphi_s$, $\varphi_b$ & $c_s$, $c_b$ & Volume fraction of the small and the big droplets & \chg \\
+$\delta$, $\delta t$ & same & Dirac delta and time step & \kp \\
+$\epsilon$, $\varepsilon$ & $\epsilon$ & Mean energy dissipation rate of the cloud & \chg \\
+$\nu$ & $\nu$ & Kinematic viscosity & \kp \\
+$\mu$m & $\mu$m & Micrometre prefix only & \kp \\
+$Q$ & $Q$ & Okubo-Weiss parameter, same form as in \texttt{inertial\_caustics} & \kp \\
+$\langle\cdot\rangle$ & same & Averaging & \kp \\
+\bottomrule
+\end{longtable}
+
+\endgroup
+
+\section*{Notes}
+
+\begin{enumerate}
+  \item $\lambda_s$ for the depletion rate and $\alpha_g$ for the growth exponent in \texttt{polydisperse\_lucky\_drops} free $\gamma$ so it means the spectral slope in \texttt{thermalization} alone. $\beta$ was ruled out because \texttt{active\_caustics} already uses it for the swimming rate.
+  \item $\gamma_\epsilon$ is proposed for the drag in \texttt{inertial\_caustics} while $\epsilon$ in that chapter becomes $\varepsilon$.
+  \item $\mb{H}$ is proposed for the \texttt{thermalization} Hamiltonian and for the \texttt{active\_caustics} effective Hamiltonian. Both are Hamiltonians, so this is probably intended, but it should be stated rather than assumed.
+  \item $\AR$ comes from the \texttt{ar} package, which \texttt{preamble.tex} does not load. It has to be added before the replacement is made.
+  \item $N_g$ means collocation points in \texttt{thermalization} and grid resolution in \texttt{polydisperse\_lucky\_drops}. These are the same quantity, so the reuse looks deliberate.
+  \item In \texttt{chapters/inertial\_caustics.tex} the tensors are written \verb|\mb{A}|, \verb|\mb{S}|, \verb|\mb{Z}|, and \verb|\mb| is defined in \texttt{preamble.tex} as \verb|\mathbb|. In \texttt{chapters/active\_caustics.tex} the same tensors are written \verb|\textbf{A}|, \verb|\textbf{S}|, \verb|\textbf{Z}|, with one stray \verb|\sf{S}|.
+\end{enumerate}
+
+\end{document}
