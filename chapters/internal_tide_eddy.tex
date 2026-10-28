@@ -119,23 +119,23 @@ We use the nondimensional Boussinesq equation on an $f$-plane given by
 \begin{subequations}
  \label{edwv-bsnq}
  \begin{align}
- \Dp{\vec{v}}{t}{} + \hat{\vec{z}} \times \vec{v} + \del p + Ro \left( \vec{v}.\del + w\Dp{}{z}{}\right)\vec{v} &= \vec{F}_{\vec{v}}- \nu\Delta^{8} \vec{v}\\
- \Dp{w}{t}{} +\alpha^2 \left( \Dp{p}{z}{}-b\right) + Ro \left( \vec{v}.\del + w\Dp{}{z}{}\right) w &= F_w - \nu\Delta^{8} w\\
- \Dp{b}{t}{} + w + Ro \left( \vec{v}.\del + w\Dp{}{z}{}\right)b&= F_b -\nu\Delta^{8} b \\ 
- \del. \vec{v} + \Dp{w}{z}{} &= 0 \ ,
+ \Dp{\vec{v}_{\rm 2D}}{t}{} + \hat{\vec{z}} \times \vec{v}_{\rm 2D} + \del \mathcal{P} + Ro \left( \vec{v}_{\rm 2D}.\del + w\Dp{}{z}{}\right)\vec{v}_{\rm 2D} &= \vec{F}_{\vec{v}_{\rm 2D}}- \nu_{\rm hyp}\Delta^{8} \vec{v}_{\rm 2D}\\
+ \Dp{w}{t}{} +\AR^2 \left( \Dp{\mathcal{P}}{z}{}-b\right) + Ro \left( \vec{v}_{\rm 2D}.\del + w\Dp{}{z}{}\right) w &= F_w - \nu_{\rm hyp}\Delta^{8} w\\
+ \Dp{b}{t}{} + w + Ro \left( \vec{v}_{\rm 2D}.\del + w\Dp{}{z}{}\right)b&= F_b -\nu_{\rm hyp}\Delta^{8} b \\
+ \del. \vec{v}_{\rm 2D} + \Dp{w}{z}{} &= 0 \ ,
  \end{align}
 \end{subequations}
-where $\vec{v} = (u,v)$ is the horizontal velocity in the $x$ and $y$ directions respectively, $w$ is the vertical velocity in the $z$ direction, $b$ is the buoyancy, and $\nu$ is hyperviscosity multiplied with the eight power of the Laplacian operator $\Delta = \partial^2/\partial x^2 + \partial^2/\partial y^2 + \partial^2/\partial z^2$. $\del = \hat{\vec{x}}\partial/\partial x +\hat{\vec{y}} \partial/\partial y$ is the horizontal gradient operator. The `$F$' terms on the right-hand side of \eqref{edwv-bsnq} are forcing terms that inject energy into the flow. 
+where $\vec{v}_{\rm 2D} = (u,v)$ is the horizontal velocity in the $x$ and $y$ directions respectively, $w$ is the vertical velocity in the $z$ direction, $b$ is the buoyancy, and $\nu_{\rm hyp}$ is hyperviscosity multiplied with the eight power of the Laplacian operator $\Delta = \partial^2/\partial x^2 + \partial^2/\partial y^2 + \partial^2/\partial z^2$. $\del = \hat{\vec{x}}\partial/\partial x +\hat{\vec{y}} \partial/\partial y$ is the horizontal gradient operator. The `$F$' terms on the right-hand side of \eqref{edwv-bsnq} are forcing terms that inject energy into the flow. 
 
 
-To arrive at the nondimensional equations \eqref{edwv-bsnq}, we used the inverse of the inertial frequency, $1/f$, to scale time, a length scale $L$ to scale horizontal coordinates, and a velocity scale $U$ to scale horizontal velocity components. A length scale $H$ was used to scale the vertical coordinate, and then the continuity equation led to the scale for vertical velocity as $UH/L$. Using geostrophic and hydrostatic balance conditions gave us the scales for pressure and buoyancy as $fUL$ and $fUL/H$, respectively. From these scalings, the Rossby number, $Ro=U/fL$, while $\alpha=N/f$ is the ratio of constant buoyancy frequency $N$ and inertial frequency $f$. Based on observations indicating the buoyancy frequency typically to be an order of magnitude or more than the inertial frequency \citep{Emery_etal_1984, Li_etal_2020}, we set $\alpha=20$. In \eqref{edwv-bsnq}, increasing   $Ro$ increases the nonlinear interaction strengths of the flow, indicative of the transition from mesoscales to submesoscales in the ocean. %In physical systems, the rotation rate $f$ around a particular latitude is fixed, and so is the typical speed $U$ of the oceanic flows. Changing Rossby number represents changing the length scales of the flow. 
+To arrive at the nondimensional equations \eqref{edwv-bsnq}, we used the inverse of the inertial frequency, $1/f$, to scale time, a length scale $L$ to scale horizontal coordinates, and a velocity scale $U$ to scale horizontal velocity components. A length scale $H$ was used to scale the vertical coordinate, and then the continuity equation led to the scale for vertical velocity as $UH/L$. Using geostrophic and hydrostatic balance conditions gave us the scales for pressure and buoyancy as $fUL$ and $fUL/H$, respectively. From these scalings, the Rossby number, $Ro=U/fL$, while $\AR=N/f$ is the ratio of constant buoyancy frequency $N$ and inertial frequency $f$. Based on observations indicating the buoyancy frequency typically to be an order of magnitude or more than the inertial frequency \citep{Emery_etal_1984, Li_etal_2020}, we set $\AR=20$. In \eqref{edwv-bsnq}, increasing   $Ro$ increases the nonlinear interaction strengths of the flow, indicative of the transition from mesoscales to submesoscales in the ocean. %In physical systems, the rotation rate $f$ around a particular latitude is fixed, and so is the typical speed $U$ of the oceanic flows. Changing Rossby number represents changing the length scales of the flow. 
 
 In the absence of external forcing and viscous dissipation, \eqref{edwv-bsnq} conserves domain-integrated energy $E$ as 
 \begin{equation}
     \label{edwv-en}
-    \dd{E}{t}=0, \ E= \int_D \frac{1}{2} \left(  \bs v^2+  \frac{w^2}{\alpha^2} +  b^2 \right) dx dy dz ,
+    \dd{E}{t}=0, \ E= \int_V \frac{1}{2} \left(  \vec{v}_{\rm 2D}^2+  \frac{w^2}{\AR^2} +  b^2 \right) dx dy dz ,
 \end{equation}
-where $D$ is a shorthand for the domain. 
+where $V$ is a shorthand for the domain.
 
 
 %The flow has a total energy $E$ in the volume $V$, $E = \int dV \left( u^2 + v^2 + w^2/\alpha^2 + b^2 \right)/2$. 
@@ -153,16 +153,16 @@ This decomposition splits the net flow into a geostrophic component, denoted by 
 % Setting the time derivatives and all the nonlinear terms multiplied by $Ro$ in \eqref{edwv-bsnq} to zero, and dropping forcing and dissipation, gives us 
 \begin{equation}
     \label{edwv-gb}
-    \bsh z \times \bs v_g + \del p_g =0, \ \p p_g/\p z-b_g=0, \ w_g=0, \ \del \cdot \bs v_g=0 \ ,
+    \bsh z \times \vec{v}_{{\rm 2D},g} + \del \mathcal{P}_g =0, \ \p \mathcal{P}_g/\p z-b_g=0, \ w_g=0, \ \del \cdot \vec{v}_{{\rm 2D},g}=0 \ ,
 \end{equation}
-and a remaining ageostrophic component $\vec{v}_{a} = \vec{v} - \vec{v}_g, ~w_{a} = w - w_g = w,~ b_{a} = b - b_g $. Used commonly in the literature \citep{Bartello95, Embid_Majda_1998, Hernandez_Smith_Stechmann_2014, TD20}, this decomposition is advantageous for two reasons. First, for a given horizontal wavevector $\vec{k}_h=(k_x, k_y)$ and vertical wavenumber $k_z$, instantaneous energy of the net flow in the spectral space, $\hat{e}(\vec{k_h},k_z,t)$, can be decomposed into a geostrophic and an ageostrophic component, $\hat{e}_g(\vec{k_h},k_z,t)$ and $\hat{e}_a(\vec{k_h},k_z,t)$, respectively, with $\hat{e}_g + \hat{e}_a = \hat{e}$. The details of this orthogonality are given in appendix \ref{edwv-budet}. This allows us to force the geostrophic and the ageostrophic component separately during our simulation. Second, in the limit of zero Rossby number, i.e., in the linear equations, an unbalanced ageostrophic component with horizontal and vertical wavenumber $k_h$ and $k_z$ respectively coincides with a linear wave field with frequency $\omega = \alpha \sqrt{(k_h^2 + k_z^2)/(k_h^2 + \alpha^2 k_z^2)}$. 
+and a remaining ageostrophic component $\vec{v}_{{\rm 2D},a} = \vec{v}_{\rm 2D} - \vec{v}_{{\rm 2D},g}, ~w_{a} = w - w_g = w,~ b_{a} = b - b_g $. Used commonly in the literature \citep{Bartello95, Embid_Majda_1998, Hernandez_Smith_Stechmann_2014, TD20}, this decomposition is advantageous for two reasons. First, for a given horizontal wavevector $\vec{k}_h=(k_x, k_y)$ and vertical wavenumber $k_z$, instantaneous energy of the net flow in the spectral space, $\hat{e}(\vec{k_h},k_z,t)$, can be decomposed into a geostrophic and an ageostrophic component, $\hat{e}_g(\vec{k_h},k_z,t)$ and $\hat{e}_a(\vec{k_h},k_z,t)$, respectively, with $\hat{e}_g + \hat{e}_a = \hat{e}$. The details of this orthogonality are given in appendix \ref{edwv-budet}. This allows us to force the geostrophic and the ageostrophic component separately during our simulation. Second, in the limit of zero Rossby number, i.e., in the linear equations, an unbalanced ageostrophic component with horizontal and vertical wavenumber $k_h$ and $k_z$ respectively coincides with a linear wave field with frequency $\omega = \AR \sqrt{(k_h^2 + k_z^2)/(k_h^2 + \AR^2 k_z^2)}$.
 % \begin{align}
 %     \label{edwv-disp}
 %     \begin{split}
 %         \omega = \ \ .
 %     \end{split}
 % \end{align}
-The dimensional form of the above dispersion relation, with dimensional frequency $\omega^*$, and dimensional wavenumbers $k_h^*$, and $k_z^*$, is commonly used. It reads $\omega^* = \sqrt{(N^2 k_h^{*2} + f^2 k_z^{*2})/(k_h^{*2} + k_z^{*2})} $. The dispersion relation restricts the values of $\omega$ between $1$ and $\alpha$, corresponding to $\omega^*=f$ and $\omega^*=N$, respectively.
+The dimensional form of the above dispersion relation, with dimensional frequency $\omega^*$, and dimensional wavenumbers $k_h^*$, and $k_z^*$, is commonly used. It reads $\omega^* = \sqrt{(N^2 k_h^{*2} + f^2 k_z^{*2})/(k_h^{*2} + k_z^{*2})} $. The dispersion relation restricts the values of $\omega$ between $1$ and $\AR$, corresponding to $\omega^*=f$ and $\omega^*=N$, respectively.
 
 Since this decomposition is based on the linear equations, it is expected to do best at low Rossby numbers.  As part of this study, we will explore how this decomposition performs with increasing   Rossby number. 
 % Setting the time derivatives and all the nonlinear terms multiplied by $Ro$ in \eqref{edwv-bsnq} to zero, and dropping forcing and dissipation, gives us 
@@ -188,7 +188,7 @@ Since this decomposition is based on the linear equations, it is expected to do 
 % Since this decomposition is based on the linear equations, it is expected to do best at low Rossby numbers.  As part of this study, we will explore how this decomposition performs with increasing   Rossby number. 
 
 \subsubsection{Slow-fast decomposition}    \label{edwv-sfdcmp}
-A second decomposition we implement is the slow-fast decomposition. In this decomposition, we split flow fields based on a sharp frequency filter. Defining a cut-off frequency of $\omega_c = 0.5$, we set fields with frequencies greater than $\omega_c$ as fast, denoted with $\vec{v}_f,w_f, b_f$, while the fields with frequency less than $\omega_c$ are considered slow, denoted with $\vec{v}_s,w_s,b_s$. Different forms of slow-fast decompositions with sharp and smooth filters have been implemented in previous studies  \citep{BWM17, Taylor_Straub_2020, Arbic_2022, delpech_etal_2024}, and we will explore the features of the fields obtained with this decomposition against the linear geostrophic-ageostrophic decomposition described above.
+A second decomposition we implement is the slow-fast decomposition. In this decomposition, we split flow fields based on a sharp frequency filter. Defining a cut-off frequency of $\omega_c = 0.5$, we set fields with frequencies greater than $\omega_c$ as fast, denoted with $\vec{v}_{{\rm 2D},f},w_f, b_f$, while the fields with frequency less than $\omega_c$ are considered slow, denoted with $\vec{v}_{{\rm 2D},s},w_s,b_s$. Different forms of slow-fast decompositions with sharp and smooth filters have been implemented in previous studies  \citep{BWM17, Taylor_Straub_2020, Arbic_2022, delpech_etal_2024}, and we will explore the features of the fields obtained with this decomposition against the linear geostrophic-ageostrophic decomposition described above.
 
 
 Unlike the geostrophic-ageostrophic components, the slow and the fast energy, $\hat{e}_s (\vec{k_h},k_z,t)$ and $\hat{e}_f (\vec{k_h},k_z,t)$ respectively, do not add up to the instantaneous energy $\hat{e}$, i.e., $\hat{e}_s + \hat{e}_f \neq \hat{e}$. However, as shown in appendix \ref{edwv-sfdet}, for any two functions $\phi(t)$ and $\psi(t)$, the product of the fast and the slow components averaged over a time window vanishes, i.e. % of the Fourier transform 
@@ -202,12 +202,12 @@ Unlike the geostrophic-ageostrophic components, the slow and the fast energy, $\
 where $t_i$ is the initial time and $t_f$ is the final time of the time window used to split $\psi$ and $\phi$ into their slow-fast components $\phi_s,\psi_s$, and $\phi_f,\psi_f$, respectively. Using this, we can decompose the time-averaged energy spectra, spectral flux, nonlinear transfer, and the net dissipation into a slow and a fast component. For example, $\bar{\hat{e}_s} + \bar{\hat{e}_f} = \bar{\hat{e} } $, where $\bar{\phantom{\hat{e}_f}}$ denotes time average. We took a time window of $10\pi$ and an interval of $0.1$ to decompose the net flow in the results given below. This gave the lowest frequency of $0.2$ and the highest frequency of $10\pi \approx 31.4$. Note that the slow-fast decomposition is a data-driven frequency filter based approach and not rigorously derived like the wave-vortex decomposition. It would separate slow evolving eddies from fast motions evolving on inertial time scales and further. % leverages the empirical observation that eddies evolve slowly compared to the inertial timescale.
 
 \subsection{Numerical integration details} \label{edwv-intfrc}
-We numerically integrated \eqref{edwv-bsnq} using a pseudospectral scheme in a horizontally periodic domain $x,y\in [0,2\pi]$ and with rigid lids on top $z=0$ and bottom $z=-\pi$ using 384 spatial grid points in each direction. Time stepping was performed using RK4, and we set hyperviscosity, $\nu = 10^{-31}$, confining dissipation to the grid scale and thereby providing us with a broad inertial range.
+We numerically integrated \eqref{edwv-bsnq} using a pseudospectral scheme in a horizontally periodic domain $x,y\in [0,2\pi]$ and with rigid lids on top $z=0$ and bottom $z=-\pi$ using 384 spatial grid points in each direction. Time stepping was performed using RK4, and we set hyperviscosity, $\nu_{\rm hyp} = 10^{-31}$, confining dissipation to the grid scale and thereby providing us with a broad inertial range.
 
 
 The flow was initialized with a large-scale geostrophic component, in geostrophic and hydrostatic balance, ensuring that its horizontal and vertical wavenumbers were restricted below $6$. The remaining ageostrophic component was initially set to zero. %It gains energy from the forcing and eventually attains an energy $E_a$.
 Once numerical integrations began with this initialization, at each time step, we decomposed the flow into a geostrophic and an ageostrophic component using the linear geostrophic-ageostrophic decomposition discussed above and forced the two components separately. The forcing of the geostrophic component was proportional to the initial geostrophic flow with an appropriate coefficient to maintain equilibrium. 
-To mimic internal tide generation, the ageostrophic component was forced only at vertical mode 1, i.e., $k_z = 1$ along with horizontal wavenumbers $k_x,k_y = (\pm 1,\pm 1)$, leading to $k_h = \sqrt{k_x^2 + k_y^2} = \sqrt{2}$. Based on the linear wave dispersion relationship $\omega = \alpha \sqrt{(k_h^2 + k_z^2)/(k_h^2 + \alpha^2 k_z^2)}$, these wavenumbers would lead to a nondimensional frequency $\omega_0 = 1.73$. In dimensional units, with $f = 2\Omega \sin(\theta)$, where $\Omega = 1 \text{ day}^{-1}$ is the Earth's rotation rate, and $\theta$ is the considered latitude we get $\theta = 61^{\circ}$ for semidiurnal frequency $2 \text{ day}^{-1}$. Precise details regarding the geostrophic and the ageostrophic forcings are given in appendix \ref{edwv-fdets}. This forcing ensured the generation of geostrophic and tidal flow at the domain scale, with smaller scales being generated from nonlinear interactions.
+To mimic internal tide generation, the ageostrophic component was forced only at vertical mode 1, i.e., $k_z = 1$ along with horizontal wavenumbers $k_x,k_y = (\pm 1,\pm 1)$, leading to $k_h = \sqrt{k_x^2 + k_y^2} = \sqrt{2}$. Based on the linear wave dispersion relationship $\omega = \AR \sqrt{(k_h^2 + k_z^2)/(k_h^2 + \AR^2 k_z^2)}$, these wavenumbers would lead to a nondimensional frequency $\omega_0 = 1.73$. In dimensional units, with $f = 2\Omega \sin(\theta)$, where $\Omega = 1 \text{ day}^{-1}$ is the Earth's rotation rate, and $\theta$ is the considered latitude we get $\theta = 61^{\circ}$ for semidiurnal frequency $2 \text{ day}^{-1}$. Precise details regarding the geostrophic and the ageostrophic forcings are given in appendix \ref{edwv-fdets}. This forcing ensured the generation of geostrophic and tidal flow at the domain scale, with smaller scales being generated from nonlinear interactions.
 
 
 As mentioned earlier, a key objective of this study is to explore fast waves interacting with slow eddy-rich flows in different dynamic regimes. Two regimes we will focus on are eddy-dominant regimes, where the wave energy level is low,  and regimes where wave and eddy fields have comparable energy levels. We will look at the dynamics of these regimes across different Rossby numbers. 
@@ -344,7 +344,7 @@ We will now explore the distribution of energy across scales using the horizonta
 \begin{align}
     % \label{}
     \begin{split}
-        \hat{E}(k_h, t) = \sum\limits_{\theta_{k_h},k_z} \frac12 \left( |\hat{u}|^2 + |\hat{v}|^2 + \frac{|\hat{w}|^2}{\alpha^2}+ |\hat{b}|^2\right) \ ,
+        \hat{E}(k_h, t) = \sum\limits_{\theta_{k_h},k_z} \frac12 \left( |\hat{u}|^2 + |\hat{v}|^2 + \frac{|\hat{w}|^2}{\AR^2}+ |\hat{b}|^2\right) \ ,
     \end{split}
 \end{align}
 where the hat denotes a Fourier-transformed quantity. $\theta_{k_h} = \tan^{-1}(k_y/k_x)$ is the azimuthal angle of any horizontal wavenumber $\vec{k}_h = (k_x,k_y)$, with wavenumber $|\vec{k}_h|$ within $k_h \pm 0.5$. The above summation over azimuthal angles and vertical wavenumbers is performed to obtain the horizontal energy spectrum. In addition to the full flow fields, we can construct horizontal energy spectra for different flow components. The geostrophic-ageostrophic components of the horizontal energy spectra are defined as 
@@ -352,10 +352,10 @@ where the hat denotes a Fourier-transformed quantity. $\theta_{k_h} = \tan^{-1}(
     % \label{}
     \begin{align}
         \begin{split}
-            \hat{E}_{g}(k_h, t) = \sum\limits_{\theta_{k_h},k_z} \frac12\left( |\hat{u}_g|^2 + |\hat{v}_g|^2 + \frac{|\hat{w}_g|^2}{\alpha^2}+ |\hat{b}_g|^2\right)
+            \hat{E}_{g}(k_h, t) = \sum\limits_{\theta_{k_h},k_z} \frac12\left( |\hat{u}_g|^2 + |\hat{v}_g|^2 + \frac{|\hat{w}_g|^2}{\AR^2}+ |\hat{b}_g|^2\right)
         \end{split} \\
         \begin{split}
-            \hat{E}_{a}(k_h, t) = \sum\limits_{\theta_{k_h},k_z} \frac12 \left( |\hat{u}_a|^2 + |\hat{v}_a|^2 + \frac{|\hat{w}_a|^2}{\alpha^2}+ |\hat{b}_a|^2\right) \ , 
+            \hat{E}_{a}(k_h, t) = \sum\limits_{\theta_{k_h},k_z} \frac12 \left( |\hat{u}_a|^2 + |\hat{v}_a|^2 + \frac{|\hat{w}_a|^2}{\AR^2}+ |\hat{b}_a|^2\right) \ , 
         \end{split}
     \end{align}
 \end{subequations}
@@ -364,10 +364,10 @@ where the hat denotes a Fourier-transformed quantity. $\theta_{k_h} = \tan^{-1}(
     % \label{}
     \begin{align}
         \begin{split}
-            \hat{E}_{s}(k_h, t) = \sum\limits_{\theta_{k_h},k_z} \frac12 \left( |\hat{u}_s|^2 + |\hat{v}_s|^2 + \frac{|\hat{w}_s|^2}{\alpha^2}+ |\hat{b}_s|^2\right)
+            \hat{E}_{s}(k_h, t) = \sum\limits_{\theta_{k_h},k_z} \frac12 \left( |\hat{u}_s|^2 + |\hat{v}_s|^2 + \frac{|\hat{w}_s|^2}{\AR^2}+ |\hat{b}_s|^2\right)
         \end{split} \\
         \begin{split}
-            \hat{E}_{f}(k_h, t) = \sum\limits_{\theta_{k_h},k_z} \frac12 \left( |\hat{u}_f|^2 + |\hat{v}_f|^2 + \frac{|\hat{w}_f|^2}{\alpha^2}+ |\hat{b}_f|^2\right) \ . 
+            \hat{E}_{f}(k_h, t) = \sum\limits_{\theta_{k_h},k_z} \frac12 \left( |\hat{u}_f|^2 + |\hat{v}_f|^2 + \frac{|\hat{w}_f|^2}{\AR^2}+ |\hat{b}_f|^2\right) \ . 
         \end{split}
     \end{align}
 \end{subequations}
@@ -406,21 +406,21 @@ where $\hat{F}, \hat{D}$, and $\hat{T}$ are the power input, dissipation, and th
 \begin{align}
 % \label{}
 \begin{split} 
-    \hat{F}(k_h, t) = \sum\limits_{\theta_{k_h}k_z} \op{Re}\left(\hat{\vec{v}}_k^*.\hat{\vec{F}}_{u} + \frac{\hat{w}_k^*\hat{F}_w}{\alpha^2} + \hat{b}_k^*\hat{F}_b\right) 
+    \hat{F}(k_h, t) = \sum\limits_{\theta_{k_h}k_z} \op{Re}\left(\hat{\vec{v}}_{{\rm 2D},k}^*.\hat{\vec{F}}_{\vec{v}_{\rm 2D}} + \frac{\hat{w}_k^*\hat{F}_w}{\AR^2} + \hat{b}_k^*\hat{F}_b\right)
 \end{split}
 \end{align}
 \begin{align}
 \begin{split}
-    \hat{D}(k_h, t) = \nu\sum\limits_{\theta_{k_h}k_z} (k_h^{16} + k_z^{16})\left( |\hat{u}|^2 + |\hat{v}|^2 + \frac{|\hat{w}|^2}{\alpha^2}+ |\hat{b}|^2\right)
+    \hat{D}(k_h, t) = \nu_{\rm hyp}\sum\limits_{\theta_{k_h}k_z} (k_h^{16} + k_z^{16})\left( |\hat{u}|^2 + |\hat{v}|^2 + \frac{|\hat{w}|^2}{\AR^2}+ |\hat{b}|^2\right)
 \end{split}
 \end{align}
 \begin{align}
 \begin{split}
-    \hat{T}(k_h, t) = \sum\limits_{\theta_{k_h}k_z} \op{Re}\left( \hat{\vec{v}}_k^* . \hat{\vec{R}}_{v} + \frac{\hat{w}_k^*\hat{R}_w}{\alpha^2} + \hat{b}_k^*\hat{R}_b \right) \ .
+    \hat{T}(k_h, t) = \sum\limits_{\theta_{k_h}k_z} \op{Re}\left( \hat{\vec{v}}_{{\rm 2D},k}^* . \hat{\vec{R}}_{\vec{v}_{\rm 2D}} + \frac{\hat{w}_k^*\hat{R}_w}{\AR^2} + \hat{b}_k^*\hat{R}_b \right) \ .
 \end{split}
 \end{align}
 \end{subequations}
-where $\hat{\vec{R}}_{\vec{v}}, \hat{R}_w$, and $\hat{R}_b$ are the Fourier transforms of the nonlinear terms in the evolution equations of $\vec{v}, w$, and $b$, respectively, in \eqref{edwv-bsnq}. The nonlinear transfer term $\hat{T}$ conserves the total energy. Thus, if some wavenumbers lose energy due to nonlinear transfers, other wavenumbers must gain an equal amount of energy. If $k_m$ is the maximum wavenumber present in the system, $\sum_{0}^{k_m} \hat{T}(k_h, t) = 0$. The horizontal spectral flux, $\hat{\Pi}(k_h, t)$, represents the rate at which wavenumbers smaller than $k_h$ lose energy to wavenumbers larger than $k_h$. It is defined by
+where $\hat{\vec{R}}_{\vec{v}_{\rm 2D}}, \hat{R}_w$, and $\hat{R}_b$ are the Fourier transforms of the nonlinear terms in the evolution equations of $\vec{v}_{\rm 2D}, w$, and $b$, respectively, in \eqref{edwv-bsnq}. The nonlinear transfer term $\hat{T}$ conserves the total energy. Thus, if some wavenumbers lose energy due to nonlinear transfers, other wavenumbers must gain an equal amount of energy. If $k_m$ is the maximum wavenumber present in the system, $\sum_{0}^{k_m} \hat{T}(k_h, t) = 0$. The horizontal spectral flux, $\hat{\Pi}(k_h, t)$, represents the rate at which wavenumbers smaller than $k_h$ lose energy to wavenumbers larger than $k_h$. It is defined by
 \begin{align}
 % \label{}
 \begin{split}
@@ -541,11 +541,11 @@ Formation of a broadband continuum of frequencies  and its absence have been exp
 	
 %	Such studies are common across the oceanographic and fluid dynamics community \cite{RP2006, Capet_etal_2008c, Groeskamp_etal_2017,srinivasan_etal_2023,delpech_etal_2024,barkan2024,gao2024, Bandi_etal_2006, Davidson_2008,ballouz2018, Dubrulle_2019, Alexakis_Chibbaro_2020, johnson2021}. Analysis of the different terms of the physical flux helps understand the different mechanisms responsible for energy transfers across length scales \cite{delpech_etal_2024,johnson2021}. It can also be used to show how efficiently different length scales are transferring energy across scales \cite{ballouz2018,johnson2021}. 
 	
-	To arrive at an expression for the energy flux in physical space at a particular length scale $\ell$, one needs to separate the flow into length scales smaller and larger than $\ell$. This is done by applying a spatial filter on the flow components that commutes with the space and time derivatives. Thus, the net flow components $\vec{v}, \ w$, and $b$ are separated into large-scale flows $\t{\vec{v}},\ \t{w}$, and $\t{b}$ and small-scale flows $\vec{v}', \ w'$, and $b'$ such that they add up to form the net flow. The length scale $\ell$ of the separation is specified by the filter. The pointwise energy of the large-scale flows can then be defined as 
+	To arrive at an expression for the energy flux in physical space at a particular length scale $\ell$, one needs to separate the flow into length scales smaller and larger than $\ell$. This is done by applying a spatial filter on the flow components that commutes with the space and time derivatives. Thus, the net flow components $\vec{v}_{\rm 2D}, \ w$, and $b$ are separated into large-scale flows $\t{\vec{v}}_{\rm 2D},\ \t{w}$, and $\t{b}$ and small-scale flows $\vec{v}_{\rm 2D}', \ w'$, and $b'$ such that they add up to form the net flow. The length scale $\ell$ of the separation is specified by the filter. The pointwise energy of the large-scale flows can then be defined as 
     \begin{align}
     \label{edwv-flte}
     \begin{split}
-        \t{e} = \frac{1}{2}\left( \t{u}^2 + \t{v}^2 + \frac{\t{w}^2}{\alpha^2 } + \t{b}^2 \right) \ .
+        \t{e} = \frac{1}{2}\left( \t{u}^2 + \t{v}^2 + \frac{\t{w}^2}{\AR^2 } + \t{b}^2 \right) \ .
     \end{split}
     \end{align}
  In the absence of forcing or dissipation, $\t{e}$ evolves in time according to 
@@ -560,14 +560,14 @@ Formation of a broadband continuum of frequencies  and its absence have been exp
      \begin{subequations}
         \begin{align}
             \label{edwv-pi}
-            \Pi_\ell &= Ro\left[\uptau:\del\t{\vec{v}} + \vec{\tau}.\Dp{\t{\vec{v}}}{z}{} + \frac{1}{\alpha^2}\vec{\tau}.\del_3 \t{\vec{u}} + \vec{B}.\del_3\t{b}\right] 
+            \Pi_\ell &= Ro\left[\uptau:\del\t{\vec{v}}_{\rm 2D} + \vec{\tau}.\Dp{\t{\vec{v}}_{\rm 2D}}{z}{} + \frac{1}{\AR^2}\vec{\tau}.\del_3 \t{\vec{u}} + \vec{B}.\del_3\t{b}\right]
         \end{align}
         \begin{align}
             \label{edwv-td}
-            \Sigma_\ell &= Ro~\left[ \del_{3} .\left[\t{\vec{u}} \left(\t{e} + \frac{\t{p}}{Ro}\right) - \t{b} \vec{B}\right] - \left[\del.\left(\t{\vec{v}}.\uptau\right) + \Dp{}{z}{}\left(\t{\vec{v}}.\vec{\tau}_h\right) \right] - \frac{1}{\alpha^2}\del_3.\left(\t{w}\vec{\tau}\right)\right] \ ,
+            \Sigma_\ell &= Ro~\left[ \del_{3} .\left[\t{\vec{u}} \left(\t{e} + \frac{\t{\mathcal{P}}}{Ro}\right) - \t{b} \vec{B}\right] - \left[\del.\left(\t{\vec{v}}_{\rm 2D}.\uptau\right) + \Dp{}{z}{}\left(\t{\vec{v}}_{\rm 2D}.\vec{\tau}_h\right) \right] - \frac{1}{\AR^2}\del_3.\left(\t{w}\vec{\tau}\right)\right] \ ,
         \end{align}
     \end{subequations}
- where $\bs u =(u,v,w)$ is the three dimensional velocity vector, $\del_3 = \del + \hat{z} \partial/ \partial z$, is the three dimensional gradient operator, and 
+ where $\vec{u} =(u,v,w)$ is the three dimensional velocity vector, $\del_3 = \del + \hat{z} \partial/ \partial z$, is the three dimensional gradient operator, and 
     \begin{align}
         \begin{split}
             \uptau = \left[\begin{matrix}
@@ -584,7 +584,7 @@ Formation of a broadband continuum of frequencies  and its absence have been exp
     \begin{align}
         % \label{}
         \begin{split}
-        \frac{d}{dt}\int_D \t{e} \ dx dy dz = -\int_D \Pi_\ell \ dx dy dz \ .
+        \frac{d}{dt}\int_V \t{e} \ dx dy dz = -\int_V \Pi_\ell \ dx dy dz \ .
         \end{split}
     \end{align}
  If the domain integral of $\Pi_\ell$ takes a positive sign, large scales are losing energy to small scales, i.e., a forward energy cascade. We used a sharp wavenumber filter $k_\ell=2\pi/l$ in $k_h$ and $k_z$ separately to construct the flux in physical space. $k_\ell$ was chosen such that it lies in the inertial range for all the flows. 
@@ -617,7 +617,7 @@ Figure \ref{edwv-flxeff}(d) shows that the efficiency of the turbulent cascade c
 	
 
 	
-    In the previous sections, we saw large-scale coherent eddies breaking up with increasing Rossby number, as a consequence of increasing forward energy flux. Vorticity, $\zeta$, is the standard variable we looked at to see large-scale eddy fields. On the other hand, horizontal divergence $\del \cdot \bs v$ is an indicator of ageostrophic flow components. Here we will explore the distribution of the physical flux with regard to vorticity and divergence. 
+    In the previous sections, we saw large-scale coherent eddies breaking up with increasing Rossby number, as a consequence of increasing forward energy flux. Vorticity, $\zeta$, is the standard variable we looked at to see large-scale eddy fields. On the other hand, horizontal divergence $\del \cdot \vec{v}_{\rm 2D}$ is an indicator of ageostrophic flow components. Here we will explore the distribution of the physical flux with regard to vorticity and divergence. 
 	
 	\begin{figure}
 		\centering
@@ -628,9 +628,9 @@ Figure \ref{edwv-flxeff}(d) shows that the efficiency of the turbulent cascade c
 	
 	
 	
-	Flow gradients make up the flux $\Pi_\ell$ in \eqref{edwv-pi}. Naturally, therefore, regions of extreme flow gradients will also have high flux magnitudes. However, the total integrated flux in these high gradient regions remains unclear. As discussed earlier, the flux PDF in Fig. \ref{edwv-flxeff}(c) shows that extreme flux values are orders of magnitude larger than the mean flux. Additionally, these extreme fluxes are very rare. To understand the distribution of flux with respect to flow strength, we plot the cumulative flux fraction $\varphi$, as a function of normalised absolute values of $\del \cdot \bs v$ and $\zeta$ in Figs. \ref{edwv-flxfrc}(a,b), and (c,d) respectively. Furthermore, to see how extreme fluxes contribute to the net flux, in Figs. \ref{edwv-flxfrc}(e,f), we plot the flux fraction $\varphi$ against the absolute value of the physical flux normalised by its maximum.
+	Flow gradients make up the flux $\Pi_\ell$ in \eqref{edwv-pi}. Naturally, therefore, regions of extreme flow gradients will also have high flux magnitudes. However, the total integrated flux in these high gradient regions remains unclear. As discussed earlier, the flux PDF in Fig. \ref{edwv-flxeff}(c) shows that extreme flux values are orders of magnitude larger than the mean flux. Additionally, these extreme fluxes are very rare. To understand the distribution of flux with respect to flow strength, we plot the cumulative flux fraction $\varphi$, as a function of normalised absolute values of $\del \cdot \vec{v}_{\rm 2D}$ and $\zeta$ in Figs. \ref{edwv-flxfrc}(a,b), and (c,d) respectively. Furthermore, to see how extreme fluxes contribute to the net flux, in Figs. \ref{edwv-flxfrc}(e,f), we plot the flux fraction $\varphi$ against the absolute value of the physical flux normalised by its maximum.
     
- For any field $\xi$, the cumulative flux fraction $\varphi(\xi_0)$ is calculated by integrating all the flux that lies in the region where $-\xi_0<\xi <\xi_0$, and dividing it by the total integrated flux. This is done for $\xi_0 \in [0, \op{max}|\xi|]$. For $\xi_0 = 0$, $\varphi = 0$, and for $\xi_0 = \op{max}|\xi|$, $\varphi = 1$. In Figs. \ref{edwv-flxfrc}(a,b), (c,d), and (e,f), $\xi$ are the three different fields: horizontal divergence $\del \cdot \bs v$, vorticity $\zeta$, and the physical flux $\Pi_\ell$. We see that in all the cases, regions close to the maximum values of the fields contribute very little to the integrated flux. For different Rossby numbers and $E_g/E_a$ values, the circles in Fig. \ref{edwv-flxfrc} are the points where $\varphi = 0.9$. This sets the thresholds for the three fields, which contain $90\%$ of the integrated flux. In fact, for all the Rossby numbers and the $E_g/E_a$ values, the flux fraction reaches $0.9$, close to $1/10$th of the maximum of all three fields. Figures \ref{edwv-flxfrc}(e,f) also tells us that regions having flux values close to the maximum contribute very little to the flux fraction. This is because regions with extreme horizontal divergence, vorticity, or flux are very rare in the domain. Although flux in such regions might be large compared to any other parts of the domain, their net contribution is low. 
+ For any field $\varXi$, the cumulative flux fraction $\varphi(\varXi_0)$ is calculated by integrating all the flux that lies in the region where $-\varXi_0<\varXi <\varXi_0$, and dividing it by the total integrated flux. This is done for $\varXi_0 \in [0, \op{max}|\varXi|]$. For $\varXi_0 = 0$, $\varphi = 0$, and for $\varXi_0 = \op{max}|\varXi|$, $\varphi = 1$. In Figs. \ref{edwv-flxfrc}(a,b), (c,d), and (e,f), $\varXi$ are the three different fields: horizontal divergence $\del \cdot \vec{v}_{\rm 2D}$, vorticity $\zeta$, and the physical flux $\Pi_\ell$. We see that in all the cases, regions close to the maximum values of the fields contribute very little to the integrated flux. For different Rossby numbers and $E_g/E_a$ values, the circles in Fig. \ref{edwv-flxfrc} are the points where $\varphi = 0.9$. This sets the thresholds for the three fields, which contain $90\%$ of the integrated flux. In fact, for all the Rossby numbers and the $E_g/E_a$ values, the flux fraction reaches $0.9$, close to $1/10$th of the maximum of all three fields. Figures \ref{edwv-flxfrc}(e,f) also tells us that regions having flux values close to the maximum contribute very little to the flux fraction. This is because regions with extreme horizontal divergence, vorticity, or flux are very rare in the domain. Although flux in such regions might be large compared to any other parts of the domain, their net contribution is low. 
 	
 	\begin{figure}
 		\centering

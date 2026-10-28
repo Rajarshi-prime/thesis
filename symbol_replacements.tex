@@ -116,7 +116,7 @@ Current & Proposed & Meaning & Status \\
 \midrule
 \endhead
 $\alpha$ & $\alpha$ & Density parameter, $2\rho/(2\rho+1)$ & \kp \\
-$\ell$ & $\mathfrak{l}$ & Inner region size, $\ell^2 = \tau\sqrt{3\alpha-2}$ & \chg \\
+$\ell$ & $\mathfrak{l}$ & Inner region size, $\mathfrak{l}^2 = \tau\sqrt{3\alpha-2}$ & \chg \\
 $L$ & $L$ & Flow length scale & \kp \\
 $\mathscr{L}$ & $\mathscr{L}$ & Angular momentum per unit mass & \kp \\
 $\mb{A}$ & $\mb{A}$ & Fluid velocity gradient tensor, $St\,\nabla\vec{u}$, already \verb|\mathbb|, nothing to do. The plain letter A for avoider particles stands apart, the fonts differ & \kp \\
@@ -128,7 +128,9 @@ $\vec{u}$ & $\vec{u}$ & Background fluid velocity at the particle & \kp \\
 Subscript $p$ & Subscript $p$ & Particle quantities, $\vec{x}_p$, $\rho_p$, $\tau_p$ & \kp \\
 $D/Dt$ & $D/Dt$ & Material derivative & \kp \\
 $T$, $T_c$ & $\mathcal{T}$, $\mathcal{T}_c$ & Rescaled inner time and caustics time in inner units & \chg \\
-$t_b$ & $t_{\rm th}$ & Time when $-\mb{Z}^2$ starts to dominate & \chg \\
+$t_b$ & $t_{\rm thresh}$ & Time when $-\mb{Z}^2$ starts to dominate & \chg \\
+$\mb{Z}_b$ & $\mb{Z}_{\rm thresh}$ & The tensor at that time & \chg \\
+$\zeta$ & $\chi$ & Auxiliary root of the quartic, in the appendix & \chg \\
 $t_c$ & $t_c$ & Caustics time & \kp \\
 $r_c$ & $r_c$ & Caustics radius & \kp \\
 $\mathcal{R}_{c0}$ & $\mathcal{R}_{c0}$ & Critical initial radius & \kp \\
@@ -184,11 +186,13 @@ $\mu$ & $\mu$ & Stokesian mobility of the particle & \kp \\
 $\mu$ & $\mu_E$ & Ekman friction of the background flow, split off from the mobility & \chg \\
 $\theta$ & $\vartheta$ & Polar angle of the point-vortex coordinates & \chg \\
 $\hat{\theta}$ & $\vec{e}_\vartheta$ & Unit vector. Every unit vector takes the $\vec{e}$ form & \chg \\
+$\mathbf{\hat{r}}$ & $\vec{e}_r$ & Radial unit vector & \chg \\
+$\textbf{I}$ & $\mathbb{I}$ & Identity tensor & \chg \\
 $q$ & $k_f$ & Forcing wavenumber, written $q$ in the text and $k_f$ in the table of spectral parameters & \chg \\
 $\vec{F}$, $\vec{F}_{\rm eff}$, $F_0$ & same & External force, effective force, forcing amplitude & \kp \\
 $\mathcal{W}$ & $\mathcal{W}$ & Okubo-Weiss parameter from dimensional gradients. It differs from the $Q$ of the other chapters by a positive constant and by $St^2$ & \kp \\
 $\tilde{\Gamma}$ & $\tilde{\Gamma}$ & Circulation, $\tilde{\Gamma} = \Gamma/2\pi$ & \kp \\
-$\tilde{O}$ & $\tilde{O}$ & Fluid velocity gradient tensor, $\tau\nabla\vec{u}$, the counterpart of $\mb{A}$ in \texttt{inertial\_caustics} & \kp \\
+$\tilde{O}$ & $\tilde{\mathbf{O}}$ & Fluid velocity gradient tensor, $\tau\nabla\vec{u}$, the counterpart of $\mb{A}$ in \texttt{inertial\_caustics} & \chg \\
 $\Delta r$ & $\Delta r$ & Separation between two neighbouring particle rings & \kp \\
 $\langle\cdot\rangle$ & same & Averaging & \kp \\
 \bottomrule
@@ -216,7 +220,8 @@ $\gamma$ & $\lambda_s$, $\alpha_g$ & Depletion rate of the small droplets, and t
 $m$ & $m$ & Droplet mass & \kp \\
 $m$, $k_m$ & $\mathrm{m}$, $k_{\mathrm{m}}$ & Parameter setting the Kolmogorov length, $\eta_s = \mathrm{m}/k_{\mathrm{m}}$, made upright to part it from the mass & \chg \\
 $\sigma$, $\sigma_2$, $\sigma_3$ & $\varsigma$, $\varsigma_2$, $\varsigma_3$ & Collision cross-section in two and three dimensions. The chapter gives two disagreeing forms, and $\varsigma_3 = \pi(a_s+a_b)^2$ is the correct one & \chg \\
-$\varphi_s$, $\varphi_b$ & $c_s$, $c_b$ & Volume fraction of the small and the big droplets & \chg \\
+$\varphi_s$, $\varphi_b$, $\varphi$ & $c_s$, $c_b$, $c$ & Volume fraction of the small droplets, the big ones, and either & \chg \\
+$Q_{rms}$ & $Q_{\rm rms}$ & Root mean square of the Okubo-Weiss parameter & \chg \\
 $\delta$, $\delta t$ & same & Dirac delta and time step & \kp \\
 $\epsilon$, $\varepsilon$ & $\epsilon$ & Mean energy dissipation rate of the cloud & \chg \\
 $\nu$ & $\nu$ & Kinematic viscosity & \kp \\
@@ -238,5 +243,4 @@ $\langle\cdot\rangle$ & same & Averaging & \kp \\
   \item $N_g$ means collocation points in \texttt{thermalization} and grid resolution in \texttt{polydisperse\_lucky\_drops}. These are the same quantity, so the reuse looks deliberate.
   \item In \texttt{chapters/inertial\_caustics.tex} the tensors are written \verb|\mb{A}|, \verb|\mb{S}|, \verb|\mb{Z}|, and \verb|\mb| is defined in \texttt{preamble.tex} as \verb|\mathbb|. In \texttt{chapters/active\_caustics.tex} the same tensors are written \verb|\textbf{A}|, \verb|\textbf{S}|, \verb|\textbf{Z}|, with one stray \verb|\sf{S}|.
 \end{enumerate}
-
 \end{document}

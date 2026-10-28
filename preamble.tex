@@ -10,6 +10,11 @@
 \usepackage{braket}
 \usepackage[nointegrals]{wasysym}
 \usepackage{pifont}
+\usepackage{ar}           % supplies \AR, the aspect ratio N/f in internal_tide_eddy
+% Italic capital Xi, used in internal_tide_eddy for the placeholder field whose
+% flux fraction is computed. No package loaded here defines it, so it is defined
+% below. \providecommand steps aside if some future package supplies its own.
+\providecommand{\varXi}{\mathit{\Xi}}
 
 % --- Figures, tables ---
 \usepackage{graphicx}

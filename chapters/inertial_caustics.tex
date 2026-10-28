@@ -10,8 +10,8 @@
 \newcommand{\rga}[1]{\textcolor{blue}{{[\textbf{#1}]}}}
 \providecommand{\mathdefault}[1]{#1}
 \newcommand{\es}{A~}
-\DeclareRobustCommand{\eneg}{\hat{e}_{-}}
-\DeclareRobustCommand{\epos}{\hat{e}_+}
+\DeclareRobustCommand{\eneg}{\vec{e}_{-}}
+\DeclareRobustCommand{\epos}{\vec{e}_+}
 
 \begin{summary}
 Estimating collision rates is of immense importance in particle-laden flows. An economical way of doing this is to directly identify incidences of caustics, or extreme clustering, by tracking particle velocity gradients in the neighborhoods of individual particles. The objective of this work is two-fold. (i) We find conditions under which caustics form, in point-vortex flow and in two-dimensional turbulence. While caustics are known to form in regions of strain, we show that the {velocity alignment with strain directions} is key. Particles must remain in compressional strain throughout the process to form caustics, whereas survivor particles: which visit high strain but do not form caustics, briefly go through extensional strain during the early part of the process. This enables survivor particles to attain significantly straighter paths, and to move faster, whereas caustics particles follow paths of high curvature and move slower. As a result, caustics particles stay longer in high-strain regions than survivors. (ii) We ask about the effect of finite particle density, where the particle is denser than the background fluid. We show that finite-density particles need to sample stronger background strain than infinite-density ones to trigger caustics, but our other findings are universal across particle density.
@@ -64,7 +64,7 @@ The particle continuity equation reads
    \end{equation}
    which has appeared before in the literature (see e.g. \cite{falkovich2002,wilkinson2006,meibohm2023}). For tracking of caustics, \eref{int-Zeom} presents us with tremendous advantages over both solving for individual particles using \eref{int-NDeom} and solving for a continuous $\vec v$ field on Eulerian grid points. To obtain reliable statistics out of chance collisions between particle pairs, a numerical approach would need a prohibitively large number of particles. On the other hand, once a single collision occurs in an Eulerian grid, i.e.,  $-\nabla \cdot \vec v$ diverges somewhere in the domain, the simulation cannot be continued, and there is no future after caustics. In the present approach we seed the flow with a finite number of particles and solve for the particle dynamics using \eref{int-NDeom}, alongside solving for the particle velocity gradient tensor $\mb Z$ using \eref{int-Zeom}. The singularities now remain restricted to individual particles, and can be artificially removed \cite{falkovich2007}. A noteworthy limitation of this approach is that it cannot capture collisions of faraway particles approaching each other at high speed.
 
-In the limit $St \to 0$, $\vec{v} \to \vec{u}$ by \eref{int-NDeom},  but by \eref{int-Zeom}, $\mb{Z}$ does not relax to $\mb{A}$. Thus, clusters once formed cannot be unclustered with ease by the background flow. Also, if the magnitude of the entries of $\mb{Z}$ become large enough that $-\mb{Z}^2$ eclipses all other terms on the right-hand side of \eref{int-Zeom}, caustics become inevitable. Denoting such a state by $\mb{Z} = \mb{Z}_b$ at time $t=t_b$, caustics occur in finite time {$t_c$ with $(t_c -t_b) \sim -St/\mb{Z}_b$}. This hints at a universality in caustics formation for particles of any density.
+In the limit $St \to 0$, $\vec{v} \to \vec{u}$ by \eref{int-NDeom},  but by \eref{int-Zeom}, $\mb{Z}$ does not relax to $\mb{A}$. Thus, clusters once formed cannot be unclustered with ease by the background flow. Also, if the magnitude of the entries of $\mb{Z}$ become large enough that $-\mb{Z}^2$ eclipses all other terms on the right-hand side of \eref{int-Zeom}, caustics become inevitable. Denoting such a state by $\mb{Z} = \mb{Z}_{\rm thresh}$ at time $t=t_{\rm thresh}$, caustics occur in finite time {$t_c$ with $(t_c -t_{\rm thresh}) \sim -St/\mb{Z}_{\rm thresh}$}. This hints at a universality in caustics formation for particles of any density.
 
 \section{Caustics on ``frozen" particles}
 \label{int-sec:caus_cond}
@@ -111,12 +111,12 @@ We see that for finitely-dense particles, a large negative $Q$ makes a positive 
 
 \subsection{Point Vortex Flow}\label{int-pv}
 Before moving to 2D turbulence, it is insightful to study caustics in the vicinity of a point vortex.
-The dimensional velocity field is given by $\vec{u}^* = \hat{\theta} ~\Gamma /2\pi r^*$, where $r^*$ is the dimensional length from the origin, and $\Gamma$ is the circulation. Choosing the length scale $L  = \sqrt{\Gamma \tau_p/2\pi}$ \cite{ravichandran2015}  and timescale $\tau_p$, the nondimensional velocity and the invariant $Q$ become
+The dimensional velocity field is given by $\vec{u}^* = \vec{e}_\vartheta ~\Gamma /2\pi r^*$, where $r^*$ is the dimensional length from the origin, and $\Gamma$ is the circulation. Choosing the length scale $L  = \sqrt{\Gamma \tau_p/2\pi}$ \cite{ravichandran2015}  and timescale $\tau_p$, the nondimensional velocity and the invariant $Q$ become
 \begin{equation}
-    \vec{u} = \frac{1}{r}\hat{\theta}, \quad {\rm and} \quad Q = -\frac{1}{r^4},
+    \vec{u} = \frac{1}{r}\vec{e}_\vartheta, \quad {\rm and} \quad Q = -\frac{1}{r^4},
 \end{equation}
 whereas the invariant $R=0$ in a 2D flow. The entire flow is thus in a strain field which is singular at the point vortex and rapidly decays away from it.
-Using \eref{int-NDeom}, the non-dimensional equation of motion of particles around a point vortex in polar coordinates $\vec{x}_p = (r,\theta)$ reads
+Using \eref{int-NDeom}, the non-dimensional equation of motion of particles around a point vortex in polar coordinates $\vec{x}_p = (r,\vartheta)$ reads
 \begin{align}
   \label{int-nd_ptvrtx}
   \begin{split}
@@ -124,24 +124,24 @@ Using \eref{int-NDeom}, the non-dimensional equation of motion of particles arou
  ; \quad \dot{\mathscr{L}} = \alpha(1 - \mathscr{L}) \ ,
   \end{split}
 \end{align}
- which is an extension to $\alpha \ne 1$ of the expression of \cite{ravichandran2015}, and where $\mathscr{L} = r^2 \dot{\theta}$ is the angular momentum per unit mass, and $\dot{()} = d()/dt$. Our choice of scales renders \eref{int-nd_ptvrtx} parameter-free, so a given solution holds for particles of any Stokes number when appropriately scaled. We show results for $St=1$.
+ which is an extension to $\alpha \ne 1$ of the expression of \cite{ravichandran2015}, and where $\mathscr{L} = r^2 \dot{\vartheta}$ is the angular momentum per unit mass, and $\dot{()} = d()/dt$. Our choice of scales renders \eref{int-nd_ptvrtx} parameter-free, so a given solution holds for particles of any Stokes number when appropriately scaled. We show results for $St=1$.
 
 
- \eref{int-nd_ptvrtx} may be solved for $\mathscr{L}$ to give $\mathscr{L}(t) = 1 - (1 - \mathscr{L}(0))e^{-\alpha t}$. In fact, if we start from $\vec{v}(0) = \vec{u}(r(0))$, we have $\mathscr{L} = 1$ for all time. Caustics happen when two rings of particles at different initial radii cross each other. Due to the circular symmetry of the system, we need to evolve just one particle for each ring. Infinitely-dense particles lying within a threshold radius from the point vortex all form caustics \cite{ravichandran2022}, while those beyond never do. The threshold, however, is only significant in real turbulence where the vorticity is comparable to or greater than the particle's relaxation rate \cite{ling2013}. \citet{ravichandran2015} recognized that the early-time dynamics of particles lying close to the vortex, i.e., in higher strain regions, determine their caustics formation. In other words, caustics is governed by the inner solution in a singular value problem, for which we define the inner variables $ \mc{R}= r/\ell $ and $T = t/\tau$, with $\tau, \ell \ll 1$.
-We follow the usual procedure in singular perturbation problems: of expanding the inner variables in powers of the small parameter $\tau$, and deriving the lowest order equation. The scaling of $l \sim \sqrt\tau$ \cite{deepu2017} yields physical solutions, and our choice of
-$\ell^2 = \tau\sqrt{3\alpha -2}$ yields the following parameter-free equation, valid for all Stokes numbers and all particle densities at the lowest order:
+ \eref{int-nd_ptvrtx} may be solved for $\mathscr{L}$ to give $\mathscr{L}(t) = 1 - (1 - \mathscr{L}(0))e^{-\alpha t}$. In fact, if we start from $\vec{v}(0) = \vec{u}(r(0))$, we have $\mathscr{L} = 1$ for all time. Caustics happen when two rings of particles at different initial radii cross each other. Due to the circular symmetry of the system, we need to evolve just one particle for each ring. Infinitely-dense particles lying within a threshold radius from the point vortex all form caustics \cite{ravichandran2022}, while those beyond never do. The threshold, however, is only significant in real turbulence where the vorticity is comparable to or greater than the particle's relaxation rate \cite{ling2013}. \citet{ravichandran2015} recognized that the early-time dynamics of particles lying close to the vortex, i.e., in higher strain regions, determine their caustics formation. In other words, caustics is governed by the inner solution in a singular value problem, for which we define the inner variables $ \mc{R}= r/\mathfrak{l} $ and $\mathcal{T} = t/\tau$, with $\tau, \mathfrak{l} \ll 1$.
+We follow the usual procedure in singular perturbation problems: of expanding the inner variables in powers of the small parameter $\tau$, and deriving the lowest order equation. The scaling of $\mathfrak{l} \sim \sqrt\tau$ \cite{deepu2017} yields physical solutions, and our choice of
+$\mathfrak{l}^2 = \tau\sqrt{3\alpha -2}$ yields the following parameter-free equation, valid for all Stokes numbers and all particle densities at the lowest order:
 \begin{equation}
    \mc{R}'' = \mc{R}^{-3},
 \quad {\rm whose \ solution \ is} \quad
-\mc{R}(T) = \sqrt{\frac{T^2}{\mc{R}_0^2}+\mc{R}_0^2} \ ,
+\mc{R}(\mathcal{T}) = \sqrt{\frac{\mathcal{T}^2}{\mc{R}_0^2}+\mc{R}_0^2} \ ,
       \end{equation}
-  where $()' = d()/dT$, and $\mc{R}_0 = \mc{R}(0)$. This inner solution is valid close to the vortex origin and always yields caustics. Two rings with initial radius $\mc{R}_0$ and $\mc{R}_0 + \epsilon$ will form caustics at time $T_c$, given by
+  where $()' = d()/d\mathcal{T}$, and $\mc{R}_0 = \mc{R}(0)$. This inner solution is valid close to the vortex origin and always yields caustics. Two rings with initial radius $\mc{R}_0$ and $\mc{R}_0 + \varepsilon$ will form caustics at time $\mathcal{T}_c$, given by
   \begin{align}
   \begin{split}
-      \sqrt{\frac{T_c^2}{\mc{R}_0^2}+ \mc{R}_0^2} = \sqrt{\frac{T_c^2}{(\mc{R}_0 +\epsilon)^2}+ (\mc{R}_0 +\epsilon)^2} \ .
+      \sqrt{\frac{\mathcal{T}_c^2}{\mc{R}_0^2}+ \mc{R}_0^2} = \sqrt{\frac{\mathcal{T}_c^2}{(\mc{R}_0 +\varepsilon)^2}+ (\mc{R}_0 +\varepsilon)^2} \ .
   \end{split}
   \end{align}
-  In the limit $\epsilon \to 0$, a Taylor expansion yields $T_c = \mc{R}_0^2$  and the caustics radius $\mc{R}_c = \mc{R}(T_c)= \sqrt{2}\mc{R}_0$. In the original variables of $t = \tau T$ and $r = \ell \mc{R}$, the caustics radius and time read
+  In the limit $\varepsilon \to 0$, a Taylor expansion yields $\mathcal{T}_c = \mc{R}_0^2$  and the caustics radius $\mc{R}_c = \mc{R}(\mathcal{T}_c)= \sqrt{2}\mc{R}_0$. In the original variables of $t = \tau \mathcal{T}$ and $r = \mathfrak{l} \mc{R}$, the caustics radius and time read
   \begin{align}
   \label{int-inner_caus}
   \begin{split}
@@ -150,11 +150,11 @@ $\ell^2 = \tau\sqrt{3\alpha -2}$ yields the following parameter-free equation, v
   \end{align}
   \begin{figure}
   \includegraphics[width = 0.8\linewidth]{./figures/inertial_caustics/pt_vrtx_upd.pdf}
-  \caption[Caustics time and radius in a point-vortex flow]{Caustics time (a) and radius (b) in point-vortex flow as a function of the initial radial location, for particles of different density and of any Stokes number. The dashed line shows the inner solutions $T_c = \mc{R}_0^2$, and $\mc{R}_c = \sqrt2\mc{R}_0$. In this scaling, caustics formation in the inner region is independent of particle density. The vertical dotted line indicates the location at which caustics time diverges for $\alpha=1$, and beyond which caustics are not possible.}
+  \caption[Caustics time and radius in a point-vortex flow]{Caustics time (a) and radius (b) in point-vortex flow as a function of the initial radial location, for particles of different density and of any Stokes number. The dashed line shows the inner solutions $\mathcal{T}_c = \mc{R}_0^2$, and $\mc{R}_c = \sqrt2\mc{R}_0$. In this scaling, caustics formation in the inner region is independent of particle density. The vertical dotted line indicates the location at which caustics time diverges for $\alpha=1$, and beyond which caustics are not possible.}
   \label{int-inner-sol}
   \end{figure}
-This immediately tells us that the caustics time scales as $(3\alpha - 2)^{-1/2}$, and diverges for neutrally buoyant ($\alpha = 2/3$) particles, ensuring no caustics for them. And the size $\ell$ of the inner region, which is proportional to $r_c$, scales as $(3\alpha - 2)^{1/4}$, shrinking to $0$ for neutrally buoyant particles.
-  The scaled caustics radius ($\mc{R}_c$) and time ($T_c$) obtained from numerical simulations of the complete equation \eref{int-nd_ptvrtx} are shown in colors in \fref{int-inner-sol}(a,b) respectively. We see that the analytically obtained solution (black dashed lines) matches well with the numerical results close to the vortex origin. When $\mc{R}_0 \gg 1$, the inner solution is no longer valid, and the numerical solution differs from it. Importantly, the caustics time diverges beyond a critical initial radius $\mc{R}_{c0}$ for each $\alpha$. Particles of any density beginning life within their respective $\mc{R}_{c0}$ always form caustics. We call them `C' particles. In contrast, all those starting out further away from the vortex never experience high strain and avoid caustics. Accordingly, we call them `avoiders' or `A' particles.
+This immediately tells us that the caustics time scales as $(3\alpha - 2)^{-1/2}$, and diverges for neutrally buoyant ($\alpha = 2/3$) particles, ensuring no caustics for them. And the size $\mathfrak{l}$ of the inner region, which is proportional to $r_c$, scales as $(3\alpha - 2)^{1/4}$, shrinking to $0$ for neutrally buoyant particles.
+  The scaled caustics radius ($\mc{R}_c$) and time ($\mathcal{T}_c$) obtained from numerical simulations of the complete equation \eref{int-nd_ptvrtx} are shown in colors in \fref{int-inner-sol}(a,b) respectively. We see that the analytically obtained solution (black dashed lines) matches well with the numerical results close to the vortex origin. When $\mc{R}_0 \gg 1$, the inner solution is no longer valid, and the numerical solution differs from it. Importantly, the caustics time diverges beyond a critical initial radius $\mc{R}_{c0}$ for each $\alpha$. Particles of any density beginning life within their respective $\mc{R}_{c0}$ always form caustics. We call them `C' particles. In contrast, all those starting out further away from the vortex never experience high strain and avoid caustics. Accordingly, we call them `avoiders' or `A' particles.
 
   We may also identify the region for frozen-particle caustics by solving for $r$ in \eref{int-caus_cond}:
   \begin{align}
@@ -167,21 +167,21 @@ This immediately tells us that the caustics time scales as $(3\alpha - 2)^{-1/2}
 
 \subsection{Two-dimensional turbulence}\label{int-turb}
 
-Armed with the insights from point-vortex flow, we investigate caustics of finitely-dense particles in steady state two-dimensional turbulence, by evolving an incompressible turbulent flow field $\vec{u} = (u_x,u_y)$ with vorticity $\omega=\partial_x u_y - \partial_y u_x$, which is evolved according to
+Armed with the insights from point-vortex flow, we investigate caustics of finitely-dense particles in steady state two-dimensional turbulence, by evolving an incompressible turbulent flow field $\vec{u} = (u_x,u_y)$ with vorticity $\zeta=\partial_x u_y - \partial_y u_x$, which is evolved according to
 \begin{align}
   \label{int-2DNS}
   \begin{split}
-      \partial_t\omega + \vec{u}\cdot\vec{\nabla} \omega = \nu\nabla^2\omega - \gamma \omega  +  f_\omega.
+      \partial_t\zeta + \vec{u}\cdot\vec{\nabla} \zeta = \nu\nabla^2\zeta - \gamma_\epsilon \zeta  +  F_\zeta.
   \end{split}
 \end{align}
-A small linear drag with coefficient $\gamma$ (here set at $10^{-2}$) is added to prevent a numerical blow-up caused by the inverse energy cascade in $2$D turbulence. Following \cite{pandey2019}, we set the external forcing function $f_\omega = -\nu k_f(\cos(k_f x) + \sin(k_f x))$, where $k_f = 4$ is the forcing wavenumber. The initial vorticity is $\omega(0) = k_f\cos(k_f x)$, and the viscosity $\nu = 8 \times 10^{-6}$. We evolve the flow using a pseudospectral simulation on a $1024\times 1024$ grid with doubly periodic boundary conditions, and a fourth-order Runge-Kutta time-stepping. At the steady state, the Kolmogorov time is $\tau_f = 4.0$ in simulation units. $3.14 \times 10^{5}$ inertial particles of $St=0.225$, unless otherwise specified, that obey \eref{int-NDeom} are inserted randomly across the flow once the turbulence has reached a stationary state. At this initial time, $\vec v$ and $\mb{Z}$ of each particle are set equal to $\vec u$ and $\mb{A}$, respectively, interpolated to its position. We use fifth-order B-spline interpolation \cite{vanhinsberg2012}, and evolve $\mb{Z}$ according to \eref{int-Zeom}. {When $\delta = \Tr(\mb{Z})$ reaches large enough negative values, around $\text{O}(-10)$ in our case, $\mb{Z}^2$ dominates all other terms in Eq. \eqref{int-Zeom}, making caustics inevitable. We set $t_c$ as the time where $\delta$ goes beyond $-20$. We have checked for many cases that when $\delta<-10$, it diverges as $\sim 1/(t-t_c)$ and caustics follow in each case, and that the error we make at setting the caustics time $t_c$ as the time when $\delta = -20$ is minimal due to the rapidity with which $\delta$ diverges. }
+A small linear drag with coefficient $\gamma_\epsilon$ (here set at $10^{-2}$) is added to prevent a numerical blow-up caused by the inverse energy cascade in $2$D turbulence. Following \cite{pandey2019}, we set the external forcing function $F_\zeta = -\nu k_f(\cos(k_f x) + \sin(k_f x))$, where $k_f = 4$ is the forcing wavenumber. The initial vorticity is $\zeta(0) = k_f\cos(k_f x)$, and the viscosity $\nu = 8 \times 10^{-6}$. We evolve the flow using a pseudospectral simulation on a $1024\times 1024$ grid with doubly periodic boundary conditions, and a fourth-order Runge-Kutta time-stepping. At the steady state, the Kolmogorov time is $\tau_f = 4.0$ in simulation units. $3.14 \times 10^{5}$ inertial particles of $St=0.225$, unless otherwise specified, that obey \eref{int-NDeom} are inserted randomly across the flow once the turbulence has reached a stationary state. At this initial time, $\vec v$ and $\mb{Z}$ of each particle are set equal to $\vec u$ and $\mb{A}$, respectively, interpolated to its position. We use fifth-order B-spline interpolation \cite{vanhinsberg2012}, and evolve $\mb{Z}$ according to \eref{int-Zeom}. {When $\delta = \Tr(\mb{Z})$ reaches large enough negative values, around $\text{O}(-10)$ in our case, $\mb{Z}^2$ dominates all other terms in Eq. \eqref{int-Zeom}, making caustics inevitable. We set $t_c$ as the time where $\delta$ goes beyond $-20$. We have checked for many cases that when $\delta<-10$, it diverges as $\sim 1/(t-t_c)$ and caustics follow in each case, and that the error we make at setting the caustics time $t_c$ as the time when $\delta = -20$ is minimal due to the rapidity with which $\delta$ diverges. }
 
 To keep the particle number constant beyond caustics, we reinitialize the particle by setting $\mb{Z} \to -\mb{Z}$. This transformation is equivalent to the infinitesimal particle volume element reemerging after caustics as ghost particles \cite{falkovich2007} occupying a small finite volume. Simulations for different $\alpha$ are run up to a time of $125\tau_\eta$, and statistics are collected over this time. {In a separate simulation, by not reinitializing the particles, we have checked that attaining $\delta = -20$ is inevitably and immediately followed by caustics. }
 
 \begin{figure}
 \centering
 \includegraphics[width = \linewidth]{./figures/inertial_caustics/snapshot_PDF.pdf}
-\caption[Snapshots of particles in the 2D turbulent vorticity field and the $Q$ they sample.]{(a-c) Snapshots of the vorticity field $\omega$ overlaid with caustics \cs particles in cyan, and the remaining ones in black at $t = 333 \ St$. All particles centrifuge out of large vortices and live in strain regions. As expected from prior studies \cite{balkovsky2001,calzavarini2008a, fiabane2012,karchniwy2019, petersen2019, motoori2023}, lowering the particle density weakens centrifugation. (d) PDF of the time-averaged $Q$ experienced by the particles (in color), as well as that of the background field (in black). Progressive emptying of high vorticity regions with increasing particle density is seen. }
+\caption[Snapshots of particles in the 2D turbulent vorticity field and the $Q$ they sample.]{(a-c) Snapshots of the vorticity field $\zeta$ overlaid with caustics \cs particles in cyan, and the remaining ones in black at $t = 333 \ St$. All particles centrifuge out of large vortices and live in strain regions. As expected from prior studies \cite{balkovsky2001,calzavarini2008a, fiabane2012,karchniwy2019, petersen2019, motoori2023}, lowering the particle density weakens centrifugation. (d) PDF of the time-averaged $Q$ experienced by the particles (in color), as well as that of the background field (in black). Progressive emptying of high vorticity regions with increasing particle density is seen. }
 \label{int-pstruc}
 \end{figure}
 
@@ -218,8 +218,8 @@ To explain the similarity in $\mean{Q}$ and the dissimilarity in $\mean{\delta}$
 \begin{split}
     \mb{A} = \frac{St}{2}
     \begin{bmatrix}
-      \sigma_n & \sigma_s + \omega \\
-      \sigma_s - \omega & -\sigma_n
+      \sigma_n & \sigma_s + \zeta \\
+      \sigma_s - \zeta & -\sigma_n
     \end{bmatrix},
 \end{split}
 \end{align}
@@ -227,26 +227,26 @@ where $\sigma_n = \partial_x u_x - \partial_y u_y, \sigma_s = \partial_x u_y + \
 \begin{align}
 \label{int-epm}
 \begin{split}
-    \hat{e}_\pm = \frac{1}{\sqrt{(\sigma_n \pm \sigma)^2 + \sigma_s^2}}\left(\sigma_n \pm \sigma, \sigma_s\right).
+    \vec{e}_\pm = \frac{1}{\sqrt{(\sigma_n \pm \sigma)^2 + \sigma_s^2}}\left(\sigma_n \pm \sigma, \sigma_s\right).
 \end{split}
 \end{align}
-These eigenvectors $\epos$ and $\eneg$ represent the extensional and the compressional directions of the local strain of the background fluid, respectively. A particle in a strain region where the background fluid velocity is aligned with $\hat e_-$ experiences  compressional strain, whereas one aligned with $\epos$ experiences extensional strain. In addition, if the particle's velocity is close to that of the background fluid, which is true for small Stokes particles, an alignment with $\eneg$ represents the particle entering a saddle through compressional strain, and alignment with $\epos$ represents the particle exiting the saddle through extensional strain. The curvature of the particle's trajectory, defined as $|\dot{\hat{v}}(t)/|\vec{v}(t)||$, where $\hat{v}$ is the unit vector of $\vec{v}$, indicates whether the particle is moving in a straight line, or along a curved or zigzag path. The degree of alignment of the particle velocity with the compressional or extensional direction of the strain is measured by the alignment angle $\theta_v$, given by
+These eigenvectors $\epos$ and $\eneg$ represent the extensional and the compressional directions of the local strain of the background fluid, respectively. A particle in a strain region where the background fluid velocity is aligned with $\vec{e}_-$ experiences  compressional strain, whereas one aligned with $\epos$ experiences extensional strain. In addition, if the particle's velocity is close to that of the background fluid, which is true for small Stokes particles, an alignment with $\eneg$ represents the particle entering a saddle through compressional strain, and alignment with $\epos$ represents the particle exiting the saddle through extensional strain. The curvature of the particle's trajectory, defined as $|\dot{\vec{e}}_v(t)/|\vec{v}(t)||$, where $\vec{e}_v$ is the unit vector of $\vec{v}$, indicates whether the particle is moving in a straight line, or along a curved or zigzag path. The degree of alignment of the particle velocity with the compressional or extensional direction of the strain is measured by the alignment angle $\vartheta_v$, given by
 \begin{align}
 \label{int-algn}
 \begin{split}
-\sin{\theta_v} = \hat{v}\cdot \epos, \ \ \cos{\theta_v} = \hat{v}\cdot \eneg \ .
+\sin{\vartheta_v} = \vec{e}_v\cdot \epos, \ \ \cos{\vartheta_v} = \vec{e}_v\cdot \eneg \ .
 \end{split}
 \end{align}
-Thus, $\theta_v = 0,\pi$ represents a particle moving along the compressional direction of the strain, whereas $\theta_v = \pi/2,3\pi/2$ indicates that the particle is moving along the extensional strain direction. For small Stokes particles,  $\theta_v =\pi/2$ and $3\pi/2$ represent particles moving away from a local saddle point, whereas $0$ and $\pi$ represent motion towards it. Given the difference between these conditions, we do not expect complete top-down on left-right symmetry in any feature of $\theta_v$.
+Thus, $\vartheta_v = 0,\pi$ represents a particle moving along the compressional direction of the strain, whereas $\vartheta_v = \pi/2,3\pi/2$ indicates that the particle is moving along the extensional strain direction. For small Stokes particles,  $\vartheta_v =\pi/2$ and $3\pi/2$ represent particles moving away from a local saddle point, whereas $0$ and $\pi$ represent motion towards it. Given the difference between these conditions, we do not expect complete top-down on left-right symmetry in any feature of $\vartheta_v$.
 
 \begin{figure}
   \centering
   \includegraphics[width = 0.9\linewidth]{./figures/inertial_caustics/caus_nc_summary_0.7.pdf}
-  \caption[Caustics and survivor particles compared at $\alpha = 0.7$]{Comparing $\alpha = 0.7$ caustics and survivor particles using different metrics. Red is for \cs particles and blue for \su ones. (a) PDFs of the alignment angle $\theta_v$ are shown at times indicated by the green rectangles in the $\mean{Q}$ plot. (b,c) Average strain and vorticity experienced by \cs and \su particles during their evolution. (d) Average $\delta = \Tr(\mb{Z})$ for the \cs and \su particles. Despite similar $\mean{Q}$s, their $\mean{\delta}$ is significantly different. (e) RMS velocity of \su particles is higher than the \cs particles, and their curvature (f) is much lower for some time before caustics.}
+  \caption[Caustics and survivor particles compared at $\alpha = 0.7$]{Comparing $\alpha = 0.7$ caustics and survivor particles using different metrics. Red is for \cs particles and blue for \su ones. (a) PDFs of the alignment angle $\vartheta_v$ are shown at times indicated by the green rectangles in the $\mean{Q}$ plot. (b,c) Average strain and vorticity experienced by \cs and \su particles during their evolution. (d) Average $\delta = \Tr(\mb{Z})$ for the \cs and \su particles. Despite similar $\mean{Q}$s, their $\mean{\delta}$ is significantly different. (e) RMS velocity of \su particles is higher than the \cs particles, and their curvature (f) is much lower for some time before caustics.}
   \label{int-caus_nc_sum}
 \end{figure}
 
-\fref{int-caus_nc_sum} highlights the differences between nearly-neutral \cs and \su particles in terms of the metrics discussed above. Panel (a) shows the PDF of $\theta_v$ at the times indicated in the $\mean{Q}$ plot. $\hat e_-(t)$ is calculated from \eref{int-epm} using the background strain at the location of the particle.
+\fref{int-caus_nc_sum} highlights the differences between nearly-neutral \cs and \su particles in terms of the metrics discussed above. Panel (a) shows the PDF of $\vartheta_v$ at the times indicated in the $\mean{Q}$ plot. $\vec{e}_-(t)$ is calculated from \eref{int-epm} using the background strain at the location of the particle.
 Due to the small $St$, $\vec{v}$ and $\vec{u}$ point in similar directions throughout.
 A stark difference between \cs and \su particles is seen in the first panel, i.e., before the particles undergo sharply time-varying strains. With higher probability, \cs particles are better aligned with the compressional direction $\eneg$, whereas \su particles preferentially orient along the extensional direction of strain $\epos$, and experience a temporary reduction of strain, unlike \cs particles. Thereafter, both are catapulted into regions of high compressional strain (third panel) and finally (fourth panel) ejected into low-strain regions. The mean strain and vorticity magnitudes experienced by \cs and \su particles are provided in \fref{int-caus_nc_sum} (b) and (c) for completeness. Important differences are evident in \fref{int-caus_nc_sum} (e) and (f) which show respectively that just prior to entering the maximum in strain (minimum in $Q$), \su particles move faster than \cs counterparts and that their paths have significantly less curvature. Due to shooting straight and rapidly through the high strain region, \su particles spend less time there than \cs particles, and this is confirmed in the $\mean{Q}$ plot in (a). The culmination of these differences is manifested in a dramatic departure in behaviour of \cs and \su particles, as evidenced in \fref{int-caus_nc_sum} (d), where the former goes through caustics and the latter does not. Instead of a monotonic increase in negative $\delta$, \su particles actually show a reduction, going briefly to almost no divergence.
 

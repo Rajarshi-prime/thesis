@@ -41,7 +41,7 @@ In this work we investigate whether this is true. Confining ourselves to a fixed
 
 We find a few surprising results. First, we see that for a fixed volume fraction and
 \section{Non-dimensional cloud numbers}
-The kinematic viscosity of air $\nu = 10^{-5}\mbox{m}^2\cdot\mbox{sec}^{-1}$. Observation suggests that mean dissipation rate in warm clouds can range from $10^{-3}\mbox{m}^2\cdot\mbox{sec}^{-3}$ to $10^{-1}\mbox{m}^2\cdot\mbox{sec}^{-3}$ (see \citet{grabowski2013} \S 2.1). This sets the Kolmogorov timescale $\tau_\eta = \sqrt{\nu/\epsilon}$ to be $0.1$ to $0.01$ sec, respectively. Similarly, the Kolmogorov length scale $\eta = (\nu^3/\epsilon)^{1/4}$ ranges from $1\mbox{mm}$ to $0.3\mbox{mm}$, respectively. Now a $1\mu\mbox{m}$(diameter) cloud droplet $1000$ times heavier than the air will have Stokes numbers ranging from $5\times 10^{-5}$ to $5\times 10^{-4}$, respectively. Warm clouds may have $10^{9}$ water droplets in $1\mbox{m}^3$, making the volume fraction $\varphi$ of $1\mu\mbox{m}$ droplets to be $5\times 10^{-10}$  The Stokes number scales quadratically with particle sizes and the volume fraction cubically. Thus, particles of $10\mu\mbox{m}$(diameter) will have Stokes ranging from $5\times 10^{-3}$ to $0.05$ and volume fraction of $5\times 10^{-7}$.
+The kinematic viscosity of air $\nu = 10^{-5}\mbox{m}^2\cdot\mbox{sec}^{-1}$. Observation suggests that mean dissipation rate in warm clouds can range from $10^{-3}\mbox{m}^2\cdot\mbox{sec}^{-3}$ to $10^{-1}\mbox{m}^2\cdot\mbox{sec}^{-3}$ (see \citet{grabowski2013} \S 2.1). This sets the Kolmogorov timescale $\tau_\eta = \sqrt{\nu/\epsilon}$ to be $0.1$ to $0.01$ sec, respectively. Similarly, the Kolmogorov length scale $\eta = (\nu^3/\epsilon)^{1/4}$ ranges from $1\mbox{mm}$ to $0.3\mbox{mm}$, respectively. Now a $1\mu\mbox{m}$(diameter) cloud droplet $1000$ times heavier than the air will have Stokes numbers ranging from $5\times 10^{-5}$ to $5\times 10^{-4}$, respectively. Warm clouds may have $10^{9}$ water droplets in $1\mbox{m}^3$, making the volume fraction $c_s$ of $1\mu\mbox{m}$ droplets to be $5\times 10^{-10}$  The Stokes number scales quadratically with particle sizes and the volume fraction cubically. Thus, particles of $10\mu\mbox{m}$(diameter) will have Stokes ranging from $5\times 10^{-3}$ to $0.05$ and volume fraction of $5\times 10^{-7}$.
 
 \begin{table}[h]
     \centering
@@ -51,7 +51,7 @@ The kinematic viscosity of air $\nu = 10^{-5}\mbox{m}^2\cdot\mbox{sec}^{-1}$. Ob
         & $\epsilon = 10^{-3}\ \text{m}^2\text{s}^{-3}$
         & $\epsilon = 10^{-2}\ \text{m}^2\text{s}^{-3}$
         & $\epsilon = 10^{-1}\ \text{m}^2\text{s}^{-3}$
-        & $\varphi$
+        & $c$
         & $\tau_{\mbox{coll}}$\\
         \midrule
         $\eta = (\nu^3/\epsilon)^{1/4}$   & $1\ \text{mm}$   & $0.6\ \text{mm}$  & $0.3\ \text{mm}$  & in $1\ \text{m}^3$ & tracer \\
@@ -62,7 +62,7 @@ The kinematic viscosity of air $\nu = 10^{-5}\mbox{m}^2\cdot\mbox{sec}^{-1}$. Ob
         $d = 10\ \mu\text{m}$ & $\mathrm{St} = 5.5\times10^{-3}$ & $\mathrm{St} = 0.017$            & $\mathrm{St} = 0.055$           & $5\times10^{-7}$  & $3$s\\
         \bottomrule
     \end{tabular}
-    \caption[Kolmogorov scales and droplet parameters for warm clouds]{Kolmogorov scales and particle parameters for warm clouds ($\nu = 10^{-5}\text{m}^2\text{s}^{-1}, u_{\text{RMS}} = 1\, \mbox{m s}^{-1}$. Values according to \citet{grabowski2013} \S 2.1).}
+    \caption[Kolmogorov scales and droplet parameters for warm clouds]{Kolmogorov scales and particle parameters for warm clouds ($\nu = 10^{-5}\text{m}^2\text{s}^{-1}, u_{\rm rms} = 1\, \mbox{m s}^{-1}$. Values according to \citet{grabowski2013} \S 2.1).}
     \label{lucky-cloud-vals}
 \end{table}
 
@@ -86,10 +86,10 @@ Now, we would like to know what happens when a big particle of velocity $\vec{v}
 \begin{align}
 % \label{}
 \begin{split}
-    \dot{N}_c = \sigma ~ n_s ~ |\vec{v}_b - \vec{v}_s| \ ,
+    \dot{N}_c = \varsigma ~ n_s ~ |\vec{v}_b - \vec{v}_s| \ ,
 \end{split}
 \end{align}
-where $\vec{v}_b$ is the velocity of the big particle and $\vec{v}_s$ is the velocity of the small particle at the location of the big particle. $\sigma_b = \pi(a_s^2 + a_b^2)$ is the collision cross-section of the big particles with the small ones. Rate of coalescence is related to the rate of collision by $P_{cc}$, $\dot{N}_{cl} = P_{cc}~\dot{N}_c$. In the remainder of this study, we will assume 100\% coalescence rate, and set $P_{cc} = 1$.
+where $\vec{v}_b$ is the velocity of the big particle and $\vec{v}_s$ is the velocity of the small particle at the location of the big particle. $\varsigma_b = \pi(a_s + a_b)^2$ is the collision cross-section of the big particles with the small ones. Rate of coalescence is related to the rate of collision by $P_{cc}$, $\dot{N}_{cl} = P_{cc}~\dot{N}_c$. In the remainder of this study, we will assume 100\% coalescence rate, and set $P_{cc} = 1$.
 
 % To fnd the growth rate of the radius of the particle, one needs to invoke conservation of volume before and after collision. Furthermore, we assume that all particles remain spherical before and after collision. Thus, rate of change of volume or $a_b^3$ of the big particle is given by
 % \begin{align}
@@ -211,14 +211,14 @@ again, this rate of change in volume is related to the collision rate as
 \begin{align}
 \label{lucky-vol-rate-2}
 \begin{split}
-    \dot{V}_b = \sigma c_s |\vec{v}_b - \vec{v}_s| \ ,
+    \dot{V}_b = \varsigma c_s |\vec{v}_b - \vec{v}_s| \ ,
 \end{split}
 \end{align}
 where $c_s(t,x) = 4/3\pi n_s(t,x)$ is the volume fraction of the small particles. Equating the RHS of Eq. \eqref{lucky-vol-rate-1} and \eqref{lucky-vol-rate-2}, we find the rate of change of big particle's relaxtation time as
 \begin{align}
 % \label{}
 \begin{split}
-    \dot{\tau}_b =\frac{1}{2\pi\sqrt{\tau_b}} \left(\frac{9\nu}{2\rho}\right)^{-\frac32}\sigma c_s |\vec{v}_b - \vec{v}_s| \ ,
+    \dot{\tau}_b =\frac{1}{2\pi\sqrt{\tau_b}} \left(\frac{9\nu}{2\rho}\right)^{-\frac32}\varsigma c_s |\vec{v}_b - \vec{v}_s| \ ,
 \end{split}
 \end{align}
 We still have to include the drag effects of the small particles to the big one. To do this, we will impose momentum conservation during the collisions of the big and small particles. We do not have any force equation for the small particles, the assumption is that the change of velocity in the small particles due to the big particles is negligible. It's velocity is tightly bound by fluid streamlines according to Eq. \eqref{lucky-sm-rhoinf}. Thus, for now, the forces felt by the big particles will not be incorporated into the force of the small particles. With this in mind, the total mommentum before collision of the big particle with $\Delta V_s = \Delta t~\dot{V}_s$ volume of small particles is
@@ -276,15 +276,15 @@ This makes the rate of change of the big particle's velocity
 \begin{align}
 % \label{}
 \begin{split}
-    \dot{\vec{v}}_b(t) = \frac{\sigma c_s(t,\vec{x}_b) }{V_b(t)}|\vec{v}_b - \vec{v}_s|\left( \vec{v}_s - \vec{v}_b \right) + \frac{\vec{u}- \vec{v}_b}{\tau_b} \ .
+    \dot{\vec{v}}_b(t) = \frac{\varsigma c_s(t,\vec{x}_b) }{V_b(t)}|\vec{v}_b - \vec{v}_s|\left( \vec{v}_s - \vec{v}_b \right) + \frac{\vec{u}- \vec{v}_b}{\tau_b} \ .
 \end{split}
 \end{align}
-The collision cross-section $\sigma$ is different between $3$D and $2$D. When we say $2$D, we are still dealing with $3$ dimensional  spheres, but all of their centre of mass is restricted to a single plane. In such a case, the relaxation timescales $\tau_b$ and $\tau_s$ does not change with dimensions, but the collision cross-section does,
+The collision cross-section $\varsigma$ is different between $3$D and $2$D. When we say $2$D, we are still dealing with $3$ dimensional  spheres, but all of their centre of mass is restricted to a single plane. In such a case, the relaxation timescales $\tau_b$ and $\tau_s$ does not change with dimensions, but the collision cross-section does,
 \begin{align}
 % \label{}
 \begin{split}
-    \sigma_{2} &= 2\left(\frac{9\nu\tau_b}{2\rho}\right)^\frac12\left( 1 + \sqrt{\frac{\tau_s}{\tau_b}} \right) \\
-    \sigma_{3} &= \pi\left(\frac{9\nu\tau_b}{2\rho}\right)\left( 1 + \sqrt{\frac{\tau_s}{\tau_b}} \right)^2 \ .
+    \varsigma_{2} &= 2\left(\frac{9\nu\tau_b}{2\rho}\right)^\frac12\left( 1 + \sqrt{\frac{\tau_s}{\tau_b}} \right) \\
+    \varsigma_{3} &= \pi\left(\frac{9\nu\tau_b}{2\rho}\right)\left( 1 + \sqrt{\frac{\tau_s}{\tau_b}} \right)^2 \ .
 \end{split}
 \end{align}
 There is on final modification, we need to reduce the number of small particles with time. Thus $\dot{V}_b$ should be added as a sink to the equation of motion for $c_s$. With all this, the dimensional evolution equations for $c_s, \tau_b$ and $\vec{v}_b$ in $3$D
@@ -406,14 +406,14 @@ We run our numerical simulation for the following parameters.
     \centering
     \begin{tabular}{|ccccccc|}
     \hline
-        Runs & $V_s(0)$  & $V_b(0)$ & $St_s$ & $St_b(0)$& $\gamma$ & \\
+        Runs & $V_s(0)$  & $V_b(0)$ & $St_s$ & $St_b(0)$& $\alpha_g$ & \\
         \hline
         1& $10^{-6}$ & $10^{-9}$ &0.005  &0.3 & & \\
         2& $10^{-6}$  & $10^{-9}$ &0.01  & 0.3 & & \\
          3& $10^{-6}$ & $10^{-9}$ &0.02  &0.3 & & \\
          \hline
     \end{tabular}
-    \caption[Parameters of the different runs]{Parameters of the different runs. The growth rate of the big particles is fitted with $t^{\gamma}$}
+    \caption[Parameters of the different runs]{Parameters of the different runs. The growth rate of the big particles is fitted with $t^{\alpha_g}$}
     \label{lucky-tab:my_label}
 \end{table}
 \begin{figure}
@@ -432,7 +432,7 @@ For runs 1 and 3, we check the growth rate of particles starting from regions of
 \label{lucky-grth-diffQ}
 \end{figure}
 
-Next, we try to see whether particles start gaining more liquid content if they encounter a strong vortex. For that we consider particles that have encountered vortices stronger than $2\omega_{rms}$, where $\omega_{rms}$ is the root-mean-square vorticity of the background field.
+Next, we try to see whether particles start gaining more liquid content if they encounter a strong vortex. For that we consider particles that have encountered vortices stronger than $2\zeta_{\rm rms}$, where $\zeta_{\rm rms}$ is the root-mean-square vorticity of the background field.
 
 \begin{figure}
 	\begin{center}
@@ -442,7 +442,7 @@ Next, we try to see whether particles start gaining more liquid content if they 
 \label{}
 \end{figure}
 At early times, right after entering the vortex, we see that the big particles grow much larger. This may be because of two reasons. First, only the particles that are big enough to significantly avoid streamlines enter these big vortical regions. These particles already being bigger than the rest, naturally accumulate more small particles owing to their larger collision cross-section. However, this effect should also be there at late times, but we see that the growth rate slow down. The second reason is also an interesting one. Larger particles get centrifuged out more out of the large vortical regions. On their way out, these particles are prone to capture many small particles.
-Next, we want to study the growth rate within the vortical region. To do so, we track when a big particle enters and leaves a big vortex $\omega > 2\omega_{rms}$ and plot the volume grown as a function of the residence time. Apriori, we do not expect significant growth \emph{inside} the vortex, but rather after they come out of a big particle.
+Next, we want to study the growth rate within the vortical region. To do so, we track when a big particle enters and leaves a big vortex $\zeta > 2\zeta_{\rm rms}$ and plot the volume grown as a function of the residence time. Apriori, we do not expect significant growth \emph{inside} the vortex, but rather after they come out of a big particle.
 
 \section{Initial conditions of the `Lucky' Particles}
 If we seed the lucky droplets uniformly in the domain, and evolve, the first and the last stage is given below.
@@ -459,7 +459,7 @@ Instead, if we initialize particles from the strongest vortex cores, we get the 
 	\begin{center}
 		\includegraphics[width=0.9\linewidth]{./figures/polydisperse/Qpos_0.002_0.02.pdf}
 	\end{center}
-\caption[Fate of small droplets for lucky droplets started in high $Q$]{Initial and final fate of the small particle concentration along with vorticity when `lucky' particles are initialized in regions $Q> 3Q_{rms}$. $St_b = 0.02$, $St_s = 0.002$. }
+\caption[Fate of small droplets for lucky droplets started in high $Q$]{Initial and final fate of the small particle concentration along with vorticity when `lucky' particles are initialized in regions $Q> 3Q_{\rm rms}$. $St_b = 0.02$, $St_s = 0.002$. }
 % \label{}
 \end{figure}
 What happens to the growth rate of the `lucky' droplets? Do the ones starting out from the vortex core grow faster?
@@ -545,10 +545,10 @@ In late stage, situation is different. Lucky droplets contain most of the volume
 \begin{align}
 % \label{}
 \begin{split}
-    \dot{M}_s \propto M_s \implies \dot{M}_s \propto e^{-\gamma t} \ ,
+    \dot{M}_s \propto M_s \implies \dot{M}_s \propto e^{-\lambda_s t} \ ,
 \end{split}
 \end{align}
-where $\gamma$ is the depletion rate. Similarly, as before, the rate of change of mass of the big droplets is $\dot{M}_s$ and lucky droplets grow as $M_b(t) = M_T - M_s(t) = M_T - M_s^*e^{-\gamma(t - t^*)}$. In Fig. \ref{lucky-largetimes-2d}, we show this behavior by plotting the volume fraction of the small droplets, and the growth rate of the large droplets calculated from the local slope of Fig. \ref{lucky-grwth}(right). Both show behavior similar to exponential, but their slopes do not match.
+where $\lambda_s$ is the depletion rate. Similarly, as before, the rate of change of mass of the big droplets is $\dot{M}_s$ and lucky droplets grow as $M_b(t) = M_T - M_s(t) = M_T - M_s^*e^{-\lambda_s(t - t^*)}$. In Fig. \ref{lucky-largetimes-2d}, we show this behavior by plotting the volume fraction of the small droplets, and the growth rate of the large droplets calculated from the local slope of Fig. \ref{lucky-grwth}(right). Both show behavior similar to exponential, but their slopes do not match.
 \begin{figure}
 	\begin{center}
 		\includegraphics[width=\linewidth]{./figures/polydisperse/largetimes-2d.png}
@@ -561,7 +561,7 @@ where $\gamma$ is the depletion rate. Similarly, as before, the rate of change o
     \renewcommand{\arraystretch}{2} % spacing between rows
     \begin{tabular}{cccc}
     \hline
-    \textbf{St} & \textbf{Init} & $\gamma$ \textbf{ left} & $\gamma$ \textbf{ right} \\ \hline
+    \textbf{St} & \textbf{Init} & $\lambda_s$ \textbf{ left} & $\lambda_s$ \textbf{ right} \\ \hline
     0.01 & rndm   & -0.02128 & -0.01720 \\
     0.02 & rndm   & -0.01203 & -0.00760 \\
     0.01 & $Q>0$  & -0.02134 & -0.01809 \\
@@ -569,7 +569,7 @@ where $\gamma$ is the depletion rate. Similarly, as before, the rate of change o
     0.01 & $Q<0$  & -0.02101 & -0.01675 \\
     0.02 & $Q<0$  & -0.01196 & -0.00744 \\ \hline
     \end{tabular}
-    \caption[Fitted slopes for the late-time volume fractions]{Fitted slopes $\gamma$ for the left and right part of Fig. \ref{lucky-largetimes-2d}. They do not match.}
+    \caption[Fitted slopes for the late-time volume fractions]{Fitted slopes $\lambda_s$ for the left and right part of Fig. \ref{lucky-largetimes-2d}. They do not match.}
 \end{table}
 
 
@@ -601,7 +601,7 @@ Now, although the growth rate for smaller initial $St_b$ are higher, do they pro
 \caption[Growth in volume fraction of lucky droplets in three dimensions]{Growth in volume fraction of lucky droplets in $3$D}
 \label{lucky-3d-grwth}
 \end{figure}
-According to back at table \ref{lucky-cloud-vals}, we chose $St_s = 0.001$ with an initial liquid water content $\varphi_s(0) = 7.2\times 10^{-7}$. This means that there are $10^{11}$ $2.7\,\mu\mbox{m}$(diameter) particles in a cloud of $1\mbox{m}^3$ with mean dissipation rate $\varepsilon = 10^{-2} \mbox{m}^2\cdot\mbox{sec}^{-3}$. After evolving the small particles for significant enough time, put 1 in a million lucky droplets of size $10\,\mu\mbox{m}$. From table \ref{lucky-cloud-vals}, we see that their initial volume fraction must be $\varphi_b(0) = 5\times 10^{-13}$. Given mass of each particle $m_p$ is related to the Stokes number as
+According to back at table \ref{lucky-cloud-vals}, we chose $St_s = 0.001$ with an initial liquid water content $c_s(0) = 7.2\times 10^{-7}$. This means that there are $10^{11}$ $2.7\,\mu\mbox{m}$(diameter) particles in a cloud of $1\mbox{m}^3$ with mean dissipation rate $\epsilon = 10^{-2} \mbox{m}^2\cdot\mbox{sec}^{-3}$. After evolving the small particles for significant enough time, put 1 in a million lucky droplets of size $10\,\mu\mbox{m}$. From table \ref{lucky-cloud-vals}, we see that their initial volume fraction must be $c_b(0) = 5\times 10^{-13}$. Given mass of each particle $m_p$ is related to the Stokes number as
 \begin{align}
 % \label{}
 \begin{split}
@@ -612,10 +612,10 @@ the number of lucky drops $N_b$ is constrained by the net liquid water content p
 \begin{align}
 % \label{}
 \begin{split}
-    \frac{N_b\times m_b(0)}{\left(2\pi\times \frac{\eta}{\eta_s}\right)^3 } = \rho \varphi_b(0) \implies N_b \sim 8,
+    \frac{N_b\times m_b(0)}{\left(2\pi\times \frac{\eta}{\eta_s}\right)^3 } = \rho c_b(0) \implies N_b \sim 8,
 \end{split}
 \end{align}
-with the parameters described above and where $\eta_s = m/k_m = 3 m /(N\sqrt2)$ is Kolmogorov length in the simulation units, $k_m$ is the maximum de-aliased wavenumber, $m$ is given by our choice, and $N$ is the resolution of the simulation. This is an abysmally small number. Rather we seed 1 lucky droplet for every 1000 small droplets. This makes the $N_b  \sim 8000 \sim 8192$. Keeping the initial liquid water content of the lucky droplets constant, we change the Stokes number of the lucky droplets. This lets us investigate whether luckier droplets get luckier. The initial lucky drops Stokes number we use are $St_b(0) = [2\times 10^{-3}, 4 \times 10^{-3}   , 0.017     , 0.068     , 0.11   ]$.
+with the parameters described above and where $\eta_s = \mathrm{m}/k_{\mathrm{m}} = 3 \mathrm{m} /(N_g\sqrt2)$ is Kolmogorov length in the simulation units, $k_{\mathrm{m}}$ is the maximum de-aliased wavenumber, $\mathrm{m}$ is given by our choice, and $N_g$ is the resolution of the simulation. This is an abysmally small number. Rather we seed 1 lucky droplet for every 1000 small droplets. This makes the $N_b  \sim 8000 \sim 8192$. Keeping the initial liquid water content of the lucky droplets constant, we change the Stokes number of the lucky droplets. This lets us investigate whether luckier droplets get luckier. The initial lucky drops Stokes number we use are $St_b(0) = [2\times 10^{-3}, 4 \times 10^{-3}   , 0.017     , 0.068     , 0.11   ]$.
 
 
 At a first glance of Fig. \ref{lucky-3d-grwth}, the results for $2$D still holds for $3$D. But the growth is very minimal. This is expected in $3$D as the collision cross-section is smaller, owing to less collisions. This means that one has to evolve the system for longer times which is quite difficult in $3$D. In fact, while evolving different cases of initial lucky droplets, the bottleneck becomes evolving the field equations of $n$. Each class of lucky droplets require a separate number density field because of the mutual couplings between the small and big particles. The evolution of number density field incurs more Fast-Fourier transforms which are time-consuming.

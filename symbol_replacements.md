@@ -70,7 +70,7 @@ has to be made there too.
 | Current | Proposed | Meaning | Status |
 |---|---|---|---|
 | `\alpha` | `\alpha` | density parameter, `2\rho/(2\rho+1)` | keep |
-| `\ell` | `\mathfrak{l}` | inner region size, `\ell^2 = \tau\sqrt{3\alpha-2}` | change |
+| `\ell` | `\mathfrak{l}` | inner region size, `\mathfrak{l}^2 = \tau\sqrt{3\alpha-2}` | change |
 | `L` | `L` | flow length scale | keep |
 | `\mathscr{L}` | `\mathscr{L}` | angular momentum per unit mass | keep |
 | `\mb{A}` | `\mathbb{A}` | fluid velocity gradient tensor, `St\,\nabla\vec{u}`, already `\mathbb`, nothing to do. The plain letter A for avoider particles stands apart, the fonts differ | keep |
@@ -82,7 +82,9 @@ has to be made there too.
 | subscript `p` | subscript `p` | particle quantities, `\vec{x}_p`, `\rho_p`, `\tau_p` | keep |
 | `D/Dt` | `D/Dt` | material derivative | keep |
 | `T`, `T_c` | `\mathcal{T}`, `\mathcal{T}_c` | rescaled inner time and caustics time in inner units | change |
-| `t_b` | `t_{\rm th}` | time when `-\mb{Z}^2` starts to dominate | change |
+| `t_b` | `t_{\rm thresh}` | time when `-\mb{Z}^2` starts to dominate | change |
+| `\mb{Z}_b` | `\mb{Z}_{\rm thresh}` | the tensor at that time | change |
+| `\zeta` | `\chi` | auxiliary root of the quartic, in the appendix | change |
 | `t_c` | `t_c` | caustics time | keep |
 | `r_c` | `r_c` | caustics radius | keep |
 | `\mathcal{R}_{c0}` | `\mathcal{R}_{c0}` | critical initial radius | keep |
@@ -129,11 +131,13 @@ has to be made there too.
 | `\mu` | `\mu_E` | Ekman friction of the background flow, split off from the mobility | change |
 | `\theta` | `\vartheta` | polar angle of the point-vortex coordinates | change |
 | `\hat{\theta}` | `\boldsymbol{e}_\vartheta` | unit vector. Every unit vector takes the `\boldsymbol{e}` form | change |
+| `\mathbf{\hat{r}}` | `\boldsymbol{e}_r` | radial unit vector | change |
+| `\textbf{I}` | `\mathbb{I}` | identity tensor | change |
 | `q` | `k_f` | forcing wavenumber, written `q` in the text and `k_f` in the table of spectral parameters | change |
 | `\vec{F}`, `\vec{F}_{\rm eff}`, `F_0` | same | external force, effective force, forcing amplitude | keep |
 | `\mathcal{W}` | `\mathcal{W}` | Okubo-Weiss parameter from dimensional gradients. It differs from the `Q` of the other chapters by a positive constant and by `St^2` | keep |
 | `\tilde{\Gamma}` | `\tilde{\Gamma}` | circulation, `\tilde{\Gamma} = \Gamma/2\pi` | keep |
-| `\tilde{O}` | `\tilde{O}` | fluid velocity gradient tensor, `\tau\nabla\vec{u}`, the counterpart of `\mathbb{A}` in `inertial_caustics` | keep |
+| `\tilde{O}` | `\tilde{\mathbf{O}}` | fluid velocity gradient tensor, `\tau\nabla\vec{u}`, the counterpart of `\mathbb{A}` in `inertial_caustics` | change |
 | `\Delta r` | `\Delta r` | separation between two neighbouring particle rings | keep |
 | `\langle\cdot\rangle` | same | averaging | keep |
 
@@ -152,7 +156,8 @@ has to be made there too.
 | `m` | `m` | droplet mass | keep |
 | `m`, `k_m` | `\mathrm{m}`, `k_{\mathrm{m}}` | parameter setting the Kolmogorov length, `\eta_s = \mathrm{m}/k_{\mathrm{m}}`, made upright to part it from the mass | change |
 | `\sigma`, `\sigma_2`, `\sigma_3` | `\varsigma`, `\varsigma_2`, `\varsigma_3` | collision cross-section in two and three dimensions. The chapter gives two disagreeing forms, and `\varsigma_3 = \pi(a_s+a_b)^2` is the correct one | change |
-| `\varphi_s`, `\varphi_b` | `c_s`, `c_b` | volume fraction of small and big droplets | change |
+| `\varphi_s`, `\varphi_b`, `\varphi` | `c_s`, `c_b`, `c` | volume fraction of the small droplets, the big ones, and either | change |
+| `Q_{rms}` | `Q_{\rm rms}` | root mean square of the Okubo-Weiss parameter | change |
 | `\delta`, `\delta t` | same | Dirac delta and time step | keep |
 | `\epsilon`, `\varepsilon` | `\epsilon` | mean energy dissipation rate of the cloud | change |
 | `\nu` | `\nu` | kinematic viscosity | keep |
@@ -182,3 +187,5 @@ has to be made there too.
    `\mb{S}`, `\mb{Z}`, and `\mb` is defined in `preamble.tex:157` as
    `\mathbb`. In `chapters/active_caustics.tex` the same tensors are written
    `\textbf{A}`, `\textbf{S}`, `\textbf{Z}`, with one stray `\sf{S}`.
+
+ All changes should only be symbolic. You cannot add any new lines or texts. 

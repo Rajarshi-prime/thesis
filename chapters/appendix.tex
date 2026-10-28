@@ -96,27 +96,27 @@ where $\hat{.}$ denotes quantities in spectral space. From the definition in \eq
 \begin{align}
  \label{edwv-e3d}
  \begin{split}
- \hat{e}\left( \vec{k}_h, k_z,t \right) = \frac{1}{2}\left( |\hat{u}|^2 + |\hat{v}|^2 + \frac{|\hat{w}|^2}{\alpha^2} + |\hat{b}|^2\right) \ ,
+ \hat{e}\left( \vec{k}_h, k_z,t \right) = \frac{1}{2}\left( |\hat{u}|^2 + |\hat{v}|^2 + \frac{|\hat{w}|^2}{\AR^2} + |\hat{b}|^2\right) \ ,
  \end{split}
 \end{align}
 And upon splitting the net flow into geostrophic and ageostrophic components, we get 
 \begin{align}
  % \label}
  \begin{split}
- \hat{e}\left( \vec{k}_h, k_z,t \right) =& \hat{e}_g\left( \vec{k}_h, k_z,t \right) + \hat{e}_a\left( \vec{k}_h, k_z,t \right)+ \op{Re}\left( \hat{u}_g^* \hat u_w + \hat{v}_g^* \hat v_w + \frac{\hat{w}_g^* \hat w_w}{\alpha^2} + \hat{b}_g^* \hat b_w\right) \ , 
+ \hat{e}\left( \vec{k}_h, k_z,t \right) =& \hat{e}_g\left( \vec{k}_h, k_z,t \right) + \hat{e}_a\left( \vec{k}_h, k_z,t \right)+ \op{Re}\left( \hat{u}_g^* \hat u_a + \hat{v}_g^* \hat v_a + \frac{\hat{w}_g^* \hat w_a}{\AR^2} + \hat{b}_g^* \hat b_a\right) \ , 
  \end{split}
 \end{align}
 where $\hat{e}_g$ and $\hat{e}_a$ are the geostrophic and ageostrophic energy at wavenumber $(\vec{k}_h, k_z)$ with the definition given in \eqref{edwv-e3d}. Noting $\hat{w}_g = 0$, the cross terms in the energy vanish using \eqref{edwv-sbuprj}, 
 \begin{align}
  % \label{}
  \begin{split}
- \hat{u}_g^* \hat u_w + \hat{v}_g^* \hat v_w + \frac{\hat{w}_g^* \hat w_w}{\alpha^2} + \hat{b}_g^* \hat b_w = \begin{bmatrix}
+ \hat{u}_g^* \hat u_a + \hat{v}_g^* \hat v_a + \frac{\hat{w}_g^* \hat w_a}{\AR^2} + \hat{b}_g^* \hat b_a = \begin{bmatrix}
  \hat{u}_g^*,\hat{v}_g^*,\hat{w}_g^*, \hat{b}_g^*
  \end{bmatrix} \begin{bmatrix}
- \hat{u}_w \\
- \hat{v}_w \\
- \hat{w}_w \\
- \hat{b}_w \\
+ \hat{u}_a \\
+ \hat{v}_a \\
+ \hat{w}_a \\
+ \hat{b}_a \\
  \end{bmatrix} = \begin{bmatrix}
  \hat{u}^*,\hat{v}^*,\hat{w}^*, \hat{b}^*
  \end{bmatrix}\hat{\mb{P}} \left(\mb{I}_4 - \hat{\mb{P}}^\dagger\right) \begin{bmatrix}
@@ -174,11 +174,11 @@ Specifying a geostrophic pressure $f_{p_g}$, the geostrophic velocity field is g
 	\vec{f}_{v_g} = \bsh z \times \grad{f_{p_g}}\qquad; \qquad f_{w_g} = 0 \qquad,\mbox{ and}\qquad f_{b_g} = \frac{\partial f_{p_g}}{\partial z} \ .
 \end{split}
 \end{align}
-Thus, to force the geostrophic flow, we initialize a pressure field $f_{p_g}$ in the spectral space with $k = \sqrt{k_h^2 + k_z^2}< 6$, and define the geostrophic forcing $\vec{f_{v_g}}, \ f_{w_g}, \  f_{b_g}$ as 
+Thus, to force the geostrophic flow, we initialize a pressure field $f_{p_g}$ in the spectral space with $k = \sqrt{k_h^2 + k_z^2}< 6$, and define the geostrophic forcing $\vec{f}_{v_g}, \ f_{w_g}, \  f_{b_g}$ as 
 \begin{align}
 % \label{}
 \begin{split}
-	\Big(\vec{F_{v_g}},F_{w_g}, F_{b_g}\Big)(x,y,z,t) = A_g\Big(\vec{f_{v_g}},0,f_{b_g}\Big)(x,y,z)\mc{H}\left(E_c^g - E_g(t)\right) \ ,
+	\Big(\vec{F}_{v_g},F_{w_g}, F_{b_g}\Big)(x,y,z,t) = A_g\Big(\vec{f}_{v_g},0,f_{b_g}\Big)(x,y,z)\mc{H}\left(E_c^g - E_g(t)\right) \ ,
 \end{split}
 \end{align}
 where $E_g(t)$ is the instantaneous geostrophic energy of the flow field and $A_g$is the amplitude of the forcing. $E_c^g =4$ is the critical energy above which the geostrophic forcing vanishes. 
@@ -199,7 +199,7 @@ with $k_h = \sqrt{k_x^2 + k_y^2} = \sqrt{2}$, $k_z = 1$, and $\omega=\omega_0 = 
 \begin{split}
 	\begin{bmatrix}
 		\hat{F}_{u_a}\\
-		\hat{F}_{u_a}\\
+		\hat{F}_{v_a}\\
 		\hat{F}_{w_a}\\
 		\hat{F}_{b_a}\\
 	\end{bmatrix}(\vec{k}_h,k_z,t) = A_a \begin{bmatrix}
@@ -220,14 +220,14 @@ Here, we will derive the spatially filtered energy evolution equation. For conve
 \begin{align}
  % \label{}
  \begin{split}
- z \to \frac{z}{\alpha} \ .
+ z \to \frac{z}{\AR} \ .
  \end{split}
 \end{align}
 This changes the vertical velocity and the vertical derivative to
 \begin{align}
  % \label{}
  \begin{split}
- w \to \frac{w}{\alpha} \qquad ; \qquad \Dp{}{z}{}\to \alpha \Dp{}{z}{} .
+ w \to \frac{w}{\AR} \qquad ; \qquad \Dp{}{z}{}\to \AR \Dp{}{z}{} .
  \end{split}
 \end{align}
 
@@ -235,8 +235,8 @@ With the above scalings, the Boussinesq equations in \eqref{edwv-bsnq}, in the a
 \begin{align}
  \label{edwv-bsnqsc}
  \begin{split}
- \Dp{u_i}{t}{}+ Ro~ u_k\Dp{ u_i}{x_k}{}+ \epsilon_{i3k} u_k &= - \Dp{p}{x_i}{} + \alpha b \delta_{3i} \\
- \Dp{b}{t}{} + Ro~ u_k\Dp{b}{x_k}{} &= - \alpha w \\ 
+ \Dp{u_i}{t}{}+ Ro~ u_k\Dp{ u_i}{x_k}{}+ \epsilon_{i3k} u_k &= - \Dp{\mathcal{P}}{x_i}{} + \AR b \delta_{3i} \\
+ \Dp{b}{t}{} + Ro~ u_k\Dp{b}{x_k}{} &= - \AR w \\
  \Dp{u_i}{x_i}{} &= 0 \ ,
  \end{split}
 \end{align}
@@ -251,8 +251,8 @@ Applying the filter on \eqref{edwv-bsnqsc} gives us large-scale flow evolution e
 \begin{align}
 \label{edwv-feq}
  \begin{split}
- \Dp{\t{u_i}}{t}{}+ Ro~ \t{u_k\Dp{ u_i}{x_k}{}}+ \epsilon_{i3k} \t{u}_k &= - \Dp{\t{p}}{x_i}{} + \alpha \t{b} \delta_{3i} \\
- \Dp{\t{b}}{t}{} + Ro~ \t{u_k\Dp{b}{x_k}{}} &= - \alpha \t{w} \\ 
+ \Dp{\t{u_i}}{t}{}+ Ro~ \t{u_k\Dp{ u_i}{x_k}{}}+ \epsilon_{i3k} \t{u}_k &= - \Dp{\t{\mathcal{P}}}{x_i}{} + \AR \t{b} \delta_{3i} \\
+ \Dp{\t{b}}{t}{} + Ro~ \t{u_k\Dp{b}{x_k}{}} &= - \AR \t{w} \\
  \Dp{\t{u}_i}{x_i}{} &= 0 \ ,
  \end{split}
 \end{align}
@@ -267,7 +267,7 @@ and we can get an evolution equation of $\t{e}$ by summing the dot product of th
 \begin{align}
  % \label{}
  \begin{split}
- \Dp{ \t{e}}{t}{} + Ro\,\Dp{}{x_k}{} \left(\t{u}_k \t{e}\right) = &Ro\, \left[\t{u}_k \Dp{}{x_j}{} \left(\t{u}_j\t{u}_k - \t{u_j u_k}\right)\right]+ Ro\left[\t{b} \Dp{}{x_k}{} (\t{u}_k\t{b} - \t{b u_k})\right] - \Dp{}{x_k}{}(\t{u}_k\t{p}) \ .
+ \Dp{ \t{e}}{t}{} + Ro\,\Dp{}{x_k}{} \left(\t{u}_k \t{e}\right) = &Ro\, \left[\t{u}_k \Dp{}{x_j}{} \left(\t{u}_j\t{u}_k - \t{u_j u_k}\right)\right]+ Ro\left[\t{b} \Dp{}{x_k}{} (\t{u}_k\t{b} - \t{b u_k})\right] - \Dp{}{x_k}{}(\t{u}_k\t{\mathcal{P}}) \ .
  \end{split}
 \end{align}
 Rearranging the above terms using 
@@ -281,14 +281,14 @@ gives us
 \begin{align}
  % \label{}
  \begin{split}
- \Dp{\t{e}}{t}{} + Ro\,\Dp{}{x_k}{}\left(\t{u}_k \t{e}\right) = &-Ro\left[- \tau_{jk}\Dp{\t{u}_j }{x_k}{}- B_k\Dp{\t{b}}{x_k}{} + \Dp{}{x_k}{}\left(\tau_{jk} \t{u}_j + B_k \t{b}\right) \right]  - \Dp{}{x_k}{}(\t{u}_k\t{p}) \ .
+ \Dp{\t{e}}{t}{} + Ro\,\Dp{}{x_k}{}\left(\t{u}_k \t{e}\right) = &-Ro\left[- \tau_{jk}\Dp{\t{u}_j }{x_k}{}- B_k\Dp{\t{b}}{x_k}{} + \Dp{}{x_k}{}\left(\tau_{jk} \t{u}_j + B_k \t{b}\right) \right]  - \Dp{}{x_k}{}(\t{u}_k\t{\mathcal{P}}) \ .
  \end{split}
 \end{align}
 Further rearranging gives us 
 \begin{align}
  \label{edwv-sclflux}
  \begin{split}
- \Dp{\t{e}}{t}{} + Ro\,\Dp{}{x_k}{} \left[\t{u}_j \left(\left(\t{e}+\frac{\t{p}}{Ro}\right)\delta_{jk} - \tau_{jk}\right) - B_k \t{b}\right] = &-Ro ~\tau_{jk}\Dp{\t{u}_j}{x_k}{} - Ro~B_k\Dp{\t{b}}{x_k}{} \ .
+ \Dp{\t{e}}{t}{} + Ro\,\Dp{}{x_k}{} \left[\t{u}_j \left(\left(\t{e}+\frac{\t{\mathcal{P}}}{Ro}\right)\delta_{jk} - \tau_{jk}\right) - B_k \t{b}\right] = &-Ro ~\tau_{jk}\Dp{\t{u}_j}{x_k}{} - Ro~B_k\Dp{\t{b}}{x_k}{} \ .
  \end{split}
 \end{align}
 The right-hand side of the above equation does not vanish when integrated over the spatial domain and is responsible for the cross-scale energy transfer. Rescaling back to the original variables leads to the filtered energy equation given in \eqref{edwv-ebdg}.
@@ -304,36 +304,36 @@ To obtain \eref{int-caus_cond}, we extend the procedure outlined by \cite{meiboh
 \quad z_2 = \Tr{\mb{Z}^2}; \quad d =  \det{\mb{Z}},
 \end{split}
 \end{align}
-we can write coupled algebraic equations for $\delta,z_2,\text{ and }d$ in terms of $Q$ and $R$ by taking different powers of \eref{int-root-eq}, taking their trace, and using Cayley-Hamilton theorem. Further, eliminating $z_2$ and $d$, and defining  $\delta \equiv \pm \sqrt{\zeta} - 3\alpha/2$, we get, after some algebra
+we can write coupled algebraic equations for $\delta,z_2,\text{ and }d$ in terms of $Q$ and $R$ by taking different powers of \eref{int-root-eq}, taking their trace, and using Cayley-Hamilton theorem. Further, eliminating $z_2$ and $d$, and defining  $\delta \equiv \pm \sqrt{\chi} - 3\alpha/2$, we get, after some algebra
 \begin{align}
 \begin{split}
-   & \left(\zeta^2 + \frac{a_2 }{2}\zeta + a_0\right)^2 +  \zeta\left(a_1 - a_2a_0\right) = 0, \quad {\rm where} \label{int-pol4}\\
+   & \left(\chi^2 + \frac{a_2 }{2}\chi + a_0\right)^2 +  \chi\left(a_1 - a_2a_0\right) = 0, \quad {\rm where} \label{int-pol4}\\
     a_0 &=  -\frac{3 \alpha ^4}{16}-(3 \alpha +1) \alpha ^2 Q+36 (\alpha -1) \alpha  R, \\
     a_1 &=-\frac{7 \alpha ^6}{16}-24 (7-3 \alpha ) (1-\alpha ) \alpha ^2 Q^2-\frac{1}{2} (21 \alpha -13) \alpha ^4 Q-288 (1-\alpha )^2 \alpha  Q R\\&\mathrel{\phantom{ =} }-1728 (1-\alpha )^3 R^2+4 (9 \alpha +7) \alpha ^3 R, \quad
     {\rm } \ a_2 = 3 \left[8 (1-\alpha ) Q-\alpha ^2\right]\ .
 \end{split}
 \end{align}
-The condition for caustics reduces to not having any positive root of $\zeta$ in \eref{int-pol4}. This happens when $a_1 - a_2a_0 > 0$, which yields \eref{int-caus_cond}.
+The condition for caustics reduces to not having any positive root of $\chi$ in \eref{int-pol4}. This happens when $a_1 - a_2a_0 > 0$, which yields \eref{int-caus_cond}.
 
 \chapter{Active Caustics}
 
 \section{Supplementary Videos}
 \label{act-videos}
-\textbf{\href{https://office365stanford-my.sharepoint.com/:v:/g/personal/rchajwa_stanford_edu/EU2dPLsDJGVOjePmOh_22aEBiQbmSoQjO7OQmnt6cHVS6g?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=M0zgMJ}{Video 1}:} Active Hookean dimers with $\alpha =1$, $\lambda = 0$ in a point vortex flow. It is compared with the dynamics of inertial particles.
+\textbf{\href{https://office365stanford-my.sharepoint.com/:v:/g/personal/rchajwa_stanford_edu/EU2dPLsDJGVOjePmOh_22aEBiQbmSoQjO7OQmnt6cHVS6g?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=M0zgMJ}{Video 1}:} Active Hookean dimers with $\alpha_{\rm act} =1$, $l = 0$ in a point vortex flow. It is compared with the dynamics of inertial particles.
 
-\textbf{\href{https://office365stanford-my.sharepoint.com/:v:/g/personal/rchajwa_stanford_edu/EXS4TQknhbJIkFp9oUu78FUBwCOYzjiOakzS09ai0bqH8Q?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=VLAmFk}{Video 2}:} Active Preferred-length dimers with $\alpha =1$, $\lambda = 0$, $\beta \sqrt{\tau/\Gamma} = 0.5$ in a point vortex flow.
+\textbf{\href{https://office365stanford-my.sharepoint.com/:v:/g/personal/rchajwa_stanford_edu/EXS4TQknhbJIkFp9oUu78FUBwCOYzjiOakzS09ai0bqH8Q?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=VLAmFk}{Video 2}:} Active Preferred-length dimers with $\alpha_{\rm act} =1$, $l = 0$, $\beta \sqrt{\tau/\Gamma} = 0.5$ in a point vortex flow.
 
-\textbf{\href{https://office365stanford-my.sharepoint.com/:v:/g/personal/rchajwa_stanford_edu/EVu_8SMbr4xCo9drLsQOrsABtEuOLzmdwRygR-g2_Q2tXw?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=baRa3i}{Video 3}:} Preferred-length dimers in turbulence with flow parameters given by Table I of methods section, and with $\alpha = 1$, $\tau = 1$,  $\ell^{2}/w_{0}^{2} = 0$, $\beta/\kappa = 23.6$, $236$, and $236$ (increasing from left to right). The intermediate values of activity $\beta/\kappa$ presents the regime of most pronounced caustics as shown in Fig. 3 (b). 
+\textbf{\href{https://office365stanford-my.sharepoint.com/:v:/g/personal/rchajwa_stanford_edu/EVu_8SMbr4xCo9drLsQOrsABtEuOLzmdwRygR-g2_Q2tXw?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=baRa3i}{Video 3}:} Preferred-length dimers in turbulence with flow parameters given by Table I of methods section, and with $\alpha_{\rm act} = 1$, $\tau = 1$,  $l^{2}/\mathrm{w}_{0}^{2} = 0$, $\beta/\kappa = 23.6$, $236$, and $236$ (increasing from left to right). The intermediate values of activity $\beta/\kappa$ presents the regime of most pronounced caustics as shown in Fig. 3 (b). 
 
-\textbf{\href{https://office365stanford-my.sharepoint.com/:v:/g/personal/rchajwa_stanford_edu/EaiP5FhbPSlOoHMglHp1PMIBi9SDx6OliWZAHdjwiJgWdQ?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=VrTY5c}{Video 4}:} Preferred-length dimers in turbulence with $\alpha = 1$, $\tau = 1$, $\beta/\kappa = 236$, and $\ell^{2}/w_{0}^{2} = 0$ (left) and  $\ell^{2}/w_{0}^{2} = 2 \times 10^{3}$ (right). Increasing the polar aligning parameter $\ell^{2}/w_{0}^{2}$ intensifies the caustics [comparison between the middle column of Fig. 3 (a) \& (b)].
+\textbf{\href{https://office365stanford-my.sharepoint.com/:v:/g/personal/rchajwa_stanford_edu/EaiP5FhbPSlOoHMglHp1PMIBi9SDx6OliWZAHdjwiJgWdQ?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=VrTY5c}{Video 4}:} Preferred-length dimers in turbulence with $\alpha_{\rm act} = 1$, $\tau = 1$, $\beta/\kappa = 236$, and $l^{2}/\mathrm{w}_{0}^{2} = 0$ (left) and  $l^{2}/\mathrm{w}_{0}^{2} = 2 \times 10^{3}$ (right). Increasing the polar aligning parameter $l^{2}/\mathrm{w}_{0}^{2}$ intensifies the caustics [comparison between the middle column of Fig. 3 (a) \& (b)].
 
-\textbf{\href{https://office365stanford-my.sharepoint.com/:v:/g/personal/rchajwa_stanford_edu/EYqxhl8LVJ5IojTW52UmihEBzxrnWmp4RkYoSyI0AeOnPw?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=6cctRD}{Video 5}:} Preferred-length dimers in turbulence with $\alpha = 1$, $\tau = 1$, $\beta/\kappa = 236$, and $\ell^{2}/w_{0}^{2} = 0$, where the pairs of particles whose trajectories intersect within the numerical time step $10^{-3}$ s are coloured red; showing extreme path-crossing events in the regions of high number density.
+\textbf{\href{https://office365stanford-my.sharepoint.com/:v:/g/personal/rchajwa_stanford_edu/EYqxhl8LVJ5IojTW52UmihEBzxrnWmp4RkYoSyI0AeOnPw?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=6cctRD}{Video 5}:} Preferred-length dimers in turbulence with $\alpha_{\rm act} = 1$, $\tau = 1$, $\beta/\kappa = 236$, and $l^{2}/\mathrm{w}_{0}^{2} = 0$, where the pairs of particles whose trajectories intersect within the numerical time step $10^{-3}$ s are coloured red; showing extreme path-crossing events in the regions of high number density.
 
-\textbf{\href{https://office365stanford-my.sharepoint.com/:v:/g/personal/rchajwa_stanford_edu/ESqNMTQ2hSlPrDQBZeIoUU4BEBzXHlOKGJ5iombDW8EURQ?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=ZQwgGN}{Video 6}:} Preferred-length dimers in turbulence with $\alpha = 1$, $\tau = 1$, $\beta/\kappa = 236$, $\ell^{2}/w_{0}^{2} = 0$,  and non-dimensional noise strength $\sqrt{2D/w_{0}^2\kappa} = 9.19$.
+\textbf{\href{https://office365stanford-my.sharepoint.com/:v:/g/personal/rchajwa_stanford_edu/ESqNMTQ2hSlPrDQBZeIoUU4BEBzXHlOKGJ5iombDW8EURQ?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0NvcHkifX0&e=ZQwgGN}{Video 6}:} Preferred-length dimers in turbulence with $\alpha_{\rm act} = 1$, $\tau = 1$, $\beta/\kappa = 236$, $l^{2}/\mathrm{w}_{0}^{2} = 0$,  and non-dimensional noise strength $\sqrt{2D_\eta/\mathrm{w}_{0}^2\kappa} = 9.19$.
 
-\section{Plotting Reynolds number and \texorpdfstring{$\beta/\norm{\nabla \vect{U}}$}{Lg} for various marine organisms}
+\section{Plotting Reynolds number and \texorpdfstring{$\beta/\norm{\nabla \vec{u}}$}{Lg} for various marine organisms}
 \label{act-plankton}
-We use the kinematic viscosity of water, $\nu = 10^{-6}$ m$^{2}$s$^{-1}$ with previously measured energy dissipation rates in the upper mixed layer of the ocean, $\epsilon = 10^{-8} - 10^{-6}$ m$^{2}$s$^{-3}$ \cite{StockerARFM2012}, to calculate the Reynolds number and shear-rate using the relation $\langle \norm{\nabla \vect{U}}\rangle_{rms} = (\epsilon/\nu)^{1/2}$.
+We use the kinematic viscosity of water, $\nu = 10^{-6}$ m$^{2}$s$^{-1}$ with previously measured energy dissipation rates in the upper mixed layer of the ocean, $\epsilon = 10^{-8} - 10^{-6}$ m$^{2}$s$^{-3}$ \cite{StockerARFM2012}, to calculate the Reynolds number and shear-rate using the relation $\langle \norm{\nabla \vec{u}}\rangle_{\rm rms} = (\epsilon/\nu)^{1/2}$.
 
 \begin{table*}[h]
  \begin{center}
@@ -363,51 +363,51 @@ The Table \ref{act-AOUPvortex} is a compilation of data-sets published previousl
 
 \section{Active Hookean Dimer in a Point Vortex}
 \label{act-AOUPvortex}
-In the absence of external force field $\vect{F}$, and redefining a flow-dependent relaxation time, $\tilde{\tau}^{-1} \equiv \textbf{I}/\tau - ( \alpha \, \textbf{S} + \textbf{A} \,)$, gives the equation
+In the absence of external force field $\vect{F}$, and redefining a flow-dependent relaxation time, $\tilde{\tau}^{-1} \equiv \mathbb{I}/\tau - ( \alpha_{\rm act} \, \mathbf{S} + \mathbf{A} \,)$, gives the equation
 \begin{equation}
-\frac{d \mathbf v}{dt} - \mathbf{v}\cdot\nabla \mathbf{U} = \,(\mathbf{U} - \mathbf{v}) \cdot \tilde{\tau}^{-1}.
+\frac{d \vec{v}}{dt} - \vec{v}\cdot\nabla \vec{u} = \,(\vec{u} - \vec{v}) \cdot \tilde{\tau}^{-1}.
 \label{act-eqn:4}
 \end{equation}
 The velocity field generated by a point-vortex in polar coordinates is 
 \begin{equation}
-\mathbf{U} = \frac{\Gamma}{2\pi r} \hat{\theta} \equiv \frac{\bar{\Gamma}}{r} \bf{\hat{\theta}}.
+\vec{u} = \frac{\Gamma}{2\pi r} \vec{e}_\vartheta \equiv \frac{\tilde{\Gamma}}{r} \vec{e}_\vartheta.
 \label{act-eqn:5}
 \end{equation}
 
 In polar coordinates the position derivatives are
 \begin{align}
- \mathbf{X} & = r \mathbf{\hat{r}}, \nonumber \\ 
-\frac{d \mathbf{X}}{dt} & = \frac{dr}{dt} \mathbf{\hat{r}} \, + \, r\frac{d\theta}{dt} \bf{\hat{\theta}}, \label{act-eqn:6a}\\
-{\rm and} \quad \frac{d^{2} \mathbf{X} }{dt^{2}} &= \frac{d^{2} r}{dt^{2}} \mathbf{\hat{r}} + 2 \frac{d r}{dt}\frac{d \theta}{dt} \mathbf{\hat{\theta}} - r \left(\frac{d \theta}{dt}\right)^{2} \mathbf{\hat{r}} + r\frac{d^{2} \theta}{dt^{2}} \mathbf{\hat{\theta}}. \label{act-eqn:7a}
+ \mathbf{X} & = r \vec{e}_r, \nonumber \\ 
+\frac{d \mathbf{X}}{dt} & = \frac{dr}{dt} \vec{e}_r \, + \, r\frac{d\vartheta}{dt} \vec{e}_\vartheta, \label{act-eqn:6a}\\
+{\rm and} \quad \frac{d^{2} \mathbf{X} }{dt^{2}} &= \frac{d^{2} r}{dt^{2}} \vec{e}_r + 2 \frac{d r}{dt}\frac{d \vartheta}{dt} \vec{e}_\vartheta - r \left(\frac{d \vartheta}{dt}\right)^{2} \vec{e}_r + r\frac{d^{2} \vartheta}{dt^{2}} \vec{e}_\vartheta. \label{act-eqn:7a}
 \end{align}
 
-To demonstrate the emergence of an effective centrifugal force due to the coupling of activity with the background flow, we neglect the external force, and the Gaussian white noise in \eqref{act-eqn:inertialEoM}, and consider fore-aft symmetric particles such that $\ell = 0$. For a point vortex, the antisymmetric tensor $\textbf{A}$ is zero everywhere except at the origin, and the symmetric part is
+To demonstrate the emergence of an effective centrifugal force due to the coupling of activity with the background flow, we neglect the external force, and the Gaussian white noise in \eqref{act-eqn:inertialEoM}, and consider fore-aft symmetric particles such that $l = 0$. For a point vortex, the antisymmetric tensor $\mathbf{A}$ is zero everywhere except at the origin, and the symmetric part is
 \begin{align}
-\textbf{S} = \left(\begin{array}{cc} 0 & -\tilde{\Gamma}/r^{2}\\ -\tilde{\Gamma}/r^{2} & 0 \end{array}\right).
+\mathbf{S} = \left(\begin{array}{cc} 0 & -\tilde{\Gamma}/r^{2}\\ -\tilde{\Gamma}/r^{2} & 0 \end{array}\right).
 \label{act-eqn:8}
 \end{align}
 Using \eqref{act-eqn:5}-\eqref{act-eqn:8} in \eqref{act-eqn:4} gives 
 \begin{align}
-\tau \left[\frac{d^{2} r}{dt^{2}} \mathbf{\hat{r}} + 2 \frac{d r}{dt}\frac{d \theta}{dt} \mathbf{\hat{\theta}} - r \left(\frac{d \theta}{dt}\right)^{2} \mathbf{\hat{r}} + r\frac{d^{2} \theta}{dt^{2}} \mathbf{\hat{\theta}} + \frac{\tilde{\Gamma}}{r} \frac{d \theta}{dt} \mathbf{\hat{r}} + \frac{\tilde{\Gamma}}{r^2} \frac{d r}{dt} \mathbf{\hat{\theta}} \right] & \nonumber \\
-= \frac{\bar{\Gamma}}{r} \mathbf{\hat{\theta}} - \frac{dr}{dt} \mathbf{\hat{r}} \, - \, r\frac{d\theta}{dt} \mathbf{\hat{\theta}} 
-  +  \frac{\alpha \tau \tilde{\Gamma}}{r^{3}}  \mathbf{\hat{r}} - \frac{\tau \alpha \tilde{\Gamma}}{r} \frac{d\theta}{dt} \mathbf{\hat{r}} - \frac{\tau \alpha \tilde{\Gamma}}{r^{2}} \frac{dr}{dt} \mathbf{\hat{\theta}}.
+\tau \left[\frac{d^{2} r}{dt^{2}} \vec{e}_r + 2 \frac{d r}{dt}\frac{d \vartheta}{dt} \vec{e}_\vartheta - r \left(\frac{d \vartheta}{dt}\right)^{2} \vec{e}_r + r\frac{d^{2} \vartheta}{dt^{2}} \vec{e}_\vartheta + \frac{\tilde{\Gamma}}{r} \frac{d \vartheta}{dt} \vec{e}_r + \frac{\tilde{\Gamma}}{r^2} \frac{d r}{dt} \vec{e}_\vartheta \right] & \nonumber \\
+= \frac{\tilde{\Gamma}}{r} \vec{e}_\vartheta - \frac{dr}{dt} \vec{e}_r \, - \, r\frac{d\vartheta}{dt} \vec{e}_\vartheta 
+  +  \frac{\alpha_{\rm act} \tau \tilde{\Gamma}}{r^{3}}  \vec{e}_r - \frac{\tau \alpha_{\rm act} \tilde{\Gamma}}{r} \frac{d\vartheta}{dt} \vec{e}_r - \frac{\tau \alpha_{\rm act} \tilde{\Gamma}}{r^{2}} \frac{dr}{dt} \vec{e}_\vartheta.
 \label{act-eqn79}
 \end{align}
-Separating equations in the $\mathbf{\hat{r}}$ and $\mathbf{\hat{\theta}}$ directions in \eqref{act-eqn79}, we get two coupled equations
+Separating equations in the $\vec{e}_r$ and $\vec{e}_\vartheta$ directions in \eqref{act-eqn79}, we get two coupled equations
 \begin{equation}
 \label{act-eom}
-\tau \frac{d^{2} r}{dt^{2}} - \tau r \left(\frac{d \theta}{dt}\right)^{2} = - \frac{dr}{dt} + \frac{\alpha \tau \tilde{\Gamma}^{2}}{r^{3}} - \frac{\tau (1+\alpha)\tilde{\Gamma}}{r} \frac{d \theta}{dt},
+\tau \frac{d^{2} r}{dt^{2}} - \tau r \left(\frac{d \vartheta}{dt}\right)^{2} = - \frac{dr}{dt} + \frac{\alpha_{\rm act} \tau \tilde{\Gamma}^{2}}{r^{3}} - \frac{\tau (1+\alpha_{\rm act})\tilde{\Gamma}}{r} \frac{d \vartheta}{dt},
 \end{equation}
 \begin{equation}
-2 \tau \frac{d r}{dt}\frac{d \theta}{dt} + \tau r\frac{d^{2} \theta}{dt^{2}} = \frac{\bar{\Gamma}}{r} - r\frac{d\theta}{dt} - \frac{\tau (1+\alpha) \tilde{\Gamma}}{r^{2}} \frac{dr}{dt}.
+2 \tau \frac{d r}{dt}\frac{d \vartheta}{dt} + \tau r\frac{d^{2} \vartheta}{dt^{2}} = \frac{\tilde{\Gamma}}{r} - r\frac{d\vartheta}{dt} - \frac{\tau (1+\alpha_{\rm act}) \tilde{\Gamma}}{r^{2}} \frac{dr}{dt}.
 \end{equation}
 % \rishi{Maybe we should non-dimensionalize the equations earlier? }
-Choosing $\sqrt{\tilde{\Gamma}\tau}$ and $\tau$ as the length and time scales respectively, we arrive at the following non-dimensional equations involving non-dimensional variables $r,t$ and $L = r^2 \dot{\theta}$.
+Choosing $\sqrt{\tilde{\Gamma}\tau}$ and $\tau$ as the length and time scales respectively, we arrive at the following non-dimensional equations involving non-dimensional variables $r,t$ and $\mathscr{L} = r^2 \dot{\vartheta}$.
 \begin{align}
 \label{act-nd_eom}
     \begin{split}
-    \ddot{r} - \frac{L^2}{r^3} &= -\dot{r} + \frac{\alpha - (1 +\alpha)L }{r^3}\\
-    \dot{L} &= 1- L - (1+\alpha) \frac{\dot{r}}{r} \ ,
+    \ddot{r} - \frac{\mathscr{L}^2}{r^3} &= -\dot{r} + \frac{\alpha_{\rm act} - (1 +\alpha_{\rm act})\mathscr{L} }{r^3}\\
+    \dot{\mathscr{L}} &= 1- \mathscr{L} - (1+\alpha_{\rm act}) \frac{\dot{r}}{r} \ ,
     \end{split}
 \end{align}
 where $\dot{(.)}\equiv d(.)/dt$.
@@ -416,7 +416,7 @@ where $\dot{(.)}\equiv d(.)/dt$.
 \begin{center}
 \includegraphics[width = 0.8 \linewidth]{./figures/active_caustics/density_fluctuation_measure.jpg}
 %\hspace{0cm}\newline
-\caption[Saturation of the number-density fluctuations in time]{\label{act-fig:3}\textbf{Number-density fluctuations:} The fluctuations saturate as a function of time as the particulate structure evolves from a uniformly random state to exhibiting caustics. Red and blue curves correspond to $\ell^2/w_{0}^{2} = 2 \times 10^{3}$ and $\ell^{2}/w_{0}^{2} = 0$ respectively. The activity $\beta/\kappa = 236$ in both cases. The top and bottom panels on the right correspond to the top and bottom curves on the left respectively. }
+\caption[Saturation of the number-density fluctuations in time]{\label{act-fig:3}\textbf{Number-density fluctuations:} The fluctuations saturate as a function of time as the particulate structure evolves from a uniformly random state to exhibiting caustics. Red and blue curves correspond to $l^2/\mathrm{w}_{0}^{2} = 2 \times 10^{3}$ and $l^{2}/\mathrm{w}_{0}^{2} = 0$ respectively. The activity $\beta/\kappa = 236$ in both cases. The top and bottom panels on the right correspond to the top and bottom curves on the left respectively. }
 \end{center}
 \end{figure}
 
@@ -424,26 +424,26 @@ where $\dot{(.)}\equiv d(.)/dt$.
 \label{act-ABPvortex}
 The equations for an active dimer which has a preferred length are given by
 \begin{align}
-\dot{\mathbf{X}} & =  \mathbf{U} + \beta \mathbf{w}% \equiv \vect{v},   
+\dot{\mathbf{X}} & =  \vec{u} + \beta \mathbf{w}% \equiv \vect{v},   
 \label{act-eqn:dimerX5s}\\
-\dot{\mathbf{w}} & = \frac{1}{\tau}\left(1 - \frac{|\mathbf{w}|^2}{w_{0}^{2}} \right)   \mathbf{w} + (\alpha \textbf{S} + \textbf{A})\cdot\mathbf{w} \nonumber \\ & - {\ell}^{2} \nabla^{2} \vect{U} \, %+ {\sqrt{2D} \over \tau}\bm{ \eta}(t)\label{act-eqn:dimerX6}.
-+ \sqrt{2D}\bm{ \eta}(t). \label{act-eqn:dimerX6s}%{+ {\bf f}(t)},\label{act-eqn:dimerX6s}
+\dot{\mathbf{w}} & = \frac{1}{\tau}\left(1 - \frac{|\mathbf{w}|^2}{\mathrm{w}_{0}^{2}} \right)   \mathbf{w} + (\alpha_{\rm act} \mathbf{S} + \mathbf{A})\cdot\mathbf{w} \nonumber \\ & - {l}^{2} \nabla^{2} \vec{u} \, %+ {\sqrt{2D} \over \tau}\vec{\eta}(t)\label{act-eqn:dimerX6}.
++ \sqrt{2D_\eta}\vec{\eta}(t). \label{act-eqn:dimerX6s}%{+ {\bf f}(t)},\label{act-eqn:dimerX6s}
 \end{align}
-With $\ell = 0$ and $\bm{ \eta} =0$,  \eqref{act-eqn:dimerX5s} and \eqref{act-eqn:dimerX6s} can be recast as
+With $l = 0$ and $\vec{\eta} =0$,  \eqref{act-eqn:dimerX5s} and \eqref{act-eqn:dimerX6s} can be recast as
 \begin{equation}
-\frac{d \mathbf v}{dt} - \mathbf{v}\cdot\nabla \mathbf{U} = \,(\mathbf{U} - \mathbf{v}) \cdot \tilde{\tau}^{-1}
+\frac{d \vec{v}}{dt} - \vec{v}\cdot\nabla \vec{u} = \,(\vec{u} - \vec{v}) \cdot \tilde{\tau}^{-1}
 \label{act-eqn:36}
 \end{equation}
-where $\tilde{\tau}^{-1} \equiv \frac{\textbf{I}}{\tau} \left(\frac{||V-U||}{\beta^{2}} - 1 \right) - ( \alpha \, \textbf{S} + \textbf{A} \,)$. The non-dimensional equations with $R = \sqrt{\tilde{\Gamma} \tau}$ and $T = \tau$, in cylindrical polar coordinates become
+where $\tilde{\tau}^{-1} \equiv \frac{\mathbb{I}}{\tau} \left(\frac{||\vec{v}-\vec{u}||}{\beta^{2}} - 1 \right) - ( \alpha_{\rm act} \, \mathbf{S} + \mathbf{A} \,)$. The non-dimensional equations with $R = \sqrt{\tilde{\Gamma} \tau}$ and $T = \tau$, in cylindrical polar coordinates become
 \begin{align}
-\tilde{\beta}^2 \frac{d^{2} r}{dt^{2}} & = \tilde{\beta}^2 r \left( \frac{d\theta}{dt}\right)^{2} \nonumber \\
-& + \frac{dr}{dt} \left\{ 2\frac{d\theta}{dt} -  \left( \frac{dr}{dt}\right)^{2} -r^{2} \left( \frac{d\theta}{dt}\right)^{2} + \tilde{\beta}^2 - \frac{1}{r^{2}} \right\} \nonumber \\
-& + \frac{\tilde{\beta}^2 \alpha}{ r^{3}}  - \frac{\tilde{\beta}^2 (1+\alpha)}{ r} \frac{d\theta}{dt},
+\tilde{\beta}^2 \frac{d^{2} r}{dt^{2}} & = \tilde{\beta}^2 r \left( \frac{d\vartheta}{dt}\right)^{2} \nonumber \\
+& + \frac{dr}{dt} \left\{ 2\frac{d\vartheta}{dt} -  \left( \frac{dr}{dt}\right)^{2} -r^{2} \left( \frac{d\vartheta}{dt}\right)^{2} + \tilde{\beta}^2 - \frac{1}{r^{2}} \right\} \nonumber \\
+& + \frac{\tilde{\beta}^2 \alpha_{\rm act}}{ r^{3}}  - \frac{\tilde{\beta}^2 (1+\alpha_{\rm act})}{ r} \frac{d\vartheta}{dt},
 \end{align}
 \begin{align}
-\tilde{\beta}^2 r \frac{d^{2} \theta}{dt^{2}} & = - 2 \tilde{\beta}^2 \frac{d\theta}{dt}\frac{d\theta}{dt}  + + \left( r \frac{d\theta}{dt} - \frac{1}{r} \right) \times \nonumber \\
-& \left\{ 2\frac{d\theta}{dt} -  \left( \frac{dr}{dt}\right)^{2} -r^{2} \left( \frac{d\theta}{dt}\right)^{2} + \tilde{\beta}^2 - \frac{1}{r^{2}} \right\} \nonumber \\
-& - \frac{\tilde{\beta}^2 (1+\alpha)}{ r^{2}} \frac{dr}{dt}, 
+\tilde{\beta}^2 r \frac{d^{2} \vartheta}{dt^{2}} & = - 2 \tilde{\beta}^2 \frac{d\vartheta}{dt}\frac{d\vartheta}{dt}  + + \left( r \frac{d\vartheta}{dt} - \frac{1}{r} \right) \times \nonumber \\
+& \left\{ 2\frac{d\vartheta}{dt} -  \left( \frac{dr}{dt}\right)^{2} -r^{2} \left( \frac{d\vartheta}{dt}\right)^{2} + \tilde{\beta}^2 - \frac{1}{r^{2}} \right\} \nonumber \\
+& - \frac{\tilde{\beta}^2 (1+\alpha_{\rm act})}{ r^{2}} \frac{dr}{dt},
 \end{align}
 
 where $\tilde{\beta} \equiv \beta \sqrt{\tau/{\tilde{\Gamma}}}$ is the non-dimensional motility. These may be recast as a system of first-order equations as
@@ -451,14 +451,14 @@ where $\tilde{\beta} \equiv \beta \sqrt{\tau/{\tilde{\Gamma}}}$ is the non-dimen
 %\label{act-total_sol}
 \frac{dr}{dt} & = v_{r}, \label{act-abp_r}\\
 \tilde{\beta}^2 \frac{dv_{r}}{dt} &= \tilde{\beta}^2 r\omega^{2}  + v_{r} \left\{ 2\omega -  {v_{r}}^{2} -r^{2} {\omega}^{2} + \tilde{\beta}^2 - \frac{1}{r^{2}} \right\} \nonumber \\
-& +  \frac{\tilde{\beta}^2 \alpha}{r^{3}} - \frac{\tilde{\beta}^2 (1+\alpha)\,\omega}{r}, \label{act-abp_v}\\
-\frac{d\theta}{dt} & = \omega, \label{act-abp_theta}\\
+& +  \frac{\tilde{\beta}^2 \alpha_{\rm act}}{r^{3}} - \frac{\tilde{\beta}^2 (1+\alpha_{\rm act})\,\omega}{r}, \label{act-abp_v}\\
+\frac{d\vartheta}{dt} & = \omega, \label{act-abp_theta}\\
 \tilde{\beta}^2\frac{d\omega}{dt} & = - \frac{2 \tilde{\beta}^2\, v_{r} \, \omega}{r}  \nonumber \\
 & + \left( \omega - \frac{1}{r^{2}} \right) \left\{ 2\omega -  {v_{r}}^{2} -r^{2} {\omega}^{2} + \tilde{\beta}^2 - \frac{1}{r^{2}} \right\} \nonumber \\
-& - \frac{\tilde{\beta}^2(1+\alpha)\, v_{r}}{r^{3}} \label{act-abp_omega}.
+& - \frac{\tilde{\beta}^2(1+\alpha_{\rm act})\, v_{r}}{r^{3}} \label{act-abp_omega}.
 \end{align}
 
-By calculating the divergence of crossing time, for a fixed $\tilde{\beta} =1.0$, we get the caustics phase in the $r-\alpha$ plane, similar to the hookean case. We find that rigid spheroidal microswimmers  \cite{Stark2012, Stark2016} in vortical flow also display caustics, which we do not explore here.
+By calculating the divergence of crossing time, for a fixed $\tilde{\beta} =1.0$, we get the caustics phase in the $r-\alpha_{\rm act}$ plane, similar to the hookean case. We find that rigid spheroidal microswimmers  \cite{Stark2012, Stark2016} in vortical flow also display caustics, which we do not explore here.
 
 \begin{figure}[t]
 \begin{center}
@@ -493,10 +493,10 @@ The radial velocity in the outer region of a particle with Stokes number $St$ is
 \begin{align}
 % \label{}
 \begin{split}
-    \vec{v}(t) = \frac{St}{r(t)^3}\hat{r} + \frac{\hat{\theta}}{r(t)},\quad \text{with } r(t) = (r^4(0) + St~t)^{\frac14},
+    \vec{v}(t) = \frac{St}{r(t)^3}\vec{e}_r + \frac{\vec{e}_\vartheta}{r(t)},\quad \text{with } r(t) = (r^4(0) + St~t)^{\frac14},
 \end{split}
 \end{align}
-where we have adopted the cylindrical coordinates $(r,\theta,z)$ and assumed that particle started from the same velocity as the background fluid. This makes $\div{\vec{v}} = -2 St/r^4$. Putting this back in the continuity equation, we get
+where we have adopted the cylindrical coordinates $(r,\vartheta,z)$ and assumed that particle started from the same velocity as the background fluid. This makes $\div{\vec{v}} = -2 St/r^4$. Putting this back in the continuity equation, we get
 \begin{align}
 % \label{}
 \begin{split}
@@ -603,10 +603,10 @@ From the length and timescales used in Appendix \ref{lucky-sim-relate}, the numb
 \begin{align}
 \label{}
 \begin{split}
-    N_V = \frac{6\varphi}{\pi}\frac{\eta^3}{d_s^3 \eta_{num}^3},
+    N_V = \frac{6c_s}{\pi}\frac{\eta^3}{d_s^3 \eta_{num}^3},
 \end{split}
 \end{align}
-where $\varphi$, and $d_s$ are the volume fraction and diameter of the small particles listed in table \ref{lucky-cloud-vals}.
+where $c_s$, and $d_s$ are the volume fraction and diameter of the small particles listed in table \ref{lucky-cloud-vals}.
 
 
 \section{Stochastic collision in simulation units}
@@ -638,10 +638,10 @@ The maximum realistic value number density field can achieve in resolution of $\
 \begin{align}
 % \label{}
 \begin{split}
-    n_s(t)|_{\text{max}} = \frac{N_s(t)}{\Delta x \Delta y \Delta z} = \mean{n_s(t)}N^3.
+    n_s(t)|_{\text{max}} = \frac{N_s(t)}{\Delta x \Delta y \Delta z} = \mean{n_s(t)}N_g^3.
 \end{split}
 \end{align}
-Similarly, the maximum value of $\tilde{n}_s(t) = \mean{\tilde{n}_s(t)}N^3. $
+Similarly, the maximum value of $\tilde{n}_s(t) = \mean{\tilde{n}_s(t)}N_g^3. $
 
 \section{Alternatives to clipping and rescaling the number density}
 Clipping the negative values to zero in the spectral evolution of the number density in Eqs. \eqref{lucky-3Deqns} and \eqref{lucky-2Deqns} is artificial. So is the rescaling to keep the mean zero. An alternative to keep the number density positive at all times would be to evolve the \texttt{log} of the number density, $g = \log(n_s)$. Without sinks and sources, it obeys

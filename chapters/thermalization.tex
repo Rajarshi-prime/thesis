@@ -36,13 +36,13 @@ Turbulent flows, with its tell-tale self-similar, intermittent, chaotic and
 	inviscid flows in the absence of forcing, would it be
 	possible to uncover a Hamiltonian description~\cite{MorrisonRMP}?
 
-The answer is delicate. Assuming incompressibility $\nabla\cdot{\bf u} = 0$ of
-the  velocity field ${\bf u}$, and unit (constant) density, the Hamiltonian
+The answer is delicate. Assuming incompressibility $\nabla\cdot\vec{u} = 0$ of
+the  velocity field $\vec{u}$, and unit (constant) density, the Hamiltonian
 \begin{equation}
-H[{\bf u}] = \frac{1}{2}\int |{\bf u}|^2 d{\bf x} \ ,
+\mathbb{H}[\vec{u}] = \frac{1}{2}\int |\vec{u}|^2 d{\bf x} \ ,
 \end{equation}
 leads to the three-dimensional (3D) Euler equation
-through the Lie-Poisson bracket formalism where the pressure field $P$ emerges as a Lagrange multiplier enforcing
+through the Lie-Poisson bracket formalism where the pressure field $\mathcal{P}$ emerges as a Lagrange multiplier enforcing
 the incompressibility constraint ~\cite{MorrisonRMP}.
 In the rest of this paper, we will work in the space of periodic functions and {hence solutions --- numerical and theoretical --- of
 the Euler equation will be considered on a 2$\pi$, triply-periodic cubic domain. This choice of the domain and boundary conditions,
@@ -53,7 +53,7 @@ defined below.}
 The Hamiltonian formulation runs into trouble when dealing with
 \textit{weak} or dissipative solutions of the Euler equations:
 \begin{equation}
-\frac{\partial {\bf u}}{\partial t} + {\bf u}\cdot \nabla {\bf u} = -\nabla P \ .
+\frac{\partial \vec{u}}{\partial t} + \vec{u}\cdot \nabla \vec{u} = -\nabla \mathcal{P} \ .
 \label{thrm-eq:Euler}
 \end{equation}
 In particular, solutions with H\"older regularity {$h \le \nicefrac{1}{3}$} lead to non-conservation of
@@ -62,46 +62,46 @@ hence the breakdown of a classical Hamiltonian structure.
 
 Curiously, there is a form of the Euler equation which preserves its Hamiltonian structure~\cite{Lee1952} and conserves the kinetic energy. Let us chose a Galerkin wavevector ${\bf K}_{\rm G}$, such that the dynamics of the Euler
 equation is restricted between wavevectors $-{\bf K}_{\rm G} \le {\bf k} \le {\bf K}_{\rm G}$ through
-the self-adjoint, orthogonal, Hermitian Galerkin projector $\mathcal{P}_{{\bf K}_{\rm G}}$, defined as
+the self-adjoint, orthogonal, Hermitian Galerkin projector $\mathbb{P}_{{\bf K}_{\rm G}}$, defined as
 {\begin{equation}
-	{\bf v} \equiv \mathcal{P}_{{\bf K}_{\rm G}} {\bf u} = \sum_{{\bf k} = -{\bf K}_{\rm G}}^{{\bf k} = {\bf K}_{\rm G}} {\bf \hat{u}_k} e^{i {\bf k}\cdot {\bf x}},
+	{\bf u} \equiv \mathbb{P}_{{\bf K}_{\rm G}} \vec{u} = \sum_{{\bf k} = -{\bf K}_{\rm G}}^{{\bf k} = {\bf K}_{\rm G}} \hat{\vec{u}}_{\bf k} e^{i {\bf k}\cdot {\bf x}},
 \label{thrm-eq:PG}
 \end{equation}}
-where ${\bf \hat{u}_k}$ are the Fourier modes of the velocity field ${\bf u}({\bf x})$ obeying the untruncated Euler equation~\eqref{thrm-eq:Euler}, {and $i = \sqrt{-1}$}.
+where $\hat{\vec{u}}_{\bf k}$ are the Fourier modes of the velocity field $\vec{u}({\bf x})$ obeying the untruncated Euler equation~\eqref{thrm-eq:Euler}, {and $i = \sqrt{-1}$}.
 {The Galerkin truncation may in general be performed on different
 finite-dimensional subsets of Fourier space. In this work we adopt the
-standard sharp spherical truncation $|\mathbf{k}| \le K_G$, which
+standard sharp spherical truncation $|\mathbf{k}| \le K_{\rm G}$, which
 preserves isotropy of the flow.}
 
-In what follows, it will be useful to often work with the Fourier modes ${\bf \hat{v}_k}$ of the Galerkin-truncated velocity field $\bf v(x,t)$.
+In what follows, it will be useful to often work with the Fourier modes ${\bf \hat{u}_k}$ of the Galerkin-truncated velocity field $\bf u(x,t)$.
 These obey, as easily derived from Eq.~\eqref{thrm-eq:Euler},
 {\begin{equation}
-	\frac{\partial {\bf \hat{v}_k}}{\partial t} + \sum_{\substack{{\bf p}+{\bf q}={\bf k}\\}}
-	i  \left ({\bf k}\cdot{\bf \hat{v}_p}\right ){\bf \hat{v}_q}
-	= -i {\bf k} {\hat P}_{\bf k},
+	\frac{\partial {\bf \hat{u}_k}}{\partial t} + \sum_{\substack{{\bf p}+{\bf q}={\bf k}\\}}
+	i  \left ({\bf k}\cdot{\bf \hat{u}_p}\right ){\bf \hat{u}_q}
+	= -i {\bf k} {\hat{\mathcal{P}}}_{\bf k},
 \label{thrm-eq:GTE_FS}
 \end{equation}}
 with $|{\bf p}|,|{\bf q}|,|{\bf k}|\le|{\bf K}_{\rm G}|$. This, then is the Fourier-space
 representation~\cite{RayThermalReview2015} of the Galerkin-truncated, incompressible Euler equation
 \begin{equation}
-	\frac{\partial {\bf v}}{\partial t} + \mathcal{P}_{{\bf K}_{\rm G}}\left [{\bf v}\cdot \nabla {\bf v} + \nabla P \right ] = 0,
+	\frac{\partial {\bf u}}{\partial t} + \mathbb{P}_{{\bf K}_{\rm G}}\left [{\bf u}\cdot \nabla {\bf u} + \nabla \mathcal{P} \right ] = 0,
 \label{thrm-eq:GTE_RS}
 \end{equation}
-with initial conditions ${\bf v}_0 =  \mathcal{P}_{{\bf K}_{\rm G}}{\bf u}_0$.
-For incompressible flows, these equations are augmented by the incompressibility constraint $\bf \nabla \cdot \bf v = 0$,  which is preserved by the Galerkin projector.
+with initial conditions ${\bf u}_0 =  \mathbb{P}_{{\bf K}_{\rm G}}\vec{u}_0$.
+For incompressible flows, these equations are augmented by the incompressibility constraint $\bf \nabla \cdot \bf u = 0$,  which is preserved by the Galerkin projector.
 
-{The Galerkin-truncated velocity field ${\bf v}$ provides a natural way to define the
-kinetic energy per unit mass $E = \frac12\int |{\bf v}|^2 d{\bf x}/\int d{\bf x}$, helicity
-$\mathcal{H} = \int {\bf v}\cdot(\boldsymbol{\nabla}\times{\bf v}) ~d{\bf x}$,
-the isotropic energy spectrum $E(k) = \sum_{k-1/2 < |\mathbf{k'}| \le k+1/2}
-\frac{1}{2}|\hat {\bf v}_{\mathbf{k'}}|^2 ,$, and the kinetic energy flux  $\Pi(k) = \sum_{k' \ge k} T(k')$, where
-the transfer term $T(k) = \partial_t E(k)$, in a manner analogous
+{The Galerkin-truncated velocity field ${\bf u}$ provides a natural way to define the
+kinetic energy per unit mass $\mathbb{E} = \frac12\int |{\bf u}|^2 d{\bf x}/\int d{\bf x}$, helicity
+$\mathcal{H} = \int {\bf u}\cdot(\boldsymbol{\nabla}\times{\bf u}) ~d{\bf x}$,
+the isotropic energy spectrum $\mathbb{E}(k) = \sum_{k-1/2 < |\mathbf{k'}| \le k+1/2}
+\frac{1}{2}|\hat {\bf u}_{\mathbf{k'}}|^2 $, and the kinetic energy flux  $\Pi(k) = \sum_{k' \ge k} T(k')$, where
+the transfer term $T(k) = \partial_t \mathbb{E}(k)$, in a manner analogous
 to what is done for the 3D Euler or indeed the Navier-Stokes equation.}
 
 \section{Spectral signatures of thermalisation}
 While a superficial comparison of the Galerkin-truncated equation with the
 untruncated Euler equation may suggest that the two ought to be similar, it
-turns out that the solutions ${\bf u}$ and ${\bf v}$ are markedly different.
+turns out that the solutions $\vec{u}$ and ${\bf u}$ are markedly different.
 While the Euler equation, given in Eq.~\eqref{thrm-eq:Euler}, is a partial
 differential equation with an infinite number of modes, its Galerkin-truncated
 version is finite-dimensional, with a fixed $N_{\rm G}$ number of modes{, and
@@ -112,7 +112,7 @@ thermalised, chaotic  solutions~\cite{Cichowlasetal2005,Muruganetal2021} of the
 Galerkin-truncated Euler equation which are amenable to the more conventional tools of
 statistical
 physics~\cite{Kraichnan1967,Kraichnan1973,Orszag1977,KraichnanChen1989}.  In
-particular, the kinetic energy {per unit mass} {$E$}, and
+particular, the kinetic energy {per unit mass} {$\mathbb{E}$}, and
 hence the Hamiltonian, is conserved. This, along with the fact that the phase
 space volume is also conserved, leads to eventual chaotic, thermalised
 solutions.  Clearly the onset of thermalisation begins at the smallest scales
@@ -144,7 +144,7 @@ $K_{\rm th}$ deserves some attention.
 	the right tail follows a $k^2$ scaling as
 	indicated by the thick line. {Inset of panel (b): time evolution of the
 	relative errors in the energy and helicity,
-$\Delta_0E(t)=1-E(t)/E(0)$ and
+$\Delta_0\mathbb{E}(t)=1-\mathbb{E}(t)/\mathbb{E}(0)$ and
 $\Delta_0\mathcal{H}(t)=1-\mathcal{H}(t)/\mathcal{H}(0)$,
 	showing that both remain conserved to high numerical accuracy.}}
 	\label{thrm-fig1}
@@ -155,26 +155,26 @@ K_{\rm G}$, follow a Kolmogorov scaling $k^{-5/3}$, indicated by the
 dashed black lines in Fig.~\ref{thrm-fig1}(a). Indeed this Kolmogorov scaling persists even when
 an equipartition spectrum kicks in as shown Fig.~\ref{thrm-fig1}(b). This suggests the co-existence
 of a turbulent regime and a partially thermalised small-scales. However, the
-$k^{-5/3}$ spectrum gives way to a pseudo-dissipation range with $E(k) \sim
+$k^{-5/3}$ spectrum gives way to a pseudo-dissipation range with $\mathbb{E}(k) \sim
 k^{-3}$ {(see Fig.~\ref{thrm-fig1}(a)). This is} consistent with findings
 reported earlier that suggest a steeper-than-Kolmogorov intermediate wavenumber
 scaling~\cite{Cichowlasetal2005,MuruganRay2023}. We observe that the $k^{-3}$ spectrum
 is fairly robust (see the {inset of Fig.~\ref{thrm-fig1}(a)} with the
-compensated spectrum $k^3E(k)$) over a window of time --- the \textit{pre thermalised} phase ---
+compensated spectrum $k^3\mathbb{E}(k)$) over a window of time --- the \textit{pre thermalised} phase ---
 where (i) the first signatures of truncation by way
 of a rising spectrum at large modes have appeared, and (ii) this rising spectrum is not yet equipartitioned.
 We return to this question, and its possible explanation, in a subsequent section
 of this manuscript.
 
 This already suggests the existence of at least three time-scales. First, a cascade
-completion time $t_c$ when the nonlinear transfers have led to the largest velocity modes $K_{\rm G}$
-being non-zero unlike its initial $t = 0$ state. This is followed by a \textit{birth} timescale, $t_b > t_c$, when the first signatures of Galerkin-truncation, namely localised damped oscillatory structures~\cite{MuruganRay2023},
+completion time $t_{\rm cas}$ when the nonlinear transfers have led to the largest velocity modes $K_{\rm G}$
+being non-zero unlike its initial $t = 0$ state. This is followed by a \textit{birth} timescale, $t_b > t_{\rm cas}$, when the first signatures of Galerkin-truncation, namely localised damped oscillatory structures~\cite{MuruganRay2023},
 have appeared leading to an upturned, but not equipartitioned, energy spectrum at large modes.
 A third timescale, $t_{\rm th} > t_b$, corresponds to when thermalisation sets-in with a clear $k^2$ spectral
 range at the largest wavenumbers. Hence, in Fig~\ref{thrm-fig1}, panel (a) corresponds to times
 $t_b \lesssim t \lesssim t_{\rm th}$ whereas panel (b) is at times $t \gtrsim t_{\rm th}$.
 In a later section, we provide a heuristic way to estimate these timescales, and in particular their
-dependence on the resolution $N$ of the simulation or, alternatively, the Galerkin wavenumber $K_{\rm G}$.
+dependence on the resolution $N_g$ of the simulation or, alternatively, the Galerkin wavenumber $K_{\rm G}$.
 {The details of the direct numerical simulations which are used to address this question as well
 as for Fig.~\ref{thrm-fig1} are described in Sec. 4.}
 
@@ -229,14 +229,14 @@ We perform direct numerical simulations (DNSs) of the Galerkin-truncated Euler
 equation~\eqref{thrm-eq:GTE_FS} by using a fully-dealiased pseudo-spectral method
 with a fourth order Runge-Kutta scheme for time-marching on triply-periodic
 cube of length  $2\pi$. We consider five different resolutions with
-collocation points $N^3 = 64^3, 128^3, 256^3, 512^3$ and $1024^3$. This allows us to
+collocation points $N_g^3 = 64^3, 128^3, 256^3, 512^3$ and $1024^3$. This allows us to
 explore 5 different values of the Galerkin-truncation wavenumber, $21 \le
 K_{\rm G} \le 341$. The time-step $10^{-3} \le \delta t \le 10^{-4}$
 is chosen separately for each resolution to ensure numerical stability. We choose an
-initial (incompressible) velocity field ${\bf v}_0$ such that kinetic energy is concentrated at the
+initial (incompressible) velocity field ${\bf u}_0$ such that kinetic energy is concentrated at the
 largest scales at $t = 0$. Our numerical scheme and choice of $\delta t$ ensures that the
-initial kinetic energy per unit mass $E$ and Helicity $\mathcal{H}$ is conserved for all times, within numerical errors. {To verify this in our simulations, we compute the relative error
-$\Delta_0E(t)=1-E(t)/E(0)$ between the initial energy and its value at
+initial kinetic energy per unit mass $\mathbb{E}$ and Helicity $\mathcal{H}$ is conserved for all times, within numerical errors. {To verify this in our simulations, we compute the relative error
+$\Delta_0\mathbb{E}(t)=1-\mathbb{E}(t)/\mathbb{E}(0)$ between the initial energy and its value at
 time $t$. An analogous definition is used for the helicity
 $\mathcal{H}$. The time evolution of these errors, shown in the inset of
 Fig.~\ref{thrm-fig1}(b), demonstrates that both quantities remain
@@ -264,27 +264,27 @@ corrections) inertial range and the true exponential dissipation range.
 Could the $k^{-3}$ scaling be universal for the pre-thermalised phase, and where
 could it stem from? A possible, admittedly heuristic, explanation for this may
 lie in the eddy-viscosity ideas of the two-fluid model proposed by Krstulovic
-\textit{et al.}~\cite{Krstulovicetal2009}. Let $E(k)$ be the yet undetermined
+\textit{et al.}~\cite{Krstulovicetal2009}. Let $\mathbb{E}(k)$ be the yet undetermined
 energy spectrum lying between the $k^{-5/3}$ (turbulence-like) and $k^2$
 (thermalised) scales at wavenumbers $K_{\rm I} \le k \le K_{\rm G}$.
 Dimensionally, and ignoring constants, the \textit{typical} velocities relate
-to this spectrum as ${\hat v}^2_k \sim kE(k)$. An  eddy-viscosity argument
+to this spectrum as ${\hat u}^2_k \sim k\mathbb{E}(k)$. An  eddy-viscosity argument
 leads to an eddy-damping timescale $1/\tau_d \sim \nu_{\rm eff} k^2$, where
 $\nu_{\rm eff}$ is a phenomenological coefficient of eddy viscosity. This leads
-to an effective dissipation $\epsilon \sim \nu_{\rm eff} k^2 {\hat v}_k^2$
+to an effective dissipation $\epsilon \sim \nu_{\rm eff} k^2 {\hat u}_k^2$
 which ought to be equal to a constant, so far hypothetical,  energy flux $\Pi$
 that cascades from the large scale kinetic energy to the small-scale, thermalised
-bath. Hence, $\Pi = \nu_{\rm eff} k^3 E(k)$ from which the $k^{-3}$ scaling of
+bath. Hence, $\Pi = \nu_{\rm eff} k^3 \mathbb{E}(k)$ from which the $k^{-3}$ scaling of
 the pseudo-dissipation range follows.
 
 {It is worth noting that, in our simulations, the spectra in this regime can
 appear slightly steeper than $k^{-3}$. This steepening occurs very close to
-the truncation scale $K_G$, where the influence of the emerging thermalised
+the truncation scale $K_{\rm G}$, where the influence of the emerging thermalised
 modes becomes significant. Given the limited spectral extent of this region
 and the finite numerical resolution, it is difficult to make a definitive
 statement about the precise scaling exponent. We therefore interpret this
 behaviour as part of the crossover between the turbulence-like cascade and
-the approach to the thermalised $E(k)\sim k^{2}$ spectrum.}
+the approach to the thermalised $\mathbb{E}(k)\sim k^{2}$ spectrum.}
 
 Such an argument, while compelling, has several drawbacks. Most importantly, the idea
 of an eddy viscosity for the pre-thermalised phase and not for the partially thermalised phase,
@@ -319,7 +319,7 @@ is less compelling.
 
 Energy conservation allows us, nevertheless, to estimate the theoretical form
 of the flux at least in the ultraviolet regime. Consider the partially
-thermalised spectral form to be $E(k) = C k^2$, where $C$ is a time-dependent
+thermalised spectral form to be $\mathbb{E}(k) = C k^2$, where $C$ is a time-dependent
 constant whose value can be estimated numerically. The nonlinear energy
 transfer $T (k) = \frac{dC}{dt}k^2$ relates trivially to the time variation of
 this spectrum, and which, in turn relates to the energy flux $\Pi (k) =
@@ -341,65 +341,65 @@ resonances~\cite{RayetalTygers2011} for the former, and Reynolds
 stresses~\cite{VenkataramanRay} for the latter. Unfortunately, such tools are
 not available at our disposal for the question of thermalisation in the Euler
 equation~\cite{MuruganRay2023}. Furthermore, in this problem we also deal with
-the cascade-completion time $t_c$, the analog of which for the Navier-Stokes
+the cascade-completion time $t_{\rm cas}$, the analog of which for the Navier-Stokes
 equation is a well studied
 problem~\cite{Brachetetal1983,HerringKerr1993,RayetalEPJB}.
 
-Let us begin with the cascade completion time $t_c$.  Given the initial
+Let us begin with the cascade completion time $t_{\rm cas}$.  Given the initial
 localisation of the kinetic energy in the first few wavenumbers $1 \leq k
 \lesssim k_0$, where $k_0 \ll K_{\rm G}$, the nonlinear advection leads to
 transfer of energy (and momentum) to wavenumbers $k > k_0$. We should thus be
-able to construct a \textit{cascade} time scale $t_c$ which is a measure of the
+able to construct a \textit{cascade} time scale $t_{\rm cas}$ which is a measure of the
 time taken for the largest wavenumbers around $K_{\rm G}$ to be excited and
 have finite, non-zero energies.
 
-One way to estimate $t_c$ is through the time evolution of the enstrophy
-$\Omega = \sum_k k^2 E(k)$. Given the sensitivity of the enstrophy to small-scale
-excitations, $\Omega$ grows in time as the energy cascade kicks in and higher
+One way to estimate $t_{\rm cas}$ is through the time evolution of the enstrophy
+$\mathcal{Z} = \sum_k k^2 \mathbb{E}(k)$. Given the sensitivity of the enstrophy to small-scale
+excitations, $\mathcal{Z}$ grows in time as the energy cascade kicks in and higher
 wavenumbers get excited. This process is consistent with what is known for
 (decaying) simulations of the Navier-Stokes equation as well~\cite{Brachetetal1983}. However, there is
-a critical difference. In the Navier-Stokes, $\Omega$ reaches a maximum at
-$t_c$ and subsequently decays with time as the total energy of the system
+a critical difference. In the Navier-Stokes, $\mathcal{Z}$ reaches a maximum at
+$t_{\rm cas}$ and subsequently decays with time as the total energy of the system
 decays in the absence of
 forcing~\cite{Brachetetal1983,HerringKerr1993,RayetalEPJB}. For our problem
 this should not happen because of energy conservation and we ought to expect a
-growth and saturation of $\Omega \to \Omega_\infty$ at late times.
+growth and saturation of $\mathcal{Z} \to \mathcal{Z}_\infty$ at late times.
 
-In Fig.~\ref{thrm-fig3}(a) we show the time evolution of $\Omega$ for
+In Fig.~\ref{thrm-fig3}(a) we show the time evolution of $\mathcal{Z}$ for
 different resolutions.  Several things stand out. At short times the
 curves collapse on top of each other till they start separating from the lowest
 resolution onward. At long times the curves saturate to values
-$\Omega_{\infty}$ which depend on $K_{\rm G}$.
+$\mathcal{Z}_{\infty}$ which depend on $K_{\rm G}$.
 
-It is possible to theoretically estimate $\Omega_{\infty}$. When the
-flow is fully thermalised, the energy spectrum follows $E(k) = C_\infty k^2$, which, given the
-conserved initial kinetic energy $E_0$, allows for the determination
-$C_\infty = 6E_0 [(K_{\rm G})(K_{\rm G}+1)(2K_{\rm G} + 1)]^{-1} \approx 3E_0/K_{\rm G}^3$, for large $K_{\rm G}$.
+It is possible to theoretically estimate $\mathcal{Z}_{\infty}$. When the
+flow is fully thermalised, the energy spectrum follows $\mathbb{E}(k) = C_\infty k^2$, which, given the
+conserved initial kinetic energy $\mathbb{E}_0$, allows for the determination
+$C_\infty = 6\mathbb{E}_0 [(K_{\rm G})(K_{\rm G}+1)(2K_{\rm G} + 1)]^{-1} \approx 3\mathbb{E}_0/K_{\rm G}^3$, for large $K_{\rm G}$.
 By using this, it is trivial to show that, for large $K_{\rm G}$,  the
-saturation value $\Omega_{\infty} =  \nicefrac{3}{5}E_0 K_{\rm G}^2$. In Fig.~\ref{thrm-fig3}(a) we plot
-$\Omega_{\infty}$, as dashed horizontal lines, to see how the system evolves to
+saturation value $\mathcal{Z}_{\infty} =  \nicefrac{3}{5}\mathbb{E}_0 K_{\rm G}^2$. In Fig.~\ref{thrm-fig3}(a) we plot
+$\mathcal{Z}_{\infty}$, as dashed horizontal lines, to see how the system evolves to
 the fully thermalisation phase.
 
-Unlike the Navier-Stokes equation, $\Omega$ is not an ideal
-metric for estimating $t_c$. Of course, one possibility is to estimate the time when
-the curves for different values of $N$ separate from the collapsed curves at short times as
+Unlike the Navier-Stokes equation, $\mathcal{Z}$ is not an ideal
+metric for estimating $t_{\rm cas}$. Of course, one possibility is to estimate the time when
+the curves for different values of $N_g$ separate from the collapsed curves at short times as
 seen in Fig.~\ref{thrm-fig3}(a). Consistent with intuition, a time-scale obtained from this observation
-grows with $N$. However, there is a drawback to using this prescription: It does not allow us to determine
-$t_c$ for the largest resolution since this measurement is, by definition, relative to the $\Omega$ curve
-for $N = 1024$.
+grows with $N_g$. However, there is a drawback to using this prescription: It does not allow us to determine
+$t_{\rm cas}$ for the largest resolution since this measurement is, by definition, relative to the $\mathcal{Z}$ curve
+for $N_g = 1024$.
 
-A more natural way to think about $t_c$ is to estimate the time when the kinetic
+A more natural way to think about $t_{\rm cas}$ is to estimate the time when the kinetic
 energy for the largest mode is non-zero. This would correspond to a
 culmination of the cascade process whence all scales have been excited.
-Numerically, for $t < t_c$, the energy of the largest mode in the kinetic
-energy spectrum $E(K_{\rm G})$ is below the machine precision value. We now
-record the time $t_c$ when this threshold is crossed. Of course the estimation of $t_c$
+Numerically, for $t < t_{\rm cas}$, the energy of the largest mode in the kinetic
+energy spectrum $\mathbb{E}(K_{\rm G})$ is below the machine precision value. We now
+record the time $t_{\rm cas}$ when this threshold is crossed. Of course the estimation of $t_{\rm cas}$
 is somewhat inaccurate in simulations where the data is saved at discrete time intervals. Nevertheless, within such an approximate approach, we evaluate the
-cascade-completion time-scale $t_c$, and find, in Fig.~\ref{thrm-fig3}(b), a
-logarithmic scaling of $t_c \sim \log N$.
+cascade-completion time-scale $t_{\rm cas}$, and find, in Fig.~\ref{thrm-fig3}(b), a
+logarithmic scaling of $t_{\rm cas} \sim \log N_g$.
 
-The cascade completion time $t_c$ does not indicate the onset time for thermalisation, $t_{\rm th}$, or indeed the time $t_b$ at which the precursor to thermalisations show up:
-$t_c < t_b < t_{\rm th}$.  Murugan and Ray~\cite{MuruganRay2023} had shown that
+The cascade completion time $t_{\rm cas}$ does not indicate the onset time for thermalisation, $t_{\rm th}$, or indeed the time $t_b$ at which the precursor to thermalisations show up:
+$t_{\rm cas} < t_b < t_{\rm th}$.  Murugan and Ray~\cite{MuruganRay2023} had shown that
 for the truncated Euler equations the first signs of the solution being
 \textit{different} from $\nu \to 0$ Navier-Stokes solutions are localised,
 monochromatic oscillatory structures which emerge \textit{out of the blue} in
@@ -411,7 +411,7 @@ is reminiscent of thermalisation
 in the one-dimensional Galerkin-truncated Burgers equation.
 
 We test this idea on the data from our DNSs. Careful observations suggest that
-at times soon after $t_c$, well before the first signs of an incipient
+at times soon after $t_{\rm cas}$, well before the first signs of an incipient
 equipartition spectrum is detectable, the $k^{-3}$ scaling extends all the way
 to $K_{\rm G}$. In time, the ultra-violet end of the spectrum starts to bend
 upward, but not yet equipartitioned, over a time window $t_b \leq t \lesssim
@@ -423,24 +423,24 @@ in the inset of Fig.~\ref{thrm-fig3}(b).
 	% \includegraphics[width = 0.32\linewidth]{time_scalestbtc.png}
 	% \includegraphics[width = 0.32\linewidth]{gamma.png}
 	\includegraphics[width = \linewidth]{./figures/thermalization/enstrophyvstime_time_scalestbtc_gamma.pdf}
-	\caption[Enstrophy growth, cascade timescales, and the thermalization timescale]{(a) A plot of the enstrophy $\Omega$ versus time for different Galerkin-truncation wavenumbers $K_{\rm G}$ showing the growth
-	and $K_{\rm G}$ dependent saturation at $\Omega_\infty$, indicated by the horizontal dashed lines (see text). At short times the curves
+	\caption[Enstrophy growth, cascade timescales, and the thermalization timescale]{(a) A plot of the enstrophy $\mathcal{Z}$ versus time for different Galerkin-truncation wavenumbers $K_{\rm G}$ showing the growth
+	and $K_{\rm G}$ dependent saturation at $\mathcal{Z}_\infty$, indicated by the horizontal dashed lines (see text). At short times the curves
 	for different $K_{\rm G}$ collapse, and as smaller scales get excited, they separate.
-	(b) The timescales for cascade completion $t_c$ (triangles), and the \textit{birth} $t_b$ (stars) of the localised oscillatory structures which eventually trigger thermalisation plotted against $N$. The linear curves in the semilog plot suggest that both these timescales depend
-	logarithmically on $N$. The inset shows the energy spectrum, for different $N$, or equivalently for different $K_{\rm G}$, at $t_b$ showing the departure at the ultraviolet end from
+	(b) The timescales for cascade completion $t_{\rm cas}$ (triangles), and the \textit{birth} $t_b$ (stars) of the localised oscillatory structures which eventually trigger thermalisation plotted against $N_g$. The linear curves in the semilog plot suggest that both these timescales depend
+	logarithmically on $N_g$. The inset shows the energy spectrum, for different $N_g$, or equivalently for different $K_{\rm G}$, at $t_b$ showing the departure at the ultraviolet end from
 	the $k^{-3}$ scaling before the onset of an equipartition $k^2$ spectrum. (c) The variation of the spectral slope $\gamma$ (see text) for wavenumbers {within a range $\mathcal{X}K_{\rm G} < k < K_{\rm G}$ with $\mathcal{X} = 10\%$}. The horizontal dashed line indicates a slope of 2 corresponding to the
-	equipartition $E(k) \sim k^2$ spectrum. In the inset we
+	equipartition $\mathbb{E}(k) \sim k^2$ spectrum. In the inset we
 	show the analogous result for $\mathcal{X} = 15\%$ leading to the same conclusion.}
 	\label{thrm-fig3}
 \end{figure}
 
 A simplistic formulation of when the $k^{-3}$ gives way to a rising
 spectrum in the pre thermalised phase is to estimate
-the time $t_b$ at which the energy of the largest mode $E(K_{\rm G}) \gtrsim C
+the time $t_b$ at which the energy of the largest mode $\mathbb{E}(K_{\rm G}) \gtrsim C
 K_{\rm G}^{-3}$. The time-dependent constant $C$ is
 obtained from our data.  We find from such measurements that $t_b \sim
-\log N$, illustrated in Fig.~\ref{thrm-fig3}(b), just like the scaling form for $t_c$, but with a
-different prefactor since $t_b > t_c$.
+\log N_g$, illustrated in Fig.~\ref{thrm-fig3}(b), just like the scaling form for $t_{\rm cas}$, but with a
+different prefactor since $t_b > t_{\rm cas}$.
 
 We finally consider the thermalisation timescale $t_{\rm th}$. Unlike the
 resonance conditions and consequent Reynolds stress triggered collapse from a
@@ -450,9 +450,9 @@ ad-hoc measure.
 
 {We consider a range of the largest wavenumbers, lying between $\mathcal{X} K_{\rm G} \le k \le K_{\rm G}$,
 such that its extent is a percentage $\mathcal{X}$ of the Galerkin-truncation
-wavenumber $K_{\rm G}$. If we measure the spectral slope of $E(k) \sim k^\gamma$ for this range of wavenumbers, $\gamma \to 2$ as
+wavenumber $K_{\rm G}$. If we measure the spectral slope of $\mathbb{E}(k) \sim k^\gamma$ for this range of wavenumbers, $\gamma \to 2$ as
 $t \to t_{\rm th}$. Of course, it is neither obvious nor necessary (for this calculation) that the spectrum in this range is
-necessarily a power-law; what matters is that as these wavenumbers thermalise, their energy ought to scale as $E(k) \sim k^2$.}
+necessarily a power-law; what matters is that as these wavenumbers thermalise, their energy ought to scale as $\mathbb{E}(k) \sim k^2$.}
 
 In Fig.~\ref{thrm-fig3}(c), we show a plot of $\gamma$ vs time, with
 $\mathcal{X} = 10\%$, for different values of $K_{\rm G}$. The $\gamma \neq 2$
@@ -466,7 +466,7 @@ It useful to add a caveat here. While ideally, the time for the onset of
 thermalisation ought to be estimated with as small a percentage $\mathcal{X}$
 as possible, a numerically trustable fit over a self-similar spectrum
 constrains us on the smallest  $\mathcal{X}$ that we can practically use.
-Thus we confirm the conclusion $t_{th} \sim K_{\rm G}^0$ by varying
+Thus we confirm the conclusion $t_{\rm th} \sim K_{\rm G}^0$ by varying
 $5\% \le \mathcal{X} \le 20\%$; in the inset of Fig.~\ref{thrm-fig3}(c) we
 show a plot of $\gamma$ for $\mathcal{X} =  15\%$ which leads to same conclusion as before.
 
@@ -483,7 +483,7 @@ For problems more directly relevant to natural or experimental turbulent flows,
 one of the successes of such solutions has been in providing
 \textit{an} explanation~\cite{FrischetalBottleneck2008,FrischetalBottleneck2013}
 for the bottleneck phenomenon~\cite{Falkovich1994,Lohse1995}. A bump between the
-inertial and dissipative ranges in the compensated $k^{5/3} E(k)$ energy
+inertial and dissipative ranges in the compensated $k^{5/3} \mathbb{E}(k)$ energy
 spectrum in turbulence~\cite{Pak1991,SheJackson1993,Gotohetal2002,Kurien2004,Verma2007,Mininni2008,Ishihara2009,Donzis2010}.
 
 Numerical simulations have confirmed how such effects are exaggerated with the use of hyperviscosity \cite{FrischetalBottleneck2008,BanerjeeRayHyperviscosity2014}

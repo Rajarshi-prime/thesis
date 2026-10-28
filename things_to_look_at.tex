@@ -1,0 +1,93 @@
+% Errors found while renaming symbols across the thesis. None of them was caused
+% by the rename, and none has been fixed. Not subfiled into main.tex, compile on
+% its own.
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=2.2cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{bm}
+\usepackage{mathrsfs}
+
+\newcommand{\mb}[1]{\mathbb{#1}}
+\renewcommand{\vec}[1]{\boldsymbol{#1}}
+
+\newcommand{\edwv}{\texttt{internal\_tide\_eddy}}
+\newcommand{\thrm}{\texttt{thermalization}}
+\newcommand{\intc}{\texttt{inertial\_caustics}}
+\newcommand{\actc}{\texttt{active\_caustics}}
+\newcommand{\lcky}{\texttt{polydisperse\_lucky\_drops}}
+\newcommand{\apdx}{\texttt{chapters/appendix.tex}}
+
+\title{Things to look at}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+
+These came to light while the symbols were being renamed. None of them was caused
+by the rename and none has been changed. Every line number below is a line of the
+\texttt{.tex} source file named beside it, as that file stands now, not a line
+or a page of the compiled document. The thirteen notation mismatches that stood
+here before have all been settled and are recorded in
+\texttt{symbol\_replacements.md}.
+
+\section{Errors in the physics}
+
+\subsection{A missing exponent in the Poisson weight}
+\apdx, line $574$, in the \lcky\ appendix. The line reads
+\begin{equation*}
+  P_{\vec{x}}(n) = \frac{\lambda(\vec{x})}{n!}e^{-\lambda(\vec{x})} .
+\end{equation*}
+The Poisson probability of finding $n$ particles is $\lambda^n e^{-\lambda}/n!$,
+so the numerator should be $\lambda^n$. As written, $n$ appears only in the
+factorial and the weights sum to
+$\lambda e^{-\lambda}\sum_n 1/n! = \lambda$ rather than to $1$.
+
+\subsection{A dimensional mismatch in the relaxation time}
+\apdx, line $437$, in the \actc\ appendix. The line reads
+\begin{equation*}
+  \tilde{\tau}^{-1} \equiv \frac{\mb{I}}{\tau}
+  \left(\frac{\lVert\vec{v}-\vec{u}\rVert}{\beta^{2}} - 1\right)
+  - (\alpha_{\rm act}\,\mathbf{S} + \mathbf{A}) .
+\end{equation*}
+Subtracting $1$ needs the first term in the bracket to be dimensionless. Here
+$\beta$ is a rate, so $\beta^2$ carries inverse time squared, while
+$\lVert\vec{v}-\vec{u}\rVert$ is a speed. Line $440$ writes the same bracket with
+squared speeds, $(dr/dt)^2 + r^2(d\vartheta/dt)^2$, which suggests the numerator
+should be $\lVert\vec{v}-\vec{u}\rVert^2$.
+
+\section{Things that will print wrongly}
+
+\subsection{A cross-reference to a section where a table belongs}
+\apdx, line $362$, reads ``The Table \verb|\ref{act-AOUPvortex}| is a compilation
+of data-sets\ldots''. The label \texttt{act-AOUPvortex} is defined on line $365$
+on a \verb|\section|, so this prints a section number where a table number is
+meant. The table intended is the one beginning on line $338$.
+
+\subsection{A table label that cannot resolve}
+\apdx, line $340$. The label \texttt{act-table\_organism} sits before the
+\verb|\tabular| and the table has no \verb|\caption| at all, so the label picks
+up whatever counter was last stepped. It would point at the wrong number even if
+something referenced it.
+
+\subsection{A placeholder label and an empty column}
+\lcky, lines $409$ to $417$. The table of run parameters has an $\alpha_g$ column
+with no values in any of its three rows, and a seventh column with no heading.
+Its label is still the editor's default, \texttt{lucky-tab:my\_label}.
+
+\section{Smaller blemishes}
+
+\begin{itemize}
+  \item \apdx, lines $106$ and $113$ to $119$, in the \edwv\ appendix, labels
+        the ageostrophic fields with a $w$ subscript, $\hat{u}_w$, $\hat{v}_w$,
+        $\hat{w}_w$ and $\hat{b}_w$, inside the orthogonality proof. The prose
+        on line $109$ and the whole rest of the chapter use $a$ for the same
+        quantity. The $w$ appears nowhere else, and $\hat{w}_w$ puts the letter
+        in both positions at once.
+  \item \apdx, lines $201$ and $202$, both write $\hat{F}_{u_a}$ in a column
+        vector whose other two entries are $\hat{F}_{w_a}$ and $\hat{F}_{b_a}$.
+        The second should be $\hat{F}_{v_a}$, since the pair gives the two
+        horizontal components.
+\end{itemize}
+
+\end{document}
