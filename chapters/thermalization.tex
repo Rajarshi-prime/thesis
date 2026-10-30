@@ -231,10 +231,10 @@ with a fourth order Runge-Kutta scheme for time-marching on triply-periodic
 cube of length  $2\pi$. We consider five different resolutions with
 collocation points $N_g^3 = 64^3, 128^3, 256^3, 512^3$ and $1024^3$. This allows us to
 explore 5 different values of the Galerkin-truncation wavenumber, $21 \le
-K_{\rm G} \le 341$. The time-step $10^{-3} \le \delta t \le 10^{-4}$
+K_{\rm G} \le 341$. The time-step $10^{-3} \le \Delta t \le 10^{-4}$
 is chosen separately for each resolution to ensure numerical stability. We choose an
 initial (incompressible) velocity field ${\bf u}_0$ such that kinetic energy is concentrated at the
-largest scales at $t = 0$. Our numerical scheme and choice of $\delta t$ ensures that the
+largest scales at $t = 0$. Our numerical scheme and choice of $\Delta t$ ensures that the
 initial kinetic energy per unit mass $\mathbb{E}$ and Helicity $\mathcal{H}$ is conserved for all times, within numerical errors. {To verify this in our simulations, we compute the relative error
 $\Delta_0\mathbb{E}(t)=1-\mathbb{E}(t)/\mathbb{E}(0)$ between the initial energy and its value at
 time $t$. An analogous definition is used for the helicity
@@ -319,7 +319,7 @@ is less compelling.
 
 Energy conservation allows us, nevertheless, to estimate the theoretical form
 of the flux at least in the ultraviolet regime. Consider the partially
-thermalised spectral form to be $\mathbb{E}(k) = C k^2$, where $C$ is a time-dependent
+thermalised spectral form to be $\mathbb{E}(k) = \mathcal{C} k^2$, where $\mathcal{C}$ is a time-dependent
 constant whose value can be estimated numerically. The nonlinear energy
 transfer $T (k) = \frac{dC}{dt}k^2$ relates trivially to the time variation of
 this spectrum, and which, in turn relates to the energy flux $\Pi (k) =
@@ -372,9 +372,9 @@ resolution onward. At long times the curves saturate to values
 $\mathcal{Z}_{\infty}$ which depend on $K_{\rm G}$.
 
 It is possible to theoretically estimate $\mathcal{Z}_{\infty}$. When the
-flow is fully thermalised, the energy spectrum follows $\mathbb{E}(k) = C_\infty k^2$, which, given the
+flow is fully thermalised, the energy spectrum follows $\mathbb{E}(k) = \mathcal{C}_\infty k^2$, which, given the
 conserved initial kinetic energy $\mathbb{E}_0$, allows for the determination
-$C_\infty = 6\mathbb{E}_0 [(K_{\rm G})(K_{\rm G}+1)(2K_{\rm G} + 1)]^{-1} \approx 3\mathbb{E}_0/K_{\rm G}^3$, for large $K_{\rm G}$.
+$\mathcal{C}_\infty = 6\mathbb{E}_0 [(K_{\rm G})(K_{\rm G}+1)(2K_{\rm G} + 1)]^{-1} \approx 3\mathbb{E}_0/K_{\rm G}^3$, for large $K_{\rm G}$.
 By using this, it is trivial to show that, for large $K_{\rm G}$,  the
 saturation value $\mathcal{Z}_{\infty} =  \nicefrac{3}{5}\mathbb{E}_0 K_{\rm G}^2$. In Fig.~\ref{thrm-fig3}(a) we plot
 $\mathcal{Z}_{\infty}$, as dashed horizontal lines, to see how the system evolves to
@@ -437,7 +437,7 @@ in the inset of Fig.~\ref{thrm-fig3}(b).
 A simplistic formulation of when the $k^{-3}$ gives way to a rising
 spectrum in the pre thermalised phase is to estimate
 the time $t_b$ at which the energy of the largest mode $\mathbb{E}(K_{\rm G}) \gtrsim C
-K_{\rm G}^{-3}$. The time-dependent constant $C$ is
+K_{\rm G}^{-3}$. The time-dependent constant $\mathcal{C}$ is
 obtained from our data.  We find from such measurements that $t_b \sim
 \log N_g$, illustrated in Fig.~\ref{thrm-fig3}(b), just like the scaling form for $t_{\rm cas}$, but with a
 different prefactor since $t_b > t_{\rm cas}$.

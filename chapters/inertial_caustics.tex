@@ -111,7 +111,7 @@ We see that for finitely-dense particles, a large negative $Q$ makes a positive 
 
 \subsection{Point Vortex Flow}\label{int-pv}
 Before moving to 2D turbulence, it is insightful to study caustics in the vicinity of a point vortex.
-The dimensional velocity field is given by $\vec{u}^* = \vec{e}_\vartheta ~\Gamma /2\pi r^*$, where $r^*$ is the dimensional length from the origin, and $\Gamma$ is the circulation. Choosing the length scale $L  = \sqrt{\Gamma \tau_p/2\pi}$ \cite{ravichandran2015}  and timescale $\tau_p$, the nondimensional velocity and the invariant $Q$ become
+The dimensional velocity field is given by $\vec{u}^\bigstar = \vec{e}_\vartheta ~\Gamma /2\pi r^\bigstar$, where $r^\bigstar$ is the dimensional length from the origin, and $\Gamma$ is the circulation. Choosing the length scale $L  = \sqrt{\Gamma \tau_p/2\pi}$ \cite{ravichandran2015}  and timescale $\tau_p$, the nondimensional velocity and the invariant $Q$ become
 \begin{equation}
     \vec{u} = \frac{1}{r}\vec{e}_\vartheta, \quad {\rm and} \quad Q = -\frac{1}{r^4},
 \end{equation}
@@ -131,7 +131,7 @@ Using \eref{int-NDeom}, the non-dimensional equation of motion of particles arou
 We follow the usual procedure in singular perturbation problems: of expanding the inner variables in powers of the small parameter $\tau$, and deriving the lowest order equation. The scaling of $\mathfrak{l} \sim \sqrt\tau$ \cite{deepu2017} yields physical solutions, and our choice of
 $\mathfrak{l}^2 = \tau\sqrt{3\alpha -2}$ yields the following parameter-free equation, valid for all Stokes numbers and all particle densities at the lowest order:
 \begin{equation}
-   \mc{R}'' = \mc{R}^{-3},
+   \frac{d^2\mc{R}}{d\mc{T}^2} = \mc{R}^{-3},
 \quad {\rm whose \ solution \ is} \quad
 \mc{R}(\mathcal{T}) = \sqrt{\frac{\mathcal{T}^2}{\mc{R}_0^2}+\mc{R}_0^2} \ ,
       \end{equation}
@@ -188,7 +188,7 @@ To keep the particle number constant beyond caustics, we reinitialize the partic
 Figure \ref{int-pstruc}(a-c) shows the vorticity snapshot of the background flow with inertial particles overlaid, for $\alpha=0.7, \ 0.77$ and $1.0$. Denser particles centrifuge out of vortices more readily than their lighter counterparts, as in previous studies \cite{balkovsky2001, calzavarini2008, calzavarini2008a, fiabane2012,karchniwy2019, petersen2019, motoori2023}, since lighter particles' centrifugation is hindered by their added mass \cite{balkovsky2001}. Denser particles show higher clustering levels in strain regions.  \cs particles (in cyan), increase in number with increasing particle density, and live alongside other particles in the strain region.  \fref {int-pstruc}(d) compares the distribution of $Q$ in the background field to those sampled by \emph {all} particles. As we know, extreme vortices are more common than extreme strain in 2D turbulence. The inset of \fref{int-pstruc}(d) shows that the mean $Q$ experienced by particles is a small negative number for particles, whereas this quantity is zero for the background flow. Interestingly, the leftmost part of \fref{int-pstruc}(d) shows that denser particles are infrequent in visiting regions of extreme strain as compared to their lower-density counterparts. We think this is because high strain is associated with rapid acceleration and deceleration in the flow, and high-density particles are less able to adapt to these changes due to their inertia.
 
 \subsubsection{Behavior of caustics or \cs particles}
-{In \fref{int-fig: Q-timeseries-2d}, we shift the trajectories of each of the caustics particles by their caustics times $t_c$ to show a universal behavior leading upto caustics. As the probability density functions (PDFs) of Q in panels (a-c) show, each of the caustics particles experiences a maximum strain or minimum $Q = Q_m$ at time $t = t_m$. The black dashed lines show the mean of the Q-PDFs, $\mean{Q}$, with a minimum, $\mean{Q}_{min}$, occurring around $5 - 8$ Stokes times before caustics, denoted by $t = t_{min}$. Note that $\langle{Q})_{min}$ and $t_{min}$ are quantities averaged over caustics particle trajectories, while $Q_m$, $t_m$, and $t_c$ are different for different particles.   }
+{In \fref{int-fig: Q-timeseries-2d}, we shift the trajectories of each of the caustics particles by their caustics times $t_c$ to show a universal behavior leading upto caustics. As the probability density functions (PDFs) of Q in panels (a-c) show, each of the caustics particles experiences a maximum strain or minimum $Q = Q_m$ at time $t = t_m$. The black dashed lines show the mean of the Q-PDFs, $\mean{Q}$, with a minimum, $\mean{Q}_{min}$, occurring around $5 - 8$ Stokes times before caustics, denoted by $t = t_{min}$. Note that $\langle{Q}\rangle_{min}$ and $t_{min}$ are quantities averaged over caustics particle trajectories, while $Q_m$, $t_m$, and $t_c$ are different for different particles.   }
 
 \fref{int-fig: Q-timeseries-2d}(g) shows $\mean{Q}_{min}$ against $\alpha$ for two Stokes numbers. Lower density particles have lower $\mean{Q}_{min}$, indicating that they need to go through regions of more intense strain than their denser counterparts to form caustics. This is also true in point-vortex flow, as seen in the figure, but how different this dependency is from $2$D turbulence is also highlighted.
 \begin{figure}

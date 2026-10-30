@@ -79,7 +79,7 @@ where $\vec{u}$ is the background fluid velocity. As a result, these particles w
 \begin{align}
 \label{lucky-n_sm}
 \begin{split}
-    \partial_t n_s = - \vec{\nabla}\cdot (\vec{v}n_s) \ ,
+    \partial_t n_s = - \vec{\nabla}\cdot (\vec{v}_s n_s) \ ,
 \end{split}
 \end{align}
 Now, we would like to know what happens when a big particle of velocity $\vec{v}_b$ travels in this sea of small particles. As the big particle travels, it will encounter small particles along its way, collide with them and grow. Note: all collisions will not lead to growth, some may even break the big particles into smaller ones, but for now, we will assume a uniform probability, $P_{cc}$, that relates the number of coliisions to number of coalescence. If $a_s$ and $a_b$ are the radii of a small and big particle particle respectively, the rate of collisions of the big particle with the small ones is
@@ -306,7 +306,7 @@ And for $2$D it becomes
 \end{split}
 \end{align}
 
-Once we nondimensionalize with length scale $L$, timescale $\tau_f$ and velocity scale $L/\tau_f$, we get the equations in terms of nondimensional numbers $St_b = \tau_b/\tau_f$, $St_s = \tau_s/\tau_s$, and $Re = L^2/\nu\tau_f$. In $3$D, these equations reads,
+Once we nondimensionalize with length scale $L$, timescale $\tau_f$ and velocity scale $L/\tau_f$, we get the equations in terms of nondimensional numbers $St_b = \tau_b/\tau_f$, $St_s = \tau_s/\tau_f$, and $Re = L^2/\nu\tau_f$. In $3$D, these equations reads,
 \begin{align}
     \label{lucky-3Deqns}
     \begin{split}
@@ -339,7 +339,7 @@ The nonlinearity of the problem prevents us from drawing any analytic conclusion
     % \import{/Users/rajarshi/Library/CloudStorage/GoogleDrive-rajarshi.chattopadhyay@icts.res.in/My Drive/Collab/plots/Re_125000.0,dt_0.005,N_1024/sts_0.005_stb_0.30/time_100.0}{sm-10000big.pgf}
     \includegraphics[width=\linewidth]{./figures/polydisperse/sm_0.02_0.002.pdf}
 
-    \caption[Vorticity and small-droplet volume fraction with one big droplet]{Instantaneous snapshot showing the vorticity of the $2$D flow (right) along with the small particles's volume fraction (right) normalized by the mean volume fraction. The small white streaks are the places from where the big particle have run through.}w
+    \caption[Vorticity and small-droplet volume fraction with one big droplet]{Instantaneous snapshot showing the vorticity of the $2$D flow (right) along with the small particles's volume fraction (right) normalized by the mean volume fraction. The small white streaks are the places from where the big particle have run through.}
     \label{lucky-zeta-sm-1big}
 \end{figure}
 
@@ -644,7 +644,7 @@ This is evident in Fig. \ref{lucky-nbin-dist-256} where the number density of $4
 
 Note that at larger scales, the number density does not obey a Poisson distribution. This is because the particles are not exactly tracer and the fluid acceleration does have some large scale correlation effects. But at the smaller scale, Poisson distribution assumption is a good one. Note that this result only follows in $3$D where large fluid accelerations are not long-lived, in $2$D, persistence of large strong vortices make the number density of tiny droplets spatially well correlated.
 
-This insight allows us to modify Eq. \eqref{lucky-3Deqns}. We do not evolve the number density of the small particles anymore, rather we draw the number of particles each lucky droplet encounters in a given $\delta t$ from a Poisson distribution. We still have to evolve the $\vec{v}_s$ equation, and interpolate at the location of the lucky droplets. The result with this is significantly different from the \begin{figure}
+This insight allows us to modify Eq. \eqref{lucky-3Deqns}. We do not evolve the number density of the small particles anymore, rather we draw the number of particles each lucky droplet encounters in a given $\Delta t$ from a Poisson distribution. We still have to evolve the $\vec{v}_s$ equation, and interpolate at the location of the lucky droplets. The result with this is significantly different from the \begin{figure}
 	\begin{center}
 		\includegraphics[width=\linewidth]{./figures/polydisperse/det-v-stoch.png}
 	\end{center}

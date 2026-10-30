@@ -84,8 +84,9 @@ Where an inventory and `symbol_replacements.md` disagree, the markdown wins.
 - In Droplets, `\lambda` carries three meanings: `\lambda_s` the depletion rate
   of the small droplets, `\lambda(m,m',t)` the Smoluchowski collision kernel,
   and `\bar\lambda` a Poisson mean in the appendix. All three need rows.
-- In Active, `\nu` carries two: the kinematic viscosity, and a caustics scaling
-  exponent in `R = t^{\nu}` on line 174.
+- In Active, `\nu` is the kinematic viscosity and nothing else. Line 174 once
+  used it for a caustics scaling exponent and now writes that number out, as
+  `R = t^{2/3}`, so no exponent row is needed.
 - In the Inertial appendix, `\chi` is an auxiliary root of a quartic, not a
   vorticity. The vorticity is `\zeta`.
 - In Droplets, italic `m` is the droplet mass and upright `\mathrm{m}` is a
@@ -161,15 +162,7 @@ from these, something has been missed or over-included.
 Report the row count of each file, the symbols you judged ambiguous and why, and
 anything in the chapters that looked wrong but which you did not touch.
 
-## Separately, two errors for `things_to_look_at.tex`
+## If you find a fault in a chapter
 
-These came out of the inventory work and belong in that file, not in the list of
-symbols. Both are in `chapters/appendix.tex`, in the `edwv-` region, and neither
-was caused by the rename. Add them as two items in the style of the ones already
-there, and change nothing in the appendix itself.
-
-- Lines 106 and 113 to 119 carry a `_w` subscript inside the orthogonality
-  proof, where the prose on line 109 and the rest of the chapter use `_a` for
-  the same ageostrophic quantity. The `_w` appears nowhere else.
-- Lines 201 and 202 both write `\hat{F}_{u_a}`. The second should be
-  `\hat{F}_{v_a}`, since the pair gives the two horizontal components.
+Do not fix it. Add it to `things_to_look_at.tex`, as a new item in the style of
+the ones already there, and leave the chapter alone.

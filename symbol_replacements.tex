@@ -42,7 +42,7 @@ Current & Proposed & Meaning & Status \\
 \midrule
 \endhead
 $\alpha$ & $\AR$ & Ratio of buoyancy to inertial frequency, $N/f$, fixed at $20$ & \chg \\
-$\ell$ & $\ell$ & Filtering length scale, with $k_\ell = 2\pi/\ell$ & \kp \\
+$l$ & $\ell$ & Filtering length scale, with $k_\ell = 2\pi/\ell$ & \chg \\
 $L$ & $L$ & Horizontal length scale & \kp \\
 $H$ & $H$ & Vertical length scale & \kp \\
 $\omega$, $\omega_0$, $\omega_c$ & same & Wave frequency, tidal forcing frequency, slow-fast cut-off & \kp \\
@@ -59,10 +59,13 @@ $\varphi$ & $\varphi$ & Cumulative flux fraction & \kp \\
 $\xi$ & $\varXi$ & Placeholder field whose flux fraction is computed & \chg \\
 $\nu$ & $\nu_{\rm hyp}$ & Hyperviscosity multiplying $\Delta^8$ & \chg \\
 $w$ & $w$ & Vertical velocity & \kp \\
+Subscript $w$ & Subscript $a$ & Ageostrophic fields in the appendix orthogonality proof & \chg \\
 $\theta$, $\theta_{k_h}$ & same & Latitude, azimuthal angle in wavenumber space & \kp \\
 $E$, $\hat{E}(k_h,t)$ & same & Domain-integrated energy and horizontal spectrum & \kp \\
 $\Pi$, $\Pi_\ell$ & same & Spectral flux, physical-space flux at scale $\ell$ & \kp \\
-$\vec{F}_{\vec{v}}$, $F_w$, $F_b$, $\hat{F}$ & same & Forcing terms and power input spectrum & \kp \\
+$\vec{F}_{\vec{v}}$, $\hat{\vec{F}}_u$, $F_w$, $F_b$, $\hat{F}$ & $\vec{F}_{\vec{v}_{\rm 2D}}$, $\hat{\vec{F}}_{\vec{v}_{\rm 2D}}$, $F_w$, $F_b$, $\hat{F}$ & Forcing terms and power input spectrum & \chg \\
+$\hat{\vec{R}}_{v}$, $\hat{R}_w$, $\hat{R}_b$ & $\hat{\vec{R}}_{\vec{v}_{\rm 2D}}$, $\hat{R}_w$, $\hat{R}_b$ & Fourier transforms of the nonlinear terms & \chg \\
+$\vec{f_{v_g}}$, $\vec{F_{v_g}}$ & $\vec{f}_{v_g}$, $\vec{F}_{v_g}$ & Geostrophic forcing, with the bold on the letter alone & \chg \\
 The hat accent & same & A Fourier amplitude here, as in $\hat{u}$, $\hat{E}(k_h)$. The chapter's own \verb|\widehat| redefinition stays & \kp \\
 The overbar & same & A time average. The other chapters keep angle brackets & \kp \\
 \bottomrule
@@ -84,6 +87,7 @@ $\mathcal{H}$ & $\mathcal{H}$ & Helicity & \kp \\
 $\Omega$, $\Omega_\infty$ & $\mathcal{Z}$, $\mathcal{Z}_\infty$ & Enstrophy & \chg \\
 $N$ & $N_g$ & Collocation points per direction & \chg \\
 $N_{\rm G}$ & $N_{\rm G}$ & Number of retained modes. Upright against the italic $N_g$ of the collocation points, so the two are told apart by shape as well as case & \kp \\
+$K_G$ & $K_{\rm G}$ & Galerkin truncation wavenumber & \chg \\
 $\mathbf{v}$ & $\mathbf{u}$ & Galerkin-truncated velocity. It becomes a $u$ so that both fields carry the same letter & \chg \\
 $\mathbf{u}$ & $\vec{u}$ & Untruncated Euler velocity. Upright marks the truncated field, italic the untruncated one & \chg \\
 $P$ & $\mathcal{P}$ & Pressure & \chg \\
@@ -92,13 +96,15 @@ $\mathbf{p}$, $\mathbf{q}$ & same & Wavevectors in the convolution sum. Bold upr
 $T(k)$ & $T(k)$ & Transfer term & \kp \\
 $t_b$ & $t_b$ & Birth time of the oscillatory structures & \kp \\
 $t_c$ & $t_{\rm cas}$ & Cascade completion time & \chg \\
+$t_{th}$ & $t_{\rm th}$ & Thermalisation onset time & \chg \\
 $t_*$ & $t_*$ & Preshock time of the inviscid Burgers equation & \kp \\
 $\gamma$ & $\gamma$ & Spectral slope & \kp \\
-$\delta t$, $\Delta_0 E$, $\Delta_0\mathcal{H}$ & same & Time step and relative errors & \kp \\
+$\Delta_0 E$, $\Delta_0\mathcal{H}$ & same & Relative errors in energy and helicity & \kp \\
 $\epsilon$ & $\epsilon$ & Effective dissipation per unit mass, which is why it is not the $D$ of \texttt{internal\_tide\_eddy} & \kp \\
 $\nu$, $\nu_{\rm eff}$ & same & Kinematic and eddy viscosity & \kp \\
 $E$, $E(k)$ & $\mb{E}$, $\mb{E}(k)$ & Kinetic energy per unit mass and its isotropic spectrum. The blackboard letter marks energy per unit mass, as against the domain-integrated $E$ in \texttt{internal\_tide\_eddy} & \chg \\
 $\Pi(k)$ & $\Pi(k)$ & Kinetic energy flux & \kp \\
+$\delta t$ & $\Delta t$ & Integration time step. Capital so that $\delta t$ is left to \texttt{internal\_tide\_eddy}, where it is a Fourier sampling interval and not a step & \chg \\
 The hat accent & same & A Fourier amplitude here, as in $\hat{\mathbf{v}}_{\mathbf{k}}$ & \kp \\
 $\langle\cdot\rangle$ & same & Averaging & \kp \\
 \bottomrule
@@ -168,6 +174,10 @@ $\mathcal{H}$ & $\mb{H}$ & Effective Hamiltonian of the inner solution & \chg \\
 \verb|\textbf{A}| & $\mathbf{A}$ & Antisymmetric part of the velocity gradient, font made uniform & \chg \\
 \verb|\textbf{S}|, one \verb|\sf{S}|, $\tilde{S}$ & $\mathbf{S}$, $\tilde{\mathbf{S}}$ & Strain-rate tensor, font made uniform & \chg \\
 \verb|\textbf{Z}| & $\mathbf{Z}$ & Particle gradient tensor, font made uniform & \chg \\
+\verb|\vect{F}|, \verb|\mathbf{F}|, \verb|\bf{F}|, \verb|{\bf F}| & $\vec{F}_{\rm ext}$ & External force on the particle, font made uniform. The subscript keeps a bare $F$ free for the fluid forcing of the other chapters & \chg \\
+\verb|\vect{w}|, \verb|\vect{ww}| & $\mathbf{w}$, $\mathbf{ww}$ & End-to-end extension of the dimer, font made uniform. Upright because italic $w$ is the vertical velocity of \texttt{internal\_tide\_eddy} & \chg \\
+$F_0$ & $F_0$ & Amplitude of the deterministic forcing on the background flow. A different quantity from the $F_\zeta$ of \texttt{inertial\_caustics}, so both stay & \kp \\
+$\mathbf{X}$, \verb|\vect{X}| & same & Centroid position of the particle. The two spellings print upright and italic respectively, and settling them is left for later & \kp \\
 $\omega$ & $\zeta$ & Vorticity in the Okubo-Weiss parameter & \chg \\
 $N$ & $N_p$ & Number of particles & \chg \\
 $\mathbf{v}$ & $\vec{v}$ & Particle velocity, brought in line with the other chapters & \chg \\
@@ -175,9 +185,11 @@ $\mathbf{U}$ & $\vec{u}$ & Background flow field, brought in line with the other
 $U_0$ & $U_0$ & Scale of the background flow & \kp \\
 $p$ & $p_r$ & Radial momentum per unit mass, $d\tilde{r}/d\tilde{t}$ & \chg \\
 $D$ & $D_\eta$ & Noise strength in $\sqrt{2D}\,\bm{\eta}$ & \chg \\
+$\bm{\eta}$, $\mathbf{\eta}$ & $\vec{\eta}$ & White noise vector in the dimer equations & \chg \\
 $D_t$ & $D_t$ & Fluid material derivative & \kp \\
 $t^*$ & $t^*$ & Matching time for the outer boundary conditions & \kp \\
 $r_c$ & $\mathcal{R}_{c0}$ & Critical initial radius beyond which caustics never form & \chg \\
+$t^{\nu}$ & $t^{2/3}$ & Growth of the caustics ring radius & \chg \\
 $\delta_i$, $\delta_o$ & same & Spatial stretching factors & \kp \\
 $\epsilon_i$, $\epsilon_o$ & $\varepsilon_i$, $\varepsilon_o$ & Temporal stretching factors & \chg \\
 $\nu$ & $\nu$ & Kinematic viscosity & \kp \\
@@ -189,11 +201,12 @@ $\hat{\theta}$ & $\vec{e}_\vartheta$ & Unit vector. Every unit vector takes the 
 $\mathbf{\hat{r}}$ & $\vec{e}_r$ & Radial unit vector & \chg \\
 $\textbf{I}$ & $\mathbb{I}$ & Identity tensor & \chg \\
 $q$ & $k_f$ & Forcing wavenumber, written $q$ in the text and $k_f$ in the table of spectral parameters & \chg \\
-$\vec{F}$, $\vec{F}_{\rm eff}$, $F_0$ & same & External force, effective force, forcing amplitude & \kp \\
+$\textbf{F}_{\textnormal{eff}}$ & $\vec{F}_{\rm eff}$ & Effective external force on the particle & \chg \\
 $\mathcal{W}$ & $\mathcal{W}$ & Okubo-Weiss parameter from dimensional gradients. It differs from the $Q$ of the other chapters by a positive constant and by $St^2$ & \kp \\
-$\tilde{\Gamma}$ & $\tilde{\Gamma}$ & Circulation, $\tilde{\Gamma} = \Gamma/2\pi$ & \kp \\
+$\bar{\Gamma}$, $\tilde{\Gamma}$ & $\tilde{\Gamma}$ & Circulation, $\tilde{\Gamma} = \Gamma/2\pi$ & \chg \\
 $\tilde{O}$ & $\tilde{\mathbf{O}}$ & Fluid velocity gradient tensor, $\tau\nabla\vec{u}$, the counterpart of $\mb{A}$ in \texttt{inertial\_caustics} & \chg \\
 $\Delta r$ & $\Delta r$ & Separation between two neighbouring particle rings & \kp \\
+$\langle\cdot\rangle_{rms}$ & $\langle\cdot\rangle_{\rm rms}$ & Root mean square average & \chg \\
 $\langle\cdot\rangle$ & same & Averaging & \kp \\
 \bottomrule
 \end{longtable}
@@ -216,13 +229,15 @@ $\vec{v}$, $\vec{v}_s$, $\vec{v}_b$ & same & Particle velocity, small and big dr
 $\vec{u}$ & $\vec{u}$ & Background fluid velocity at the particle & \kp \\
 $\vec{p}$, $P(m,t)$, $P_{cc}$ & same & Linear momentum, mass density, collision-coalescence probability & \kp \\
 $D/Dt$ & $D/Dt$ & Material derivative & \kp \\
+$\delta t$ & $\Delta t$ & Simulation time step. Capital to match the other chapters. The chapter already writes $\Delta t$ for an arbitrary increment in the momentum derivation, so one symbol now carries both & \chg \\
 $\gamma$ & $\lambda_s$, $\alpha_g$ & Depletion rate of the small droplets, and the fitted growth exponent $t^{\alpha_g}$ & \chg \\
 $m$ & $m$ & Droplet mass & \kp \\
 $m$, $k_m$ & $\mathrm{m}$, $k_{\mathrm{m}}$ & Parameter setting the Kolmogorov length, $\eta_s = \mathrm{m}/k_{\mathrm{m}}$, made upright to part it from the mass & \chg \\
 $\sigma$, $\sigma_2$, $\sigma_3$ & $\varsigma$, $\varsigma_2$, $\varsigma_3$ & Collision cross-section in two and three dimensions. The chapter gives two disagreeing forms, and $\varsigma_3 = \pi(a_s+a_b)^2$ is the correct one & \chg \\
 $\varphi_s$, $\varphi_b$, $\varphi$ & $c_s$, $c_b$, $c$ & Volume fraction of the small droplets, the big ones, and either & \chg \\
 $Q_{rms}$ & $Q_{\rm rms}$ & Root mean square of the Okubo-Weiss parameter & \chg \\
-$\delta$, $\delta t$ & same & Dirac delta and time step & \kp \\
+$u_{\text{RMS}}$ & $u_{\rm rms}$ & Root mean square flow velocity & \chg \\
+$\delta$ & same & Dirac delta & \kp \\
 $\epsilon$, $\varepsilon$ & $\epsilon$ & Mean energy dissipation rate of the cloud & \chg \\
 $\nu$ & $\nu$ & Kinematic viscosity & \kp \\
 $\mu$m & $\mu$m & Micrometre prefix only & \kp \\
