@@ -1,3 +1,4 @@
+
 \documentclass[../main.tex]{subfiles}
 \begin{document}
 \newcommand{\jin}[1]{j^{\textrm{in}}(#1)}
@@ -35,7 +36,7 @@ The more widely used Lagrangian modelling of the cloud droplets is the `super-dr
 Current modelling of rain in the atmosphere is even cruder. A mixing ratio quantifying water-vapor mass to dry air mass is advected as tracers, with evaporation from the sea and updraft acting as its sources, and precipitation as its sink \cite{lapeyre2004,brown2023}. Precipitation or rain is triggered when the mixing ratio exceeds a threshold of thermodynamic supersaturation, and the former is relaxed to the threshold value. However, supersaturation is not the only factor that would trigger rain. A supersaturated volume of fluid will only form rain if there are enough large droplets that sediment fast enough to collect other droplets. In other words, in addition to the cloud parcel being supersaturated, precipitation hinges on whether the size distribution of the droplets has a fat enough tail. The latter fact is either poorly captured or not captured at all in current models. This is where a first-principle derivation of the hydrodynamic equations of polydisperse particles comes to play.
 
 
-A recent school of thought has been the following: once, particles of large enough sizes are created from the sea of small particles, they follow significantly different trajectories from their smaller counterpart, and turbulent air will make them collide more with more smaller particles, making them grow even faster. These accidental large particles, termed \textbf{lucky drops}, are thought to be enough to initiate rain, even when only one in a million particles turn out lucky. \textbf{cite}.
+A recent school of thought has been the following: once, particles of large enough sizes are created from the sea of small particles, they follow significantly different trajectories from their smaller counterpart, and turbulent air will make them collide more with more smaller particles, making them grow even faster. These accidental large particles, termed `lucky drops', are thought to be enough to initiate rain, even when only one in a million particles turn out lucky. \textbf{cite}.
 
 In this work we investigate whether this is true. Confining ourselves to a fixed number mass of lucky drops, we investigate whether which of the following grow faster, fewer luckier drops, or larger less lucky drops? We approximate the complicated system in two ways. First, we assume a mono-disperse point particles that do not collide with each other. Rather they are advected by turbulent flow. We seed the lucky drops with a certain size and neglect collisions between any two lucky particles. Although, here we will try to justify it, we must confess that these approximations are made to make the dynamics simple. The first approximation allows us to write field equations of the small particles, which are accurate and are devoid of singularities. The field equation also makes capturing collision between the lucky droplets and the smaller ones. Instead of checking crossing between billions of particles, we can write down ordinary differential equations for growth rate of individual lucky droplets. And, the complexity of the calculating particle crossing forces us to make the second assumption.
 
@@ -56,6 +57,7 @@ The kinematic viscosity of air $\nu = 10^{-5}\mbox{m}^2\cdot\mbox{sec}^{-1}$. Ob
         \midrule
         $\eta = (\nu^3/\epsilon)^{1/4}$   & $1\ \text{mm}$   & $0.6\ \text{mm}$  & $0.3\ \text{mm}$  & in $1\ \text{m}^3$ & tracer \\
         $\tau_\eta = \sqrt{\nu/\epsilon}$ & $0.1\ \text{s}$  & $0.03\ \text{s}$  & $0.01\ \text{s}$  & $10^9$ particles & assumption\\
+        $Fr= \epsilon^{\frac34}/(g\nu^\frac14)$ & $0.1\ \text{s}$  & $0.03\ \text{s}$  & $0.01\ \text{s}$  & $10^9$ particles & assumption\\
         \midrule
         $d = 1\ \mu\text{m}$  & $\mathrm{St} = 5.5\times10^{-5}$ & $\mathrm{St} = 1.7\times10^{-4}$ & $\mathrm{St} = 5.5\times10^{-4}$ & $5\times10^{-10}$ &$318$ s\\
         $d = 2.7\ \mu\text{m}$  & $\mathrm{St} = 3.2\times10^{-4}$ & $\mathrm{St} = 1\times10^{-3}$ & $\mathrm{St} = 3.2\times10^{-3}$ & $7.2\times10^{-9}$ &$44$ s\\
@@ -68,28 +70,56 @@ The kinematic viscosity of air $\nu = 10^{-5}\mbox{m}^2\cdot\mbox{sec}^{-1}$. Ob
 
 %Now, for $ $1\mu\mbox{m}$ and $10 \mu\mbox{m}$ spherical water droplets, $1000$ times heavier than air, will have Stokes numbers of $St = 2\times 10^{-4}$ and $St = 2\times 10^{-2}$, respectively, when defined in terms of Kolmogorov timescale. A warm cloud may have around $10^{9}$ such particles in $1\mbox{m}^3$ volume {\textbf{cite?}}. This fixes the volume fraction $\varphi$ of these particles to be $4 \times 10^{-9}$ to $4 \times 10^{-6}$ respectively.
 \section{Formulation}
-Here, we will look at the effects of small particles on the growth of big particles. Suppose that on top an underlying fluid, we have a sea of particles so small that they deviate from the fluid streamlines only slightly. The velocity field, $\vec{v}_s$, for the sea of small particles will obey
+We consider a continuum of small particles obeying the slow-manifold approximation \cite{falkovich2002}.  Their velocity $\vec{v}_s$ drifts slightly from background flow streamlines and obeys
 \begin{align}
 \label{lucky-sm-rhoinf}
 \begin{split}
-    \vec{v}_s = \vec{u} - St \frac{D\vec{u}}{ Dt},
+    \vec{v}_s = \vec{u} - St_s \frac{D\vec{u}}{ Dt},
 \end{split}
 \end{align}
-where $\vec{u}$ is the background fluid velocity. As a result, these particles will cluster but not form caustics. These particle clusters can be seen by evolving the number density $n_s$ of the small particles
+where $\vec{u}$ is the background fluid velocity, and subscript `s' denotes the small particles. Eq. \eqref{lucky-sm-rhoinf} is only valid when $St \ll 1$, and ensures the particles can only cluster, but not form caustics. Their continuity equation reads
 \begin{align}
 \label{lucky-n_sm}
 \begin{split}
     \partial_t n_s = - \vec{\nabla}\cdot (\vec{v}_s n_s) \ ,
 \end{split}
 \end{align}
-Now, we would like to know what happens when a big particle of velocity $\vec{v}_b$ travels in this sea of small particles. As the big particle travels, it will encounter small particles along its way, collide with them and grow. Note: all collisions will not lead to growth, some may even break the big particles into smaller ones, but for now, we will assume a uniform probability, $P_{cc}$, that relates the number of coliisions to number of coalescence. If $a_s$ and $a_b$ are the radii of a small and big particle particle respectively, the rate of collisions of the big particle with the small ones is
+where $n_s$ is the number density of small particles. 
+As a big particle of velocity $\vec{v}_b$ travels in this continuum of small particles, it collides and coalesces with all the small particles along its trajectory. Although all collisions may not lead to coalescence, we assume a unit collision–coalescence probability, $P_{cc} = 1$, that relates the number of collisions to number of coalescence. The rate of coalescence of a big particle with diameter $d_b$obeys is
 \begin{align}
 % \label{}
 \begin{split}
-    \dot{N}_c = \varsigma ~ n_s ~ |\vec{v}_b - \vec{v}_s| \ ,
+    \dot{N}_c = P_{cc}\times \dot{N}_\text{col} = 1 \times \varsigma ~ n_s(\vec{x}_b) ~ |\vec{v}_b - \vec{v}_s(\vec{x}_b)| \ ,
 \end{split}
 \end{align}
-where $\vec{v}_b$ is the velocity of the big particle and $\vec{v}_s$ is the velocity of the small particle at the location of the big particle. $\varsigma_b = \pi(a_s + a_b)^2$ is the collision cross-section of the big particles with the small ones. Rate of coalescence is related to the rate of collision by $P_{cc}$, $\dot{N}_{cl} = P_{cc}~\dot{N}_c$. In the remainder of this study, we will assume 100\% coalescence rate, and set $P_{cc} = 1$.
+where $\vec{v}_b$ is the velocity of the big particle and $\dot{N}_\text{col}$ is the rate of collision with small particles. $\varsigma_b$ is the geometric collision cross-section of the big particles with the small particles of diameter $d_s$. It is $= \pi(d_b + d_s)^2/4$ in $3$D, and $(d_b + d_s)/2$ in $2$D.
+
+
+Each coalescence obeys conservation of mass and momenta. This leads to a growth rate in mass and deceleration in velocity of the big particle.
+
+Coalescence will add a sink term to the continuity equation of the small particles, proportional to the mass growth rate of the big particles. 
+\begin{align}
+\label{mass-cont}
+\begin{split}
+    \partial_t n_s &= - \vec{\nabla} \cdot (\vec{v}_s n) - \sum\limits_{i}^{}\left(\frac{3\sqrt{\pi}m_b^i}{4\rho}\right)^{\frac23}\left( 1 + \sqrt{\frac{\tau_s}{\tau_b^i}} \right)^2 n_s |\vec{v}_b^i - \vec{v}_s| \delta(\vec{x} - \vec{x}_b^i) \\
+    \dot{m}_b^i &= \rho \left(\frac{3\sqrt{\pi}m_b^i}{4\rho}\right)^{\frac23}\left( 1 + \sqrt{\frac{\tau_s}{\tau_b^i}} \right)^2 c_s |\vec{v}_b^i - \vec{v}_s| ,
+\end{split}
+\end{align}
+where $c_s$ is the volume fraction of the small particles related to the number density by $c_s = \pi d_s^3/6 n_s$, and $m_b^i$ is the mass of the $i$th big particle.
+
+In the absence of a background flow and gravity, the momentum of a big particle after collisions with small particles will equate to the sum of its momentum before collision, and the momentum of the small particles it collided with. This adds deceleration term which in presence of drag and gravity reads
+\begin{align}
+\label{mon-cont}
+\begin{split}
+    \dot{\vec{v}}_b^i(t) &= \frac{\rho}{m_b^i} \left(\frac{3\sqrt{\pi}m_b^i}{4\rho}\right)^{\frac23}\left( 1 + \sqrt{\frac{\tau_s}{\tau_b}} \right)^2 c_s|\vec{v}_b^i - \vec{v}_s|\left( \vec{v}_s - \vec{v}_b^i \right) + \frac{\vec{u}- \vec{v}_b^i}{\tau_b^i} - g \hat{z}.
+\end{split}
+\end{align}
+These equations are in $3$D. For a `two-dimensional' setting where the spherical particles are restricted on a plane, Eqs. \eqref{mass-cont} \eqref{mon-cont} gets modified to 
+\begin{center}
+    \textbf{Enter equation here.}
+\end{center}
+
+
 
 % To fnd the growth rate of the radius of the particle, one needs to invoke conservation of volume before and after collision. Furthermore, we assume that all particles remain spherical before and after collision. Thus, rate of change of volume or $a_b^3$ of the big particle is given by
 % \begin{align}
@@ -198,58 +228,58 @@ where $\vec{v}_b$ is the velocity of the big particle and $\vec{v}_s$ is the vel
 % \end{split}
 % \end{align}
 
-All through the collisions, the net liquid content i.e. the volume fraction of the liquid stays constant. Furthermore, this volume of the liquid  is a more measurable quantity when we deal with experiments. Measuring the rainfall directly gives you an estimate of the volume of fluid. Therefore, going forward, we will use the rate of change of volume as the primary quantity.
+% All through the collisions, the net liquid content i.e. the volume fraction of the liquid stays constant. Furthermore, this volume of the liquid  is a more measurable quantity when we deal with experiments. Measuring the rainfall directly gives you an estimate of the volume of fluid. Therefore, going forward, we will use the rate of change of volume as the primary quantity.
 
-Rate of volume lost by the small particle = Rate of volume gained by the big particles  = $4/3\pi a_s^3 \dot{N}_{cc} $. The radius of any particle type i, is related to its relaxation timescale $\tau_i$ as, $a_i = (9\nu\tau_i/2\rho)^{1/2}$. Thus volume of the particle of any species $V_i = 4/3 \pi a_i^3 = 4/3\pi(9\nu\tau_i/2\rho)^{3/2}$. Accordingly, the rate of change of volume of big particles
-\begin{align}
-\label{lucky-vol-rate-1}
-\begin{split}
-    \dot{V}_b = 2\pi\left(\frac{9\nu}{2\rho}\right)^{\frac32} \sqrt{\tau_b}\dot{\tau}_b \ ,
-\end{split}
-\end{align}
-again, this rate of change in volume is related to the collision rate as
-\begin{align}
-\label{lucky-vol-rate-2}
-\begin{split}
-    \dot{V}_b = \varsigma c_s |\vec{v}_b - \vec{v}_s| \ ,
-\end{split}
-\end{align}
-where $c_s(t,x) = 4/3\pi n_s(t,x)$ is the volume fraction of the small particles. Equating the RHS of Eq. \eqref{lucky-vol-rate-1} and \eqref{lucky-vol-rate-2}, we find the rate of change of big particle's relaxtation time as
-\begin{align}
-% \label{}
-\begin{split}
-    \dot{\tau}_b =\frac{1}{2\pi\sqrt{\tau_b}} \left(\frac{9\nu}{2\rho}\right)^{-\frac32}\varsigma c_s |\vec{v}_b - \vec{v}_s| \ ,
-\end{split}
-\end{align}
-We still have to include the drag effects of the small particles to the big one. To do this, we will impose momentum conservation during the collisions of the big and small particles. We do not have any force equation for the small particles, the assumption is that the change of velocity in the small particles due to the big particles is negligible. It's velocity is tightly bound by fluid streamlines according to Eq. \eqref{lucky-sm-rhoinf}. Thus, for now, the forces felt by the big particles will not be incorporated into the force of the small particles. With this in mind, the total mommentum before collision of the big particle with $\Delta V_s = \Delta t~\dot{V}_s$ volume of small particles is
-\begin{align}
-% \label{}
-\begin{split}
-        \vec{p}(t) = \rho_p V_b(t) \vec{v}_b(t) + \rho_p \Delta V_s(t) \vec{v}_s(t) \ .
-\end{split}
-\end{align}
-After time $\Delta t$ where a volume of $\Delta V_s$ particles have collided and coalesced with the big particle, the total momentum is
-\begin{align}
-% \label{}
-\begin{split}
-  \vec{p}(t + \Delta t) = \rho_p V_b(t + \Delta t) \vec{v}_b(t + \Delta t) \ ,
-\end{split}
-\end{align}
-%\coffeestainD{0.4}{0.6}{0}{\linewidth/3}{\linewidth/3}
-The change in the net momentum is due to `external' fluid drag force between the fluid and the big particles $F_h(t) = m_b(t)\left( \vec{u } - \vec{v}_b \right)/\tau_b$ making
-\begin{align}
-% \label{}
-\begin{split}
-    V_b(t + \Delta t) \vec{v}_b(t + \Delta t) -  V_b(t) \vec{v}_b(t) - \Delta V_s(t) \vec{v}_s(t) = 6\pi\nu (\rho_f/\rho_p)a_b\left( \vec{u } - \vec{v}_b \right)\Delta t \ .
-\end{split}
-\end{align}
-The change in volume of the big particle in time $\Delta t$ is related to the numb, we know $V_b(t + \Delta t) = V_b(t) + \Delta V_s(t)$. Using this, we can write till first order of $\Delta t$,
-\begin{align}
-% \label{}
-\begin{split}
-    V_b(t)\vec{v}_b(t + \Delta t) +  \Delta V_s(t) \vec{v}_b(t) -  V_b(t) \vec{v}_b(t) - \Delta V_s(t) \vec{v}_s(t)  = V_b(t)\frac{\left( \vec{u } - \vec{v}_b \right)}{\tau_b}\Delta t \ .
-\end{split}
-\end{align}
+% Rate of volume lost by the small particles = Rate of volume gained by the big particles  = $4/3\pi a_s^3 \dot{N}_{cc} $. The radius of any particle type i, is related to its relaxation timescale $\tau_i$ as, $a_i = (9\nu\tau_i/2\rho)^{1/2}$. Thus volume of the particle of any species $V_i = 4/3 \pi a_i^3 = 4/3\pi(9\nu\tau_i/2\rho)^{3/2}$. Accordingly, the rate of change of volume of big particles
+% \begin{align}
+% \label{lucky-vol-rate-1}
+% \begin{split}
+%     \dot{V}_b = 2\pi\left(\frac{9\nu}{2\rho}\right)^{\frac32} \sqrt{\tau_b}\dot{\tau}_b \ ,
+% \end{split}
+% \end{align}
+% again, this rate of change in volume is related to the collision rate as
+% \begin{align}
+% \label{lucky-vol-rate-2}
+% \begin{split}
+%     \dot{V}_b = \varsigma c_s |\vec{v}_b - \vec{v}_s| \ ,
+% \end{split}
+% \end{align}
+% where $c_s(t,x) = 4/3\pi n_s(t,x)$ is the volume fraction of the small particles. Equating the RHS of Eq. \eqref{lucky-vol-rate-1} and \eqref{lucky-vol-rate-2}, we find the rate of change of big particle's relaxtation time as
+% \begin{align}
+% % \label{}
+% \begin{split}
+%     \dot{\tau}_b =\frac{1}{2\pi\sqrt{\tau_b}} \left(\frac{9\nu}{2\rho}\right)^{-\frac32}\varsigma c_s |\vec{v}_b - \vec{v}_s| \ ,
+% \end{split}
+% \end{align}
+% We still have to include the drag effects of the small particles to the big one. To do this, we will impose momentum conservation during the collisions of the big and small particles. We do not have any force equation for the small particles, the assumption is that the change of velocity in the small particles due to the big particles is negligible. It's velocity is tightly bound by fluid streamlines according to Eq. \eqref{lucky-sm-rhoinf}. Thus, for now, the forces felt by the big particles will not be incorporated into the force of the small particles. With this in mind, the total mommentum before collision of the big particle with $\Delta V_s = \Delta t~\dot{V}_s$ volume of small particles is
+% \begin{align}
+% % \label{}
+% \begin{split}
+%         \vec{p}(t) = \rho_p V_b(t) \vec{v}_b(t) + \rho_p \Delta V_s(t) \vec{v}_s(t) \ .
+% \end{split}
+% \end{align}
+% After time $\Delta t$ where a volume of $\Delta V_s$ particles have collided and coalesced with the big particle, the total momentum is
+% \begin{align}
+% % \label{}
+% \begin{split}
+%   \vec{p}(t + \Delta t) = \rho_p V_b(t + \Delta t) \vec{v}_b(t + \Delta t) \ ,
+% \end{split}
+% \end{align}
+% %\coffeestainD{0.4}{0.6}{0}{\linewidth/3}{\linewidth/3}
+% The change in the net momentum is due to `external' fluid drag force between the fluid and the big particles $F_h(t) = m_b(t)\left( \vec{u } - \vec{v}_b \right)/\tau_b$ making
+% \begin{align}
+% % \label{}
+% \begin{split}
+%     V_b(t + \Delta t) \vec{v}_b(t + \Delta t) -  V_b(t) \vec{v}_b(t) - \Delta V_s(t) \vec{v}_s(t) = 6\pi\nu (\rho_f/\rho_p)a_b\left( \vec{u } - \vec{v}_b \right)\Delta t \ .
+% \end{split}
+% \end{align}
+% The change in volume of the big particle in time $\Delta t$ is related to the numb, we know $V_b(t + \Delta t) = V_b(t) + \Delta V_s(t)$. Using this, we can write till first order of $\Delta t$,
+% \begin{align}
+% % \label{}
+% \begin{split}
+%     V_b(t)\vec{v}_b(t + \Delta t) +  \Delta V_s(t) \vec{v}_b(t) -  V_b(t) \vec{v}_b(t) - \Delta V_s(t) \vec{v}_s(t)  = V_b(t)\frac{\left( \vec{u } - \vec{v}_b \right)}{\tau_b}\Delta t \ .
+% \end{split}
+% \end{align}
 % Thus,
 % \begin{align}
 % % \label{}
@@ -272,60 +302,60 @@ The change in volume of the big particle in time $\Delta t$ is related to the nu
 % \end{split}
 % \end{align}
 % Finally the change in linear momentum of the big particle and the colliding small particles comes from the `external' drag force on the fluid. Note: Till linear order in the $\tau_s$, the small particles do not experience any drag. Therefore
-This makes the rate of change of the big particle's velocity
-\begin{align}
-% \label{}
-\begin{split}
-    \dot{\vec{v}}_b(t) = \frac{\varsigma c_s(t,\vec{x}_b) }{V_b(t)}|\vec{v}_b - \vec{v}_s|\left( \vec{v}_s - \vec{v}_b \right) + \frac{\vec{u}- \vec{v}_b}{\tau_b} \ .
-\end{split}
-\end{align}
-The collision cross-section $\varsigma$ is different between $3$D and $2$D. When we say $2$D, we are still dealing with $3$ dimensional  spheres, but all of their centre of mass is restricted to a single plane. In such a case, the relaxation timescales $\tau_b$ and $\tau_s$ does not change with dimensions, but the collision cross-section does,
-\begin{align}
-% \label{}
-\begin{split}
-    \varsigma_{2} &= 2\left(\frac{9\nu\tau_b}{2\rho}\right)^\frac12\left( 1 + \sqrt{\frac{\tau_s}{\tau_b}} \right) \\
-    \varsigma_{3} &= \pi\left(\frac{9\nu\tau_b}{2\rho}\right)\left( 1 + \sqrt{\frac{\tau_s}{\tau_b}} \right)^2 \ .
-\end{split}
-\end{align}
-There is on final modification, we need to reduce the number of small particles with time. Thus $\dot{V}_b$ should be added as a sink to the equation of motion for $c_s$. With all this, the dimensional evolution equations for $c_s, \tau_b$ and $\vec{v}_b$ in $3$D
-\begin{align}
-% \label{}
-\begin{split}
-    \partial_t c_s &= - \vec{\nabla} \cdot (\vec{v}_s c_s) -  \frac{9\pi\nu\tau_b}{2\rho}\left( 1 + \sqrt{\frac{\tau_s}{\tau_b}} \right)^2 c_s |\vec{v}_b - \vec{v}_s| \delta(\vec{x} - \vec{x}_b) \\
-    \dot{\tau}_b &=\sqrt{\frac{\tau_b \rho}{18 \nu}}\left( 1 + \sqrt{\frac{\tau_s}{\tau_b}} \right)^2 c_s |\vec{v}_b - \vec{v}_s| \\
-    \dot{\vec{v}}_b(t) &= \sqrt{\frac{\rho}{8 \nu \tau_b}}\left( 1 + \sqrt{\frac{\tau_s}{\tau_b}} \right)^2 c_s|\vec{v}_b - \vec{v}_s|\left( \vec{v}_s - \vec{v}_b \right) + \frac{\vec{u}- \vec{v}_b}{\tau_b}
-\end{split}
-\end{align}
-And for $2$D it becomes
-\begin{align}
-% \label{}
-\begin{split}
-    \partial_t c_s &= - \vec{\nabla} \cdot (\vec{v}_s c_s) - \left(\frac{18\nu\tau_b}{\rho}\right)^\frac12\left( 1 + \sqrt{\frac{\tau_s}{\tau_b}} \right) c_s |\vec{v}_b - \vec{v}_s| \delta(\vec{x} - \vec{x}_b)\\
-    \dot{\tau}_b &=\frac{2\rho}{9\pi\nu} \left( 1 + \sqrt{\frac{\tau_s}{\tau_b}} \right) c_s |\vec{v}_b - \vec{v}_s| \\
-    \dot{\vec{v}}_b(t) &= \frac{\rho }{3\pi\nu \tau_b}\left( 1 + \sqrt{\frac{\tau_s}{\tau_b}} \right)c_s|\vec{v}_b - \vec{v}_s|\left( \vec{v}_s - \vec{v}_b \right) + \frac{\vec{u}- \vec{v}_b}{\tau_b} \ .
-\end{split}
-\end{align}
+% This makes the rate of change of the big particle's velocity
+% \begin{align}
+% % \label{}
+% \begin{split}
+%     \dot{\vec{v}}_b(t) = \frac{\varsigma c_s(t,\vec{x}_b) }{V_b(t)}|\vec{v}_b - \vec{v}_s|\left( \vec{v}_s - \vec{v}_b \right) + \frac{\vec{u}- \vec{v}_b}{\tau_b} \ .
+% \end{split}
+% \end{align}
+% The collision cross-section $\varsigma$ is different between $3$D and $2$D. When we say $2$D, we are still dealing with $3$ dimensional  spheres, but all of their centre of mass is restricted to a single plane. In such a case, the relaxation timescales $\tau_b$ and $\tau_s$ does not change with dimensions, but the collision cross-section does,
+% \begin{align}
+% % \label{}
+% \begin{split}
+%     \varsigma_{2} &= 2\left(\frac{9\nu\tau_b}{2\rho}\right)^\frac12\left( 1 + \sqrt{\frac{\tau_s}{\tau_b}} \right) \\
+%     \varsigma_{3} &= \pi\left(\frac{9\nu\tau_b}{2\rho}\right)\left( 1 + \sqrt{\frac{\tau_s}{\tau_b}} \right)^2 \ .
+% \end{split}
+% \end{align}
+% There is on final modification, we need to reduce the number of small particles with time. Thus $\dot{V}_b$ should be added as a sink to the equation of motion for $c_s$. With all this, the dimensional evolution equations for $c_s, \tau_b$ and $\vec{v}_b$ in $3$D
+% \begin{align}
+% % \label{}
+% \begin{split}
+%     \partial_t c_s &= - \vec{\nabla} \cdot (\vec{v}_s c_s) -  \frac{9\pi\nu\tau_b}{2\rho}\left( 1 + \sqrt{\frac{\tau_s}{\tau_b}} \right)^2 c_s |\vec{v}_b - \vec{v}_s| \delta(\vec{x} - \vec{x}_b) \\
+%     \dot{\tau}_b &=\sqrt{\frac{\tau_b \rho}{18 \nu}}\left( 1 + \sqrt{\frac{\tau_s}{\tau_b}} \right)^2 c_s |\vec{v}_b - \vec{v}_s| \\
+%     \dot{\vec{v}}_b(t) &= \sqrt{\frac{\rho}{8 \nu \tau_b}}\left( 1 + \sqrt{\frac{\tau_s}{\tau_b}} \right)^2 c_s|\vec{v}_b - \vec{v}_s|\left( \vec{v}_s - \vec{v}_b \right) + \frac{\vec{u}- \vec{v}_b}{\tau_b}
+% \end{split}
+% \end{align}
+% And for $2$D it becomes
+% \begin{align}
+% % \label{}
+% \begin{split}
+%     \partial_t c_s &= - \vec{\nabla} \cdot (\vec{v}_s c_s) - \left(\frac{18\nu\tau_b}{\rho}\right)^\frac12\left( 1 + \sqrt{\frac{\tau_s}{\tau_b}} \right) c_s |\vec{v}_b - \vec{v}_s| \delta(\vec{x} - \vec{x}_b)\\
+%     \dot{\tau}_b &=\frac{2\rho}{9\pi\nu} \left( 1 + \sqrt{\frac{\tau_s}{\tau_b}} \right) c_s |\vec{v}_b - \vec{v}_s| \\
+%     \dot{\vec{v}}_b(t) &= \frac{\rho }{3\pi\nu \tau_b}\left( 1 + \sqrt{\frac{\tau_s}{\tau_b}} \right)c_s|\vec{v}_b - \vec{v}_s|\left( \vec{v}_s - \vec{v}_b \right) + \frac{\vec{u}- \vec{v}_b}{\tau_b} \ .
+% \end{split}
+% \end{align}
 
-Once we nondimensionalize with length scale $L$, timescale $\tau_f$ and velocity scale $L/\tau_f$, we get the equations in terms of nondimensional numbers $St_b = \tau_b/\tau_f$, $St_s = \tau_s/\tau_f$, and $Re = L^2/\nu\tau_f$. In $3$D, these equations reads,
-\begin{align}
-    \label{lucky-3Deqns}
-    \begin{split}
-        \vec{v_s} &= \vec{u} - St_s\frac{D\vec{u}}{Dt}\\
-        \partial_t c_s &= - \vec{\nabla}\cdot (\vec{v}_sc_s) - \frac{9 \pi}{2\rho Re}St_b\left( 1 + \sqrt{\frac{St_s}{St_b}} \right)^2 ~ c_s ~ |\vec{v}_b - \vec{v}_s| \delta\left(\vec{x} -\vec{x}_b(t)\right) \\
-        \dot{St}_b &= \sqrt{\frac{St_b \rho Re}{18}} \left( 1 + \sqrt{\frac{St_s}{St_b}} \right)^2 c_s |\vec{v}_b - \vec{v}_s| \\
-        \dot{\vec{v}}_b&=  \sqrt{\frac{\rho Re}{8St_b}}\left( 1 + \sqrt{\frac{St_s}{St_b}} \right)^2 c_s ~ |\vec{v}_b - \vec{v}_s| \left( \vec{v}_s - \vec{v}_b \right)+ \frac{\left( \vec{u } - \vec{v}_b \right)}{St_b} \ ,
-    \end{split}
-\end{align}
-and for $2$D, %\coffeestainA{0.4}{0.5}{60}{0}{0}
-\begin{align}
-    \label{lucky-2Deqns}
-    \begin{split}
-        \vec{v_s} &= \vec{u} - St_s\frac{D\vec{u}}{Dt}\\
-        \partial_t c_s &= - \vec{\nabla}\cdot (\vec{v}_sc_s) - \sqrt{\frac{18St_b}{\rho Re}}\left(1 + \sqrt{\frac{St_s}{St_b}}\right) ~ c_s ~ |\vec{v}_b - \vec{v}_s| \delta\left(\vec{x} -\vec{x}_b(t)\right) \\
-        \dot{St}_b &= \frac{2\rho Re}{9\pi}\left( 1 + \sqrt{\frac{St_s}{St_b}} \right)c_s |\vec{v}_b - \vec{v}_s| \\
-        \dot{\vec{v}}_b &= \frac{ \rho Re}{3\pi St_b}\left(1 + \sqrt{\frac{St_s}{St_b}}\right) ~ c_s ~ |\vec{v}_b - \vec{v}_s| \left( \vec{v}_s - \vec{v}_b \right) + \frac{\left( \vec{u } - \vec{v}_b \right)}{St_b}\ .
-    \end{split}
-\end{align}
+% Once we nondimensionalize with length scale $L$, timescale $\tau_f$ and velocity scale $L/\tau_f$, we get the equations in terms of nondimensional numbers $St_b = \tau_b/\tau_f$, $St_s = \tau_s/\tau_f$, and $Re = L^2/\nu\tau_f$. In $3$D, these equations reads,
+% \begin{align}
+%     \label{lucky-3Deqns}
+%     \begin{split}
+%         \vec{v_s} &= \vec{u} - St_s\frac{D\vec{u}}{Dt}\\
+%         \partial_t c_s &= - \vec{\nabla}\cdot (\vec{v}_sc_s) - \frac{9 \pi}{2\rho Re}St_b\left( 1 + \sqrt{\frac{St_s}{St_b}} \right)^2 ~ c_s ~ |\vec{v}_b - \vec{v}_s| \delta\left(\vec{x} -\vec{x}_b(t)\right) \\
+%         \dot{St}_b &= \sqrt{\frac{St_b \rho Re}{18}} \left( 1 + \sqrt{\frac{St_s}{St_b}} \right)^2 c_s |\vec{v}_b - \vec{v}_s| \\
+%         \dot{\vec{v}}_b&=  \sqrt{\frac{\rho Re}{8St_b}}\left( 1 + \sqrt{\frac{St_s}{St_b}} \right)^2 c_s ~ |\vec{v}_b - \vec{v}_s| \left( \vec{v}_s - \vec{v}_b \right)+ \frac{\left( \vec{u } - \vec{v}_b \right)}{St_b} \ ,
+%     \end{split}
+% \end{align}
+% and for $2$D, %\coffeestainA{0.4}{0.5}{60}{0}{0}
+% \begin{align}
+%     \label{lucky-2Deqns}
+%     \begin{split}
+%         \vec{v_s} &= \vec{u} - St_s\frac{D\vec{u}}{Dt}\\
+%         \partial_t c_s &= - \vec{\nabla}\cdot (\vec{v}_sc_s) - \sqrt{\frac{18St_b}{\rho Re}}\left(1 + \sqrt{\frac{St_s}{St_b}}\right) ~ c_s ~ |\vec{v}_b - \vec{v}_s| \delta\left(\vec{x} -\vec{x}_b(t)\right) \\
+%         \dot{St}_b &= \frac{2\rho Re}{9\pi}\left( 1 + \sqrt{\frac{St_s}{St_b}} \right)c_s |\vec{v}_b - \vec{v}_s| \\
+%         \dot{\vec{v}}_b &= \frac{ \rho Re}{3\pi St_b}\left(1 + \sqrt{\frac{St_s}{St_b}}\right) ~ c_s ~ |\vec{v}_b - \vec{v}_s| \left( \vec{v}_s - \vec{v}_b \right) + \frac{\left( \vec{u } - \vec{v}_b \right)}{St_b}\ .
+%     \end{split}
+% \end{align}
 The nonlinearity of the problem prevents us from drawing any analytic conclusions. We know the following things should happen.
 \begin{enumerate}
     \item The net water content of the small and the big particles should stay constant.
@@ -334,71 +364,71 @@ The nonlinearity of the problem prevents us from drawing any analytic conclusion
     \item As the particle's inertia keeps on growing, in $3$D, it will stop feeling the fluid drag first before the interparticle drag goes away. In $2$D both the drag will go away at the same time.
 \end{enumerate}
 
-\begin{figure}
-    \centering
-    % \import{/Users/rajarshi/Library/CloudStorage/GoogleDrive-rajarshi.chattopadhyay@icts.res.in/My Drive/Collab/plots/Re_125000.0,dt_0.005,N_1024/sts_0.005_stb_0.30/time_100.0}{sm-10000big.pgf}
-    \includegraphics[width=\linewidth]{./figures/polydisperse/sm_0.02_0.002.pdf}
+% \begin{figure}
+%     \centering
+%     % \import{/Users/rajarshi/Library/CloudStorage/GoogleDrive-rajarshi.chattopadhyay@icts.res.in/My Drive/Collab/plots/Re_125000.0,dt_0.005,N_1024/sts_0.005_stb_0.30/time_100.0}{sm-10000big.pgf}
+%     \includegraphics[width=\linewidth]{./figures/polydisperse/sm_0.02_0.002.pdf}
 
-    \caption[Vorticity and small-droplet volume fraction with one big droplet]{Instantaneous snapshot showing the vorticity of the $2$D flow (right) along with the small particles's volume fraction (right) normalized by the mean volume fraction. The small white streaks are the places from where the big particle have run through.}
-    \label{lucky-zeta-sm-1big}
-\end{figure}
+%     \caption[Vorticity and small-droplet volume fraction with one big droplet]{Instantaneous snapshot showing the vorticity of the $2$D flow (right) along with the small particles's volume fraction (right) normalized by the mean volume fraction. The small white streaks are the places from where the big particle have run through.}
+%     \label{lucky-zeta-sm-1big}
+% \end{figure}
 
-\begin{figure}
-    \centering
-    \includegraphics[width=\linewidth]{./figures/polydisperse/sm-nobig.pdf}
-    \caption[The same snapshot without any big droplet]{Same as in \ref{lucky-zeta-sm-1big} without any big particle. No such small streaks exist in the small particle's number density. }
-\end{figure}
+% \begin{figure}
+%     \centering
+%     \includegraphics[width=\linewidth]{./figures/polydisperse/sm-nobig.pdf}
+%     \caption[The same snapshot without any big droplet]{Same as in \ref{lucky-zeta-sm-1big} without any big particle. No such small streaks exist in the small particle's number density. }
+% \end{figure}
 
 For a $1m^3$ cumulus cloud with $10^9$ $10\mu m $ droplets, the net volume fraction occupied is $\sim 4\times 10^{-6}$. Thus, the mean volume fraction, $\langle c_s \rangle$, for a cloud ranges between $10^{-5}$ to $10^{-6}$. That is a reference number we will put in our studies.
 
 For extrapolating on the grid, we are using the mechanism of \citep{pandey2019}.
 
 
-\section{Lagrangian studies}
-If one simulates individual particles, they investigate the quantity $P(m,t)$, probability density of a particle of mass $m$ at time $t$. As mass is \emph{assumed to be } conserved at each collision, it is a good index in tracking particles. The evolution equation of $P(m,t)$
-\begin{align}
-% \label{}
-\begin{split}
-    \dot{P}(m,t) = \jin{m,t}-\jout{m,t}\ ,
-\end{split}
-\end{align}
-where $\jin{m,t}$, and $\jout{m,t}$ are the influx and outflux of particle probability of size $m$. It makes sense that $\jin{m.t}$ is made up of collision between all the particles that results in a particle of size $m$, and similarly $\jout{m,t}$ consists of all the collisions between particles of size $m$ and others. Thus,
-\begin{align}
-% \label{}
-\begin{split}
-    \jin{m,t} &= \int\limits_{m' = 0}^{m} \lambda(m',m - m', t)P(m',t)P(m-m',t) \\
-    \jout{m,t} &= P(m,t)\int\limits_{m' = 0}^{\infty} \lambda(m,m', t)P(m',t) \ ,
-\end{split}
-\end{align}
-where $\lambda(n,m,t)$ is the rate of collision between particles of mass $m$ and mass $n$ at time $t$. This inherently leads to nonlinearity of the probability density evolution. \texttt{Note that this disregards collisions of $3$ or more particles.} The rate of collision, also measures the survival probability $S(m,t)$ of a single particle.
-\begin{align}
-% \label{}
-\begin{split}
-    \dot{S}(m,t) = - S(m,t)\int\limits_{m' = 0}^{\infty} \lambda(m,m', t)P(m',t) \ .
-\end{split}
-\end{align}
-Thus, if we define $\varLambda(m,t)= \int\limits_{m' = 0}^{\infty} \lambda(m,m', t)P(m',t) $ as the rate of collision of a particle of size $m$ with particles equal or larger than its size, then,
-\begin{align}
-% \label{}
-\begin{split}
-    S(m,t) = S(m,0)~\exp\left(-\int\limits_{t' = 0}^{t}\varLambda(m,t')\right) \ .
-\end{split}
-\end{align}
+% \section{Lagrangian studies}
+% If one simulates individual particles, they investigate the quantity $P(m,t)$, probability density of a particle of mass $m$ at time $t$. As mass is \emph{assumed to be } conserved at each collision, it is a good index in tracking particles. The evolution equation of $P(m,t)$
+% \begin{align}
+% % \label{}
+% \begin{split}
+%     \dot{P}(m,t) = \jin{m,t}-\jout{m,t}\ ,
+% \end{split}
+% \end{align}
+% where $\jin{m,t}$, and $\jout{m,t}$ are the influx and outflux of particle probability of size $m$. It makes sense that $\jin{m.t}$ is made up of collision between all the particles that results in a particle of size $m$, and similarly $\jout{m,t}$ consists of all the collisions between particles of size $m$ and others. Thus,
+% \begin{align}
+% % \label{}
+% \begin{split}
+%     \jin{m,t} &= \int\limits_{m' = 0}^{m} \lambda(m',m - m', t)P(m',t)P(m-m',t) \\
+%     \jout{m,t} &= P(m,t)\int\limits_{m' = 0}^{\infty} \lambda(m,m', t)P(m',t) \ ,
+% \end{split}
+% \end{align}
+% where $\lambda(n,m,t)$ is the rate of collision between particles of mass $m$ and mass $n$ at time $t$. This inherently leads to nonlinearity of the probability density evolution. \texttt{Note that this disregards collisions of $3$ or more particles.} The rate of collision, also measures the survival probability $S(m,t)$ of a single particle.
+% \begin{align}
+% % \label{}
+% \begin{split}
+%     \dot{S}(m,t) = - S(m,t)\int\limits_{m' = 0}^{\infty} \lambda(m,m', t)P(m',t) \ .
+% \end{split}
+% \end{align}
+% Thus, if we define $\varLambda(m,t)= \int\limits_{m' = 0}^{\infty} \lambda(m,m', t)P(m',t) $ as the rate of collision of a particle of size $m$ with particles equal or larger than its size, then,
+% \begin{align}
+% % \label{}
+% \begin{split}
+%     S(m,t) = S(m,0)~\exp\left(-\int\limits_{t' = 0}^{t}\varLambda(m,t')\right) \ .
+% \end{split}
+% \end{align}
 
 
 
-\citet{batge2026} simplified the fluxes by considering \emph{theoretically} that all the collisions are between the smallest particles with $m = 1$. Furthermore, the concentration of these small droplets also do not change with time, i.e., $P(1,t) = P(0,t)$. Although these assumptions raise doubts, they get \textbf{decent} agreement with numerical results.
+% \citet{batge2026} simplified the fluxes by considering \emph{theoretically} that all the collisions are between the smallest particles with $m = 1$. Furthermore, the concentration of these small droplets also do not change with time, i.e., $P(1,t) = P(0,t)$. Although these assumptions raise doubts, they get \textbf{decent} agreement with numerical results.
 
 
-Now, knowing $P(m,t)$ allows one to calculate how much time would it take to have a certain probability of  formation of droplet of size $m = M$. But to evolve the equation, one needs to know $\lambda(m,m',t)$. \citet{batge2026} and \citet{bec2016} found those differently, and those are valid in different regimes.
-However, a lower level idea is $P(m,x,t)$, distribution of droplets at each location. \emph{This is not captured by any Lagrangian simulations so far.} \texttt{Maybe Frederik Gareis will do it?}
+% Now, knowing $P(m,t)$ allows one to calculate how much time would it take to have a certain probability of  formation of droplet of size $m = M$. But to evolve the equation, one needs to know $\lambda(m,m',t)$. \citet{batge2026} and \citet{bec2016} found those differently, and those are valid in different regimes.
+% However, a lower level idea is $P(m,x,t)$, distribution of droplets at each location. \emph{This is not captured by any Lagrangian simulations so far.} \texttt{Maybe Frederik Gareis will do it?}
 
-\begin{description}
-    \item[Growth rate in continuum limit] In our hybrid simulations, growth rate of each particle is exactly known form Eq. \eqref{lucky-2Deqns} and  \eqref{lucky-3Deqns}. Can we use it capture the growth rate of the Lagrangian simulations?
-    \item[Evolution of $P(m,t)$] In the continuum limit, the size of each big particles change at each instant, then how does one consider the \texttt{in} and \texttt{out} fluxes?
-    \item[Maybe evolving $P(m,t)$ is not the goal] In the continuum limit, $P(m,t)$ is found by binning the particles at each instant. The number of big particles never change, thereby preserving the total number of big particles. How does this additional constraint help?
-    \item \textbf{Is there a quantity that can be calculated both from the Eulerian and the Lagrangian perspective apart from the evolved $P(m,t)$?}
-\end{description}
+% \begin{description}
+%     \item[Growth rate in continuum limit] In our hybrid simulations, growth rate of each particle is exactly known form Eq. \eqref{lucky-2Deqns} and  \eqref{lucky-3Deqns}. Can we use it capture the growth rate of the Lagrangian simulations?
+%     \item[Evolution of $P(m,t)$] In the continuum limit, the size of each big particles change at each instant, then how does one consider the \texttt{in} and \texttt{out} fluxes?
+%     \item[Maybe evolving $P(m,t)$ is not the goal] In the continuum limit, $P(m,t)$ is found by binning the particles at each instant. The number of big particles never change, thereby preserving the total number of big particles. How does this additional constraint help?
+%     \item \textbf{Is there a quantity that can be calculated both from the Eulerian and the Lagrangian perspective apart from the evolved $P(m,t)$?}
+% \end{description}
 
 \section{Results}
 We run our numerical simulation for the following parameters.
@@ -416,52 +446,52 @@ We run our numerical simulation for the following parameters.
     \caption[Parameters of the different runs]{Parameters of the different runs. The growth rate of the big particles is fitted with $t^{\alpha_g}$}
     \label{lucky-tab:my_label}
 \end{table}
-\begin{figure}
-	\begin{center}
-		\includegraphics[width=\linewidth]{./figures/polydisperse/pstruc.pdf}
-	\end{center}
-\caption[Depletion of small droplets at two Stokes numbers]{Volume fraction of the small particles evolved in presence of 10000 big particles for runs 1 (middle) and 3 (right). We see larger Stokes small particles get more depleted or eaten up by the big particles.}
-\label{lucky-pstruc}
-\end{figure}
+% \begin{figure}
+% 	\begin{center}
+% 		\includegraphics[width=\linewidth]{./figures/polydisperse/pstruc.pdf}
+% 	\end{center}
+% \caption[Depletion of small droplets at two Stokes numbers]{Volume fraction of the small particles evolved in presence of 10000 big particles for runs 1 (middle) and 3 (right). We see larger Stokes small particles get more depleted or eaten up by the big particles.}
+% \label{lucky-pstruc}
+% \end{figure}
 For runs 1 and 3, we check the growth rate of particles starting from regions of positive and negative $Q$. Regions of positive $Q$ represents vortical regions while negative $Q$ represents strain regions. We find particles starting out in vortical regions grow larger at later time, Fig. \ref{lucky-grth-diffQ}.
-\begin{figure}
-	\begin{center}
-		\includegraphics[width=0.6\linewidth]{./figures/polydisperse/diff-Q-grwth-rate.pdf}
-	\end{center}
-\caption[Growth rate of big droplets starting in vortical and strain regions]{Growth rate of big particles starting in positive and negative $Q$ regions for runs $1$ and $3$ with 10000 big particles. Particles starting out in the vortical region experience a larger growth rate. Furthermore, the growth rate increases significantly upon increasing the $St$ of small particles.}
-\label{lucky-grth-diffQ}
-\end{figure}
+% \begin{figure}
+% 	\begin{center}
+% 		\includegraphics[width=0.6\linewidth]{./figures/polydisperse/diff-Q-grwth-rate.pdf}
+% 	\end{center}
+% \caption[Growth rate of big droplets starting in vortical and strain regions]{Growth rate of big particles starting in positive and negative $Q$ regions for runs $1$ and $3$ with 10000 big particles. Particles starting out in the vortical region experience a larger growth rate. Furthermore, the growth rate increases significantly upon increasing the $St$ of small particles.}
+% \label{lucky-grth-diffQ}
+% \end{figure}
 
 Next, we try to see whether particles start gaining more liquid content if they encounter a strong vortex. For that we consider particles that have encountered vortices stronger than $2\zeta_{\rm rms}$, where $\zeta_{\rm rms}$ is the root-mean-square vorticity of the background field.
 
-\begin{figure}
-	\begin{center}
-		\includegraphics[width=\linewidth]{./figures/polydisperse/pre-post-vort.pdf}
-	\end{center}
-\caption[Volume gained by big droplets passing through high vorticity]{Volume gained by the big particles that went through a region of big vorticity.}
-\label{}
-\end{figure}
+% \begin{figure}
+% 	\begin{center}
+% 		\includegraphics[width=\linewidth]{./figures/polydisperse/pre-post-vort.pdf}
+% 	\end{center}
+% \caption[Volume gained by big droplets passing through high vorticity]{Volume gained by the big particles that went through a region of big vorticity.}
+% \label{}
+% \end{figure}
 At early times, right after entering the vortex, we see that the big particles grow much larger. This may be because of two reasons. First, only the particles that are big enough to significantly avoid streamlines enter these big vortical regions. These particles already being bigger than the rest, naturally accumulate more small particles owing to their larger collision cross-section. However, this effect should also be there at late times, but we see that the growth rate slow down. The second reason is also an interesting one. Larger particles get centrifuged out more out of the large vortical regions. On their way out, these particles are prone to capture many small particles.
 Next, we want to study the growth rate within the vortical region. To do so, we track when a big particle enters and leaves a big vortex $\zeta > 2\zeta_{\rm rms}$ and plot the volume grown as a function of the residence time. Apriori, we do not expect significant growth \emph{inside} the vortex, but rather after they come out of a big particle.
 
 \section{Initial conditions of the `Lucky' Particles}
 If we seed the lucky droplets uniformly in the domain, and evolve, the first and the last stage is given below.
-\begin{figure}
-	\begin{center}
-		\includegraphics[width=0.9\linewidth]{./figures/polydisperse/rndm_0.002_0.02.pdf}
-	\end{center}
-\caption[Fate of small droplets for randomly placed lucky droplets]{Initial and final fate of the small particle concentration along with vorticity when `lucky' particles are initialized randomly over the domain. $St_b = 0.02$, $St_s = 0.002$. }
-% \label{}
-\end{figure}
+% \begin{figure}
+% 	\begin{center}
+% 		\includegraphics[width=0.9\linewidth]{./figures/polydisperse/rndm_0.002_0.02.pdf}
+% 	\end{center}
+% \caption[Fate of small droplets for randomly placed lucky droplets]{Initial and final fate of the small particle concentration along with vorticity when `lucky' particles are initialized randomly over the domain. $St_b = 0.02$, $St_s = 0.002$. }
+% % \label{}
+% \end{figure}
 
 Instead, if we initialize particles from the strongest vortex cores, we get the following,
-\begin{figure}
-	\begin{center}
-		\includegraphics[width=0.9\linewidth]{./figures/polydisperse/Qpos_0.002_0.02.pdf}
-	\end{center}
-\caption[Fate of small droplets for lucky droplets started in high $Q$]{Initial and final fate of the small particle concentration along with vorticity when `lucky' particles are initialized in regions $Q> 3Q_{\rm rms}$. $St_b = 0.02$, $St_s = 0.002$. }
+% \begin{figure}
+% 	\begin{center}
+% 		\includegraphics[width=0.9\linewidth]{./figures/polydisperse/Qpos_0.002_0.02.pdf}
+% 	\end{center}
+% \caption[Fate of small droplets for lucky droplets started in high $Q$]{Initial and final fate of the small particle concentration along with vorticity when `lucky' particles are initialized in regions $Q> 3Q_{\rm rms}$. $St_b = 0.02$, $St_s = 0.002$. }
 % \label{}
-\end{figure}
+% \end{figure}
 What happens to the growth rate of the `lucky' droplets? Do the ones starting out from the vortex core grow faster?
 % \begin{figure}
 % 	\begin{center}
