@@ -4,19 +4,12 @@
 \newcommand{\jin}[1]{j^{\textrm{in}}(#1)}
 \newcommand{\jout}[1]{j^{\textrm{out}}(#1)}
 
-\chapter{Lucky drops grow bigger: but luckier drops get less lucky}\label{lck-drp}
+\chapter{Variation in the growth of lucky drops in turbulent clouds compared to its size}\label{lck-drp}
 
 % \textit{Rajarshi\orcidlink{0009-0009-1747-3916}, Rama Govindarajan. International Centre for Theoretical Sciences, Bengaluru.}
 
 \begin{summary}
-\begin{itemize}
-    \item In $2$D: luckier lucky droplets are at a disadvantage.
-    \item In $2$D: Particles starting out in high vortical regions grow faster.
-    \item In $2$D: Intermediate stage growth rate is larger than a random walk.
-    \item In $3$D: Disadvantage / advantage of larger lucky droplets. \\
-        Growth rate v crossing the threshold.
-    \item In $3$D: how does gravity change the equation?
-\end{itemize}
+    We derive a reduced order model for the growth of `lucky' droplets in cloud turbulence. The lucky droplets are Lagrangian particles travelling in a continuum tiny droplets. They coalesce with the small particles and grow. We investigate how the growth rate of `lucky' drops changes as we change their initial size. We find that in $2$D turbulence, smaller lucky drop grow faster to its relative size. The opposite is true in $3$D, where initially bigger `lucky' drops grow faster. However, the mean the dissipation observed in clouds is too little for any impactful turbulence assisted growth. Dominant share of the growth comes from gravitational settling in $3$D at such dissipation values. Although initial conditions of the `lucky' drop affects their growth in $2$D, where droplets starting out in high vorticity region grows fastest, the effect is negligible in $3$D. This pushes the need for pockets of high dissipation regions in turbulence clouds to bridge the scale gap of droplet growth.
 \end{summary}
 
 \section{Introduction}
@@ -145,7 +138,7 @@ This is only possible when the deceleration term in Eq. \eqref{mon-cont} is negl
 The big particles continuously grow. In contrast, if we keep the deceleration terms the growth rate deviates at large sizes. These growth rates are the growth rates to compare with $3$D turbulence, to check whether turbulence produces any significant growth compared to gravity. In the next two subsections, we will consider growth in the absence of gravity. 
 
 
-\subsection{Initial growth and depletion}
+\subsection{Initial growth and depletion}\label{early-sc}
 Initially, the tiny droplets do not deplete. And, if the lucky droplets are randomly distributed all over the domain, we can assume that the relative velocity between the lucky and the tiny droplets are uncorrelated. These two assumptions lead to the average growth rate
 \begin{align}
 % \label{}
@@ -162,7 +155,7 @@ Changing $ \mean{m_b^{\frac23}}$ to $ \mean{m_b}^{\frac23}$ would allow us to di
 \end{align}
 This give $d_b \propto t$ and accordingly $m_b \propto t^3$. In $2$D, the expression similarly reduces to $m_b \propto t^\frac32$. We can test these scalings from our numerical simulations.
 
-\subsection{Late stage growth and depletion}
+\subsection{Late stage growth and depletion}\label{late-sc}
 The late stage situation is different. Lucky droplets contain most of the water content with the small droplets are sparsely distributed in the domain. Collisions between the lucky and the small droplets result significant loss of small droplets without increasing the lucky droplet size too much. In this case, the total mass $M_s$ of small droplets deplets as
 \begin{align}
 % \label{}
@@ -170,14 +163,14 @@ The late stage situation is different. Lucky droplets contain most of the water 
     \dot{M}_s \propto M_s \implies \dot{M}_s \propto e^{-\lambda_{sb} t} ,
 \end{split}
 \end{align}
-where $\lambda_{sb}$ is the depletion rate that depends on the lucky droplets' number and size. Conservation of mass yields that lucky droplets slowly growing as $M_b(t) = M_T - M_s(t) = M_T - M_s^*e^{-\lambda_s(t - t^*)}$, where $M_s^*$ is the total mass of small droplets at some late time $t^*$. In Fig. \ref{lucky-largetimes-2d}, we show this behavior by plotting the volume fraction of the small droplets, and the growth rate of the large droplets calculated from the local slope of Fig. \ref{lucky-grwth}(right). Both show behavior similar to exponential, but their slopes are different.
-\begin{figure}
-	\begin{center}
-		\includegraphics[width=\linewidth]{./figures/polydisperse/largetimes-2d.png}
-	\end{center}
-\caption[Late-time exponential decay of the droplet volume fractions]{(left) Volume fraction of small droplets at late times. It follows exponential decay. (right) Rate of change of volume fraction of large droplets calculated from local slope. As expected, it also follows exponential decay.}
-\label{lucky-largetimes-2d}
-\end{figure}
+where $\lambda_{sb}$ is the depletion rate that depends on the lucky droplets' number and size. Conservation of mass yields that lucky droplets slowly growing as $M_b(t) = M_T - M_s(t) = M_T - M_s^*e^{-\lambda_s(t - t^*)}$, where $M_s^*$ is the total mass of small droplets at some late time $t^*$. % In Fig. \ref{lucky-largetimes-2d}, we show this behavior by plotting the volume fraction of the small droplets, and the growth rate of the large droplets calculated from the local slope of Fig. \ref{lucky-grwth}(right). Both show behavior similar to exponential, but their slopes are different.
+% \begin{figure}
+% 	\begin{center}
+% 		\includegraphics[width=\linewidth]{./figures/polydisperse/largetimes-2d.png}
+% 	\end{center}
+% \caption[Late-time exponential decay of the droplet volume fractions]{(left) Volume fraction of small droplets at late times. It follows exponential decay. (right) Rate of change of volume fraction of large droplets calculated from local slope. As expected, it also follows exponential decay.}
+% \label{lucky-largetimes-2d}
+% \end{figure}
 
 
 \section{Numerical Methods}
@@ -213,330 +206,72 @@ The spectral evolution of number density does not ensure its positivity due to t
 
 
 
-
-\vspace*{1em}
-\hrule
-\vspace*{1em}
-
-
-
-% \begin{table}
-%     \centering
-%     \renewcommand{\arraystretch}{2} % spacing between rows
-%     \begin{tabular}{cccc}
-%     \hline
-%     \textbf{St} & \textbf{Init} & $\lambda_s$ \textbf{ left} & $\lambda_s$ \textbf{ right} \\ \hline
-%     0.01 & rndm   & -0.02128 & -0.01720 \\
-%     0.02 & rndm   & -0.01203 & -0.00760 \\
-%     0.01 & $Q>0$  & -0.02134 & -0.01809 \\
-%     0.02 & $Q>0$  & -0.01208 & -0.00770 \\
-%     0.01 & $Q<0$  & -0.02101 & -0.01675 \\
-%     0.02 & $Q<0$  & -0.01196 & -0.00744 \\ \hline
-%     \end{tabular}
-%     \caption[Fitted slopes for the late-time volume fractions]{Fitted slopes $\lambda_s$ for the left and right part of Fig. \ref{lucky-largetimes-2d}. They do not match.}
-% \end{table}
-
-
-
-% Now, although the growth rate for smaller initial $St_b$ are higher, do they produce droplets that cross a certain size threshold faster? The answer is YES! Suprisingly, the drops with larger initial $St_b$ has slower growth due to smaller number of particles, each of those particles gets to eat up a lot of small droplets and grow faster. Figure \ref{lucky-thresh} demonstrates this phenomenon.
-
-% \begin{figure}
-% 	\begin{center}
-% 		\includegraphics[width=\linewidth]{./figures/polydisperse/threshold-growth.png}
-% 	\end{center}
-% \caption[Time for big droplets to grow past a threshold]{Time taken for 10 particles (left) and 50 particles (right) to grow beyond a certain threshold for different initial $St_b$s}
-
-% \label{lucky-thresh}
-% \end{figure}
-
-% \begin{figure}
-%     \centering
-%     % \import{/Users/rajarshi/Library/CloudStorage/GoogleDrive-rajarshi.chattopadhyay@icts.res.in/My Drive/Collab/plots/Re_125000.0,dt_0.005,N_1024/sts_0.005_stb_0.30/time_100.0}{sm-10000big.pgf}
-%     \includegraphics[width=\linewidth]{./figures/polydisperse/sm_0.02_0.002.pdf}
-
-%     \caption[Vorticity and small-droplet volume fraction with one big droplet]{Instantaneous snapshot showing the vorticity of the $2$D flow (right) along with the small particles's volume fraction (right) normalized by the mean volume fraction. The small white streaks are the places from where the big particle have run through.}
-%     \label{lucky-zeta-sm-1big}
-% \end{figure}
-
-% \begin{figure}
-%     \centering
-%     \includegraphics[width=\linewidth]{./figures/polydisperse/sm-nobig.pdf}
-%     \caption[The same snapshot without any big droplet]{Same as in \ref{lucky-zeta-sm-1big} without any big particle. No such small streaks exist in the small particle's number density. }
-% \end{figure}
-
-For a $1m^3$ cumulus cloud with $10^9$ $10\mu m $ droplets, the net volume fraction occupied is $\sim 4\times 10^{-6}$. Thus, the mean volume fraction, $\langle c_s \rangle$, for a cloud ranges between $10^{-5}$ to $10^{-6}$. That is a reference number we will put in our studies.
-
-For extrapolating on the grid, we are using the mechanism of \citep{pandey2019}.
-
-
-% \section{Lagrangian studies}
-% If one simulates individual particles, they investigate the quantity $P(m,t)$, probability density of a particle of mass $m$ at time $t$. As mass is \emph{assumed to be } conserved at each collision, it is a good index in tracking particles. The evolution equation of $P(m,t)$
-% \begin{align}
-% % \label{}
-% \begin{split}
-%     \dot{P}(m,t) = \jin{m,t}-\jout{m,t}\ ,
-% \end{split}
-% \end{align}
-% where $\jin{m,t}$, and $\jout{m,t}$ are the influx and outflux of particle probability of size $m$. It makes sense that $\jin{m.t}$ is made up of collision between all the particles that results in a particle of size $m$, and similarly $\jout{m,t}$ consists of all the collisions between particles of size $m$ and others. Thus,
-% \begin{align}
-% % \label{}
-% \begin{split}
-%     \jin{m,t} &= \int\limits_{m' = 0}^{m} \lambda(m',m - m', t)P(m',t)P(m-m',t) \\
-%     \jout{m,t} &= P(m,t)\int\limits_{m' = 0}^{\infty} \lambda(m,m', t)P(m',t) \ ,
-% \end{split}
-% \end{align}
-% where $\lambda(n,m,t)$ is the rate of collision between particles of mass $m$ and mass $n$ at time $t$. This inherently leads to nonlinearity of the probability density evolution. \texttt{Note that this disregards collisions of $3$ or more particles.} The rate of collision, also measures the survival probability $S(m,t)$ of a single particle.
-% \begin{align}
-% % \label{}
-% \begin{split}
-%     \dot{S}(m,t) = - S(m,t)\int\limits_{m' = 0}^{\infty} \lambda(m,m', t)P(m',t) \ .
-% \end{split}
-% \end{align}
-% Thus, if we define $\varLambda(m,t)= \int\limits_{m' = 0}^{\infty} \lambda(m,m', t)P(m',t) $ as the rate of collision of a particle of size $m$ with particles equal or larger than its size, then,
-% \begin{align}
-% % \label{}
-% \begin{split}
-%     S(m,t) = S(m,0)~\exp\left(-\int\limits_{t' = 0}^{t}\varLambda(m,t')\right) \ .
-% \end{split}
-% \end{align}
-
-
-
-% \citet{batge2026} simplified the fluxes by considering \emph{theoretically} that all the collisions are between the smallest particles with $m = 1$. Furthermore, the concentration of these small droplets also do not change with time, i.e., $P(1,t) = P(0,t)$. Although these assumptions raise doubts, they get \textbf{decent} agreement with numerical results.
-
-
-% Now, knowing $P(m,t)$ allows one to calculate how much time would it take to have a certain probability of  formation of droplet of size $m = M$. But to evolve the equation, one needs to know $\lambda(m,m',t)$. \citet{batge2026} and \citet{bec2016} found those differently, and those are valid in different regimes.
-% However, a lower level idea is $P(m,x,t)$, distribution of droplets at each location. \emph{This is not captured by any Lagrangian simulations so far.} \texttt{Maybe Frederik Gareis will do it?}
-
-% \begin{description}
-%     \item[Growth rate in continuum limit] In our hybrid simulations, growth rate of each particle is exactly known form Eq. \eqref{lucky-2Deqns} and  \eqref{lucky-3Deqns}. Can we use it capture the growth rate of the Lagrangian simulations?
-%     \item[Evolution of $P(m,t)$] In the continuum limit, the size of each big particles change at each instant, then how does one consider the \texttt{in} and \texttt{out} fluxes?
-%     \item[Maybe evolving $P(m,t)$ is not the goal] In the continuum limit, $P(m,t)$ is found by binning the particles at each instant. The number of big particles never change, thereby preserving the total number of big particles. How does this additional constraint help?
-%     \item \textbf{Is there a quantity that can be calculated both from the Eulerian and the Lagrangian perspective apart from the evolved $P(m,t)$?}
-% \end{description}
-
 \section{2D Results}
-
-We run our numerical simulation for the following parameters.
-\begin{table}
-    \centering
-    \begin{tabular}{|ccccccc|}
-    \hline
-        Runs & $V_s(0)$  & $V_b(0)$ & $St_s$ & $St_b(0)$& $\alpha_g$ & \\
-        \hline
-        1& $10^{-6}$ & $10^{-9}$ &0.005  &0.3 & & \\
-        2& $10^{-6}$  & $10^{-9}$ &0.01  & 0.3 & & \\
-         3& $10^{-6}$ & $10^{-9}$ &0.02  &0.3 & & \\
-         \hline
-    \end{tabular}
-    \caption[Parameters of the different runs]{Parameters of the different runs. The growth rate of the big particles is fitted with $t^{\alpha_g}$}
-    \label{lucky-tab:my_label}
-\end{table}
-% \begin{figure}
-% 	\begin{center}
-% 		\includegraphics[width=\linewidth]{./figures/polydisperse/pstruc.pdf}
-% 	\end{center}
-% \caption[Depletion of small droplets at two Stokes numbers]{Volume fraction of the small particles evolved in presence of 10000 big particles for runs 1 (middle) and 3 (right). We see larger Stokes small particles get more depleted or eaten up by the big particles.}
-% \label{lucky-pstruc}
-% \end{figure}
-For runs 1 and 3, we check the growth rate of particles starting from regions of positive and negative $Q$. Regions of positive $Q$ represents vortical regions while negative $Q$ represents strain regions. We find particles starting out in vortical regions grow larger at later time, Fig. \ref{lucky-grth-diffQ}.
-% \begin{figure}
-% 	\begin{center}
-% 		\includegraphics[width=0.6\linewidth]{./figures/polydisperse/diff-Q-grwth-rate.pdf}
-% 	\end{center}
-% \caption[Growth rate of big droplets starting in vortical and strain regions]{Growth rate of big particles starting in positive and negative $Q$ regions for runs $1$ and $3$ with 10000 big particles. Particles starting out in the vortical region experience a larger growth rate. Furthermore, the growth rate increases significantly upon increasing the $St$ of small particles.}
-% \label{lucky-grth-diffQ}
-% \end{figure}
-
-Next, we try to see whether particles start gaining more liquid content if they encounter a strong vortex. For that we consider particles that have encountered vortices stronger than $2\zeta_{\rm rms}$, where $\zeta_{\rm rms}$ is the root-mean-square vorticity of the background field.
-
-% \begin{figure}
-% 	\begin{center}
-% 		\includegraphics[width=\linewidth]{./figures/polydisperse/pre-post-vort.pdf}
-% 	\end{center}
-% \caption[Volume gained by big droplets passing through high vorticity]{Volume gained by the big particles that went through a region of big vorticity.}
-% \label{}
-% \end{figure}
-At early times, right after entering the vortex, we see that the big particles grow much larger. This may be because of two reasons. First, only the particles that are big enough to significantly avoid streamlines enter these big vortical regions. These particles already being bigger than the rest, naturally accumulate more small particles owing to their larger collision cross-section. However, this effect should also be there at late times, but we see that the growth rate slow down. The second reason is also an interesting one. Larger particles get centrifuged out more out of the large vortical regions. On their way out, these particles are prone to capture many small particles.
-Next, we want to study the growth rate within the vortical region. To do so, we track when a big particle enters and leaves a big vortex $\zeta > 2\zeta_{\rm rms}$ and plot the volume grown as a function of the residence time. Apriori, we do not expect significant growth \emph{inside} the vortex, but rather after they come out of a big particle.
-
-\section{Initial conditions of the `Lucky' Particles}
-If we seed the lucky droplets uniformly in the domain, and evolve, the first and the last stage is given below.
-% \begin{figure}
-% 	\begin{center}
-% 		\includegraphics[width=0.9\linewidth]{./figures/polydisperse/rndm_0.002_0.02.pdf}
-% 	\end{center}
-% \caption[Fate of small droplets for randomly placed lucky droplets]{Initial and final fate of the small particle concentration along with vorticity when `lucky' particles are initialized randomly over the domain. $St_b = 0.02$, $St_s = 0.002$. }
-% % \label{}
-% \end{figure}
-
-Instead, if we initialize particles from the strongest vortex cores, we get the following,
-% \begin{figure}
-% 	\begin{center}
-% 		\includegraphics[width=0.9\linewidth]{./figures/polydisperse/Qpos_0.002_0.02.pdf}
-% 	\end{center}
-% \caption[Fate of small droplets for lucky droplets started in high $Q$]{Initial and final fate of the small particle concentration along with vorticity when `lucky' particles are initialized in regions $Q> 3Q_{\rm rms}$. $St_b = 0.02$, $St_s = 0.002$. }
-% \label{}
-% \end{figure}
-What happens to the growth rate of the `lucky' droplets? Do the ones starting out from the vortex core grow faster?
-% \begin{figure}
-% 	\begin{center}
-% 		\includegraphics[width=\linewidth]{plots/grwth_rndm_Qpos_0.002_0.02.pdf}
-% 	\end{center}
-% \caption{Comparison of the evolution of the volume fraction of small and big particles as one changes the initial conditions. $St_b = 0.02$, $St_s = 0.002$.}
-% % \label{}
-% \end{figure}
-
-
-If the volume fraction of the smaller droplets decay exponentially, then a relevant timescale is this decay timescale.
-
-And finally, the size distribution captured by the distribution of the $St_b$ will be quite different.
-% \begin{figure}
-% 	\begin{center}
-% 		\includegraphics[width=\linewidth]{plots/p(st_b)_0.002_0.02.pdf}
-% 	\end{center}
-% \caption{Final distribution of Stokes number for different initial condition.}
-% % \label{}
-% \end{figure}
+We are setting the volume fraction of the small particles to $10^{-6}$, with $St_s = \tau_s/\tau_\eta = 0.002$, where $\tau_\eta$ is the Kolmogorov timescale. Once the continuum of the small particles have reached a steady state, we launch lucky drops with three initial Stokes numbers $St_b(0) = 0.01,0.02$ and $0.1$. The number of lucky drops for different initial Stokes number are $10000,  3535$, and $316$, respectively. The numbers are such that the total initial mass for all the cases is similar 99.9\%. The initial volume fraction between the tiny and lucky drops is $5.8 \times 10^{-5}$ which is miniscule. Their initial velocity was set to match the background flow $\vec{u}$.
 
 \begin{figure}
-	\begin{center}
-		\includegraphics[width=\linewidth]{./figures/polydisperse/sts_0.002_stb_0.01,0.02_grwth.png}
-	\end{center}
-\caption[Growth of big droplets and decay of small droplets]{Growth rate of big particles (left) and decay rate of small particles (right), as one varies initial condition and Stokes numbers. Solid lines with $St_b(0) = 0.01$ and dashdotted lines with $0.02$. The dotted lines and the dashed lines are extreme Stokes numbered big particles with $St_b(0) = 0.0022$ and $St_b(0) = 0.1$, respectively. $St_s = 0.002$}
-\label{lucky-grwth}
+\centering
+\includegraphics[width = \linewidth]{./chapters/figures/polydisperse/small-big-2D.pdf}
+\caption{(left) Depletion of small droplets for different initial lucky droplets and initial conditions. (right) Relative growth of big particles for different initial conditions. The initially smaller lucky droplets grow most.}
+\label{small-big-2D}
 \end{figure}
-\begin{figure}
-	\begin{center}
-		\includegraphics[width=\linewidth]{./figures/polydisperse/sts_0.002_stb_0.01,0.02_grwth_loglog.png}
-	\end{center}
-\caption[The same growth and decay rates on a log-log scale]{Same as \ref{lucky-grwth}, but in log-log scale.}
-% \label{}
-\end{figure}
+
+To understand what happens when these lucky droplets start out from different regions of the flow, we start them for 5 kinds of different initial conditions. These are labellled ``random", ``$Q>0$", ``$Q<0$", ``$Q>3Q_{rms}$",``$Q<-2Q_{rms}$", corresponding to their initial condition with $Q$ being the Okubo-Weiss parameter defined in Chapter \ref{fn-cstcs}. For the ``random'' initial condition, we uniformly distribute the lucky droplets over the entire domain. For others, we distirbute them uniformly in the regions satisfyin the condition given in their label. Fig. \ref{small-big-2D} shows the evolution of the small droplets volume fractions in the left and relative growth of the lucky droplets on the right. $M_b(t) = \sum_i m_b^i(t)$ is the instantaneous total mass of the all lucky drops. Three points stand out. First, near the end of their evolution, the small droplets are significantly depleted by the lucky droplets, and the lucky droplets make up for most of the liquid water content. But more importantly, the smaller lucky  droplets grows more than their initially bigger counterpart. Finally, we see that lucky droplets starting out in the vortical regions ``$Q>0$", and ``$Q>3Q_{rms}$" grows fastest for all intiial Stokes number, with droplets starting out in extreme vorticity regions growin the fastest. This is shown in more detail in Fig. \ref{init-2D}. The lucky droplets starting out in extreme strain wins out at early times because tiny droplets cluster strongly in these regions, but after this they cannot grow fast anymore, and lose out in the end. For particles starting out in extreme vortices, they are thrown out with significant slip velocity to tear through flow and keep growing.
+
+
+We can also see whether our approximations in Sections \ref{early-sc} and \ref{late-sc} hold. Figure \ref{early-late-2D} shows this, in the left figure, we see that our initial growth rate scaling is only partially obeyed, and only by the largest lucky droplet. After initial time, the growth quickly transitions to a steeper scaling. This means our assumptions of uncorrelated relative velocity do not hold only except at very short times. Still, we can clearly see the exponential depletion of the tiny droplets in the right panel of Fig. \ref{early-late-2D}.
 
 \begin{figure}
-	\begin{center}
-		\includegraphics[width=\linewidth]{./figures/polydisperse/sts_0.002_stb_0.01-0.02_final_distribution.png}
-	\end{center}
-\caption[Final distribution of Stokes numbers for two initial values]{Final distribution of Stokes numbers with $St_b(0) = 0.01$(left), and $0.02$(right).$St_s = 0.002$}
-\label{lucky-grwth-loglog}
+\centering
+\includegraphics[width = 0.8\linewidth ]{./chapters/figures/polydisperse/early-late-2D-random.pdf}
+\caption{(left) Initial relative growth for the lucky droplets of different Stokes numbers starting from random initial condition. The dashed line shows $t^{\frac32}$ scaling. (right) Droplet depletion of tiny droplets in the late stage. They decay exponentially.}
+\label{early-late-2D}
 \end{figure}
 
-% \subsection{Possible limits of the growth rate}
+The takeaway from the $2$D results before we move on to $3$D are that smaller lucky droplets grow relatively faster, and particles starting out in high vorticity regions grow faster. 
 
-% Here we try to describe and compare the possible limits of the growth rates. Remember, the mass absorbed by any lucky droplet particle is proportional to the size of the lucky droplet, the concentration of small droplets at the location of the lucky droplet, and the relative differences between the velocity of the lucky droplet and the local velocity of the small droplets. The complicated interplay of all these factors gave rise Figs. \ref{lucky-grwth} and \ref{lucky-grwth-loglog}.
+\begin{figure}
+    \begin{minipage}{0.45\linewidth}
+        \centering
+        \includegraphics[width = \linewidth]{./chapters/figures/polydisperse/init-2D.pdf}
+        \caption{Comparing growth of lucky droplets for different initial conditions in $2$D turbulence with $St_s = 0.002$. Particles starting in high vortical regions grows the fastest at intermediate and late times. At early times, $t < 10 \tau_\eta$, particles starting out in extreme strain region grows very fast, but their growth slows down quickly. }
+        \label{init-2D}
+    \end{minipage} 
+    \hfill
+    \begin{minipage}{0.45\linewidth}
+        \centering
+        \includegraphics[width = \linewidth]{./figures/polydisperse/gravity_cases.pdf}
+        \caption{Comparing growth of a single lucky droplet only under gravitational settling in $3$D. The different curves correspond to different cases, and approximations taken. They only deviate when the size of the droplet is significantly large.}
+        \label{grav-settl}
+    \end{minipage}
+\end{figure}
 
-% \subsubsection{Initial growth and depletion}
-% In the initial stage, almost all the lucky droplets grow if they are distributed randomly. When we take the sum of the rate of change of mass for all lucky droplets, the local concentration field \emph{in this case can be assumed to be constant.} And we discard the difference in relative velocities approximating them as a noise that becomes a constant when we take the sum of all lucky droplets. Thus, the mass of all the lucky droplets $M_b = \sum_i m_b^i$ grows as
-% \begin{align}
-% % \label{}
-% \begin{split}
-%     \dot{M}_b = \sum_i \dot{m}_b^i \propto \sum_i (m_b^i)^{\frac13}  \ .
-% \end{split}
-% \end{align}
-% Instead, if we consider a summed size $R_b = \sum_i r_b^i$, this radius changes with a rate
-% \begin{align}
-% % \label{}
-% \begin{split}
-%     \dot{R}_b \propto \frac1{R_b} \quad \implies \quad R_b \propto \sqrt{t}\ .
-% \end{split}
-% \end{align}
-% However, the above result is valid only initially and only if all particles grow at all times with similar concentration for all particles. This is not true for particles starting out from extreme gradient, and therefore it should not hold.
-
-% The depletion rate of small droplets is $-\dot{M}_b$. And, if the arguments above is right, each lucky particle's radius grows $\propto \sqrt{t}$, making their mass grow $\propto t^\frac32$ and therefore, the volume fraction of small particles will deplete as $-t^\frac32$.
-
-
-% \begin{figure}
-% 	\begin{center}
-% 		\includegraphics[width=\linewidth]{./figures/polydisperse/smalltimes-2d.png}
-% 	\end{center}
-% \caption[Early-time scaling of the droplet volume fractions]{Depletion and growth of volume fraction of small droplets (left) and large droplets(right). It shows $t^\frac32$ scaling given by black dashed line at very early times, but takes over as $t^{2}$ given by the blue dashed line immediately after that.}
-% \label{lucky-growth-small-times}
-% \end{figure}
-
-% However, as one can see in Fig. \ref{lucky-growth-small-times}, both the growth and depletion follow  $t^\frac32$ only at very early times, it very quickly switches to $t^2$ at late times.
-
-% \subsubsection{Late stage growth and depletion}
-% In late stage, situation is different. Lucky droplets contain most of the volume fraction with the small droplets are sparsely distributed in the domain. When collisions between the lucky and the small droplets happen, bulk of the volume of the small droplets gets eaten up due to enormous collision cross-section. And, the collision does not significantly increase the size of the lucky droplets. In this case, the depletion of the small droplets $-\dot{M}_s$ is given by
-% \begin{align}
-% % \label{}
-% \begin{split}
-%     \dot{M}_s \propto M_s \implies \dot{M}_s \propto e^{-\lambda_s t} \ ,
-% \end{split}
-% \end{align}
-% where $\lambda_s$ is the depletion rate. Similarly, as before, the rate of change of mass of the big droplets is $\dot{M}_s$ and lucky droplets grow as $M_b(t) = M_T - M_s(t) = M_T - M_s^*e^{-\lambda_s(t - t^*)}$. In Fig. \ref{lucky-largetimes-2d}, we show this behavior by plotting the volume fraction of the small droplets, and the growth rate of the large droplets calculated from the local slope of Fig. \ref{lucky-grwth}(right). Both show behavior similar to exponential, but their slopes do not match.
-% \begin{figure}
-% 	\begin{center}
-% 		\includegraphics[width=\linewidth]{./figures/polydisperse/largetimes-2d.png}
-% 	\end{center}
-% \caption[Late-time exponential decay of the droplet volume fractions]{(left) Volume fraction of small droplets at late times. It follows exponential decay. (right) Rate of change of volume fraction of large droplets calculated from local slope. As expected, it also follows exponential decay.}
-% \label{lucky-largetimes-2d}
-% \end{figure}
-% \begin{table}
-%     \centering
-%     \renewcommand{\arraystretch}{2} % spacing between rows
-%     \begin{tabular}{cccc}
-%     \hline
-%     \textbf{St} & \textbf{Init} & $\lambda_s$ \textbf{ left} & $\lambda_s$ \textbf{ right} \\ \hline
-%     0.01 & rndm   & -0.02128 & -0.01720 \\
-%     0.02 & rndm   & -0.01203 & -0.00760 \\
-%     0.01 & $Q>0$  & -0.02134 & -0.01809 \\
-%     0.02 & $Q>0$  & -0.01208 & -0.00770 \\
-%     0.01 & $Q<0$  & -0.02101 & -0.01675 \\
-%     0.02 & $Q<0$  & -0.01196 & -0.00744 \\ \hline
-%     \end{tabular}
-%     \caption[Fitted slopes for the late-time volume fractions]{Fitted slopes $\lambda_s$ for the left and right part of Fig. \ref{lucky-largetimes-2d}. They do not match.}
-% \end{table}
-
-
-
-% Now, although the growth rate for smaller initial $St_b$ are higher, do they produce droplets that cross a certain size threshold faster? The answer is YES! Suprisingly, the drops with larger initial $St_b$ has slower growth due to smaller number of particles, each of those particles gets to eat up a lot of small droplets and grow faster. Figure \ref{lucky-thresh} demonstrates this phenomenon.
-
-% \begin{figure}
-% 	\begin{center}
-% 		\includegraphics[width=\linewidth]{./figures/polydisperse/threshold-growth.png}
-% 	\end{center}
-% \caption[Time for big droplets to grow past a threshold]{Time taken for 10 particles (left) and 50 particles (right) to grow beyond a certain threshold for different initial $St_b$s}
-
-% \label{lucky-thresh}
-% \end{figure}
-
-
-% % \begin{figure}
-% % 	\begin{center}
-% % 		\includegraphics[width=\linewidth]{plots/threshold-growth-50.png}
-% % 	\end{center}
-% % \caption{Same as Fig. \ref{lucky-thresh} but for 50 particles.}
-% % % \label{}
-% % \end{figure}
 \section{3D results}
 
 \subsection{Growth during Gravitational Settling}
 In Section \ref{grav-sett-anltc}, we derived how radius grows with time with the assumption that the lucky particles are always settling in terminal velocity. Here we compare that result with the numerical solution of Eqs. \ref{mass-cont} and \ref{mon-cont} with $\vec{u} = 0$ and $c_s(\vec{x}_b, t) = 7.2 \times 10^{-7}$. We consider two cases of the numerical solution, one where the deceleration term is ignored, and one where it remains. This is done to see when and how the deceleration term affects the growth rate. In Fig. \ref{grav-settl}, we see that the three cases differ only when the particles become very big compared to its initial sizes. The analytical solution predicts an exponentially increasing growth rate. The growth rate in numerical simulation tapers off, and in presence of the deceleration term, the growth rate decreases faster. Still, the growth rate differs in times of around 30 mins, and only for the biggest lucky droplets. Thus, we can work with the solution of Eq. \eqref{grav-settl-sol} when comparing turbulence induced in $3$D growth with gravitational settling growth.
-\begin{figure}
-\centering
-\includegraphics[width = \linewidth]{./figures/polydisperse/gravity_cases.pdf}
-\caption{Comparing growth rate with pure gravitational settling. }\label{grav-settl}
-\end{figure}
 
-The trend that we see in gravitational settling is different from the $2$D case. The larger lucky drops benefit more while settling, opposite to the conclusion we drew in $2$D. This is because the relative velocity is proportional to the big Stokes number. The total growth rate of each particle scales as $d_b^4$. Now, consider the case where particles of different sizes are different in number such that their net mass is the same.  The number of particles of size $d_b(0)$ $N_p(d_b(0)) \sim 1/d_b^3(0)$, and if the relative velocity between the lucky and the tiny particles scale as $d_b(0)$ initially, the total growth rate scales as $d_s$, making larger particles accumulate more small droplets with time. 
+
+The trend that we see in gravitational settling is different from the $2$D case. The larger lucky drops grow more while settling, opposite to the conclusion we drew in $2$D. This is because the relative velocity is proportional to the big Stokes number. The total growth rate of each particle scales as $d_b^4$. Now, consider the case where particles of different sizes are different in number such that their net mass is the same.  The number of particles of size $d_b(0)$ $N_p(d_b(0)) \sim 1/d_b^3(0)$, and if the relative velocity between the lucky and the tiny particles scale as $d_b(0)$ initially, the total growth rate scales as $d_s$, making larger particles accumulate more small droplets with time. 
 \subsection{Turbulence assisted growth}
 We now turn to $3$D turbulence where the lucky droplets grow in presence of the flow. Fig. \ref{turb-grav} shows that turbulence hardly makes any change in droplet growth compared to the gravitational settling. In fact, for some lucky droplets turbulence decreases their growth, which is quite interesting. This little change from turbulence is disheartening but expected. Given that the Froude number $Fr$ is so small in table \ref{lucky-cloud-vals}, turbulent accelerations on the particles  should be very weak compared to gravity forces. This confirms an important point. Turbulence with the mean dissipation rate observed in cannot significantly control droplet growth. It can only contribute in patches with dissipation significantly higher than the mean dissipation rate.  
 \begin{figure}
-\centering
-\includegraphics[width = \linewidth]{./chapters/figures/polydisperse/turb-gravity-withg.pdf}
-\caption{Comparing turbulence assisted droplet growth in presence of gravity and growth during gravitational settling for different Stokes number(sizes). The lucky droplets started in random locations of the flow with tiny droplets having Stokes $0.017$, the Kolmogorov length and timescales are matched with case with $\epsilon = 10^{-2}\text{ m.s}^{-1}$ in table \ref{lucky-cloud-vals}.}
-\label{turb-grav}
-\end{figure}
-
-When we compare growths in presence and absence of gravity, in Fig. \ref{turb-g-no-g}, we find that turbulent contribution is miniscule at such Stokes and Froude numbers. This is even more disheartening because we want gravitational effects to dominate at larger sizes. But it seems to win, even at such small sizes. An interesting trend to notes is that the bigger lucky droplets grows faster even in absence of gravity. Thus, the hand-waving argument given in the last section still holds here. 
-\begin{figure}
+\begin{minipage}{0.45\linewidth}
+    \centering
+    \includegraphics[width = \linewidth]{./chapters/figures/polydisperse/turb-gravity-withg.pdf}
+    \caption{Comparing turbulence assisted droplet growth in presence of gravity and growth during gravitational settling for different Stokes number(sizes). The lucky droplets started in random locations of the flow with tiny droplets having Stokes $0.017$, the Kolmogorov length and timescales are matched with case with $\epsilon = 10^{-2}\text{ m.s}^{-1}$ in table \ref{lucky-cloud-vals}.}
+    \label{turb-grav}
+\end{minipage}
+\hfill
+\begin{minipage}{0.45\linewidth}
 \centering
 \includegraphics[width = \linewidth]{./chapters/figures/polydisperse/turb-g-no-g.pdf}
 \caption{Comparing turbulence assisted droplet growth in presence and absence of gravity. Growth without gravity is negligible compared to growth with gravity. The lucky droplets started in random locations of the flow with tiny droplets having Stokes $0.017$, the Kolmogorov length and timescales are matched with case with $\epsilon = 10^{-2}\text{ m.s}^{-1}$ in table \ref{lucky-cloud-vals}.}
 \label{turb-g-no-g}
+\end{minipage}
 \end{figure}
 
+When we compare growths in presence and absence of gravity, in Fig. \ref{turb-g-no-g}, we find that turbulent contribution is miniscule at such Stokes and Froude numbers. This is even more disheartening because we want gravitational effects to dominate at larger sizes. But it seems to win, even at such small sizes. An interesting trend to notes is that the bigger lucky droplets grows faster even in absence of gravity. Thus, the hand-waving argument given in the last section still holds here. 
 When we look at the droplet growth rate across different initial conditions in Fig. \ref{turb-init}, the answer is also anti-climactic. We cannot find any significant differences. Our guess for this is the following. In $2$D turbulence, strong gradients like coherent vortices and the strain regions between them, are stable. However, in $3$D turbulence  high gradient regions in $3$D have a very short lifetime. Therefore, their impact is not felt during the droplet growth of the particles starting out in high gradient regions.
 
 \begin{figure}
@@ -545,80 +280,10 @@ When we look at the droplet growth rate across different initial conditions in F
     \caption{Comparing turbulence assisted droplet growth in presence and absence of gravity with lucky droplets starting from different initial conditions. The different initial conditions make no difference in early time droplet growth. The tiny droplets have Stokes $0.017$, the Kolmogorov length and timescales are matched with case with $\epsilon = 10^{-2}\text{ m.s}^{-1}$ in table \ref{lucky-cloud-vals}.}
     \label{turb-init}
 \end{figure}
-% \begin{figure}
-% 	\begin{center}
-% 		\includegraphics[width=\linewidth]{./figures/polydisperse/3d-grwth.png}
-% 	\end{center}
-% \caption[Growth in volume fraction of lucky droplets in three dimensions]{Growth in volume fraction of lucky droplets in $3$D}
-% \label{lucky-3d-grwth}
-% \end{figure}
-% According to back at table \ref{lucky-cloud-vals}, we chose $St_s = 0.001$ with an initial liquid water content $c_s(0) = 7.2\times 10^{-7}$. This means that there are $10^{11}$ $2.7\,\mu\mbox{m}$(diameter) particles in a cloud of $1\mbox{m}^3$ with mean dissipation rate $\epsilon = 10^{-2} \mbox{m}^2\cdot\mbox{sec}^{-3}$. After evolving the small particles for significant enough time, put 1 in a million lucky droplets of size $10\,\mu\mbox{m}$. From table \ref{lucky-cloud-vals}, we see that their initial volume fraction must be $c_b(0) = 5\times 10^{-13}$. Given mass of each particle $m_p$ is related to the Stokes number as
-% \begin{align}
-% % \label{}
-% \begin{split}
-%     m= 36\pi\rho\left(\frac{\nu\tau_\eta}{2\rho}\right)^\frac32\times St^\frac32,
-% \end{split}
-% \end{align}
-% the number of lucky drops $N_b$ is constrained by the net liquid water content per unit volume, i.e.,
-% \begin{align}
-% % \label{}
-% \begin{split}
-%     \frac{N_b\times m_b(0)}{\left(2\pi\times \frac{\eta}{\eta_s}\right)^3 } = \rho c_b(0) \implies N_b \sim 8,
-% \end{split}
-% \end{align}
-% with the parameters described above and where $\eta_s = \mathrm{m}/k_{\mathrm{m}} = 3 \mathrm{m} /(N_g\sqrt2)$ is Kolmogorov length in the simulation units, $k_{\mathrm{m}}$ is the maximum de-aliased wavenumber, $\mathrm{m}$ is given by our choice, and $N_g$ is the resolution of the simulation. This is an abysmally small number. Rather we seed 1 lucky droplet for every 1000 small droplets. This makes the $N_b  \sim 8000 \sim 8192$. Keeping the initial liquid water content of the lucky droplets constant, we change the Stokes number of the lucky droplets. This lets us investigate whether luckier droplets get luckier. The initial lucky drops Stokes number we use are $St_b(0) = [2\times 10^{-3}, 4 \times 10^{-3}   , 0.017     , 0.068     , 0.11   ]$.
 
 
-% At a first glance of Fig. \ref{lucky-3d-grwth}, the results for $2$D still holds for $3$D. But the growth is very minimal. This is expected in $3$D as the collision cross-section is smaller, owing to fewer collisions. This means that one has to evolve the system for longer times which is quite difficult in $3$D. In fact, while evolving different cases of initial lucky droplets, the bottleneck becomes evolving the field equations of $n$. Each class of lucky droplets require a separate number density field because of the mutual couplings between the small and big particles. The evolution of number density field incurs more Fast-Fourier transforms which are time-consuming.
+We leave this chapter with three open questions we are actively pursuing. First, why does the trend of growth of lucky drops change in going from $2$D to $3$D flows? Does the additional vortex stretching and small persistence time of large gradient regions in $3$D turbulence have any role to play? Second, what mean dissipation is necessary in a pocket of turbulent clouds such that turbulent assisted growth becomes significantly larger than gravitational settling growth at early times? Lastly, why does turbulence hinder droplet growth of `larger' lucky drops in $3$D turbulence, as seen in Fig. \ref{turb-grav}?
 
-% We can make significant progress if we statistically model the small particles. That is not always easy. Preferential clustering of inertial particles introduce spatial correlations in their number density. This is different from tracers that randomly distribute themselves in an incompressible homogenous isotropic flow, making their number density follow a Poisson distribution. Large Stokes particles also follow this as they are almost ballistic and randomly run around in the flow. Tiny Stokes particles following Eq. \eqref{lucky-3Deqns} are also tracerlike, with perturbations proportional to the flow acceleration. And, if the maximum flow acceleration is much smaller than the Stokes number, the small Stokes particles \emph{almost} distribute themselves like tracer.
-% \begin{figure}
-% 	\begin{center}
-% 		\includegraphics[width=\linewidth]{./figures/polydisperse/dist-nbin-256.png}
-% 	\end{center}
-% \caption[Binned number density of Lagrangian tiny droplets]{Binned number density if Lagrangian tiny particles following Eq. \eqref{lucky-3Deqns}. A total of $4\times 128^3$ particles are binned in $256^3$ grid.}
-% \label{lucky-nbin-dist-256}
-% \end{figure}
-
-% This is evident in Fig. \ref{lucky-nbin-dist-256} where the number density of $4\times 128^3$ particles binned in $256^3$ grid shows a spotty pattern for $St = 0.001$ but some correlation in $St = 0.01$. Increasing the grid size in Fig. \ref{lucky-nbin-dist-128} further illustrates the correlation of $St= 0.01$ particles. The structure of the $St = 0.01$ particles is well correlated with the local flow gradients, seen in Fig. \ref{lucky-grad-corr}. The spottiness of $St = 0.001$ fields hints at a spatially uncorrelated structure, and therefore a Poisson distribution. Indeed, it can be well approximated by Poisson distribution as Fig. \ref{lucky-poisson-check}. The mean of the Poisson distribution is the mean number of particles in the specified box size.
-
-
-
-
-% \begin{figure}
-% 	\begin{center}
-% 		\includegraphics[width=\linewidth]{./figures/polydisperse/poisson-check.png}
-% 	\end{center}
-% \caption[Binned number density compared with a Poisson distribution]{Structure of binned number density and the Poisson distribution across different number of bins. The number density (blue) deviates from the Poisson distribution (orange) at large scales due to deviation from tracer trajectories. }
-% \label{lucky-poisson-check}
-% \end{figure}
-
-% Note that at larger scales, the number density does not obey a Poisson distribution. This is because the particles are not exactly tracer and the fluid acceleration does have some large scale correlation effects. But at the smaller scale, Poisson distribution assumption is a good one. Note that this result only follows in $3$D where large fluid accelerations are not long-lived, in $2$D, persistence of large strong vortices make the number density of tiny droplets spatially well correlated.
-
-% This insight allows us to modify Eq. \eqref{lucky-3Deqns}. We do not evolve the number density of the small particles anymore, rather we draw the number of particles each lucky droplet encounters in a given $\Delta t$ from a Poisson distribution. We still have to evolve the $\vec{v}_s$ equation, and interpolate at the location of the lucky droplets. The result with this is significantly different from the \begin{figure}
-% 	\begin{center}
-% 		\includegraphics[width=\linewidth]{./figures/polydisperse/det-v-stoch.png}
-% 	\end{center}
-% \caption[Growth rate from deterministic and stochastic collisions]{Growth Rate of deterministic v stochastic simulations.}
-% % \label{}
-% \end{figure}
-
-% \begin{figure}
-% 	\begin{center}
-% 		\includegraphics[width=\linewidth]{./figures/polydisperse/stoch-v-m.png}
-% 	\end{center}
-% \caption[Growth rate for different small-droplet number densities]{Comparison of growth rate after varying small particle number density.}
-% % \label{}
-% \end{figure}
-
-
-% \begin{figure}
-% 	\begin{center}
-% 		\includegraphics[width=\linewidth]{./figures/polydisperse/nfield-dits.png}
-% 	\end{center}
-% \caption[Number density field from the continuum model and its distribution]{Snapshot of the number density field evolved from continuum models (left). Its distribution (right) follows a perfect Gaussian with unit mean and standard deviation obtained from the data. }
-% \label{}
-% \end{figure}
 
 
 

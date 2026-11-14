@@ -129,11 +129,14 @@
 % summary run across a page break.
 \usepackage[most]{tcolorbox}
 \definecolor{clbox}{RGB}{100, 87, 166}
-\tcbset{colframe = clbox} 
+\tcbset{colframe = clbox}
 \newtcolorbox{summary}{%
-  breakable,
-  boxrule=0.4pt, arc=2pt,
-  title=Summary, fonttitle=\sffamily\bfseries, coltitle=black
+  breakable, enhanced, sharp corners,
+  boxrule=0pt, colframe=clbox!6,
+  borderline west={3pt}{0pt}{clbox},
+  colback=clbox!6, colbacktitle=clbox!6, coltitle=clbox,
+  title=Summary, fonttitle=\rmfamily\bfseries,
+  fontupper=\small\itshape
 }
 
 % --- Running headers ---
@@ -222,6 +225,7 @@
 \newcommand{\iro}{\texttt{Ro-I1}\xspace}
 \newcommand{\hre}{\texttt{Ro-H8}\xspace}
 \newcommand{\hro}{\texttt{Ro-H1}\xspace}
+\newcommand{\filler}[1]{{\centering\bfseries #1\par}}
 % Inertial Caustics particle labels:
 \newcommand{\cs}{C~}
 \newcommand{\su}{S~}
