@@ -644,7 +644,7 @@ To measure collisions, we find pairs of particles whose trajectories intersect w
 % Similarly, the maximum value of $\tilde{n}_s(t) = \mean{\tilde{n}_s(t)}N_g^3. $
 
 \section{Alternatives to clipping and rescaling the number density}\label{clip-alt}
-Clipping the negative values to zero in the spectral evolution of the number density in Eqs. \eqref{lucky-3Deqns} and \eqref{lucky-2Deqns} is artificial. So is the rescaling to keep the mean zero. An alternative to keep the number density positive at all times would be to evolve the \texttt{log} of the number density, $g = \log(n_s)$. Without sinks and sources, it obeys
+Clipping the negative values to zero in the spectral evolution of the number density in Eqs. \eqref{mass-cont} and \eqref{2D-lck} is artificial. So is the rescaling to keep the mean zero. An alternative to keep the number density positive at all times would be to evolve the \texttt{log} of the number density, $g = \log(n_s)$. Without sinks and sources, it obeys
 \begin{align}
 \label{lucky-log-cont}
 \begin{split}
@@ -669,7 +669,7 @@ Another alternate, suggested by ChatGPT and Claude, where the  general version i
     \begin{center}
 		\includegraphics[width=\linewidth]{./figures/polydisperse/log_comp.png}
 	\end{center}
-\caption[Fluctuations from the logarithmic and the clipped continuity equation]{Comparing fluctuations in of evolution of $g$ in Eq. \eqref{lucky-log-cont} v continuity equation of Eq. \eqref{lucky-3Deqns} and clipping. The fluctuations differ by orders of magnitude and is mostly incorrect. }
+\caption[Fluctuations from the logarithmic and the clipped continuity equation]{Comparing fluctuations in of evolution of $g$ in Eq. \eqref{lucky-log-cont} v continuity equation of Eq. \eqref{mass-cont} and clipping. The fluctuations differ by orders of magnitude and is mostly incorrect. }
 \label{lucky-log_comp}
 \end{minipage}
 \hfill

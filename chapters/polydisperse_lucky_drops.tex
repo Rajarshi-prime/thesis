@@ -33,8 +33,10 @@ A recent school of thought has been the following: once, particles of large enou
 
 In this work we investigate whether this is true. Confining ourselves to a fixed number mass of lucky drops, we investigate whether which of the following grow faster, fewer luckier drops, or larger less lucky drops? We approximate the complicated system in two ways. First, we assume a mono-disperse point particles that do not collide with each other. Rather they are advected by turbulent flow. We seed the lucky drops with a certain size and neglect collisions between any two lucky particles. Although, here we will try to justify it, we must confess that these approximations are made to make the dynamics simple. The first approximation allows us to write field equations of the small particles, which are accurate and are devoid of singularities. The field equation also makes capturing collision between the lucky droplets and the smaller ones. Instead of checking crossing between billions of particles, we can write down ordinary differential equations for growth rate of individual lucky droplets. And, the complexity of the calculating particle crossing forces us to make the second assumption.
 
-We find a few surprising results. First, we see that for a fixed volume fraction and
-\section{Non-dimensional cloud numbers}
+In section \ref{ndim-cl}, we present the realistic non-dimensional numbers in a cloud. Then in section \ref{modl-form} we introduce the model and discuss the possible analytical results in section \ref{anltc-res}. We then discuss the numerical methods in section \ref{lck-num-meth}, and move on to numerical experiments in $2$D and $3$D in sections \ref{lck-2d} and \ref{lck-3d} respectively.
+
+
+\section{Non-dimensional cloud numbers}\label{ndim-cl}. 
 The kinematic viscosity of air $\nu = 10^{-5}\mbox{m}^2\cdot\mbox{sec}^{-1}$. Observation suggests that mean dissipation rate in warm clouds can range from $10^{-3}\mbox{m}^2\cdot\mbox{sec}^{-3}$ to $10^{-1}\mbox{m}^2\cdot\mbox{sec}^{-3}$ (see \citet{grabowski2013} \S 2.1). This sets the Kolmogorov timescale $\tau_\eta = \sqrt{\nu/\epsilon}$ to be $0.1$ to $0.01$ sec, respectively. Similarly, the Kolmogorov length scale $\eta = (\nu^3/\epsilon)^{1/4}$ ranges from $1\mbox{mm}$ to $0.3\mbox{mm}$, respectively. Now a $1\mu\mbox{m}$(diameter) cloud droplet $1000$ times heavier than the air will have Stokes numbers ranging from $5\times 10^{-5}$ to $5\times 10^{-4}$, respectively. Warm clouds may have $10^{9}$ water droplets in $1\mbox{m}^3$, making the volume fraction $c_s$ of $1\mu\mbox{m}$ droplets to be $5\times 10^{-10}$  The Stokes number scales quadratically with particle sizes and the volume fraction cubically. Thus, particles of $10\mu\mbox{m}$(diameter) will have Stokes ranging from $5\times 10^{-3}$ to $0.05$ and volume fraction of $5\times 10^{-7}$.
 
 \begin{table}[h]
@@ -63,7 +65,7 @@ The kinematic viscosity of air $\nu = 10^{-5}\mbox{m}^2\cdot\mbox{sec}^{-1}$. Ob
 \end{table}
 
 %Now, for $ $1\mu\mbox{m}$ and $10 \mu\mbox{m}$ spherical water droplets, $1000$ times heavier than air, will have Stokes numbers of $St = 2\times 10^{-4}$ and $St = 2\times 10^{-2}$, respectively, when defined in terms of Kolmogorov timescale. A warm cloud may have around $10^{9}$ such particles in $1\mbox{m}^3$ volume {\textbf{cite?}}. This fixes the volume fraction $\varphi$ of these particles to be $4 \times 10^{-9}$ to $4 \times 10^{-6}$ respectively.
-\section{Formulation}
+\section{Formulation}\label{modl-form}
 We consider a continuum of small particles obeying the slow-manifold approximation \cite{falkovich2002}.  Their velocity $\vec{v}_s$ drifts slightly from background flow streamlines and obeys
 \begin{align}
 \label{lucky-sm-rhoinf}
@@ -119,7 +121,7 @@ These equations are in $3$D. For a `two-dimensional' setting where the spherical
 \end{align}
 Note that we have not included any gravity in the $2D$ system as the particles are restricted to a horizontal plane. The nonlinearity of the problem prevents us from drawing any analytical conclusions. However, we can make some analytical progress using different simplifications. 
 
-\section{Analytical Results}
+\section{Analytical Results}\label{anltc-res}
 \subsection{Gravitaional Settling}\label{grav-sett-anltc}
 The simplest case is in the absence of background flow. If we make another approximation, and assume that both the big and small particles are falling with terminal velocity $\vec{v}_{b/s}^{\text{term}} = - \vec{e}_{z} g \tau_{b/s}$. Growth happens due to the relative settling velocity of the small and big particles. A single big particle settles perpetually, and thus always finds uniform number density of small particles around it. Thus, Eqs. \eqref{mass-cont} and \eqref{mon-cont} simplifies to 
 \begin{align}
@@ -173,7 +175,7 @@ where $\lambda_{sb}$ is the depletion rate that depends on the lucky droplets' n
 % \end{figure}
 
 
-\section{Numerical Methods}
+\section{Numerical Methods}\label{lck-num-meth}
 We will evolve the number density field in Eq. \eqref{mass-cont} pseudo-spectrally with phase-shifted $2\sqrt{2}/3$ dealiasing \cite{patterson1971} and periodic boundary condition. The Dirac-delta function is approximated with the cosine kernel at the locations of the big particles \cite{peskin2002} 
 \begin{align}
 \label{delta}
@@ -206,7 +208,7 @@ The spectral evolution of number density does not ensure its positivity due to t
 
 
 
-\section{2D Results}
+\section{2D Results}\label{lck-2d}
 We are setting the volume fraction of the small particles to $10^{-6}$, with $St_s = \tau_s/\tau_\eta = 0.002$, where $\tau_\eta$ is the Kolmogorov timescale. Once the continuum of the small particles have reached a steady state, we launch lucky drops with three initial Stokes numbers $St_b(0) = 0.01,0.02$ and $0.1$. The number of lucky drops for different initial Stokes number are $10000,  3535$, and $316$, respectively. The numbers are such that the total initial mass for all the cases is similar 99.9\%. The initial volume fraction between the tiny and lucky drops is $5.8 \times 10^{-5}$ which is miniscule. Their initial velocity was set to match the background flow $\vec{u}$.
 
 \begin{figure}
@@ -246,7 +248,7 @@ The takeaway from the $2$D results before we move on to $3$D are that smaller lu
     \end{minipage}
 \end{figure}
 
-\section{3D results}
+\section{3D results}\label{lck-3d}
 
 \subsection{Growth during Gravitational Settling}
 In Section \ref{grav-sett-anltc}, we derived how radius grows with time with the assumption that the lucky particles are always settling in terminal velocity. Here we compare that result with the numerical solution of Eqs. \ref{mass-cont} and \ref{mon-cont} with $\vec{u} = 0$ and $c_s(\vec{x}_b, t) = 7.2 \times 10^{-7}$. We consider two cases of the numerical solution, one where the deceleration term is ignored, and one where it remains. This is done to see when and how the deceleration term affects the growth rate. In Fig. \ref{grav-settl}, we see that the three cases differ only when the particles become very big compared to its initial sizes. The analytical solution predicts an exponentially increasing growth rate. The growth rate in numerical simulation tapers off, and in presence of the deceleration term, the growth rate decreases faster. Still, the growth rate differs in times of around 30 mins, and only for the biggest lucky droplets. Thus, we can work with the solution of Eq. \eqref{grav-settl-sol} when comparing turbulence induced in $3$D growth with gravitational settling growth.
