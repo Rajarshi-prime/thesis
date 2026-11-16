@@ -45,7 +45,7 @@
 \multicolumn{3}{@{}l}{\textbf{Latin letters}} \\
 \addlinespace
 $\mathbb{A}$ & fluid velocity gradient tensor, $St\,\nabla\boldsymbol{u}$ & \ref{fn-cstcs} \\
-$\mathbf{A}$, $\tilde{\mathbf{A}}$ & antisymmetric part of the velocity gradient, and its non-dimensional form $\tau_{\rm act}\mathbf{A}$ & \ref{act-cstcs} \\
+$\mathbf{A}$, $\tilde{\mathbf{A}}$ & antisymmetric part of the velocity gradient, and its non-dimensional form $\tau\mathbf{A}$ & \ref{act-cstcs} \\
 $A$ & avoider particles, which never meet high strain & \ref{fn-cstcs} \\
 $\AR$ & ratio of buoyancy to inertial frequency, $N/f$, set to $20$ & \ref{tide-eddy} \\
 $b$ & buoyancy & \ref{tide-eddy} \\
@@ -59,14 +59,13 @@ $\widehat{E}(k_h,t)$ & horizontal energy spectrum & \ref{tide-eddy} \\
 $E_g$, $E_a$ & geostrophic and ageostrophic energy & \ref{tide-eddy} \\
 $E_s$, $E_f$ & slow and fast energy & \ref{tide-eddy} \\
 $\mathbb{E}$, $\mathbb{E}_0$ & kinetic energy per unit mass, and its initial value & \ref{trunc-euler} \\
-$\mathbb{E}(k)$ & isotropic energy spectrum & \ref{trunc-euler} \\
+$\mathbb{E}(k)$ & Shell-wise energy spectrum of Kinetic energy per unit mass& \ref{trunc-euler} \\
 $\boldsymbol{e}_\pm$ & unit vectors along the extensional and compressional strain & \ref{fn-cstcs} \\
 $\boldsymbol{F}_{\boldsymbol{v}_{\rm 2D}}$, $F_w$, $F_b$ & forcing terms of the Boussinesq equations & \ref{tide-eddy} \\
 $F_0$ & amplitude of the deterministic forcing on the background flow & \ref{act-cstcs} \\
 $\boldsymbol{F}_{\rm ext}$ & external force on the particle & \ref{act-cstcs} \\
 $f$ & inertial, or Coriolis, frequency & \ref{tide-eddy} \\
-$\mathbb{H}$ & Hamiltonian of the Euler equation & \ref{trunc-euler} \\
-$\mathbb{H}$ & effective Hamiltonian of the inner solution & \ref{act-cstcs} \\
+$\mathbb{H}$ & Hamiltonian& \ref{trunc-euler}  \ref{act-cstcs}  \\
 $\mathcal{H}$ & helicity & \ref{trunc-euler} \\
 $H$ & vertical length scale & \ref{tide-eddy} \\
 $\mathbf{K}_{\rm G}$, $K_{\rm G}$ & Galerkin wavevector and truncation wavenumber & \ref{trunc-euler} \\
@@ -75,10 +74,7 @@ $\boldsymbol{k}_h$, $k_h$ & horizontal wavevector $(k_x,k_y)$ and its magnitude 
 $k_z$ & vertical wavenumber & \ref{tide-eddy} \\
 $k_f$ & forcing wavenumber of the two-dimensional flow & \ref{fn-cstcs}, \ref{act-cstcs} \\
 $\mathscr{L}$ & angular momentum per unit mass & \ref{fn-cstcs}, \ref{act-cstcs} \\
-$\mathscr{L}^*$ & angular momentum at the matching time $t^*$ & \ref{act-cstcs} \\
-$\mathscr{L}_f$ & final angular momentum of the outer solution, equal to $1$ & \ref{act-cstcs} \\
-$L$ & horizontal length scale & \ref{tide-eddy} \\
-$L$ & flow length scale & \ref{fn-cstcs}, \ref{lck-drp} \\
+$L$ & horizontal length scale, and flow lenght-scale in $2$D & \ref{tide-eddy}, \ref{fn-cstcs}, \ref{lck-drp} \\
 $l$ & polar flow-alignment length of the dimer & \ref{act-cstcs} \\
 $\mathfrak{l}$ & size of the inner region, $\mathfrak{l}^2 = \tau\sqrt{3\alpha-2}$ & \ref{fn-cstcs} \\
 $\ell$ & filtering length scale & \ref{tide-eddy} \\
@@ -86,15 +82,13 @@ $m$ & droplet mass & \ref{lck-drp} \\
 $\mathrm{m}$ & parameter setting the Kolmogorov length, $\eta_s = \mathrm{m}/k_{\mathrm{m}}$ & \ref{lck-drp} \\
 $N$ & buoyancy frequency & \ref{tide-eddy} \\
 $N_{\rm G}$ & number of retained modes & \ref{trunc-euler} \\
-$N_g$ & collocation points per direction & \ref{trunc-euler} \\
-$N_g$ & grid resolution & \ref{lck-drp} \\
+$N_g$ & grid resolution & \ref{trunc-euler} ,\ref{lck-drp} \\
 $N_p$ & number of particles & \ref{act-cstcs} \\
 $n$ & particle number density & \ref{fn-cstcs}, \ref{lck-drp} \\
-$\tilde{\mathbf{O}}$ & fluid velocity gradient tensor, $\tau_{\rm act}\nabla\boldsymbol{u}$ & \ref{act-cstcs} \\
+$\tilde{\mathbf{O}}$ & fluid velocity gradient tensor, $\tau\nabla\boldsymbol{u}$ & \ref{act-cstcs} \\
 $\mathbb{P}_{\mathbf{K}_{\rm G}}$ & Galerkin projector & \ref{trunc-euler} \\
 $\mathcal{P}$ & pressure & \ref{tide-eddy}, \ref{trunc-euler} \\
 $\widehat{\mathcal{P}}_{\mathbf{k}}$ & Fourier mode of the pressure & \ref{trunc-euler} \\
-$P(m,t)$ & probability density of a droplet of mass $m$ & \ref{lck-drp} \\
 $p_r$ & radial momentum per unit mass, $d\tilde{r}/d\tilde{t}$ & \ref{act-cstcs} \\
 $\mathbf{p}$, $\mathbf{q}$ & wavevectors in the convolution sum & \ref{trunc-euler} \\
 $\boldsymbol{p}$ & linear momentum & \ref{lck-drp} \\
@@ -105,11 +99,10 @@ $\mathcal{R}_{c0}$ & critical initial radius beyond which caustics never form & 
 $Re$ & Reynolds number & \ref{act-cstcs}, \ref{lck-drp} \\
 $Ro$, $Ro_{\rm eff}$ & Rossby number and effective Rossby number & \ref{tide-eddy} \\
 $r$, $r_0$ & radial distance from the vortex, and its initial value & \ref{fn-cstcs}, \ref{act-cstcs}, \ref{lck-drp} \\
-$r^*$ & radial distance at the matching time $t^*$ & \ref{act-cstcs} \\
 $r_c$ & caustics radius & \ref{fn-cstcs} \\
 $S$ & survivor particles, which meet high strain yet avoid caustics & \ref{fn-cstcs} \\
 $\mathbb{S}$ & strain tensor, $(\mathbb{A}+\mathbb{A}^{\!\top})/2$ & \ref{fn-cstcs} \\
-$\mathbf{S}$, $\tilde{\mathbf{S}}$ & strain-rate tensor and its non-dimensional form $\tau_{\rm act}\mathbf{S}$ & \ref{act-cstcs} \\
+$\mathbf{S}$, $\tilde{\mathbf{S}}$ & strain-rate tensor and its non-dimensional form $\tau\mathbf{S}$ & \ref{act-cstcs} \\
 $St$ & Stokes number & \ref{fn-cstcs}, \ref{act-cstcs}, \ref{lck-drp} \\
 $St_s$, $St_b$ & Stokes number of the small and the big droplets & \ref{lck-drp} \\
 $T_i$ & nonlinear energy transfer of flow component $i$ & \ref{tide-eddy} \\
@@ -120,15 +113,14 @@ $t_{\rm cas}$ & time the cascade takes to complete & \ref{trunc-euler} \\
 $t_{\rm th}$ & time at which thermalisation sets in & \ref{trunc-euler} \\
 $t_c$ & caustics time & \ref{fn-cstcs} \\
 $U$ & horizontal velocity scale & \ref{tide-eddy} \\
-$\boldsymbol{u}$ & three-dimensional fluid velocity $(u,v,w)$ & \ref{tide-eddy},\ref{trunc-euler} \\
+$\boldsymbol{u}$ & fluid velocity vector & \ref{tide-eddy}, \ref{trunc-euler},  \ref{fn-cstcs}, \ref{act-cstcs}, \ref{lck-drp} \\
 $\mathbf{u}$, $\mathbf{u}_0$ & Galerkin-truncated velocity, and its initial value & \ref{trunc-euler} \\
-$\boldsymbol{u}$ & background fluid velocity at the particle & \ref{fn-cstcs}, \ref{act-cstcs}, \ref{lck-drp} \\
 $\hat{u}_k$ & scalar amplitude of the velocity at the wavenumber $k$ & \ref{trunc-euler} \\
 $u$, $v$ & horizontal velocity components & \ref{tide-eddy} \\
 $u_x$, $u_y$ & components of the two-dimensional flow & \ref{fn-cstcs} \\
 $V$ & domain of integration & \ref{tide-eddy} \\
 $\boldsymbol{v}$ & particle velocity & \ref{fn-cstcs}, \ref{act-cstcs}, \ref{lck-drp} \\
-$\boldsymbol{v}_{\rm 2D}$ & horizontal fluid velocity, $(u,v)$ & \ref{tide-eddy} \\
+$\boldsymbol{v}_{\rm 2D}$ & horizontal fluid velocity vector, $(u,v)$ & \ref{tide-eddy} \\
 $\boldsymbol{v}_s$, $\boldsymbol{v}_b$ & velocity of the small and of the big droplets & \ref{lck-drp} \\
 $\mathcal{W}$ & Okubo-Weiss parameter from dimensional gradients & \ref{act-cstcs} \\
 $\mathbf{w}$ & end-to-end extension of the dimer & \ref{act-cstcs} \\
@@ -136,8 +128,7 @@ $\mathrm{w}_0$ & preferred length of the dimer & \ref{act-cstcs} \\
 $w$ & vertical velocity & \ref{tide-eddy} \\
 $\mathbf{X}$ & centroid of the active dimer & \ref{act-cstcs} \\
 $\mathbb{Z}$ & particle velocity gradient tensor, $St\,\nabla\boldsymbol{v}$ & \ref{fn-cstcs} \\
-$\mathbb{Z}_0$ & fixed point of the frozen-particle equation & \ref{fn-cstcs} \\
-$\mathbf{Z}$ & particle velocity gradient tensor, $\tau_{\rm act}\nabla\boldsymbol{v}$ & \ref{act-cstcs} \\
+$\mathbf{Z}$ & particle velocity gradient tensor, $\tau\nabla\boldsymbol{v}$ & \ref{act-cstcs} \\
 $\mathcal{Z}$, $\mathcal{Z}_\infty$ & enstrophy, and the value it saturates at & \ref{trunc-euler} \\
 \addlinespace
 \midrule
@@ -146,7 +137,7 @@ $\mathcal{Z}$, $\mathcal{Z}_\infty$ & enstrophy, and the value it saturates at &
 $\alpha$ & density parameter, $2\rho/(2\rho+1)$ & \ref{fn-cstcs} \\
 $\alpha_{\rm act}$ & Jeffery-type response of the dimer to the flow & \ref{act-cstcs} \\
 $\beta$ & swimming rate, so $1/\beta$ is the time to swim a body length & \ref{act-cstcs} \\
-$\tilde{\beta}$ & non-dimensional motility, $\beta\sqrt{\tau_{\rm act}/\tilde{\Gamma}}$ & \ref{act-cstcs} \\
+$\tilde{\beta}$ & non-dimensional motility, $\beta\sqrt{\tau/\tilde{\Gamma}}$ & \ref{act-cstcs} \\
 $\Gamma$ & circulation of the point vortex & \ref{fn-cstcs}, \ref{lck-drp} \\
 $\tilde{\Gamma}$ & circulation of the point vortex, $\Gamma/2\pi$ & \ref{act-cstcs} \\
 $\gamma$ & spectral slope, $\mathbb{E}(k)\sim k^\gamma$ & \ref{trunc-euler} \\
@@ -154,22 +145,18 @@ $\gamma_\epsilon$ & linear drag coefficient of the two-dimensional flow & \ref{f
 $\Delta r$ & separation between two neighbouring particle rings & \ref{act-cstcs} \\
 $\delta$ & trace of $\mathbb{Z}$, equal to $St\,\nabla\cdot\boldsymbol{v}$ & \ref{fn-cstcs} \\
 $\delta(x)$ & Dirac delta function & \ref{lck-drp} \\
-$\epsilon$ & effective dissipation per unit mass & \ref{trunc-euler} \\
-$\epsilon$ & mean energy dissipation rate of the cloud & \ref{lck-drp} \\
+$\epsilon$ & dissipation per unit mass & \ref{trunc-euler},\ref{lck-drp} \\
 $\varepsilon$ & separation between two particle rings & \ref{fn-cstcs} \\
-$\zeta$ & vertical vorticity & \ref{tide-eddy}, \ref{fn-cstcs}, \ref{act-cstcs}, \ref{lck-drp} \\
+$\zeta$ & vertical vorticity, or vorticity in two dimensions & \ref{tide-eddy}, \ref{fn-cstcs}, \ref{act-cstcs}, \ref{lck-drp} \\
 $\boldsymbol{\eta}$ & white noise vector of the dimer equations & \ref{act-cstcs} \\
 $\Theta$ & Heaviside step function, switching the forcing off & \ref{tide-eddy} \\
 $\vartheta$ & polar angle of the point-vortex coordinates & \ref{fn-cstcs}, \ref{act-cstcs}, \ref{lck-drp} \\
 $\dot{\vartheta}$ & angular velocity of the dimer, $d\vartheta/dt$ & \ref{act-cstcs} \\
 $\kappa$ & root mean square velocity gradient of the background flow & \ref{act-cstcs} \\
-$\lambda_s$ & depletion rate of the small droplets & \ref{lck-drp} \\
-$\lambda(m,m',t)$ & Smoluchowski collision kernel & \ref{lck-drp} \\
 $\mu$ & Stokesian mobility of the particle & \ref{act-cstcs} \\
 $\mu_E$ & Ekman friction of the background flow & \ref{act-cstcs} \\
 $\nu$ & kinematic viscosity & \ref{trunc-euler}, \ref{fn-cstcs}, \ref{act-cstcs}, \ref{lck-drp} \\
 $\nu_{\rm hyp}$ & hyperviscosity multiplying $\Delta^8$ & \ref{tide-eddy} \\
-$\varXi$, $\varXi_0$ & placeholder field whose flux fraction is computed, and its threshold & \ref{tide-eddy} \\
 $\Pi$, $\Pi(k)$ & kinetic energy flux & \ref{trunc-euler} \\
 $\widehat{\Pi}(k_h,t)$ & horizontal spectral flux & \ref{tide-eddy} \\
 $\Pi_\ell$ & energy flux in physical space at the scale $\ell$ & \ref{tide-eddy} \\
@@ -177,37 +164,13 @@ $\rho$ & particle-to-fluid density ratio, $\rho_p/\rho_f$ & \ref{fn-cstcs}, \ref
 $\sigma$ & net strain, $\sqrt{\sigma_s^2+\sigma_n^2}$ & \ref{fn-cstcs} \\
 $\varsigma$, $\varsigma_2$, $\varsigma_3$ & collision cross-section, in two and in three dimensions & \ref{lck-drp} \\
 $\varsigma_b$ & cross-section of a big drop on the small ones, $\pi(a_s+a_b)^2$ & \ref{lck-drp} \\
-$\tau$ & small parameter of the inner expansion & \ref{fn-cstcs} \\
-$\tau_{\rm act}$, $\tilde{\tau}_{\rm act}$ & relaxation time of the dimer, and its flow-dependent form & \ref{act-cstcs} \\
+$\tau$ & relaxation time of the dimer & \ref{act-cstcs} \\
 $\tau_p$, $\tau_f$ & particle relaxation time and flow timescale & \ref{fn-cstcs}, \ref{lck-drp} \\
 $\varphi$ & cumulative flux fraction & \ref{tide-eddy} \\
 $\omega$ & wave frequency & \ref{tide-eddy} \\
 $\omega_0$ & tidal forcing frequency & \ref{tide-eddy} \\
 \addlinespace
-\midrule
-\multicolumn{3}{@{}l}{\textbf{Operators, accents and conventions}} \\
-\addlinespace
-$\nabla$ & horizontal gradient, $\widehat{\boldsymbol{x}}\partial_x + \widehat{\boldsymbol{y}}\partial_y$ & \ref{tide-eddy} \\
-$\nabla_3$ & three-dimensional gradient & \ref{tide-eddy} \\
-$\nabla$ & gradient & \ref{fn-cstcs}, \ref{act-cstcs}, \ref{lck-drp} \\
-\addlinespace
-$\widehat{\phantom{u}}\;$ & a Fourier amplitude, as in $\widehat{u}$ & \ref{tide-eddy} \\
-$\hat{\phantom{u}}\;$ & a Fourier amplitude, as in $\widehat{\mathbf{u}}_{\mathbf{k}}$ & \ref{trunc-euler} \\
-$\overline{\phantom{u}}\;$ & a time average & \ref{tide-eddy} \\
-$\langle\cdot\rangle$ & an average & \ref{fn-cstcs}, \ref{act-cstcs}, \ref{lck-drp} \\
-$\langle\cdot\rangle_{\rm rms}$ & a root mean square average & \ref{act-cstcs} \\
-$\widetilde{\phantom{u}}\;$ & the large-scale part left by the spatial filter & \ref{tide-eddy} \\
-$\tilde{\phantom{u}}\;$ & a rescaled or non-dimensional quantity & \ref{act-cstcs} \\
-$\dot{(\,)}$ & a derivative with respect to time & \ref{fn-cstcs}, \ref{act-cstcs}, \ref{lck-drp} \\
-$\boldsymbol{u}$, bold italic & a vector & all \\
-$\mathbf{u}$, bold upright & the Galerkin-truncated field, against the italic untruncated one & \ref{trunc-euler} \\
-$\mathbf{S}$, bold upright & a tensor & \ref{act-cstcs} \\
-$\mathbb{A}$, blackboard bold & a tensor & \ref{fn-cstcs} \\
-$(\,)^*$ & the complex conjugate & \ref{tide-eddy} \\
-subscript $g$, $a$ & the geostrophic and the ageostrophic part & \ref{tide-eddy} \\
-subscript $s$, $f$ & the slow and the fast part & \ref{tide-eddy} \\
-subscript $s$, $b$ & the small and the big droplets & \ref{lck-drp} \\
-subscript rms & a root mean square value & \ref{tide-eddy}, \ref{act-cstcs}, \ref{lck-drp} \\
+
 
 \end{longtable}
 \endgroup
